@@ -65,13 +65,13 @@ Things you may want to cover:
 - belongs_to :user
 - has_many :goods
 - has_many :comments
-- has_many :children, class_name: :Category1, foreign_key: :parent_id
+- has_many :children, class_name: :Category, foreign_key: :parent_id
 
-## category1テーブル
+## categoryテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
-|item|references|null: false, foreign-key: true|
+|parent_category|references|null: false, foreign-key: true|
 
 ### Association
 - belongs_to :parent, class_name: :Item
