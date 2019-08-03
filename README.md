@@ -38,6 +38,12 @@ Things you may want to cover:
 |profile|text|
 |password| |null: false, unique: true|
 
+### Association
+- has_many :items
+- has_many :goods
+- has_many :comments
+- has_many :rates, through: :user-rates
+
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -58,11 +64,23 @@ Things you may want to cover:
 |good|references|null: false, foreign-key: true|
 |comment|references|null: false, foreign-key: true|
 
+### Association
+- belongs_to :user
+- has_many :goods
+- has_many :comments
+- has_many :category1
+- has_many :category2
+- has_many :category3
+- has_many :category4
+
 ## category1テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
 |item|references|null: false, foreign-key: true|
+
+### Association
+- belongs_to :item
 
 ## category2テーブル
 |Column|Type|Options|
@@ -71,12 +89,18 @@ Things you may want to cover:
 |item|references|null: false, foreign-key: true|
 |category1|references|null: false, foreign-key: true|
 
+### Association
+- belongs_to :item
+
 ## category3テーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
 |item|references|null: false, foreign-key: true|
 |category2|references|null: false, foreign-key: true|
+
+### Association
+- belongs_to :item
 
 ## category4テーブル
 |Column|Type|Options|
@@ -85,11 +109,18 @@ Things you may want to cover:
 |item|references|null: false, foreign-key: true|
 |category3|references|null: false, foreign-key: true|
 
+### Association
+- belongs_to :item
+
 ## goodsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false|
 |item|references|null: false|
+
+### Association
+- belongs_to :user
+- belongs_to :item
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -97,13 +128,24 @@ Things you may want to cover:
 |user|references|null: false|
 |item|references|null: false|
 
+### Association
+- belongs_to :user
+- belongs_to :item
+
 ## ratesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+
+### Association
+- has_many :users, through: :user-rates
 
 ## user-ratesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |rate|references|null: false|
 |user|references|null: false|
+
+### Association
+- belongs_to :user
+- belongs_to :rate
