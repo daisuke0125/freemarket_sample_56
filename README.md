@@ -75,39 +75,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :parent, class_name: :Item
-- has_many :children, class_name: :Category2, foreign_key: :parent_id
 
-## category2テーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|text|null: false|
-|item|references|null: false, foreign-key: true|
-|category1|references|null: false, foreign-key: true|
-
-### Association
-- belongs_to :parent, class_name: :Category1
-- has_many :children, class_name: :Category3, foreign_key: :parent_id
-
-## category3テーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|text|null: false|
-|item|references|null: false, foreign-key: true|
-|category2|references|null: false, foreign-key: true|
-
-### Association
-- belongs_to :parent, class_name: :Category2
-- has_many :children, class_name: :Category4, foreign_key: :parent_id
-
-## category4テーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|text|null: false|
-|item|references|null: false, foreign-key: true|
-|category3|references|null: false, foreign-key: true|
-
-### Association
-- belongs_to :parent, class_name: :Category3
 
 ## goodsテーブル
 |Column|Type|Options|
