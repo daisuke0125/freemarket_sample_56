@@ -52,9 +52,6 @@ Things you may want to cover:
 |image|string|null: false|
 |user|references|null: false, foreign_key: true|
 |category1|references|null: false, foreign_key: true|
-|category2|references|null: false, foreign_key: true|
-|category3|references|null: false, foreign_key: true|
-|category4|references|foreign_key: true|
 |brand|text|
 |condition|string|null: false|
 |delivery|string|null: false|
@@ -68,10 +65,7 @@ Things you may want to cover:
 - belongs_to :user
 - has_many :goods
 - has_many :comments
-- has_many :category1
-- has_many :category2
-- has_many :category3
-- has_many :category4
+- has_many :children, class_name: :Category1, foreign_key: :parent_id
 
 ## category1テーブル
 |Column|Type|Options|
@@ -80,7 +74,8 @@ Things you may want to cover:
 |item|references|null: false, foreign-key: true|
 
 ### Association
-- belongs_to :item
+- belongs_to :parent, class_name: :Item
+- has_many :children, class_name: :Category2, foreign_key: :parent_id
 
 ## category2テーブル
 |Column|Type|Options|
@@ -90,7 +85,8 @@ Things you may want to cover:
 |category1|references|null: false, foreign-key: true|
 
 ### Association
-- belongs_to :item
+- belongs_to :parent, class_name: :Category1
+- has_many :children, class_name: :Category3, foreign_key: :parent_id
 
 ## category3テーブル
 |Column|Type|Options|
@@ -100,7 +96,8 @@ Things you may want to cover:
 |category2|references|null: false, foreign-key: true|
 
 ### Association
-- belongs_to :item
+- belongs_to :parent, class_name: :Category2
+- has_many :children, class_name: :Category4, foreign_key: :parent_id
 
 ## category4テーブル
 |Column|Type|Options|
@@ -110,7 +107,7 @@ Things you may want to cover:
 |category3|references|null: false, foreign-key: true|
 
 ### Association
-- belongs_to :item
+- belongs_to :parent, class_name: :Category3
 
 ## goodsテーブル
 |Column|Type|Options|
