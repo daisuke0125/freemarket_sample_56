@@ -18,6 +18,119 @@
         %a.header-btn.btn-red{href: "https://www.mercari.com/jp/signup/"} 新規会員登録
         %a.header-btn.header-login{href: "https://www.mercari.com/jp/login/?login_callback=https%3A%2F%2Fwww.mercari.com%2Fjp%2F"} ログイン
 
+
+.main-visual
+  .main-visual__inner
+    %h2.top スマホでかんたん
+    %h2 フリマアプリ
+    %p
+      メルカリはスマホカメラからすぐに出品できる
+      %br>/
+      購入時も安心な独自システムのアプリです
+    .main-visual__inner__icon.clearfix
+      %ul.clearfix
+        %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", target: "_blank"}
+          %img{alt: "", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?863303983", height: "60", width: "170"}/
+        %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "_blank"}
+          %img{alt: "", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?863303983", height: "60", width: "170"}/
+    %img{class:"banner-image",alt: "", height: "400",src: "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?863303983"}/
+
+.main-content
+  .pickup-title ピックアップカテゴリー
+  .content  
+    .content__title レディース新着アイテム
+    .content__box 
+      .item 
+        %a{href:""}
+          .item__image
+          %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", height: "220", width: "213"}/
+          .item__text
+            .item__text__name 長財布
+            .item__text__num  
+              .item__text__num--price ¥7,000
+              .item__text__num--font
+                .item__text__num--font.count
+                  = fa_icon 'heart'
+                .item__text__num--font.like 2
+      .item 
+        %a{href:""}
+          .item__image
+          %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", height: "220", width: "213"}/
+          .item__text
+            .item__text__name 長財布
+            .item__text__num  
+              .item__text__num--price ¥7,000
+              .item__text__num--font
+                .item__text__num--font.count
+                  = fa_icon 'heart'
+                .item__text__num--font.like 2
+      .item 
+        %a{href:""}
+          .item__image
+          %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", height: "220", width: "213"}/
+          .item__text
+            .item__text__name 長財布
+            .item__text__num  
+              .item__text__num--price ¥7,000
+              .item__text__num--font
+                .item__text__num--font.count
+                  = fa_icon 'heart'
+                .item__text__num--font.like 2
+      .item 
+        %a{href:""}
+          .item__image
+          %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", height: "220", width: "213"}/
+          .item__text
+            .item__text__name 長財布
+            .item__text__num  
+              .item__text__num--price ¥7,000
+              .item__text__num--font
+                .item__text__num--font.count
+                  = fa_icon 'heart'
+                .item__text__num--font.like 2
+    .view-all すべての商品を見る
+  .content  
+    .content__title レディース新着アイテム
+    .content__box 
+      .item 
+        %a{href:""}
+          .item__image
+          %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", height: "220", width: "213"}/
+          .item__text
+            .item__text__name 長財布
+            .item__text__num  
+              .item__text__num--price ¥7,000
+              .item__text__num--font
+                .item__text__num--font.count
+                  = fa_icon 'heart'
+                .item__text__num--font.like 2
+
+
+
+
+
+
+
+
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
 %br
 
 .banner
@@ -26,19 +139,16 @@
     %p 今すぐ無料ダウンロード！
     .banner__inner__icon.clearfix
       -# %figure
-      %img{alt: "", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/mercari_icon.png?863303983", width: "68"}/
+      %img{class:"banner-icon",alt: "", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/mercari_icon.png?863303983", width: "68"}/
       %ul.clearfix
-        %li
-          %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", target: "_blank"}
-            %img{alt: "", height: "40", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?863303983", width: "133"}/
-        %li
-          %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "_blank"}
-            %img{alt: "", height: "40", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?863303983", width: "133"}/
-  %figure
-    %img{alt: "", height: "250",src: "//www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?863303983"}/
+        %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", target: "_blank"}
+          %img{alt: "", height: "40", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?863303983", width: "133"}/
+        %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "_blank"}
+          %img{alt: "", height: "40", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?863303983", width: "133"}/
+    %img{class:"banner-image",alt: "", height: "270",src: "//www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?863303983"}/
 
 
-%footer.footer
+.footer
   %nav.clearfix
     .footer__cell
       %h2.footer__cell--head メルカリについて
@@ -110,4 +220,8 @@
     %a.footer__bottom--logo{href: "https://www.mercari.com/jp/"}
       %img{alt: "mercari", height: "33", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-white.svg?863303983", width: "124"}/
     %span.footer__bottom--copyright
-      %small © 2019 Mercari
+      © 2019 Mercari
+.footer-self-btn{href: "https://www.mercari.com/jp/self/"}
+  出品
+  %br
+  = fa_icon 'camera',class:"camera"

@@ -1,0 +1,112 @@
+.main-visual{
+  // @include clearfix();
+  background: url('footer_image.jpg') ;
+  background-position: center;
+  background-size: cover;
+  color: #333;
+  height: 400px;
+  position: relative;
+  padding: 0 200px;
+  &__inner{
+      height: 100%;
+      display: block;
+      margin-left: 80px;
+      h2{
+        font-weight: bold;
+        font-size:55px;
+      }
+      .top{
+        padding-top: 40px;
+        margin-bottom: -10px;
+      }
+      p{
+        padding-top: 10px;
+        font-size:17px;
+      }
+    }  
+    &__inner__icon{
+      .banner-icon{
+          display: flex;
+          float: left;
+        }
+        ul{
+          display: flex;
+          a{
+            padding: 15px 0 0 10px;
+            &:hover{opacity:0.6;}
+            img{
+              // height: 50px;
+            }
+          }
+        }
+      }
+      .banner-image{
+        position: absolute;
+        top: 0;
+        right: 310px;
+      }
+}
+
+
+.main-content{
+  padding: 40px 0;
+  .pickup-title{
+    text-align: center;
+    font-size: 28px;
+  }
+  .content{
+    margin: 0 auto;
+    width:940px;
+    &__title{
+      font-size:22px;
+      text-align: center;
+      color: rgb(96, 198, 245);
+      font-weight: bold;
+      padding: 15px 0;
+    }
+    &__box{
+      display: flex;
+    }
+    .item{
+      background-color: white;
+      margin: 0 0 0 20px;
+      width: 213px;
+      a{
+        display: block;
+        color: #333;
+      }
+      &__image{
+        width: 100%;
+      }
+      &__text{
+        margin-top: -6px;
+        padding: 16px;
+        background-color: whitesmoke;
+        &__name{
+          margin-bottom: 10px;
+        }
+        &__num{
+          display: flex;
+          &--price{
+            margin-right: 60px;
+            font-size: 15px;
+            font-weight: bold;
+          }
+          &--font{
+            display: inline;
+            .count{
+              margin-left: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.view-all{
+  text-align: right;
+  color: rgb(96, 198, 245);
+  padding:10px 0 10px 0;
+}
+
+
