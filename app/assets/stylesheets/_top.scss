@@ -1,5 +1,4 @@
 .main-visual{
-  // @include clearfix();
   background: url('main.jpg') ;
   background-position: center;
   background-size: cover;
@@ -34,9 +33,6 @@
           a{
             padding: 15px 0 0 10px;
             &:hover{opacity:0.6;}
-            img{
-              // height: 50px;
-            }
           }
         }
       }
