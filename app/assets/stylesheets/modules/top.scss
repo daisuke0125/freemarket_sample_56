@@ -1,5 +1,6 @@
-////// ヘッダー部分////////
+////// トップページ////////
 
+////// ヘッダー部分////////
 .header {
   height: 100px;
   width: 100%;
@@ -44,7 +45,7 @@
                   padding-left: 11px;
               }
               i.left {
-                  color: red;
+                  color: $RedColor;
               }
           }
           &--right {
@@ -56,14 +57,14 @@
                 margin-left: 8px;
               }
               a.signup {
-                  background: #ea352d;
-                  border: 1px solid #ea352d;
+                  background-color: $RedColor;
+                  border: 1px solid $RedColor;
                   color: #fff;
               }
               a.login {
-                  border: 1px solid #0099e8;
+                  border: 1px solid $BlueColor;
                   background: #fff;
-                  color: #0099e8;
+                  color: $BlueColor;
               }
           }
       }
@@ -138,7 +139,7 @@ a {
     &__title{
       font-size:22px;
       text-align: center;
-      color: #0099e8;
+      color: $BlueColor;
       font-weight: bold;
       padding: 15px 0;
     }
@@ -193,7 +194,7 @@ a {
 }
 .view-all{
   text-align: right;
-  color:#0099e8;
+  color: $BlueColor;
   padding:10px 0 10px 0;
 }
 
@@ -221,9 +222,9 @@ a {
       }
     }  
     &__inner__icon{
+      @include clearfix();
       margin: 20px 0 0;
       .banner-icon{
-          display: flex;
           float: left;
         }
         ul{
@@ -297,15 +298,15 @@ a {
     }
 }
 .footer-self-btn{
+    color: white;
+    background-color: $RedColor;
     position: fixed;
     bottom: 32px;
     right: 32px;
     width: 160px;
     height: 160px;
     font-size: 22px;
-    color: white;
     border-radius: 50%;
-    background: #ea352d;
     text-align: center;
     line-height: 65px;
     .camera{

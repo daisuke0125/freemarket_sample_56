@@ -1,4 +1,7 @@
-@import "reset";
+@import "config/colors";
+@import "config/reset";
 @import "font-awesome";
-@import "clearfix";
-@import "top";
+@import "mixins/clearfix";
+@import "modules/top";
+@import "modules/mypage";
+@import "modules/user";
