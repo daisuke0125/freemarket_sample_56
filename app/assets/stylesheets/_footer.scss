@@ -1,7 +1,7 @@
 
 .banner{
   // @include clearfix();
-  background: url('footer_image.jpg') fixed;
+  background: url('footer_image.jpg');
   background-position: center;
   background-size: cover;
   color: white;
@@ -45,21 +45,28 @@
 
 .footer{
     height: 400px;
-    padding: 0 220px;
+    padding: 0 50px 0 190px;
     background: #212121;
     color: #fff;
     &__cell{
         float: left;
-        width: 25%;
+        width: 230px;
         &--head{
           padding-top: 20px;
+          width: 350px;
           &--sns .sns{
               font-size: 35px;
               padding: 5px 14px 5px 0;
           }
         }
+        &--list{
+          width: 350px;
+          display: flex;
+        }
         &--inner{
           float: left;
+          width: 350px;
+
         }
         li{
             margin-top:11px;
@@ -70,6 +77,9 @@
               text-decoration: none;
               &:hover{text-decoration:underline;}
             }
+        }
+        &.footer-nav-lang{
+          padding-left: 150px;
         }
     }
     &__bottom{

@@ -35,103 +35,7 @@
           %img{alt: "", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?863303983", height: "60", width: "170"}/
     %img{class:"banner-image",alt: "", height: "400",src: "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?863303983"}/
 
-.main-content
-  .pickup-title ピックアップカテゴリー
-  .content  
-    .content__title レディース新着アイテム
-    .content__box 
-      .item 
-        %a{href:""}
-          .item__image
-          %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", height: "220", width: "213"}/
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        %a{href:""}
-          .item__image
-          %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", height: "220", width: "213"}/
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        %a{href:""}
-          .item__image
-          %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", height: "220", width: "213"}/
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        %a{href:""}
-          .item__image
-          %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", height: "220", width: "213"}/
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-    .view-all すべての商品を見る
-  .content  
-    .content__title レディース新着アイテム
-    .content__box 
-      .item 
-        %a{href:""}
-          .item__image
-          %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", height: "220", width: "213"}/
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-
-
-
-
-
-
-
-
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
+=render "item"
 
 .banner
   .banner__inner
@@ -189,26 +93,27 @@
           %a{href: "https://www.mercari.com/jp/box/"} メルカリボックス
     .footer__cell
       %h2.footer__cell--head プライバシーと利用規約
-      .footer__cell--inner
-        %ul
-          %li
-            %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー
-          %li
-            %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約
-          %li
-            %a{href: "https://www.mercari.com/jp/tos_smartphone_support/"} あんしんスマホサポート制度に関する利用特約
-          %li
-            %a{href: "https://www.mercari.com/jp/compliance/"} コンプライアンスポリシー
-      .footer__cell--inner
-        %ul
-          %li
-            %a{href: "https://www.mercari.com/jp/data_security/"} 個人データの安全管理に係る基本方針
-          %li
-            %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
-          %li
-            %a{href: "https://www.mercari.com/jp/shikin_kessai/"} 資金決済法に基づく表示
-          %li
-            %a{href: "https://about.mercari.com/csr/safety/"} 法令順守と犯罪抑止のために
+      .footer__cell--list
+        .footer__cell--inner
+          %ul
+            %li
+              %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー
+            %li
+              %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約
+            %li
+              %a{href: "https://www.mercari.com/jp/tos_smartphone_support/"} あんしんスマホサポート制度に関する利用特約
+            %li
+              %a{href: "https://www.mercari.com/jp/compliance/"} コンプライアンスポリシー
+        .footer__cell--inner
+          %ul
+            %li
+              %a{href: "https://www.mercari.com/jp/data_security/"} 個人データの安全管理に係る基本方針
+            %li
+              %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+            %li
+              %a{href: "https://www.mercari.com/jp/shikin_kessai/"} 資金決済法に基づく表示
+            %li
+              %a{href: "https://about.mercari.com/csr/safety/"} 法令順守と犯罪抑止のために
     .footer__cell.footer-nav-lang
       %h2.footer__cell--head 国
       %ul
