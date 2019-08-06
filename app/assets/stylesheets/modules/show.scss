@@ -1,0 +1,36 @@
+.tab-content__list{
+  li{
+    background-color: white;
+    height: 80px;
+    border-bottom: 1px solid #eee;
+    }
+    .figure{
+      position: relative;
+    }
+  &--item{
+    display: block;
+    height: 60px;
+    padding: 16px;
+  }
+  &__image{
+    position: absolute;
+    left: 0;
+    top: 25%;
+    left: 16px;
+  }
+  &__body{
+    margin-left:85px;
+    padding-top: 15px;
+    &--time{
+      color: gray;
+    }
+  }
+  .tab-icon{
+    position: absolute;
+    float: right;
+    color: black;
+    font-size: 30px;
+    top: 50%;
+    right: 16px;
+  }
+}
