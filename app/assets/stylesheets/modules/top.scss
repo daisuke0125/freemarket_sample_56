@@ -1,0 +1,316 @@
+////// トップページ////////
+
+////// ヘッダー部分////////
+.header {
+  height: 100px;
+  width: 100%;
+  z-index: 1;
+  &__inner {
+      margin: 0 168px;
+      padding-top: 8px;
+      &__top {
+          display: flex;
+          form.header-form {
+              margin-left: 45px;
+              width: 100%;
+              display: flex;
+              position: relative;
+              input.input-default {
+                  width: 100%;
+                  padding: 0 42px 0 10px;
+                  border-radius: 4px;
+                  background-color: #f5f5f5;
+                  border: 1px solid #ccc
+              }
+              i.fa-search {
+                  position: absolute;
+                  top: 12px;
+                  right: 12px;
+                  font-size: 16px;
+                  -webkit-text-stroke: 1px #f5f5f5;
+              }
+          }
+      }
+      &__bottom {
+          display: flex;
+          margin: 8px 0 0;
+          justify-content: space-between;
+          font-size: 14px;
+          line-height: 30px;
+          &--left {
+              a.header__category {
+                  padding-right: 11px;
+              }
+              a.header__brand {
+                  padding-left: 11px;
+              }
+              i.left {
+                  color: $RedColor;
+              }
+          }
+          &--right {
+              .header-btn{
+                text-align: center;
+                border-radius: 4px;
+                height: 32px;
+                padding: 10px 15px;
+                margin-left: 8px;
+              }
+              a.signup {
+                  background-color: $RedColor;
+                  border: 1px solid $RedColor;
+                  color: #fff;
+              }
+              a.login {
+                  border: 1px solid $BlueColor;
+                  background: #fff;
+                  color: $BlueColor;
+              }
+          }
+      }
+  }
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-family: sans-serif;
+}
+
+////// メイン////////
+
+.main-visual{
+  background: url('main.jpg') ;
+  background-position: center;
+  background-size: cover;
+  color: #333;
+  height: 400px;
+  position: relative;
+  padding: 0 200px;
+  &__inner{
+      height: 100%;
+      display: block;
+      margin-left: 80px;
+      h2{
+        font-weight: bold;
+        font-size:55px;
+      }
+      .top{
+        padding-top: 40px;
+        margin-bottom: -10px;
+      }
+      p{
+        padding-top: 10px;
+        font-size:17px;
+      }
+    }  
+    &__inner__icon{
+      .banner-icon{
+          display: flex;
+          float: left;
+        }
+        ul{
+          display: flex;
+          a{
+            padding: 15px 0 0 10px;
+            &:hover{opacity:0.6;}
+          }
+        }
+      }
+      .banner-image{
+        position: absolute;
+        top: 0;
+        right: 310px;
+      }
+}
+
+
+.main-content{
+  padding: 40px 0;
+  background: #f5f5f5;
+  .pickup-title{
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+
+  }
+  .content{
+    margin: 0 auto;
+    width:940px;
+    &__title{
+      font-size:22px;
+      text-align: center;
+      color: $BlueColor;
+      font-weight: bold;
+      padding: 15px 0;
+    }
+    &__box{
+      display: flex;
+    }
+    .item{
+      display: inline-block;
+      background-color: white;
+      margin: 0 0 0 20px;
+      width: 213px;
+      a{
+        color: #333;
+      }
+      &__image{
+        width: 100%;
+      }
+      &__text{
+        padding: 16px;
+        background-color: white;
+        &__name{
+          margin-bottom: 10px;
+          overflow: hidden;
+          position: relative;
+          font-weight: 400;
+          height: 3em;
+          line-height: 1.5;
+          word-break: break-word;
+          white-space: normal;
+        }
+        &__num{
+          display: flex;
+          &--price{
+            margin-right: 60px;
+            font-size: 13px;
+            font-weight: bold;
+          }
+          &--font{
+            display: inline;
+            .count{
+              margin-left: 30px;
+              i{
+                color: white;
+                -webkit-text-stroke: 2px rgb(158, 157, 157);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.view-all{
+  text-align: right;
+  color: $BlueColor;
+  padding:10px 0 10px 0;
+}
+
+////// フッター////////
+
+.banner{
+  background: url('footer_image.jpg');
+  background-position: center;
+  background-size: cover;
+  color: white;
+  height: 270px;
+  position: relative;
+  padding: 0 250px;
+  &__inner{
+      height: 100%;
+      display: block;
+      margin-left: 80px;
+      h2{
+        padding-top: 30px;
+        font-weight: bold;
+        font-size:25px;
+      }
+      p{
+        font-size:35px;
+      }
+    }  
+    &__inner__icon{
+      @include clearfix();
+      margin: 20px 0 0;
+      .banner-icon{
+          float: left;
+        }
+        ul{
+          display: flex;
+          margin-left: 24px;
+          a{
+            padding: 15px 0 0 20px;
+            &:hover{opacity:0.6;}
+          }
+        }
+      }
+      .banner-image{
+        position: absolute;
+        top: 0;
+        right: 320px;
+      }
+}
+
+.footer{
+    height: 400px;
+    padding: 0 50px 0 190px;
+    background: #212121;
+    color: #fff;
+    &__cell{
+        float: left;
+        width: 230px;
+        &--head{
+          padding-top: 20px;
+          width: 350px;
+          &--sns .sns{
+              font-size: 35px;
+              padding: 5px 14px 5px 0;
+          }
+        }
+        &--list{
+          width: 350px;
+          display: flex;
+        }
+        &--inner{
+          float: left;
+          width: 350px;
+
+        }
+        li{
+            margin-top:11px;
+            a{
+              color: white;
+              opacity: 0.7;
+              font-size:11px;
+              text-decoration: none;
+              &:hover{text-decoration:underline;}
+            }
+        }
+        &.footer-nav-lang{
+          padding-left: 150px;
+        }
+    }
+    &__bottom{
+      clear: both;
+      padding-top: 10px;
+      height: 40px;
+      line-height: 35px;
+      &--logo{
+        float: left;
+        &:hover{opacity:0.7;}
+      }
+      &--copyright{
+        font-size: 10px;
+        padding-left: 300px;
+      }
+    }
+}
+.footer-self-btn{
+    color: white;
+    background-color: $RedColor;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 160px;
+    height: 160px;
+    font-size: 22px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 65px;
+    .camera{
+      font-size: 54px;
+      margin-bottom: 0px;
+      }
+}

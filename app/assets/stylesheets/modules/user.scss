@@ -1,0 +1,88 @@
+////// 新規会員登録 ////////
+.sign-up-body {
+  background-color: rgb(226, 222, 222);
+  width: 100%;
+  height: 100vh;
+  .sign_up__header {
+      text-align: center;
+      height: 130px;
+      img.image_sign_up {
+          height: 50px;
+          margin: 40px;
+      }
+  }
+  .sign_up__main {
+      height: calc(100vh - 350px);
+      &__content {
+          margin: 0 auto;
+          background-color: white;
+          width: 50%;
+          .sign_up__main__index {
+              height: 100px;
+              text-align: center;
+              border-bottom: solid 1px rgb(226, 222, 222);
+              h1.sign_up {
+                  font-size: 22px;
+                  line-height: 100px;
+                  font-weight: bold;
+              }
+          }
+          .sign_up__main__btns {
+              height: 180px;
+              padding: 24px 160px 40px;
+              a.sign_up {
+                  display: block;
+                  height: 50px;
+                  line-height: 50px;
+                  color: white;
+                  border: solid 1px $RedColor;
+                  border-radius: 5px;
+                  background-color: $RedColor;
+                  i.sign_up {
+                  font-size: 20px;
+                  padding-left: 5px;
+                  }
+              }
+              a.facebook {
+                  display: block;
+                  margin-top: 16px;
+                  height: 50px;
+                  color: white;
+                  line-height: 50px;
+                  border: solid 1px $FacebookColor;
+                  border-radius: 5px;
+                  background-color: $FacebookColor;
+                  i.facebook {
+                      font-size: 25px;
+                      padding-left: 5px;
+                      }
+              }
+              a.google {
+                  display: block;
+                  margin-top: 16px;
+                  height: 50px;
+                  line-height: 50px;
+                  border: solid 1px rgb(226, 222, 222);
+                  border-radius: 5px;
+                  background-color:white;
+                  i.google {
+                      right: 360px;
+                      padding-left: 5px;
+                      }
+              }
+          }
+      }
+  }
+  .sign_up__footer {
+      height: 220px;
+      background-color: rgb(226, 222, 222);
+      text-align: center;
+      nav li {
+          display: inline;
+          justify-content: center;
+      }
+      a.single-footer-logo img.single-footer-logo {
+          padding-top: 40px;
+      }
+  }
+}
