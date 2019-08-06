@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     :omniauth_callbacks =>  "users/omniauth_callbacks",
     :registrations => "users/registrations"
   }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "items#index"
-  get 'show' => 'items#show'
+  resources :items, only: [:index , :show]
 end
