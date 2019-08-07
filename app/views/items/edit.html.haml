@@ -1,0 +1,36 @@
+%header.header
+  .header__inner
+    .header__inner__top
+      =link_to "https://www.mercari.com/jp/" do
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983" ,alt: "mercari", height: "36", width: "134"
+      %form.header-form{action: "https://www.mercari.com/jp/search/"}
+        %input.input-default{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
+        = fa_icon 'search'
+    .header__inner__bottom.clearfix
+      .header__inner__bottom--left
+        =link_to "https://www.mercari.com/jp/category/" ,class:"header__category" do
+          = fa_icon 'list-ul', class: "left"
+          %span カテゴリーから探す
+        =link_to "https://www.mercari.com/jp/brand/" , class:"header__brand" do 
+          = fa_icon 'tag', class: "left"
+          %span ブランドから探す
+      .header__inner__bottom--right
+        =link_to "新規会員登録" , "https://www.mercari.com/jp/signup/" ,class:"header-btn signup"
+        =link_to "ログイン", "https://www.mercari.com/jp/login/?login_callback=https%3A%2F%2Fwww.mercari.com%2Fjp%2F" ,class:"header-btn login"
+
+.mypage
+  .mypage__content
+    = render "items/sidebar"
+    .l-content
+      %section.l-chapter-container
+        %h2.l-chapter-head プロフィール
+        %form{action: "https://www.mercari.com/jp/mypage/profile/", method: "POST"}
+          %input{name: "__csrf_value", type: "hidden", value: "e20dfc21ec93262f69196fe5a8366c8435d61548623e402c57f6f7f298596bf63aa4e7667fc88a67d1d198661496da48f6178a44b45174307897a0dbb04b59e6c"}/
+          .setting-profile-icon
+            %figure
+              = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", height: "60", width: "60"
+            %input.input-default{name: "nickname", placeholder: "例)AYA☆セール中", type: "text", value: "daisuke"}/
+          .setting-profile-content
+            %textarea.textarea-default{name: "introduction", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+            %input{name: "after_save_callback", type: "hidden", value: "https://www.mercari.com/jp/mypage/profile/"}/
+            %button.btn-default.btn-red{type: "submit"} 変更する
