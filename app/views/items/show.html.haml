@@ -1,9 +1,63 @@
+= render "items/header"
+
 ////// マイページ ////////
 .mypage
   .mypage__content
-    = render "sidebar"
+    = render "items/sidebar"
 
     .mypage-main
-      -# .mypage-main__head "タイトル" 
-      .mypage-main__image
-        
+      .mypage-main__icon
+        = image_tag "https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?1355409", alt: "", height: "200", width: "700"
+        %a
+          %figure
+            = image_tag "//static.mercdn.net/thumb/members/255443527.jpg?1499692952" , alt: "", height: "60", width: "60"
+          %h2.name 名前
+          .mypage-number
+            評価
+            %span.count 80
+            出品数
+            %span.count 40
+      .mypage-main__content
+        %ul.tabs
+          %li.tab.knowlage お知らせ
+          %li.tab やることリスト
+        .tab-content
+          %ul.tab-content__list
+            %li
+              .figure
+                = link_to "https://www.mercari.com/jp/mypage/news/" do
+                  .tab-content__list__image
+                    = image_tag "https://static.mercdn.net/images/mercari_profile.png", alt: "", height: "48", width: "48"
+                  .tab-content__list__body
+                    .tab-content__list__body--text 事務局から個人メッセージ「ログイン通知」
+                    .tab-content__list__body--time
+                      = fa_icon 'search'
+                      %span 1日前 
+                  = fa_icon 'angle-right',class:"tab-icon"
+            %li
+              .figure
+                = link_to "https://www.mercari.com/jp/mypage/news/" do
+                  .tab-content__list__image
+                    = image_tag "https://static.mercdn.net/images/mercari_profile.png", alt: "", height: "48", width: "48"
+                  .tab-content__list__body
+                    .tab-content__list__body--text 事務局から個人メッセージ「ログイン通知」
+                    .tab-content__list__body--time
+                      = fa_icon 'search'
+                      %span 1日前 
+                  = fa_icon 'angle-right',class:"tab-icon"
+            %li
+              .tab-content__look
+                %a{:href => "/jp/mypage/notification/"} 一覧を見る
+
+    .mypage-sub
+      .mypage-sub__head 購入した商品
+      .mypage-main__content
+        %ul.tabs
+          %li.tab.knowlage 取引中
+          %li.tab 過去の取引
+      .mypage-sub__content
+        .mypage-sub__content--icon 
+          = image_tag "//www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?1355409", alt: "", height: "90", width: "90",class:"single-footer-logo"
+          .mypage-sub__content--notfound 取引中の商品がありません
+
+= render "items/footer"
