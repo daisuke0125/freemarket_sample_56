@@ -93,7 +93,8 @@
           %lavel 建物名
           %span.form-arbitrary 任意
           %input.input-default{placeholder: "例）アクロス福岡", type:"text", value:""}
-        %button.btn-default.btn-red{:type => "submit"} 登録する
+        %button.btn-red{type: "submit"} 登録する
         .text-right
+          %br
           =link_to "本人情報の登録について" , "/jp/help_center/article/423/" ,target:"_blank"
           = fa_icon 'angle-right'

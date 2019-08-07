@@ -4,13 +4,13 @@
     padding: 64px;
   }
   p{
-    font-size:12px;
+    font-size:14px;
     margin-top: 8px;
   }
   .text-right{
     margin-top: 8px;
     color:$BlueColor;
-    font-size:12px;
+    font-size:14px;
     text-align: right;
     a{
       color:$BlueColor;
@@ -35,7 +35,7 @@
       font-size: 12px;
     }
     .input-default{
-      width: 100%;
+      width: 95%;
       margin-top: 5px;
       padding: 10px 16px 8px;
       border-radius: 4px;
@@ -44,6 +44,7 @@
       line-height: 1.5;
       font-size: 16px;
     }
+    
     .select-wrap{
       position: relative;
       background: #fff;
@@ -74,19 +75,17 @@
       }
     }
   }
-  .btn-default{
+  .btn-red{
     margin-top: 40px;
-    &.btn-red{
-      background: #ea352d;
-      border: 1px solid #ea352d;
-      color: #fff;
-      display: block;
-      width: 100%;
-      line-height: 48px;
-      font-size: 14px;
-      transition: all ease-out .3s;
-      cursor: pointer;
-      text-align: center;
-    }
-  }
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+}
 }
