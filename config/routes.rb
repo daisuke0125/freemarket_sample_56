@@ -5,7 +5,5 @@ Rails.application.routes.draw do
   }
   root "items#index"
   
-  get "items/index" => "items#index"
-  get "items/edit" => "items#edit"
-  get "items/show" => "items#show"
+  resource :items, only: [:index, :show, :edit] 
 end
