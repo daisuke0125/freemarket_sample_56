@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   root "items#index"
 
-  get   'items/identification'   =>  'items#identification'
-  get   'items/index'   =>  'items#index'
-  get   'items/show'   =>  'items#show'
+  resource :items, only: [:index, :show,]
+  get   'items/identification'   =>  'items#identification' 
+  # get   'items/index'   =>  'items#index'
+  # get   'items/show'   =>  'items#show'
 
 end

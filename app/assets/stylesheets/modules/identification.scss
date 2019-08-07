@@ -1,0 +1,92 @@
+////// マイページ 本人情報の登録 ////////
+.mypage-main{
+  &__box{
+    padding: 64px;
+  }
+  p{
+    font-size:12px;
+    margin-top: 8px;
+  }
+  .text-right{
+    margin-top: 8px;
+    color:$BlueColor;
+    font-size:12px;
+    text-align: right;
+    a{
+      color:$BlueColor;
+    }
+    i{
+      font-size: 20px;
+    }
+  }
+  .form-group{
+    margin-top: 40px;
+    lavel{
+      font-weight: 600;
+      font-size:14px;
+      margin-bottom: 5px;
+    }
+    .form-arbitrary{
+      background-color: #ccc;
+      margin: 0 0 0 8px;
+      padding: 4px 4px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 12px;
+    }
+    .input-default{
+      width: 100%;
+      margin-top: 5px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      line-height: 1.5;
+      font-size: 16px;
+    }
+    .select-wrap{
+      position: relative;
+      background: #fff;
+      margin-top: 8px;
+      i{
+        position: absolute;
+        right: 16px;
+        top: 20%;
+        z-index: 2;
+        color: #888;
+        font-size: 30px;
+      }
+      .select-default{
+        -webkit-appearance: none;
+      	-moz-appearance: none;
+      	appearance: none;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        height: 48px;
+        padding: 0 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        cursor: pointer;
+      }
+    }
+  }
+  .btn-default{
+    margin-top: 40px;
+    &.btn-red{
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      color: #fff;
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      transition: all ease-out .3s;
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+}
