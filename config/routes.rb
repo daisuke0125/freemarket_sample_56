@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   }
   root "items#index"
   
-  resource :items, only: [:index, :show, :edit] 
+  resource :items, only: [:index, :show, :edit,] 
+  get "items/logout" => "items#logout"
 end
