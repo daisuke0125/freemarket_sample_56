@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     :registrations => "users/registrations"
   }
   root "items#index"
-  resources :items, only: [:index , :show]
+  get 'items/new2' => 'items#new2'
+  get 'items.new3' => 'items#new3'
 end

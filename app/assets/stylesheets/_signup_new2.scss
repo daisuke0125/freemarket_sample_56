@@ -1,0 +1,174 @@
+.step_bar {
+    width: 50%;
+    height: 30%;
+    margin-left: 30px;
+  }
+  .cp_stepflow01 {
+      font-size: 80%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 0 0 1em;
+      padding: 0;
+  }
+  .cp_stepflow01 > li {
+      position: relative;
+      display: block;
+      width: auto;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+      text-overflow: ellipsis;
+      color: #b0bec5;
+       -ms-flex: 1;
+      -moz-flex: 1;
+      -webkit-box-flex: 1;
+           flex: 1;
+  }
+  .cp_stepflow01 > li .bubble {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: 0 auto 0.5em;
+      border-radius: 1000px;
+      background-color: #b0bec5;
+  }
+  .cp_stepflow01 > li .bubble::after,
+  .cp_stepflow01 > li .bubble::before {
+      position: absolute;
+    top: 27px;
+    left: 64px;
+      display: block;
+      width: 100%;
+      height: 3px;
+      content: '';
+      background-color: #b0bec5;
+  }
+  .cp_stepflow01 > li.completed,
+  .cp_stepflow01 > li.completed .bubble {
+      color: #ea352d;
+  }
+  .cp_stepflow01 > li.completed .bubble,
+  .cp_stepflow01 > li.completed .bubble::after,
+  .cp_stepflow01 > li.completed .bubble::before {
+      background-color: #ea352d;
+  }
+  .cp_stepflow01 > li:last-child .bubble::after,
+  .cp_stepflow01 > li:last-child .bubble::before {
+      width: 0%;
+      margin-right: 50%;
+  }
+  .cp_stepflow01 > li.active,
+  .cp_stepflow01 > li.active .bubble {
+      color: #ea352d;
+  }
+  .cp_stepflow01 > li.active .bubble,
+  .cp_stepflow01 > li.active .bubble::before {
+      background-color: #ea352d;
+  }
+
+.sign_up2__header {
+    display: flex;
+    justify-content: center;
+    padding: 40px 180px 30px 180px;
+    img.image_sign_up_small {
+        width: 190px;
+        height: 50px;
+    }
+}
+.sign_up2__main {
+    padding: 0 380px;
+    height: 1200px;
+    background-color: rgb(226, 222, 222);
+    position: relative;
+    &__header {
+        border-bottom: solid 1px #b0bec5;
+        background-color: white;
+        padding: 20px 0 20px 0;
+        text-align: center;
+        h2.main2 {
+            padding: 32px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    }
+    &__form {
+        background-color: white;
+        padding: 0 180px;
+        height: 1050px;
+        input.form {
+            padding: 10px 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        label.attention {
+            background-color: #ea352d;
+            border: solid 5px #ea352d;
+            border-radius: 3px;
+            color: white;
+            font-size: 12px;
+        }
+        .form__nickname {
+            padding: 10px 0;
+            display: block;
+        }
+        .form__email {
+            padding: 10px 0;
+            display: block;
+        }
+        .form__password {
+            padding: 10px 0;
+            display: block;
+        }
+        .form__password__confirmation {
+            padding: 10px 0;
+            display: block;
+        }
+        .form__text {
+            padding: 10px 0;
+            display: block;
+        }
+        .form__name {
+            padding: 10px 0;
+            display: block;
+        }
+        .form__kana {
+            padding: 10px 0;
+            display: block;
+        }
+        .form__birth {
+            padding: 10px 0;
+            display: block;
+            &__field {
+                padding-top: 10px;
+                select {
+                    height: 50px;
+                    width: 70px;
+                    background-color: white;
+                }
+            }
+            h4.birth {padding: 10px 0;}
+        }
+        .form__captcha {
+            padding: 10px 0;
+            display: block;
+        }
+        p.buttom1 {
+            margin-top: 20px;
+            text-align: center;
+            border: solid 1px #ea352d;
+            height: 40px;
+            line-height: 40px;
+            background-color: #ea352d;
+            color: white;
+        }
+        a.link1 {
+            position: absolute;
+            bottom: 30px;
+            right: 500px;
+            color: #0099e8;
+        }
+
+    }
+}

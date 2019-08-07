@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
 
-    def index
+    def new2
+        @user = User.new
     end
 
-    def show
+    def new3
     end
     
 end
