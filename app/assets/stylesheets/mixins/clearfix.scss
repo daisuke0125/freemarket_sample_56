@@ -5,3 +5,28 @@
     clear: both;
   } 
 }
+
+////// 赤ボタン  //////
+@mixin btn-red{
+  margin-top: 40px;
+  background: $RedColor;
+  border: 1px solid $RedColor;
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
+
+////// 「任意」ボタン(灰色ボタン)  //////
+@mixin form-arbitrary{
+  background-color: #ccc;
+  margin: 0 0 0 8px;
+  padding: 4px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+}
