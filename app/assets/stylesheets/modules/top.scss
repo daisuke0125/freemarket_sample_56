@@ -12,7 +12,7 @@
           display: flex;
           form.header-form {
               margin-left: 45px;
-              width: 100%;
+              width: 841px;
               display: flex;
               position: relative;
               input.input-default {
@@ -37,6 +37,7 @@
           justify-content: space-between;
           font-size: 14px;
           line-height: 30px;
+          font-weight: bold;
           &--left {
               a.header__category {
                   padding-right: 11px;
