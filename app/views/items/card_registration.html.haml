@@ -1,0 +1,47 @@
+%header.header
+  .header__inner
+    .header__inner__top
+      =link_to "https://www.mercari.com/jp/" do
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983" ,alt: "mercari", height: "36", width: "134"
+      %form.header-form{action: "https://www.mercari.com/jp/search/"}
+        %input.input-default{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
+        = fa_icon 'search'
+    .header__inner__bottom.clearfix
+      .header__inner__bottom--left
+        =link_to "https://www.mercari.com/jp/category/" ,class:"header__category" do
+          = fa_icon 'list-ul', class: "left"
+          %span カテゴリーから探す
+        =link_to "https://www.mercari.com/jp/brand/" , class:"header__brand" do 
+          = fa_icon 'tag', class: "left"
+          %span ブランドから探す
+      .header__inner__bottom--right
+        =link_to "新規会員登録" , "https://www.mercari.com/jp/signup/" ,class:"header-btn signup"
+        =link_to "ログイン", "https://www.mercari.com/jp/login/?login_callback=https%3A%2F%2Fwww.mercari.com%2Fjp%2F" ,class:"header-btn login"
+
+.mypage
+  .mypage__content
+    = render "items/sidebar"
+    .l-content
+      %section.l-chapter-container
+        %h2.l-chapter-head 支払い方法
+        .l-single-inner
+          %section
+            .l-single-content
+              %h3.l-chapter-sub-head クレジットカード一覧
+            %ul.settings-payment-list
+              %li
+                %form.l-single-content{:action => "https://www.mercari.com/jp/mypage/card/delete/", :method => "POST"}
+                  %figure
+                    %img{:alt => "american_express", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?917505326", :width => "21"}/
+                  %input{:name => "__csrf_value", :type => "hidden", :value => "7212cd1eb93ca25c3899c6fe734992c91a7518fe313e2662ee3b4cf67164130d59d234b57c13f01044c7eec238b533d984a05da59cec9329f2c73cf827e2d1f90"}/
+                  %input{:name => "card_sequence_no", :type => "hidden", :value => "tpLkzho78HxARmvi1TJEixcc"}/
+                  .settings-payment-num ***********1007
+                  .settings-payment-num 07 / 23
+                  %input{:name => "method", :type => "hidden", :value => "card"}/
+                  %button.settings-payment-remove{:type => "submit"}
+                    削除する
+          .settings-not-regist
+            %a{:href => "/jp/help_center/category/6/", :target => "_blank"}
+              %span 支払い方法について
+              %i.icon-arrow-right
+

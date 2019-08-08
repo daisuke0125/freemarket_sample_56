@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   
   resource :items, only: [:index, :show, :edit,] 
   get "items/logout" => "items#logout"
+  get "items/card_registration" => "items#card_registration"
 end

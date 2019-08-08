@@ -12,4 +12,6 @@ class ItemsController < ApplicationController
     def logout
     end
     
+    def card_registration
+    end
 end
