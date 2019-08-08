@@ -4,5 +4,7 @@ Rails.application.routes.draw do
     :registrations => "users/registrations"
   }
   root "items#index"
-  resources :items, only: [:index , :show]
+  
+  resource :items, only: [:index, :show, :edit,] 
+  get "items/logout" => "items#logout"
 end
