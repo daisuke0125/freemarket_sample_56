@@ -20,7 +20,7 @@
           完了
           %span.bubble>
   .sign_up2__main
-    = form_for @user, url: step4_signup_index_path, method: :get do |f|
+    = form_for @user, url: step5_signup_index_path, method: :get do |f|
       .sign_up2__main__header 
         %h2.main2 発送・お届け先住所入力
       .sign_up2__main__form
@@ -58,6 +58,8 @@
           = f.label :name, "電話番号"
           = f.label :name, "任意", class: "select"
           = f.telephone_field :cordNumber, size: "35", class: "form"
+        #form1
+          = f.submit "次へ進む", class: "buttom1"
 
   .sign_up__footer
     %nav

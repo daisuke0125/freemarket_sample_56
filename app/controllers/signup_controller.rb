@@ -17,7 +17,7 @@ class SignupController < ApplicationController
     end
 
     def step5
-        @user = User.new
+        @card = Card.new
     end
 
     def done

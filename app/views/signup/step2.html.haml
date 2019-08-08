@@ -29,7 +29,7 @@
           = f.telephone_field :number, class: "form", size: "35"
         %h4 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
         #form1
-          %p.buttom1 SMSを送信する
+          = f.submit "SMSを送信する", class: "buttom1"
           %h4 ※電話番号は本人確認や不正防止のために利用します。他のユーザーに公開されることはありません。
         .form__link
           = link_to "電話番号が必要な理由", "#", class: "link1"

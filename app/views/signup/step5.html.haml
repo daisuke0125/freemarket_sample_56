@@ -20,8 +20,44 @@
           完了
           %span.bubble>
   .sign_up2__main
-    = form_for @user, url: step4_signup_index_path, method: :get do |f|
-      = f.label :name, "aaa"
+    = form_for @card, url: done_signup_index_path, method: :get do |f|
+      .sign_up2__main__header
+        %h2 支払い方法
+      .sign_up2__main__form
+        #form1
+          = f.label :name, "カード番号"
+          = f.label :name, "必須", class: "attention"
+          = f.text_field :card_number, type: "text", class: "form", placeholder: "半角数字のみ", maxlength: "16", size: "35"
+          .card__logo
+            %li
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?917505326", width: "49", height: "20"
+            %li
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?917505326", width: "34", height: "20"
+            %li
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?917505326", width: "30", height: "20"
+            %li
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?917505326", width: "32", height: "20"
+            %li
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?917505326", width: "21", height: "20"
+            %li
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?917505326", width: "32", height: "20"
+            %li
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?917505326", width: "32", height: "20"
+        #form1
+          = f.label :name, "有効期限"
+          = f.label :name, "必須", class: "attention"
+          %br/
+          = f.select :exp_month, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10],[11,11],[12,12]],{} , class: "form"
+          %span.expire-text 月
+          = f.select :exp_year, [[19,2019],[20,2020],[21,2021],[22,2022],[23,2023],[24,2024],[25,2025],[26,2026],[27,2027],[28,2028],[29,2029]],{} , class: "form"
+          %span.expire-text 年
+        #form1
+          = f.label :name, "セキュリティコード"
+          = f.label :name, "必須", class: "attention"
+          %br/
+          = f.text_field :cvc, type: "text", class: "form", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4", size: "35"
+        #form1
+          =f.submit "次へ進む", class: "buttom1"
   .sign_up__footer
     %nav
       %li
