@@ -81,7 +81,6 @@
     padding: 0 380px;
     height: 1200px;
     background-color: rgb(226, 222, 222);
-    position: relative;
     &__header {
         border-bottom: solid 1px #b0bec5;
         background-color: white;
@@ -96,7 +95,6 @@
     &__form {
         background-color: white;
         padding: 0 180px;
-        height: 1050px;
         input.form {
             padding: 10px 5px;
             border-radius: 5px;
@@ -109,65 +107,64 @@
             color: white;
             font-size: 12px;
         }
-        .form__nickname {
+        // step1
+        #form1 {
             padding: 10px 0;
             display: block;
-        }
-        .form__email {
-            padding: 10px 0;
-            display: block;
-        }
-        .form__password {
-            padding: 10px 0;
-            display: block;
-        }
-        .form__password__confirmation {
-            padding: 10px 0;
-            display: block;
-        }
-        .form__text {
-            padding: 10px 0;
-            display: block;
-        }
-        .form__name {
-            padding: 10px 0;
-            display: block;
-        }
-        .form__kana {
-            padding: 10px 0;
-            display: block;
-        }
-        .form__birth {
-            padding: 10px 0;
-            display: block;
-            &__field {
+            &__birth__field {
                 padding-top: 10px;
                 select {
                     height: 50px;
                     width: 70px;
                     background-color: white;
                 }
+                h4.birth {padding: 10px 0;}
             }
-            h4.birth {padding: 10px 0;}
+            p.buttom1 {
+                text-align: center;
+                border: solid 1px #ea352d;
+                height: 40px;
+                line-height: 40px;
+                background-color: #ea352d;
+                color: white;
+            }
         }
-        .form__captcha {
+        .form__link {
+            padding: 10px 0 20px 160px;
+            a.link1 {
+                color: #0099e8;
+            }
+        }
+        // step3
+        #form1.phone {
             padding: 10px 0;
             display: block;
+            border-bottom: solid 1px #b0bec5;
+            &__birth__field {
+                padding-top: 10px;
+            }
+            p.buttom2 {
+                text-align: center;
+                border: solid 1px #ea352d;
+                height: 40px;
+                line-height: 40px;
+                background-color: #ea352d;
+                color: white;
+                margin: 30px 0;
+            }
         }
-        p.buttom1 {
-            margin-top: 20px;
-            text-align: center;
-            border: solid 1px #ea352d;
-            height: 40px;
-            line-height: 40px;
-            background-color: #ea352d;
+        // step4
+        #form1 {
+            input.form {
+                margin-top: 3px;
+            }
+        }
+        label.select {
+            background-color: rgb(226, 222, 222);
+            border: solid 5px rgb(226, 222, 222);
+            border-radius: 3px;
             color: white;
-        }
-        a.link1 {
-            position: absolute;
-            bottom: 30px;
-            right: 500px;
-            color: #0099e8;
+            font-size: 12px;
         }
 
     }

@@ -1,13 +1,30 @@
-= render "new1"
-.sign_up__footer
-  %nav
-    %li
-      %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー&emsp;
-    %li
-      %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約&emsp;
-    %li
-      %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
-  =link_to "https://www.mercari.com/jp/", class: "single-footer-logo" do
-    =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", height: "65", width: "80", class: "single-footer-logo"
-  %p
-    %small © 2019 Mercari
+.sign-up-body
+  .sign_up__header
+    =link_to "https://www.mercari.com/jp/" do
+      =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983", alt: "mercari", class: "image_sign_up"
+  .sign_up__main
+    .sign_up__main__content
+      .sign_up__main__index
+        %h1.sign_up 新規会員登録
+      .sign_up__main__btns
+        =link_to "https://www.mercari.com/jp/", class: "sign_up" do
+          =fa_icon "envelope", class: "sign_up"
+          &emsp;&emsp;&emsp;&emsp;メールアドレスで登録する
+        =link_to "/users/auth/facebook", class: "facebook" do
+          =fa_icon "facebook-square", class: "facebook"
+          &emsp;&emsp;&emsp;&emsp;&emsp;Facebookで登録する
+        =link_to "/users/auth/google_oauth2", class: "google" do
+          =fa_icon "google", class: "google"
+          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Googleで登録する
+  .sign_up__footer
+    %nav
+      %li
+        %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー&emsp;
+      %li
+        %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約&emsp;
+      %li
+        %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+    =link_to "https://www.mercari.com/jp/", class: "single-footer-logo" do
+      =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", height: "65", width: "80", class: "single-footer-logo"
+    %p
+      %small © 2019 Mercari

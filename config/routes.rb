@@ -4,6 +4,14 @@ Rails.application.routes.draw do
     :registrations => "users/registrations"
   }
   root "items#index"
-  get 'items/new2' => 'items#new2'
-  get 'items.new3' => 'items#new3'
+  resources :signup do
+    collection do
+      get 'step1'
+      get 'step2'
+      get 'step3'
+      get 'step4'
+      get 'step5' # ここで、入力の全てが終了する
+      get 'done' # 登録完了後のページ
+    end
+  end
 end

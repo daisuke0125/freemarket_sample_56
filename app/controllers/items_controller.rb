@@ -1,10 +1,6 @@
 class ItemsController < ApplicationController
 
-    def new2
-        @user = User.new
-    end
-
-    def new3
+    def index
     end
     
 end
