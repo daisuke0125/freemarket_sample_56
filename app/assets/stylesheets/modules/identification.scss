@@ -27,12 +27,7 @@
       margin-bottom: 5px;
     }
     .form-arbitrary{
-      background-color: #ccc;
-      margin: 0 0 0 8px;
-      padding: 4px 4px;
-      border-radius: 2px;
-      color: #fff;
-      font-size: 12px;
+      @include form-arbitrary
     }
     .input-default{
       width: 95%;
@@ -76,16 +71,6 @@
     }
   }
   .btn-red{
-    margin-top: 40px;
-    background: #ea352d;
-    border: 1px solid #ea352d;
-    color: #fff;
-    display: block;
-    width: 100%;
-    line-height: 48px;
-    font-size: 14px;
-    transition: all ease-out .3s;
-    cursor: pointer;
-    text-align: center;
-}
+    @include btn-red;
+  }
 }
