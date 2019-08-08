@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 resource :items, only: [:index, :show, :edit,] 
   get   'items/identification'   =>  'items#identification' 
   get   "items/logout" => "items#logout"
+  get   "items/sell" => "items#sell"
 end

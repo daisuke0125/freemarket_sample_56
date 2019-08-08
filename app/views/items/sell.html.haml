@@ -1,0 +1,77 @@
+.single-container
+  %header.single-header
+    %h1
+      =link_to "https://www.mercari.com/jp/" do
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983" ,alt: "mercari", height: "49", width: "185"
+  %main.single-main
+    .single-main__container
+      %h2.sell-container 商品の情報を入力
+      %form.sell-form
+        .sell-form__upload
+          %h3.sell-form__upload--head
+            %lavel 出品画像
+            %span.form-arbitrary 必須
+          %p 最大10枚までアップロードできます
+          .sell-form__upload--box
+            .sell-form__upload--box--items
+              .sell-form__upload--box--item
+                %input.sell-form__upload__drop-file
+                %pre
+                  :preserve
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
+        .sell-content
+          .form-group
+            %lavel 商品名
+            %span.form-arbitrary 必須
+            %input.input-default{placeholder:"商品名（必須40文字まで）",type:"text",value:""}
+          .form-group
+            %lavel 商品の説明
+            %span.form-arbitrary 必須
+            %textarea.input-default{placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", type:"text",value:"" , rows:5}
+        .sell-content.clearfix
+          .sell-content__head 商品の詳細
+          .form-group
+            %lavel カテゴリー
+            %span.form-arbitrary 必須
+            .select-wrap
+              = fa_icon 'angle-down'
+              %select.select-default{:name => "prefecture"}
+                %option{:selected => "selected"} --
+                %option 北海道
+            %lavel 商品の状態
+            %span.form-arbitrary 必須
+            .select-wrap
+              = fa_icon 'angle-down'
+              %select.select-default{:name => "prefecture"}
+                %option{:selected => "selected"} --
+                %option 北海道
+        .sell-content.clearfix
+          .sell-content__head 配送について
+          = link_to "?","/jp/help_center/article/68/", :target => "_blank" ,class:"form-question"
+          -# =%a.form-question{:href => "/jp/help_center/article/68/", :target => "_blank"} ?
+          .form-group
+            %lavel 配送料の負担
+            %span.form-arbitrary 必須
+            .select-wrap
+              = fa_icon 'angle-down'
+              %select.select-default{:name => "prefecture"}
+                %option{:selected => "selected"} --
+                %option 北海道
+            %lavel 発送元の地域
+            %span.form-arbitrary 必須
+            .select-wrap
+              = fa_icon 'angle-down'
+              %select.select-default{:name => "prefecture"}
+                %option{:selected => "selected"} --
+                %option 北海道
+            %lavel 発送までの日数
+            %span.form-arbitrary 必須
+            .select-wrap
+              = fa_icon 'angle-down'
+              %select.select-default{:name => "prefecture"}
+                %option{:selected => "selected"} --
+                %option 北海道
+
+
+  %footer.single-footer
