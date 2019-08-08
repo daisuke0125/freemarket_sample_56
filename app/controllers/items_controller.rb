@@ -5,6 +5,12 @@ class ItemsController < ApplicationController
 
     def show
     end
+
+    def edit
+    end
+    
+    def logout
+    end
     
     def identification
     end
