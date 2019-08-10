@@ -193,6 +193,12 @@ a {
       color: $BlueColor;
       font-weight: bold;
       padding: 15px 0;
+      display: block;
+        cursor: pointer;
+        &:hover{
+          opacity: 0.7;
+          text-decoration: underline;
+        }
     }
     &__box{
       display: flex;
@@ -245,8 +251,15 @@ a {
 }
 .view-all{
   text-align: right;
+  list-style: none;
   color: $BlueColor;
   padding:10px 0 10px 0;
+  a{
+    &:hover{
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+  }
 }
 
 ////// フッター////////
