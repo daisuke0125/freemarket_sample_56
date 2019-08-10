@@ -53,11 +53,10 @@
       .mypage-sub__head 購入した商品
       .mypage-main__content
         %ul.tabs
-          %li.tab.knowledge 取引中
-          %li.tab 過去の取引
+          %li.tab.doing 取引中
+          %li.tab.done 過去の取引
       .mypage-sub__content
-        .mypage-sub__content--icon 
+        .mypage-sub__content--icon
           = image_tag "//www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?1355409", alt: "", height: "90", width: "90",class:"single-footer-logo"
           .mypage-sub__content--notfound 取引中の商品がありません
-
 = render "items/footer"
