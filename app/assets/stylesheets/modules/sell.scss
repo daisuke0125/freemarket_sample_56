@@ -68,6 +68,11 @@
         }
       }
     }
+    .btn-default.btn-red{
+      width: 85%;
+      margin: 0 auto;
+      margin-top: 40px;
+    }
   }
 }
 .sell-content{
@@ -76,6 +81,11 @@
   lavel{
     font-size: 16px;
     font-weight: bold;
+    &.left-yen{
+      margin-left: 120px;
+      margin-right: 5px;
+      font-weight: normal;
+    }
   }
   p{
     margin:8px 0 10px 0;
@@ -87,6 +97,9 @@
   input{
     @include input-form;
     margin-bottom: 40px;
+    &.price{
+      width: 40%;
+    }
   }
   textarea.input-default{
     @include input-form;
@@ -98,7 +111,7 @@
   &__head{
     float: left;
     color: #888;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     margin-top: 3px;
   }
@@ -117,8 +130,18 @@
 .sell-content.clearfix{
   .form-group{
     margin-left: 210px;
+    &__line{
+      margin-left: 210px;
+      padding: 24px 0;
+      border-top: 1px solid #ccc;
+      span:nth-child(2){
+        float: right;
+      }
+      &.bold{
+        font-weight: bold;
+      }
+    }
   }
-
 }
 .select-wrap{
   margin-top: 8px;
@@ -126,7 +149,7 @@
   i{
     position: absolute;
     right: 22px;
-    top: 34%;
+    top: 25%;
     z-index: 2;
     color: #888;
     font-size: 28px;
@@ -135,6 +158,18 @@
     @include select-form;
     width: 400px;
     margin-bottom: 20px;
+  }
 }
-
+.sell-content__sell-box{
+  padding: 40px;
+  border-top: 1px solid #eee;
+  p{
+    font-size:14px;
+    a{
+      color:$BlueColor;
+    }
+  }
+}
+.btn-gray{
+  @include btn-gray;
 }
