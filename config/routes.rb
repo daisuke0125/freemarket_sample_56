@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   }
 
   root "items#index"
-  
 
+  resources :items do
+    collection do
+      get 'identification'
+      get 'logout'
+      get 'card_registration'
+      get 'sell'
+    end  
+  end
 
-resource :items, only: [:index, :show, :edit,] 
-  get   'items/identification'   =>  'items#identification' 
-  get   "items/logout" => "items#logout"
-  get "items/card_registration" => "items#card_registration"
 end

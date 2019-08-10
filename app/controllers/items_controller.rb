@@ -17,4 +17,7 @@ class ItemsController < ApplicationController
     def identification
     end
     
+    def sell
+    end
+    
 end
