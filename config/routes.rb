@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   root "items#index"
 
 resource :items, only: [:index, :show, :edit,] 
-  get   'items/identification'   =>  'items#identification' 
-  get   "items/logout" => "items#logout"
-  get   "items/sell" => "items#sell"
+get   'items/identification'    =>  'items#identification' 
+get   "items/logout"            => "items#logout"
+get   "items/card_registration" => "items#card_registration"
+get   "items/sell" => "items#sell"
 end
