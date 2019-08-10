@@ -37,44 +37,44 @@
             %span.form-arbitrary 必須
             .select-wrap
               = fa_icon 'angle-down'
-              %select.select-default{:name => "prefecture"}
+              %select.select-default{name: "prefecture"}
                 %option{:selected => "selected"} --
                 %option 北海道
             %lavel 商品の状態
             %span.form-arbitrary 必須
             .select-wrap
               = fa_icon 'angle-down'
-              %select.select-default{:name => "prefecture"}
+              %select.select-default{name: "prefecture"}
                 %option{:selected => "selected"} --
                 %option 北海道
         .sell-content.clearfix
           .sell-content__head 配送について
-          = link_to "?","/jp/help_center/article/68/", :target => "_blank" ,class:"form-question"
+          = link_to "?","/jp/help_center/article/68/", target: "_blank" ,class:"form-question"
           .form-group
             %lavel 配送料の負担
             %span.form-arbitrary 必須
             .select-wrap
               = fa_icon 'angle-down'
-              %select.select-default{:name => "prefecture"}
-                %option{:selected => "selected"} --
+              %select.select-default{name: "prefecture"}
+                %option{selected: "selected"} --
                 %option 北海道
             %lavel 発送元の地域
             %span.form-arbitrary 必須
             .select-wrap
               = fa_icon 'angle-down'
-              %select.select-default{:name => "prefecture"}
-                %option{:selected => "selected"} --
+              %select.select-default{name: "prefecture"}
+                %option{selected: "selected"} --
                 %option 北海道
             %lavel 発送までの日数
             %span.form-arbitrary 必須
             .select-wrap
               = fa_icon 'angle-down'
-              %select.select-default{:name => "prefecture"}
-                %option{:selected => "selected"} --
+              %select.select-default{name: "prefecture"}
+                %option{selected: "selected"} --
                 %option 北海道
         .sell-content.clearfix
           .sell-content__head 販売価格(300〜9,999,999)
-          = link_to "?","/jp/help_center/article/68/", :target => "_blank" ,class:"form-question"
+          = link_to "?","/jp/help_center/article/68/", target: "_blank" ,class:"form-question"
           .form-group
             %lavel 価格
             %span.form-arbitrary 必須
@@ -100,7 +100,7 @@
             また、出品をもちまして
             = link_to "加盟店規約" , "/jp/seller_terms/" ,target: "_blank"
             に同意したことになります。
-          %button.btn-default.btn-red{:type => "submit"}
+          %button.btn-default.btn-red{type: "submit"}
             出品する
           %br
           = link_to "もどる" , root_path ,class:"btn-gray"
