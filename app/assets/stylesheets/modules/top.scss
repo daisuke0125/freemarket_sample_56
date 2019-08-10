@@ -80,17 +80,67 @@ a {
 ////// メイン////////
 
 .main-visual{
-  background: url('main.jpg') ;
+  // background: url('main.jpg') ;
   background-position: center;
   background-size: cover;
   color: #333;
   height: 400px;
   position: relative;
   padding: 0 200px;
+  padding: 0;
+  .prev-arrow {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    font-size: 40px;
+    z-index: 1;
+    cursor: pointer;
+    color: white;
+  }
+  .next-arrow {
+    position: absolute;
+    top: 200px;
+    right: 20px;
+    font-size: 40px;
+    z-index: 1;
+    cursor: pointer;
+    color: white;
+  }
+  .slick-track {
+    background-color: beige;
+  }
+  &__top__first {
+    background-position: center;
+    background-size: cover;
+    color: #333;
+    height: 400px;
+    position: relative;
+    // padding: 0 200px;
+    // width: 100vw;
+    // margin-left: -200px;
+    display: flex;
+    margin: 0 auto;
+    background-color: beige;
+  }
+  &__top__second {
+    background-position: center;
+    background-size: cover;
+    color: #333;
+    height: 400px;
+    position: relative;
+    // padding: 0 200px;
+    // width: 100vw;
+    // margin-left: -200px;
+    display: flex;
+    width: 100vw;
+  }
   &__inner{
       height: 100%;
-      display: block;
-      margin-left: 80px;
+      display: none;
+      margin-left: 300px;
+      z-index: 1;
+      position: absolute;
+      top:0;
       h2{
         font-weight: bold;
         font-size:55px;
@@ -120,7 +170,7 @@ a {
       .banner-image{
         position: absolute;
         top: 0;
-        right: 310px;
+        right: -450px;
       }
 }
 
