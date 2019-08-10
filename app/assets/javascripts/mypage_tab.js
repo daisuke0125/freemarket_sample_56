@@ -1,8 +1,17 @@
 $(function() {
 
+  var click_color = {
+    'background-color' : 'rgb(250, 250, 250',
+    'border-top' : 'solid 1.5px red'
+  }
+  var vanish_color = {
+    'background-color' : '#eee',
+    'border-top' : 'solid 1.5px #eee'
+  }
+
     $('.tab.to_do').on("click", function() {
-      $('.tab.to_do').css('background-color','rgb(250, 250, 250').css('border-top', 'solid 1.5px red');
-      $('.tab.knowledge').css('background-color', '#eee').css('border-top', 'solid 1.5px #eee');
+      $('.tab.to_do').css(click_color);
+      $('.tab.knowledge').css(vanish_color);
       $('.tab-content__list.to_do').remove();
       $('.tab-content__list.knowledge').remove();
       var html = `<ul class="tab-content__list to_do">
@@ -16,8 +25,8 @@ $(function() {
                 `
       $('.tab-content').append(html);
       $('.tab.knowledge').on('click', function() {
-        $('.tab.knowledge').css('background-color','rgb(250, 250, 250').css('border-top', 'solid 1.5px red');
-      $('.tab.to_do').css('background-color', '#eee').css('border-top', 'solid 1.5px #eee');
+        $('.tab.knowledge').css(click_color);
+      $('.tab.to_do').css(vanish_color);
         $('.tab-content__list.to_do').remove();
         $('.tab-content__list.knowledge').remove();
         var html2 = `<ul class="tab-content__list knowledge">
@@ -63,8 +72,8 @@ $(function() {
     });
 
     $('.tab.done').on('click', function() {
-      $('.tab.done').css('background-color','rgb(250, 250, 250').css('border-top', 'solid 1.5px red');
-      $('.tab.doing').css('background-color', '#eee').css('border-top', 'solid 1.5px #eee');
+      $('.tab.done').css(click_color);
+      $('.tab.doing').css(vanish_color);
       $('.mypage-sub__content--icon').remove();
       $('.tab-content__list.done').remove();
       var html3 = `<ul class="tab-content__list done">
@@ -108,8 +117,8 @@ $(function() {
       $('.mypage-sub__content').append(html3);
     
       $('.tab.doing').on('click', function() {
-        $('.tab.doing').css('background-color','rgb(250, 250, 250').css('border-top', 'solid 1.5px red');
-        $('.tab.done').css('background-color', '#eee').css('border-top', 'solid 1.5px #eee');
+        $('.tab.doing').css(click_color);
+        $('.tab.done').css(vanish_color);
         $('.mypage-sub__content--icon').remove();
         $('.tab-content__list.done').remove();
         var html4 = `<div class="mypage-sub__content--icon">
