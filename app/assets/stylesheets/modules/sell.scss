@@ -1,6 +1,6 @@
 .single-container{
   background-color: rgb(245, 245, 245);
-  height: 1000px;
+  padding-bottom: 40px;
 }
 .single-header{
   height: 128px;
@@ -100,5 +100,41 @@
     color: #888;
     font-size: 14px;
     font-weight: bold;
+    margin-top: 3px;
   }
+  .form-question{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #0099e8;
+    color: #fff;
+    line-height: 14px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+.sell-content.clearfix{
+  .form-group{
+    margin-left: 210px;
+  }
+
+}
+.select-wrap{
+  margin-top: 8px;
+  position: relative;
+  i{
+    position: absolute;
+    right: 22px;
+    top: 34%;
+    z-index: 2;
+    color: #888;
+    font-size: 28px;
+  }
+  .select-default{
+    @include select-form;
+    width: 400px;
+    margin-bottom: 20px;
+}
+
 }
