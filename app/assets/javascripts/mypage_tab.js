@@ -24,8 +24,9 @@ $(function() {
                   </ul>
                 `
       $('.tab-content').append(html);
+
       $('.tab.knowledge').on('click', function() {
-        $('.tab.knowledge').css(click_color);
+      $('.tab.knowledge').css(click_color);
       $('.tab.to_do').css(vanish_color);
         $('.tab-content__list.to_do').remove();
         $('.tab-content__list.knowledge').remove();
@@ -74,7 +75,7 @@ $(function() {
     $('.tab.done').on('click', function() {
       $('.tab.done').css(click_color);
       $('.tab.doing').css(vanish_color);
-      $('.mypage-sub__content--icon').remove();
+      $('.tab-content__list.doing').remove();
       $('.tab-content__list.done').remove();
       var html3 = `<ul class="tab-content__list done">
                     <li>
@@ -112,21 +113,23 @@ $(function() {
                     <a href="/jp/mypage/notification/">一覧を見る</a>
                     </div>
                     </li>
-                    </ul>
-                  `
-      $('.mypage-sub__content').append(html3);
+                  </ul>
+                 `
+      $('.mypage-sub').find('.mypage-sub__content').append(html3);
     
       $('.tab.doing').on('click', function() {
         $('.tab.doing').css(click_color);
         $('.tab.done').css(vanish_color);
-        $('.mypage-sub__content--icon').remove();
+        $('.tab-content__list.doing').remove();
         $('.tab-content__list.done').remove();
-        var html4 = `<div class="mypage-sub__content--icon">
-                      <img alt="" height="90" width="90" class="single-footer-logo" src="//www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?1355409">
-                      <div class="mypage-sub__content--notfound">取引中の商品がありません</div>
-                    </div>
+        var html4 = `<ul class="tab-content__list doing">
+                      <div class="mypage-sub__content--icon">
+                        <img alt="" height="90" width="90" class="single-footer-logo" src="//www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?1355409">
+                        <div class="mypage-sub__content--notfound">取引中の商品がありません</div>
+                      </div>
+                     </ul>
                     `
-        $('.mypage-sub__content').append(html4);
+        $('.mypage-sub').find('.mypage-sub__content').append(html4);
       });
     });
 });
