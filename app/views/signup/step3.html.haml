@@ -26,7 +26,8 @@
       .sign_up2__main__form
         #form1.phone
           = f.label :name, "認証番号"
-          = f.phone_field :number, class: "form", size: "35"
+          %br/
+          %input.phone{type: "text", size: "35"}
           %h4 SMSで届いた認証番号を入力してください。
           = f.submit "認証して完了", class: "buttom2"
         #form1.phone
