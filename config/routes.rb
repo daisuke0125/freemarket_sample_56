@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'logout'
       get 'card_registration'
       get 'sell'
+      get 'edit'
     end  
   end
 
