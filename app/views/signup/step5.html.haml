@@ -27,22 +27,22 @@
         #form1
           = f.label :name, "カード番号"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :card_number, type: "text", class: "form", placeholder: "半角数字のみ", maxlength: "16", size: "35"
+          = f.text_field :card_number, type: "text", class: "big", placeholder: "半角数字のみ", maxlength: "16"
           .card__logo
             %li
-              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?917505326", width: "49", height: "20"
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?917505326", class: "card"
             %li
-              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?917505326", width: "34", height: "20"
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?917505326", class: "card"
             %li
-              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?917505326", width: "30", height: "20"
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?917505326", class: "card"
             %li
-              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?917505326", width: "32", height: "20"
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?917505326", class: "card"
             %li
-              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?917505326", width: "21", height: "20"
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?917505326", class: "card"
             %li
-              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?917505326", width: "32", height: "20"
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?917505326", class: "card"
             %li
-              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?917505326", width: "32", height: "20"
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?917505326", class: "card"
         #form1
           = f.label :name, "有効期限"
           = f.label :name, "必須", class: "attention"
@@ -55,18 +55,21 @@
           = f.label :name, "セキュリティコード"
           = f.label :name, "必須", class: "attention"
           %br/
-          = f.text_field :cvc, type: "text", class: "form", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4", size: "35"
+          = f.text_field :cvc, type: "text", class: "big", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4"
         #form1
           =f.submit "次へ進む", class: "buttom1"
   .sign_up__footer
     %nav
       %li
-        %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー&emsp;
+        = link_to "プライバシーポリシー", "https://www.mercari.com/jp/privacy/"
+        &emsp;
       %li
-        %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約&emsp;
+        = link_to "メルカリ利用規約", "https://www.mercari.com/jp/tos/"
+        &emsp;
       %li
-        %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+        = link_to "特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/"
+        &emsp;
     =link_to "https://www.mercari.com/jp/", class: "single-footer-logo" do
-      =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", height: "65", width: "80", class: "single-footer-logo"
+      =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", class: "single-footer-logo"
     %p
       %small © 2019 Mercari

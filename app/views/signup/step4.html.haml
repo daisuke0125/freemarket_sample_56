@@ -27,49 +27,52 @@
         #form1
           = f.label :name, "お名前"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :first_name, size: "35", class: "form"
-          = f.text_field :last_name, size: "35", class: "form"
+          = f.text_field :first_name, class: "big"
+          = f.text_field :last_name, class: "big"
         #form1
           = f.label :name, "お名前カナ"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :first_name_kana, size: "35", class: "form"
-          = f.text_field :last_name_kana, size: "35", class: "form"
+          = f.text_field :first_name_kana, class: "big"
+          = f.text_field :last_name_kana, class: "big"
         #form1
           = f.label :name, "郵便番号"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :postcode, size: "35", class: "form"
+          = f.text_field :postcode, class: "big"
         #form1
           = f.label :name, "都道府県"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :prefectures, size: "35", class: "form"
+          = f.text_field :prefectures, class: "big"
         #form1
           = f.label :name, "市区町村"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :city, size: "35", class: "form"
+          = f.text_field :city, class: "big"
         #form1
           = f.label :name, "番地"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :streetNumber, size: "35", class: "form"
+          = f.text_field :streetNumber, class: "big"
         #form1
           = f.label :name, "建物名"
           = f.label :name, "任意", class: "select"
-          = f.text_field :building, size: "35", class: "form"
+          = f.text_field :building, class: "big"
         #form1
           = f.label :name, "電話番号"
           = f.label :name, "任意", class: "select"
-          = f.telephone_field :cordNumber, size: "35", class: "form"
+          = f.telephone_field :cordNumber, class: "big"
         #form1
           = f.submit "次へ進む", class: "buttom1"
 
   .sign_up__footer
     %nav
       %li
-        %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー&emsp;
+        = link_to "プライバシーポリシー", "https://www.mercari.com/jp/privacy/"
+        &emsp;
       %li
-        %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約&emsp;
+        = link_to "メルカリ利用規約", "https://www.mercari.com/jp/tos/"
+        &emsp;
       %li
-        %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+        = link_to "特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/"
+        &emsp;
     =link_to "https://www.mercari.com/jp/", class: "single-footer-logo" do
-      =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", height: "65", width: "80", class: "single-footer-logo"
+      =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", class: "single-footer-logo"
     %p
       %small © 2019 Mercari

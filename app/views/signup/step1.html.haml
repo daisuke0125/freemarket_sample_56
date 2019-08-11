@@ -28,21 +28,21 @@
           = f.label :name, 'ニックネーム'
           = f.label :name, '必須', class: "attention"
           %br/
-          = f.text_field :nickname, size: "35", class: "form", placeholder: "例)メルカリ太郎"
+          = f.text_field :nickname, class: "big", placeholder: "例)メルカリ太郎"
         #form1
           = f.label :name, 'メールアドレス'
           = f.label :name, '必須', class: "attention"
           %br/
-          = f.email_field :email, size: "35", class: "form", placeholder: "PC・携帯どちらでも可"
+          = f.email_field :email, class: "big", placeholder: "PC・携帯どちらでも可"
         #form1
           = f.label :name, 'パスワード'
           = f.label :name, '必須', class: "attention"
           %br/
-          = f.password_field :password, size: "35", class: "form", placeholder: "7文字以上"
+          = f.password_field :password, class: "big", placeholder: "7文字以上"
         #form1
           = f.label :name, "パスワード 確認"
           %br/
-          = f.password_field :password_confirmation, size: "35", class: "form", placeholder: "7文字以上"
+          = f.password_field :password_confirmation, class: "big", placeholder: "7文字以上"
         #form1
           %h3 本人確認
           %h4 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
@@ -50,19 +50,21 @@
           = f.label :name, 'お名前(全角)', class: "name"
           = f.label :name, '必須', class: "attention"
           %br/
-          = f.text_field :first_name, size: "15", class: "form", placeholder: "例)山田"
-          = f.text_field :last_name, size: "15", class: "form", placeholder: "例)太郎"
+          %li.form
+            = f.text_field :first_name, class: "small", placeholder: "例)山田"
+            = f.text_field :last_name, class: "small", placeholder: "例)太郎"
         #form1
           = f.label :name, 'お名前カナ(全角)'
           = f.label :name, '必須', class: "attention"
           %br/
-          = f.text_field :first_name_kana, size: "15", class: "form", placeholder: "例)ヤマダ"
-          = f.text_field :last_name_kana, size: "15", class: "form", placeholder: "例)タロウ"
+          %li.form
+            = f.text_field :first_name_kana, class: "small", placeholder: "例)ヤマダ"
+            = f.text_field :last_name_kana, class: "small", placeholder: "例)タロウ"
         #form1
           = f.label :name, '生年月日'
           = f.label :name, '必須', class: "attention"
           %br/
-          = raw sprintf(f.date_select(:birthday, use_month_numbers: true, start_year: 1935, end_year: (Time.now.year - 18), include_blank: true, date_separator: '%s', size: "35"), '年 ', '月 ') + '日'
+          = raw sprintf(f.date_select(:birthday, use_month_numbers: true, start_year: 1935, end_year: (Time.now.year - 18), include_blank: true, date_separator: '%s'), '年 ', '月 ') + '日'
           %br/
           %h4.birth ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
         #form1
@@ -75,12 +77,15 @@
   .sign_up__footer
     %nav
       %li
-        %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー&emsp;
+        = link_to "プライバシーポリシー", "https://www.mercari.com/jp/privacy/"
+        &emsp;
       %li
-        %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約&emsp;
+        = link_to "メルカリ利用規約", "https://www.mercari.com/jp/tos/"
+        &emsp;
       %li
-        %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+        = link_to "特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/"
+        &emsp;
     =link_to "https://www.mercari.com/jp/", class: "single-footer-logo" do
-      =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", height: "65", width: "80", class: "single-footer-logo"
+      =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", class: "single-footer-logo"
     %p
       %small © 2019 Mercari

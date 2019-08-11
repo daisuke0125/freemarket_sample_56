@@ -35,7 +35,7 @@ class SignupController < ApplicationController
         session[:cordNumber] = user_params[:cordNumber]
         @card = Card.new
     end
-
+    #---サーバーサイド編集時に使用する---
     # def create
     #     @user = User.new(
     #         nickname: session[:nickname],
@@ -65,6 +65,7 @@ class SignupController < ApplicationController
     # def done
     #     sign_in User.find(session[:id]) unless user_signed_in?
     # end
+    
     def done
     end
 

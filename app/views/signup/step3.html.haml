@@ -27,7 +27,7 @@
         #form1.phone
           = f.label :name, "認証番号"
           %br/
-          %input.phone{type: "text", size: "35"}
+          %input.phone{type: "text"}
           %h4 SMSで届いた認証番号を入力してください。
           = f.submit "認証して完了", class: "buttom2"
         #form1.phone
@@ -45,12 +45,15 @@
   .sign_up__footer
     %nav
       %li
-        %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー&emsp;
+        = link_to "プライバシーポリシー", "https://www.mercari.com/jp/privacy/"
+        &emsp;
       %li
-        %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約&emsp;
+        = link_to "メルカリ利用規約", "https://www.mercari.com/jp/tos/"
+        &emsp;
       %li
-        %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+        = link_to "特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/"
+        &emsp;
     =link_to "https://www.mercari.com/jp/", class: "single-footer-logo" do
-      =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", height: "65", width: "80", class: "single-footer-logo"
+      =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", class: "single-footer-logo"
     %p
       %small © 2019 Mercari
