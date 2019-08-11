@@ -7,6 +7,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
        params[:user][:password_confirmation] = "Devise.friendly_token.first(6)"
        super
        sns = SnsCredential.update(user_id:  @user.id)
+       if verify_recaptcha
+        super
+        else
+        self.resource = resource_class.new
+        respond_with_navigational(resource) { render :new }
+      end
      else 
        super
      end
