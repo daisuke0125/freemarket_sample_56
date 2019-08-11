@@ -84,4 +84,47 @@
         = fa_icon 'key' 
         =link_to "あんしん・あんぜんへの取り組み" , root_path ,class:"header-btn signup"
 
+  .message-content
+    .message-content-text
+      %form.message-form{action: "", method: "POST"}
+        %input{name: "__csrf_value", type: "hidden", value: ""}/
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %input{name: "item_id", type: "hidden", value: "m62740205964"}/
+        %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
+        %textarea.textarea-default{name: "body", type: "text", value: ""}
+        %button.btn-gray{type: "submit"}
+          %span コメントする
+
+  %ul.nav-item
+    %li.link--prev
+      =link_to ""  ,class:"link--text" do
+        = fa_icon 'angle-left'
+        グリーンメン
+    %li.link--next
+      =link_to ""  ,class:"link--text" do
+        透かしリーフ
+        = fa_icon 'angle-right'
+
+  .message-content
+    %ul.social-media-box
+      %li
+        %a.share-btn{"data-window-name" => "facebook_window", :href => "http://www.facebook.com/share.php?u=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm62740205964%2F", :target => "_blank"}
+          %i.icon-facebook
+      %li
+        %a.share-btn{:target => "_blank"}
+          %i.icon-twitter
+      %li.social-hidden-item
+        %a{:target => "_blank"}
+          %i.icon-line
+      %li
+        %a.share-btn{:target => "_blank"}
+          %i.icon-pinterest
+
+
+
+
+
+
+
+
 =render "footer"

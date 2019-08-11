@@ -114,3 +114,66 @@
     }
   }
 }
+
+.message-content{
+  margin:20px auto 0 auto ;
+  width: 620px;
+  background-color:white;
+  padding: 24px 40px;
+  p{
+    padding: 8px;
+    font-size: 14px;
+    background: #fff6de;
+  }
+  .textarea-default{
+    display: block;
+    width: 600px;
+    height: 90px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  button{
+    width: 100%;
+  }
+}
+.nav-item{
+  margin: 24px auto 35px auto;
+  padding-bottom: 15px;
+  width: 700px;
+  li{
+    width: 45%;
+  }
+  .link--prev{
+    float: left;
+    a{
+      color:$BlueColor;
+      &:hover{
+        opacity: 0.6;
+        text-decoration: underline;
+      }
+      i{
+        font-size: 25px;
+        font-weight: bold;
+      }
+    }
+  }
+  .link--next{
+    float: right;
+    text-align: right;
+    a{
+      color:$BlueColor;
+      &:hover{
+        opacity: 0.6;
+        text-decoration: underline;
+      }
+      i{
+        font-size: 25px;
+        font-weight: bold;
+      }
+    }
+  }
+}
