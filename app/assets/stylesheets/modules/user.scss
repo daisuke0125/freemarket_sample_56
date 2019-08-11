@@ -1,8 +1,7 @@
 ////// 新規会員登録 ////////
 .sign-up-body {
-  background-color: rgb(226, 222, 222);
+  background-color: $BackgroundColor;
   width: 100%;
-  height: 100vh;
   .sign_up__header {
       text-align: center;
       height: 130px;
@@ -20,7 +19,7 @@
           .sign_up__main__index {
               height: 100px;
               text-align: center;
-              border-bottom: solid 1px rgb(226, 222, 222);
+              border-bottom: solid 1px$BackgroundColor;
               h1.sign_up {
                   font-size: 22px;
                   line-height: 100px;
@@ -62,7 +61,7 @@
                   margin-top: 16px;
                   height: 50px;
                   line-height: 50px;
-                  border: solid 1px rgb(226, 222, 222);
+                  border: solid 1px $BackgroundColor;
                   border-radius: 5px;
                   background-color:white;
                   i.google {
@@ -75,11 +74,18 @@
   }
   .sign_up__footer {
       height: 220px;
-      background-color: rgb(226, 222, 222);
+      background-color: $BackgroundColor;
       text-align: center;
       nav li {
           display: inline;
           justify-content: center;
+          font-size:12px;
+          a{
+            &:hover{
+                opacity: 0.6;
+                text-decoration: underline;
+            }
+          }
       }
       a.single-footer-logo img.single-footer-logo {
           padding-top: 40px;
