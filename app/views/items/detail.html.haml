@@ -1,0 +1,87 @@
+=render "header"
+.detail-container
+  .detail-container__box
+    %h2 商品の情報を入力
+    .item-content
+      .item-content__photo 写真を挿入
+      -# .item-content__table 写真を挿入
+      %table.item-content__table
+        %tbody
+          %tr
+            %th 出品者
+            %td
+              =link_to "出品者の名前" , ""
+              .item-content__table__rate
+                .rate-list
+                  = fa_icon 'search'
+                  %span 100
+                .rate-list
+                  = fa_icon 'search'
+                  %span 50
+                .rate-list
+                  = fa_icon 'search'
+                  %span 0
+          %tr
+            %th カテゴリー
+            %td
+              =link_to "コスメ・香水・美容" , ""
+              %br
+              = fa_icon 'angle-right' 
+              =link_to "スキンケア/基礎化粧品" , ""
+              %br
+              = fa_icon 'angle-right'
+              =link_to "クレンジング/メイク落とし" , ""
+              .item-detail-table-sub-sub-category
+                %i.icon-arrow-right
+          %tr
+            %th ブランド
+            %td
+              =link_to "シャネル" , ""
+          %tr
+            %th 商品の状態
+            %td 未使用に近い
+          %tr
+            %th 配送料の負担
+            %td 送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td らくらくメルカリ便
+          %tr
+            %th 配送元地域
+            %td
+              =link_to "神奈川県" , ""
+          %tr
+            %th 発送日の目安
+            %td 1~2日で発送
+    .item-price-box
+      %span.item-price-box__yen ¥ 8,600
+      %span.item-price-box__tax (税込)
+      %span.item-price-box__fee 送料込み
+    %button.btn-default.btn-red{type: "submit"}
+      %h2 購入画面に進む
+    .item-content-text
+      ※プロフィールをご覧下さい。
+      %br
+      %br
+      ※お値下げは考えておりませんのでご了承下さい。
+      %br
+      ・シャネル サブリマージュ デマキヤン コンフォート
+      %br
+      LE Lローション 10ml
+      %br
+      ル リフトセラム 5ml
+      %br
+    .item-button-content
+      .item-button-content__left
+        %button.item-button-like{name:"like!", type: "button"}
+          = fa_icon 'heart' 
+          %span いいね!
+          %span.fade-in-down{"data-num": "like"} 1
+        %a.item-button-like{href: ""}
+          = fa_icon 'flag' 
+          %span 不適切な商品の報告
+      .item-button-content__right
+        = fa_icon 'key' 
+        =link_to "あんしん・あんぜんへの取り組み" , root_path ,class:"header-btn signup"
+
+=render "footer"

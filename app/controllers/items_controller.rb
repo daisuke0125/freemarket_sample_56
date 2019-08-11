@@ -20,4 +20,7 @@ class ItemsController < ApplicationController
     def sell
     end
     
+    def detail
+    end
+    
 end
