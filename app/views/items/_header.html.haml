@@ -2,7 +2,7 @@
 %header.header
   .header__inner
     .header__inner__top
-      =link_to "https://www.mercari.com/jp/" do
+      =link_to root_path do
         = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983" ,alt: "mercari", height: "36", width: "134"
       %form.header-form{action: "https://www.mercari.com/jp/search/"}
         %input.input-default{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
@@ -16,5 +16,5 @@
           = fa_icon 'tag', class: "left"
           %span ブランドから探す
       .header__inner__bottom--right
-        =link_to "新規会員登録" , "https://www.mercari.com/jp/signup/" ,class:"header-btn signup"
+        =link_to "新規会員登録" , new_user_registration_path ,class:"header-btn signup"
         =link_to "ログイン", "https://www.mercari.com/jp/login/?login_callback=https%3A%2F%2Fwww.mercari.com%2Fjp%2F" ,class:"header-btn login"

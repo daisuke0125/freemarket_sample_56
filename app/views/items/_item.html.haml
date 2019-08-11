@@ -1,7 +1,7 @@
 .main-content
   .pickup-title ピックアップカテゴリー
   .content  
-    .content__title レディース新着アイテム
+    =link_to "レディース新着アイテム" , "" , class:"content__title"
     .content__box 
       .item 
         =link_to root_path do
@@ -51,9 +51,10 @@
                 .item__text__num--font.count
                   = fa_icon 'heart'
                 .item__text__num--font.like 2
-    .view-all すべての商品を見る
+    %li.view-all
+      =link_to "すべての商品を見る" , "" , class:"view-all"
   .content  
-    .content__title メンズ新着アイテム
+    =link_to "メンズ新着アイテム" , "" , class:"content__title"
     .content__box 
       .item 
         =link_to root_path do
@@ -103,9 +104,10 @@
                 .item__text__num--font.count
                   = fa_icon 'heart'
                 .item__text__num--font.like 2
-    .view-all すべての商品を見る
+    %li.view-all
+      =link_to "すべての商品を見る" , "" , class:"view-all"
   .content  
-    .content__title メンズ新着アイテム
+    =link_to "ベビー・キッズ新着アイテム" , "" , class:"content__title"
     .content__box 
       .item 
         =link_to root_path do
@@ -155,4 +157,5 @@
                 .item__text__num--font.count
                   = fa_icon 'heart'
                 .item__text__num--font.like 2
-    .view-all すべての商品を見る
+    %li.view-all
+      =link_to "すべての商品を見る" , "" , class:"view-all"
