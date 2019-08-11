@@ -15,4 +15,5 @@ Rails.application.routes.draw do
     end  
   end
 
+  get 'users/detail' => 'items#detail'
 end

@@ -19,5 +19,8 @@ class ItemsController < ApplicationController
     
     def sell
     end
+
+    def book 
+    end
     
 end

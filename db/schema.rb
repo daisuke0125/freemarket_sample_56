@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_023730) do
+ActiveRecord::Schema.define(version: 2019_08_08_080929) do
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "card_number"
+    t.integer "exp_month"
+    t.integer "exp_year"
+    t.integer "cvc"
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.text "detail", null: false
+    t.string "image", null: false
+    t.text "brand"
+    t.string "condition", null: false
+    t.string "delivery", null: false
+    t.string "area", null: false
+    t.string "days", null: false
+    t.integer "price", null: false
+  end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "uid", null: false
@@ -40,10 +67,16 @@ ActiveRecord::Schema.define(version: 2019_08_05_023730) do
     t.datetime "updated_at", null: false
     t.string "nickname", null: false
     t.string "name_kana", null: false
+    t.string "uid"
+    t.string "provider"
     t.string "location"
     t.string "image"
+    t.integer "cardNumber"
+    t.integer "expirationDate"
+    t.integer "securityCode"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cards", "users"
 end
