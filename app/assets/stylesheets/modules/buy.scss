@@ -16,6 +16,27 @@ h2 {
   font-weight: bold;
   }
 
+a {
+  color: #0099e8;
+  text-decoration: none;
+  }
+
+nav {
+  display: block;
+  }
+  
+.bold {
+  font-weight: 600;
+  }
+
+img {
+  vertical-align: middle;
+  }
+
+section {
+  display: block;
+  }  
+
 body {
   position: relative;
   min-height: 100%;
@@ -39,6 +60,10 @@ body {
 
 div {
   display: block;
+  }
+
+span {
+  vertical-align: middle;
   }
 
 .single-container {
@@ -173,157 +198,149 @@ div {
               .buy-price-cell span {
                 font-size: 28px;
                 } 
-                
-              
-                 
-            
-        
-        
-    
-  
 
-
-.btn-default {
+@mixin btn-default{
+  margin-top: 40px;
+  background: $RedColor;
+  border: 1px solid $RedColor;
+  color: #fff;
   display: block;
   width: 100%;
   line-height: 48px;
   font-size: 14px;
-  border: 1px solid transparent;
-  -webkit-transition: all ease-out .3s;
   transition: all ease-out .3s;
   cursor: pointer;
   text-align: center;
-  background: #ea352d;
-  border: 1px solid #ea352d;
-  color: #fff;
-  margin: 8px 0 0;
+}
+
+button {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  font-family: inherit;
+  font-style: inherit;
+  background-color: transparent;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  align-items: flex-start;
   }
 
-  button {
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    touch-action: manipulation;
-    font-family: inherit;
-    font-style: inherit;
-    background-color: transparent;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    align-items: flex-start;
+.buy-user-info {
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  h3:first-child {
+    margin: 0;
     }
-
-  .buy-content {
+  h3 {
     margin: 40px 0 0;
-    padding: 24px 12.5% 0;
-    border-top: 1px solid #f5f5f5;
-    &__inner {
-      max-width: 320px;
-      margin: 0 auto;
+    font-size: 14px;
+    }
+  }
+.buy-content {
+  margin: 40px 0 0;
+  padding: 24px 12.5% 0;
+  border-top: 1px solid #f5f5f5;
+  &__inner {
+    max-width: 320px;
+    margin: 0 auto;
+    }
+  }
+    
+  .buy-user-info address {
+    display: block;
+    }
+  .buy-user-info-text {
+      margin: 8px 0 0;
+      font-size: 14px;
+      line-height: 1.4;
+      }  
+  .buy-user-info-fix {
+    display: block;
+    text-align: right;
+    .icon-arrow-right {
+      margin: 0 0 0 8px;
+      font-size: 10px;
+      vertical-align: middle;
+      }  
+    }
+    
+  .buy-content-inner {
+    max-width: 320px;
+    margin: 0 auto;
+    }
       h3:first-child {
         margin: 0;
+        }
+      h3{
+        margin: 40px 0 0;
         font-size: 14px;
         }
-      .buy-user-info-text {
-        margin: 8px 0 0;
-        font-size: 14px;
-        line-height: 1.4;
-        font-style: normal;
-        }  
-      .buy-user-info-fix {
-        display: block;
-        text-align: right;
-        color: #0099e8;
-        text-decoration: none;
-        }
-      .icon-arrow-right {
-        margin: 0 0 0 8px;
-        font-size: 10px;
-        vertical-align: middle;
-        }  
+      
+    .buy-content:last-of-type {
+      padding: 24px 12.5% 40px;
+      }
+
+
+  .single-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding: 40px 0;
+    height: 130px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px 0; 
+    a {
+      display: block;
+      color: #333;
+      text-decoration: none;
+      touch-action: manipulation;
       }
     }
-
-    .buy-content {
-      margin: 40px 0 0;
-      padding: 24px 12.5% 0;
-      border-top: 1px solid #f5f5f5;
-      &__inner {
-        max-width: 320px;
-        margin: 0 auto;
-        h3:first-child {
-          margin: 0;
-          }
-        h3{
-          margin: 40px 0 0;
-          font-size: 14px;
-          }
-        }
-      }
-
-    figure {
-      display: block;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 40px;
-      margin-inline-end: 40px;
-      }      
-      
-    .single-footer {
-      width: 456px;
-      height: 220px;
-      margin: 0 auto; 
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      height: 250px;
-      padding: 40px 0;
-      text-align: center;
-      &__logo {
+    .single-footer-logo {
+      width: 80px;
+      height: 65px;
+      margin: 40px auto 0;
+      img {
         width: 80px;
         height: 65px;
-        margin: 40px auto 0;
-        img {
-          width: 80px;
-          height: 65px;
-          }
         }
-      a {
-        display: block;
-        color: #333;
-        text-decoration: none;
-        touch-action: manipulation;
-        }
-      li:first-child {
-        margin: 0;
-        }
-      li {
-        display: inline-block;
-        margin: 0 0 0 16px;
-        font-size: 12px;
-        }
-      p {
-        margin: 8px 0 0;
-        } 
-      small {
-        font-size: 13px;
-        }    
       }
-
-    nav {
-      display: block;
-      }
-      
-    .bold {
-      font-weight: 600;
-      }
-
-    img {
-      vertical-align: middle;
-      }
-
     
+    
+    li:first-child {
+      margin: 0;
+      }
+    li {
+      display: inline-block;
+      margin: 0 0 0 16px;
+      font-size: 12px;
+      }
+    p {
+      margin: 8px 0 0;
+      } 
+    small {
+      font-size: 13px;
+      }    
+
+    i[class^='icon-'], i[class*='icon-'] {
+    display: inline-block;
+    font-family: 'icon-font';
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    }
