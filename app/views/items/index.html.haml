@@ -1,25 +1,5 @@
 ////// トップページ ////////
-%header.header
-  .header__inner
-    .header__inner__top
-      =link_to "https://www.mercari.com/jp/" do
-        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983" ,alt: "mercari", height: "36", width: "134"
-      %form.header-form{action: "https://www.mercari.com/jp/search/"}
-        %input.input-default{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
-        = fa_icon 'search'
-    .header__inner__bottom.clearfix
-      .header__inner__bottom--left
-        =link_to "https://www.mercari.com/jp/category/" ,class:"header__category" do
-          = fa_icon 'list-ul', class: "left"
-          %span カテゴリーから探す
-        =link_to "https://www.mercari.com/jp/brand/" , class:"header__brand" do 
-          = fa_icon 'tag', class: "left"
-          %span ブランドから探す
-      .header__inner__bottom--right
-        =link_to "新規会員登録" , "https://www.mercari.com/jp/signup/" ,class:"header-btn signup"
-        =link_to "ログイン", "https://www.mercari.com/jp/login/?login_callback=https%3A%2F%2Fwww.mercari.com%2Fjp%2F" ,class:"header-btn login"
-
-
+=render "header"
 .main-visual
   %ul.main-visual__top
     %li
@@ -41,29 +21,6 @@
               =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?863303983", alt: "", height: "60", width: "170"
         %img{class:"banner-image",alt: "", height: "400",src: "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?863303983"}/
 
--# .main-visual2
--#   %ul.main-visual__top
-    -# %li
-    -#   = image_tag "//www-mercari-jp.akamaized.net/assets/img/featured/camp/index/index_keyvisual.png?2508029365", class: "main-visual__top__first"
-  -#   %li
-  -#     = image_tag "main.jpg", class: "main-visual__top__second"
-
-  -# .main-visual__inner
-    -# %h2.top スマホでかんたん
-    -# %h2 フリマアプリ
-    -# %p
-    -#   メルカリはスマホカメラからすぐに出品できる
-    -#   %br>/
-    -#   購入時も安心な独自システムのアプリです
-    -# .main-visual__inner__icon.clearfix
-    -#   %ul.clearfix
-    -#     =link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8" ,target: "_blank" do
-    -#       =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?863303983" ,alt: "", height: "60", width: "170"
-    -#     =link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "_blank" do
-    -#       =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?863303983", alt: "", height: "60", width: "170"
-    -# %img{class:"banner-image",alt: "", height: "400",src: "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?863303983"}/
-
 =render "item"
-
 =render "footer"
 

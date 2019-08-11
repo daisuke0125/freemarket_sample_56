@@ -193,6 +193,12 @@ a {
       color: $BlueColor;
       font-weight: bold;
       padding: 15px 0;
+      display: block;
+        cursor: pointer;
+        &:hover{
+          opacity: 0.7;
+          text-decoration: underline;
+        }
     }
     &__box{
       display: flex;
@@ -245,24 +251,31 @@ a {
 }
 .view-all{
   text-align: right;
+  list-style: none;
   color: $BlueColor;
   padding:10px 0 10px 0;
+  a{
+    &:hover{
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+  }
 }
 
 ////// フッター////////
 
 .banner{
-  background: url('footer_image.jpg');
   background-position: center;
   background-size: cover;
   color: white;
   height: 270px;
   position: relative;
-  padding: 0 250px;
+  // padding: 0 250px;
   &__inner{
-      height: 100%;
-      display: block;
-      margin-left: 80px;
+      position: absolute;
+      top:0;
+      margin-left: 320px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
       h2{
         padding-top: 30px;
         font-weight: bold;
@@ -290,7 +303,7 @@ a {
       .banner-image{
         position: absolute;
         top: 0;
-        right: 320px;
+        left:480px;
       }
 }
 

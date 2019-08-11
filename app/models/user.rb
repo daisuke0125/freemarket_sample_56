@@ -18,6 +18,7 @@ class User < ApplicationRecord
   
   
   has_many :sns_credentials, dependent: :destroy
+  has_many :cards
   mount_uploader :image, ImageUploader
 
   devise :omniauthable,omniauth_providers: [:facebook, :google_oauth2]
