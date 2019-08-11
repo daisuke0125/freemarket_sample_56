@@ -19,6 +19,7 @@ h2 {
 a {
   color: #0099e8;
   text-decoration: none;
+  touch-action: manipulation;
   }
 
 nav {
@@ -66,35 +67,32 @@ span {
   vertical-align: middle;
   }
 
-.single-container {
+.single-containers {
   padding: 0 0 220px;
   background: rgb(245, 245, 245);
-  position: relative;
-  min-height: 100%;
   } 
   
-.single-header {
+.single-headers {
   height: 128px;
   text-align: center;
+  a {
+    width: 185px;
+    height: 49px;
+    line-height: 49px;
+    display: inline-block;
+    margin: 0 8px 0 0;
+    }
   h1 {
     margin: 40px 0 0;
     display: inline-block;
     font-weight: bold;
-    a {
+    img {
       width: 185px;
       height: 49px;
-      line-height: 49px;
-      display: inline-block;
-      color: #0099e8;
-      text-decoration: none;
-      touch-action: manipulation;
-      img {
-        width: 185px;
-        height: 49px;
-        }
       }
     }
   }
+  
   
   .single-main {
     display: block;

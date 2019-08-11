@@ -1,16 +1,16 @@
 %body
-.single-container
-  %header.single-header
+.single-containers
+  %header.single-headers
     %h1
-      %a{href: "https://www.mercari.com/jp/"}
-        %img{alt: "mercari", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2508029365"}/
+      =link_to "https://www.mercari.com/jp/" do
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2508029365", alt: "mercari"
   %main.single-main
     %section.l-single-container.buy-item-container
       %h2.l-single-head 購入内容の確認
       %section.buy-content.buy-item
         .buy-content-inner
           %h3.buy-item-image
-            %img{src: "https://static.mercdn.net/thumb/photos/m95477518228_1.jpg?1565453349"}/
+            = image_tag "https://static.mercdn.net/thumb/photos/m95477518228_1.jpg?1565453349"
           %p.buy-item-name.bold お菓子
           %form.buy-form{action: "https://www.mercari.com/jp/transaction/buy/done/m95477518228/", :method => "POST", :novalidate => "novalidate"}
             %p.buy-price-ja.bold
@@ -37,10 +37,10 @@
             %br/
             成 大将
           %p.buy-user-info-text
-          %a.buy-user-info-fix{:href => "https://www.mercari.com/jp/transaction/address/m95477518228/?_s=U2FsdGVkX19x0TNYPn_WTZjA360RxmS-ekYgu63bKnnvoAJ30kIAMLCwDbAQkDEgQgwxfwz9szh7zBug2iO1u-aHElH8tKFyeL1oZHdw7qHOMIf6-yDnkam5TJgESQ79"}
+          =link_to "https://www.mercari.com/jp/transaction/address/m95477518228/?_s=U2FsdGVkX19x0TNYPn_WTZjA360RxmS-ekYgu63bKnnvoAJ30kIAMLCwDbAQkDEgQgwxfwz9szh7zBug2iO1u-aHElH8tKFyeL1oZHdw7qHOMIf6-yDnkam5TJgESQ79", class: "buy-user-info-fix" do
             %span 変更する
             %i.icon-arrow-right
-      %section.buy-content.buy-user-info{"data-buy" => "pay-method"}
+      %section.buy-content.buy-user-info{buy: "pay-method"}
         .buy-content-inner
           %h3 支払い方法
           %p.buy-user-info-text
@@ -48,19 +48,19 @@
             %br/
             07 / 23
             %figure
-              %img{alt: "american_express", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2508029365", :width => "21"}/
-          %a.buy-user-info-fix{:href => "https://www.mercari.com/jp/transaction/select_card/m95477518228/?_s=U2FsdGVkX19x0TNYPn_WTZjA360RxmS-ekYgu63bKnnvoAJ30kIAMLCwDbAQkDEgQgwxfwz9szh7zBug2iO1u-aHElH8tKFyeL1oZHdw7qHOMIf6-yDnkam5TJgESQ79"}
+              = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2508029365", alt: "american_express", height: "20", width: "21"
+          =link_to "https://www.mercari.com/jp/transaction/select_card/m95477518228/?_s=U2FsdGVkX19x0TNYPn_WTZjA360RxmS-ekYgu63bKnnvoAJ30kIAMLCwDbAQkDEgQgwxfwz9szh7zBug2iO1u-aHElH8tKFyeL1oZHdw7qHOMIf6-yDnkam5TJgESQ79", class: "buy-user-info-fix" do
             %span 変更する
             %i.icon-arrow-right
   %footer.single-footer
     %nav
       %ul.clearfix
         %li
-          %a{href: "https://www.mercari.com/jp/privacy/"} プライバシーポリシー
+          =link_to "プライバシーポリシー", "https://www.mercari.com/jp/privacy/"
         %li
-          %a{href: "https://www.mercari.com/jp/tos/"} メルカリ利用規約
+          =link_to "メルカリ利用規約", "https://www.mercari.com/jp/tos/"
         %li
-          %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+          =link_to "特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/"
     %a.single-footer-logo{href: "https://www.mercari.com/jp/"}
       %img{alt: "mercari", height: "65", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2508029365", :width => "80"}/
     %p
