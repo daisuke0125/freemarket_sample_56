@@ -12,4 +12,5 @@ resource :items, only: [:index, :show, :edit,]
   get   'items/identification'   =>  'items#identification' 
   get   "items/logout" => "items#logout"
   get "items/card_registration" => "items#card_registration"
+  get   "items/buy" => "items#buy"
 end

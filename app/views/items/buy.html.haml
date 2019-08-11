@@ -1,0 +1,67 @@
+%body
+.single-container
+  %header.single-header
+    %h1
+      %a{:href => "https://www.mercari.com/jp/"}
+        %img{:alt => "mercari", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2508029365"}/
+  %main.single-main
+    %section.l-single-container.buy-item-container
+      %h2.l-single-head 購入内容の確認
+      %section.buy-content.buy-item
+        .buy-content-inner
+          %h3.buy-item-image
+            %img{:src  => "https://static.mercdn.net/thumb/photos/m95477518228_1.jpg?1565453349"}/
+          %p.buy-item-name.bold お菓子
+          %form.buy-form{:action => "https://www.mercari.com/jp/transaction/buy/done/m95477518228/", :method => "POST", :novalidate => "novalidate"}
+            %p.buy-price-ja.bold
+              ¥ 300
+              %span.item-shipping-fee.f14.bold 着払い
+            %ul.buy-accordion.not-have
+              %li.accordion-parent
+                .accordion-toggle
+                  ポイントはありません
+            %ul.buy-price-table
+              %li.buy-price-row.buy-you-pay.bold
+                .buy-price-cell 支払い金額
+                .buy-price-cell
+                  %span{"data-buy-pay" => "300"} ¥ 300
+            %button.btn-default.btn-red.bold{:type => "submit"} 購入する
+      %section.buy-content.buy-user-info
+        .buy-content-inner
+          %h3 配送先
+          %address.buy-user-info-text
+            〒810-0014
+            %br/
+            福岡県 福岡市中央区
+            平尾1-9-9
+            %br/
+            成 大将
+          %p.buy-user-info-text
+          %a.buy-user-info-fix{:href => "https://www.mercari.com/jp/transaction/address/m95477518228/?_s=U2FsdGVkX19x0TNYPn_WTZjA360RxmS-ekYgu63bKnnvoAJ30kIAMLCwDbAQkDEgQgwxfwz9szh7zBug2iO1u-aHElH8tKFyeL1oZHdw7qHOMIf6-yDnkam5TJgESQ79"}
+            %span 変更する
+            %i.icon-arrow-right
+      %section.buy-content.buy-user-info{"data-buy" => "pay-method"}
+        .buy-content-inner
+          %h3 支払い方法
+          %p.buy-user-info-text
+            ***********1007
+            %br/
+            07 / 23
+            %figure
+              %img{:alt => "american_express", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2508029365", :width => "21"}/
+          %a.buy-user-info-fix{:href => "https://www.mercari.com/jp/transaction/select_card/m95477518228/?_s=U2FsdGVkX19x0TNYPn_WTZjA360RxmS-ekYgu63bKnnvoAJ30kIAMLCwDbAQkDEgQgwxfwz9szh7zBug2iO1u-aHElH8tKFyeL1oZHdw7qHOMIf6-yDnkam5TJgESQ79"}
+            %span 変更する
+            %i.icon-arrow-right
+  %footer.single-footer
+    %nav
+      %ul.clearfix
+        %li
+          %a{:href => "https://www.mercari.com/jp/privacy/"} プライバシーポリシー
+        %li
+          %a{:href => "https://www.mercari.com/jp/tos/"} メルカリ利用規約
+        %li
+          %a{:href => "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+    %a.single-footer-logo{:href => "https://www.mercari.com/jp/"}
+      %img{:alt => "mercari", :height => "65", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2508029365", :width => "80"}/
+    %p
+      %small © 2019 Mercari
