@@ -106,25 +106,156 @@
         = fa_icon 'angle-right'
 
   .message-content
-    %ul.social-media-box
+    %ul.message-content__social
       %li
-        %a.share-btn{"data-window-name" => "facebook_window", :href => "http://www.facebook.com/share.php?u=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm62740205964%2F", :target => "_blank"}
-          %i.icon-facebook
+        =link_to "/users/auth/facebook", class: "facebook-icon" do
+          =fa_icon "facebook-square", class: "facebook"
       %li
-        %a.share-btn{:target => "_blank"}
-          %i.icon-twitter
-      %li.social-hidden-item
-        %a{:target => "_blank"}
-          %i.icon-line
+        =link_to "/users/auth/twitter", class: "twitter-icon" do
+          =fa_icon "twitter-square", class: "twitter"
       %li
-        %a.share-btn{:target => "_blank"}
-          %i.icon-pinterest
+        =link_to "", class: "pinterest-icon" do
+          =fa_icon "pinterest", class: "pinterest"
 
+  .other-item
+    = link_to "〇〇さんのその他の商品" , "" ,class:"other-item__title"
+    .other-item__content
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
 
-
-
-
-
+  .other-item
+    = link_to "その他の商品" , "" ,class:"other-item__title"
+    .other-item__content
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
+      .item-box
+        %a{:href => "https://item.mercari.com/jp/m89042753080/"}
+          %figure.item-box__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name 新着アイテム シャネル
+          .item-box__body--num
+            .item-box__body--num--price ¥ 8,900
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
 
 
 =render "footer"

@@ -139,7 +139,21 @@
   button{
     width: 100%;
   }
+  &__social{
+    text-align: center;
+    li{
+      display: inline-block;
+      margin: 0 6px 8px 0;
+      a{
+        font-size: 50px;
+        .facebook{color: #385185;}
+        .twitter{color: #5d9dc9;}
+        .pinterest{color: #aa262a;}
+      }
+    }
+  }
 }
+
 .nav-item{
   margin: 24px auto 35px auto;
   padding-bottom: 15px;
@@ -173,6 +187,71 @@
       i{
         font-size: 25px;
         font-weight: bold;
+      }
+    }
+  }
+}
+.other-item{
+  margin:20px auto 0 auto ;
+  width: 700px;
+  &__title{
+    font-size: 20px;
+    font-weight: bold;
+    color: $BlueColor;
+      &:hover{
+        opacity: 0.7;
+        text-decoration: underline;
+      }
+  }
+  &__content{
+    margin-top: 10px;
+    }
+  .item-box{
+    width: 208px;
+    margin: 0 20px 20px 0;
+    display: inline-block;
+    a{
+    display: block;
+    color: #333;
+    }
+    &__image{
+      width: 220px;
+      height: 220px;
+      overflow: hidden;
+    }
+    &__body{
+      background-color:white;
+      padding: 16px;
+      height: 90px;
+      width: 188px;
+      &--name{
+        overflow: hidden;
+        position: relative;
+        font-weight: 400;
+        height: 3em;
+        line-height: 1.5;
+        word-break: break-word;
+        white-space: normal;
+      }
+      &--num{
+        position: relative;
+        margin-top: 8px;
+        display: flex;
+        &--price{
+          font-weight: 600;
+        }
+        .num-font{
+          position: absolute;
+          top: 0;
+          right: 2px;
+
+          font-size: 16px;
+          font-weight: 400;
+          color: #333;
+          &--like{
+            display: inline;
+          }
+        }
       }
     }
   }
