@@ -1,5 +1,5 @@
 .thumbnail{
-  max-width: 300px;
+  width: 300px;
   height: 300px;
   margin: 0 auto 5px;
   padding: 0;
@@ -9,6 +9,10 @@
   height: 300px;
   }
   .slick-slide {
+    width: 300px;
+    height:300px;
+  }
+  .slick-list {
     width: 300px;
     height:300px;
   }
