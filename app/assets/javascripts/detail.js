@@ -49,9 +49,19 @@ $(document).on('turbolinks:load',function(){
     // $('.thumbnail-image').stop().animate({'marginLeft': });
     // console.log(topDistance);
     // var topLeft = topDistance.offset();
-    $('.thumbnail-image').animate({marginLeft : '300px' },200);
+    // $('.thumbnail-image').attr('src', photo);
+    if (photo == "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg") {
+      $('.thumbnail .slick-list .slick-track').css({transform : 'translate(-300px)'});
+      $('.thumbnail .slick-list .slick-track').addClass('transition');
+    } else if (photo == "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg") {
+      $('.thumbnail .slick-list .slick-track').css({transform : 'translate(-600px)'});
+      $('.thumbnail .slick-list .slick-track').addClass('transition');
+    } else if (photo == "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg") {
+      $('.thumbnail .slick-list .slick-track').css({transform : 'translate(-900px)'});
+      $('.thumbnail .slick-list .slick-track').addClass('transition');
+    }
     $(this).css('opacity', '1.0');
     $('.thumbnail-thumb__photo').not(this).css('opacity','0.5');
-    console.log($(this).scrollLeft());
+    console.log(photo);
   });
 });

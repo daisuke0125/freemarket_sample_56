@@ -17,6 +17,10 @@
     height:300px;
   }
 
+  .transition {
+    transition: transform 500ms ease;
+  }
+
 }
 .thumbnail-thumb {
   max-width: 700px;
