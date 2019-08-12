@@ -1,10 +1,52 @@
 =render "header"
 
+///////////////////////////////////////////////
+
+
+-# #slick
+-#   %div
+-#     %img{:alt => "", :src => "https://animeanime.jp/imgs/p/jtKDOVlKAvjRrNw8SXAVejagI61Nrq_oqaqr/222573.jpg"}/
+-#   %div
+-#     %img{:alt => "", :src => "https://tshop.r10s.jp/card-museum/cabinet/yuugiou/dp/dp17-jp011-r.jpg?fitin=275:275"}/
+-#   %div
+-#     %img{:alt => "", :src => "https://www.4gamer.net/games/328/G032866/20190111081/TN/001.jpg"}/
+-#   %div
+-#     %img{:alt => "", :src => "https://yamatokuimg.blob.core.windows.net/group4/itemcd/tj114409.jpg"}/
+-#   %div
+-#     %img{:alt => "", :src => "https://yamatokuimg.blob.core.windows.net/group4/itemcd/tj116381.jpg"}/
+-#   %div
+-#     %img{:alt => "", :src => "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg"}/
+-#   %div
+-#     %img{:alt => "", :src => "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg"}/
+
+
+
 .detail-container
   .detail-container__box
-    %h2 商品の情報を入力 tesuto
+    %h2 商品の情報を入力
     .item-content
-      .item-content__photo 写真を挿入
+      .item-content__photo
+        .thumbnail
+          = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
+          = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
+          = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
+          = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-image"
+          = image_tag "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg", class: "thumbnail-image"
+          = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
+          = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
+          = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
+          = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-image"
+        .thumbnail-thumb
+          = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-thumb__photo"
+          = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
+          = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
+          = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
+          = image_tag "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg", class: "thumbnail-thumb__photo"
+          = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-thumb__photo"
+          = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
+          = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
+          = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
+
       -# .item-content__table 写真を挿入
       %table.item-content__table
         %tbody
@@ -14,13 +56,13 @@
               =link_to "出品者の名前" , ""
               .item-content__table__rate
                 .rate-list
-                  = fa_icon 'kiss'
+                  %i.fas.fa-laugh
                   %span 100
                 .rate-list
-                  = fa_icon 'search'
+                  %i.fas.fa-meh
                   %span 50
                 .rate-list
-                  = fa_icon 'search'
+                  %i.fas.fa-frown
                   %span 0
           %tr
             %th カテゴリー
