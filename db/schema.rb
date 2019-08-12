@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_08_11_071053) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname", null: false
+    t.string "name_kana", null: false
     t.string "location"
     t.string "image"
     t.string "first_name", null: false

@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   }
 
   root "items#index"
+  
+
+
+
+  get   "items/buy" => "items#buy"
   resources :signup do
     collection do
       get 'step1'
@@ -17,6 +22,7 @@ Rails.application.routes.draw do
   end
   resources :items do
     collection do
+      get 'buy'
       get 'identification'
       get 'logout'
       get 'card_registration'
