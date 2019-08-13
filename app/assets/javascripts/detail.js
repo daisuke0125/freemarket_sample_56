@@ -20,6 +20,7 @@ $(document).on('turbolinks:load',function(){
   });
   $('.thumbnail-thumb__photo').on('mouseover', function(){
     var photo = $(this).attr('src');
+    setTimeout(function(){
     if (photo == "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg") {
       $('.thumbnail .slick-list .slick-track').css({transform : 'translate(-300px)'});
       $('.thumbnail .slick-list .slick-track').addClass('transition');
@@ -51,9 +52,12 @@ $(document).on('turbolinks:load',function(){
       $('.thumbnail .slick-list .slick-track').css({transform : 'translate(-3000px)'});
       $('.thumbnail .slick-list .slick-track').addClass('transition');
     } 
+  },1000), function() {
+    clearTimeout();
+  }
 
-
-    $(this).css('opacity', '1.0');
-    $('.thumbnail-thumb__photo').not(this).css('opacity','0.5');
+  $(this).css('opacity', '1.0');
+  $('.thumbnail-thumb__photo').not(this).css('opacity','0.5');
+    
   });
 });
