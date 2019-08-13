@@ -1,23 +1,3 @@
-// $(function() {
-  
-//   $('#slick').slick({
-//     dots: true,
-//     customPaging: function(slider, i) {
-//       var thumbSrc = $(slider.$slides[i]).find('img').attr('src');
-//       return '<img src="' + thumbSrc + '">';
-//     }
-//   });
-  
-
-//   $('img').mouseover(function(){
-//     $('.slick-slide img').attr('src', $(this).attr('src'));
-//   });
-
-
-// });
-
-
-
 $(document).on('turbolinks:load',function(){
   $('.thumbnail').slick({
     infinite: true,
