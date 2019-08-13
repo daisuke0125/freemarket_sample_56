@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load',function(){
   $('.thumbnail').slick({
+    asNavFor: '.thumnail-thumb',
     infinite: true,
     arrows: false,
     draggable: false,
@@ -11,18 +12,14 @@ $(document).on('turbolinks:load',function(){
     arrows: false,
     infinite: true,
     slidesToShow: 10,
-    focusOnSelect: true,
+    focusOnSelect: false,
     asNavFor: '.thumbnail',
     variableWidth: true,
-    pauseOnFocus: false,
     speed: 800,
     lazyLoad: 'ondemand',
   });
   $('.thumbnail-thumb__photo').on('mouseover', function(){
     var photo = $(this).attr('src');
-    var topPhoto = $('.thumbnail-image').attr(photo);
-    var distance = $('.thumbnail-thumb__photo').index(this);
-    var ml = $(this).offset();
     if (photo == "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg") {
       $('.thumbnail .slick-list .slick-track').css({transform : 'translate(-300px)'});
       $('.thumbnail .slick-list .slick-track').addClass('transition');
@@ -54,6 +51,7 @@ $(document).on('turbolinks:load',function(){
       $('.thumbnail .slick-list .slick-track').css({transform : 'translate(-3000px)'});
       $('.thumbnail .slick-list .slick-track').addClass('transition');
     } 
+
 
     $(this).css('opacity', '1.0');
     $('.thumbnail-thumb__photo').not(this).css('opacity','0.5');
