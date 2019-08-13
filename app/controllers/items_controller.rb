@@ -14,7 +14,11 @@ class ItemsController < ApplicationController
     
     def card_registration
     end
+    
     def identification
+    end
+
+    def buy
     end
     
     def sell
@@ -23,4 +27,8 @@ class ItemsController < ApplicationController
     def detail
     end
     
+    def card_edit
+        @card = Card.new
+    end
+
 end

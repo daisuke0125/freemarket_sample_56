@@ -66,21 +66,15 @@
                   }
                 .settings-payment-remove {
                   position: absolute;
-                  top: 0;
+                  top: 10px;
                   right: 0;
-                  padding: 4px 6px;
+                  padding: 0 5px;
+                  font-size: 14px;
                   background: #fff;
                   border-radius: 3px;
                   border: 1px solid #ea352d;
                   color: #ea352d;
                   outline: 0;
-                  cursor: pointer;
-                  min-height: 1.5em;
-                  font-family: inherit;
-                  font-style: inherit;
-                  font-weight: inherit;
-                  -webkit-appearance: button;
-                  overflow: visible;
                   }
       .settings-not-regist a {
         display: block;

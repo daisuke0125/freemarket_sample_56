@@ -38,8 +38,8 @@
                   .settings-payment-num ***********1007
                   .settings-payment-num 07 / 23
                   %input{:name => "method", :type => "hidden", :value => "card"}/
-                  %button.settings-payment-remove{:type => "submit"}
-                    削除する
+                  = link_to "削除する", card_edit_items_path, class: "settings-payment-remove"
+                  
           .settings-not-regist
             %a{:href => "/jp/help_center/category/6/", :target => "_blank"}
               %span 支払い方法について
