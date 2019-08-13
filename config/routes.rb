@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get 'card_registration'
       get 'sell'
       get 'edit'
+      get 'detail'
       get 'card_edit'
     end  
   end
