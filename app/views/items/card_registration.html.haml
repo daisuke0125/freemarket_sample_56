@@ -41,7 +41,7 @@
                   = link_to "削除する", card_edit_items_path, class: "settings-payment-remove"
                   
           .settings-not-regist
-            %a{:href => "/jp/help_center/category/6/", :target => "_blank"}
+            =link_to "/jp/help_center/category/6/" do
               %span 支払い方法について
               %i.icon-arrow-right
 
