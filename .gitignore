@@ -12,7 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-# .env
+/.env
 
 # Ignore uploaded files in development
 /storage/*
@@ -27,7 +27,3 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/secrets.yml
-
-RECAPTCHA_SITE_KEY = '6Lc0bLIUAAAAAPrgK5uATJayPTOTO-0APt7VPzw7'
-RECAPTCHA_SECRET_KEY = '6Lc0bLIUAAAAAB-3-j_lZ8INK9Kn1NAAgnHar1HK'
-# 【修正前】.envファイルに記述 →【修正後】.gitignoreにダイレクトで記述
