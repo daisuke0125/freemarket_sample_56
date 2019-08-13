@@ -7,7 +7,6 @@ FactoryBot.define do
       postcode              {"00000000"}
       prefectures           {"aaa"}
       city                  {"aaa"}
-      streetNumber          {"000"}
       number                {"0000000"}
       birth_year            {"1111"}
       birth_month           {"11"}
