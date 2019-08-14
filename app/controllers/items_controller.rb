@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
     def sell
     end
     
+    def detail
+    end
+    
     def card_edit
         @card = Card.new
     end

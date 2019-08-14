@@ -63,10 +63,13 @@
                   line-height: 50px;
                   border: solid 1px $BackgroundColor;
                   border-radius: 5px;
+                  color: black;
                   background-color:white;
+                  border: solid 1px rgb(165, 164, 164);
                   i.google {
                       right: 360px;
-                      padding-left: 5px;
+                      padding-left: 10px;
+                      font-size: 20px;
                       }
               }
           }
@@ -76,17 +79,14 @@
       height: 220px;
       background-color: $BackgroundColor;
       text-align: center;
-      nav li {
+      &--list{
           display: inline;
           justify-content: center;
-          font-size:12px;
-          a{
-            &:hover{
-                opacity: 0.6;
-                text-decoration: underline;
+          color: black;
+          &:hover{
+              opacity: 0.6;
+              text-decoration: underline;
             }
-          }
-      }
       a.single-footer-logo img.single-footer-logo {
           padding-top: 40px;
       }
@@ -94,5 +94,6 @@
         height: 65px;
         width: 80px;
       }
+    }
   }
 }
