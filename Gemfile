@@ -45,6 +45,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -86,3 +87,4 @@ gem 'mini_magick'
 gem 'jquery-rails'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'jquery-rails'
+gem 'pry-rails'

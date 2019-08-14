@@ -37,7 +37,7 @@
   .cp_stepflow01 > li .bubble::after,
   .cp_stepflow01 > li .bubble::before {
       position: absolute;
-      top: 27px;
+      top: 20px;
       left: 74px;
       display: block;
       width: 100%;
@@ -101,7 +101,7 @@
         }
         label.attention {
             background-color: #ea352d;
-            border: solid 5px #ea352d;
+            border: solid 3px #ea352d;
             border-radius: 3px;
             color: white;
             font-size: 12px;
@@ -249,21 +249,36 @@ img.card {
     width: 32px;
 }
 input.big {
+    margin-top: 5px;
     padding: 10px 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
     width: 300px;
 }
 input.small {
+    margin-top: 5px;
     padding: 10px 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
     width: 150px;
 }
+input.mini {
+    margin-top: 5px;
+    padding: 10px 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 60px;
+}
 input.phone {
     border-radius: 5px;
     border: 1px solid #ccc;
     width: 300px;
+}
+input.name {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 310px;
 }
 li.form {
     display: flex;
