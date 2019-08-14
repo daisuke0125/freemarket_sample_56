@@ -1,0 +1,31 @@
+=render "items/header"
+
+.category-list
+  %h1.category-list__title カテゴリー 一覧
+
+  -# - @parents.each do |parent|
+  -#   %p
+  -#     %a.category-list__name=parent.name
+
+  - @titles.each do |title|
+    %p
+      %a.category-list__name=title.name
+
+  =@parent.name
+  =@child.name
+
+
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+
+

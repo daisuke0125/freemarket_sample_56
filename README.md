@@ -44,7 +44,7 @@ Things you may want to cover:
 - has_many :comments
 - has_many :rates, through: :user-rates
 
-## itemsテーブル
+## itemsテーブルOK
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -77,7 +77,7 @@ Things you may want to cover:
 - belongs_to :parent, class_name: :Item
 
 
-## goodsテーブル
+## goodsテーブルOK
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false|
@@ -87,7 +87,7 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 
-## commentsテーブル
+## commentsテーブルOK
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false|
@@ -97,7 +97,7 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 
-## ratesテーブル
+## ratesテーブルOK
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -105,7 +105,7 @@ Things you may want to cover:
 ### Association
 - has_many :users, through: :user-rates
 
-## user-ratesテーブル
+## user-ratesテーブルOK
 |Column|Type|Options|
 |------|----|-------|
 |rate|references|null: false|
