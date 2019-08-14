@@ -5,22 +5,25 @@
         = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983" ,alt: "mercari", height: "49", width: "185"
   %main.single-main
     .single-main__container
-      %h2.sell-container 商品の情報を入力
-      %form.sell-form
-        .sell-form__upload
-          %h3.sell-form__upload--head
-            %lavel 出品画像
-            %span.form-arbitrary 必須
-          %p 最大10枚までアップロードできます
-          .sell-form__upload--box
-            -# = file_field 
-            .sell-form__upload--box--items
-              .sell-form__upload--box--item
-                %input.sell-form__upload__drop-file
-                %pre
-                  :preserve
-                    ドラッグアンドドロップ
-                    またはクリックしてファイルをアップロード
+      = form_for @item, html: {class: "dropzone", id: "item-dropzone" } do |f|
+        %h2.sell-container 商品の情報を入力
+        %form.sell-form
+          .sell-form__upload
+            %h3.sell-form__upload--head
+              %lavel 出品画像
+              %span.form-arbitrary 必須
+            %p 最大10枚までアップロードできます
+            = f.fields_for :item_images do |image|
+              .sell-form__upload--box
+                .sell-form__upload--box--items
+                  .sell-form__upload--box--item
+                    = image.label :images, class: "dropzone-box", for: "upload-image" do
+                      %input.sell-form__upload__drop-file
+                        = image.file_field :image, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                      %pre
+                        :preserve
+                          ドラッグアンドドロップ
+                          またはクリックしてファイルをアップロード
         .sell-content
           .form-group
             %lavel 商品名

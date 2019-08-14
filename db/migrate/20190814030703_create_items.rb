@@ -8,10 +8,13 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :brand
       t.string :condition, null: false
       t.string :delivery, null: false
+      t.string :area, null: false
       t.string :days, null: false
       t.integer :price, null: false
       t.integer :fee
       t.integer :gain
+      t.references :good, null: false, foreign_key: true
+      t.references :comment, null: false, foreign_key: true
       t.timestamps
     end
   end

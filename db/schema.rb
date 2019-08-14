@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_072734) do
+ActiveRecord::Schema.define(version: 2019_08_14_034354) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "card_number", null: false
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2019_08_13_072734) do
     t.text "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -47,6 +49,12 @@ ActiveRecord::Schema.define(version: 2019_08_13_072734) do
     t.index ["user_id"], name: "index_goods_on_user_id"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "images"
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "detail", null: false
@@ -55,12 +63,17 @@ ActiveRecord::Schema.define(version: 2019_08_13_072734) do
     t.text "brand"
     t.string "condition", null: false
     t.string "delivery", null: false
+    t.string "area", null: false
     t.string "days", null: false
     t.integer "price", null: false
     t.integer "fee"
     t.integer "gain"
+    t.bigint "good_id", null: false
+    t.bigint "comment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_items_on_comment_id"
+    t.index ["good_id"], name: "index_items_on_good_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -120,6 +133,8 @@ ActiveRecord::Schema.define(version: 2019_08_13_072734) do
   add_foreign_key "comments", "users"
   add_foreign_key "goods", "items"
   add_foreign_key "goods", "users"
+  add_foreign_key "items", "comments"
+  add_foreign_key "items", "goods"
   add_foreign_key "items", "users"
   add_foreign_key "user_rates", "rates"
   add_foreign_key "user_rates", "users"
