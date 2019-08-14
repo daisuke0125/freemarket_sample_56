@@ -20,7 +20,7 @@
           完了
           %span.bubble>
   .sign_up2__main
-    = form_for @card, url: done_signup_index_path, method: :get do |f|
+    = form_for @card, url: signup_index_path, method: :post do |f|
       .sign_up2__main__header
         %h2 支払い方法
       .sign_up2__main__form

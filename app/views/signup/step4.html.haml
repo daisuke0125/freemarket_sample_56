@@ -27,13 +27,13 @@
         #form1
           = f.label :name, "お名前"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :first_name, class: "big"
-          = f.text_field :last_name, class: "big"
+          %input.name{type: "text"}
+          %input.name{type: "text"}
         #form1
           = f.label :name, "お名前カナ"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :first_name_kana, class: "big"
-          = f.text_field :last_name_kana, class: "big"
+          %input.name{type: "text"}
+          %input.name{type: "text"}
         #form1
           = f.label :name, "郵便番号"
           = f.label :name, "必須", class: "attention"

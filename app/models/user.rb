@@ -4,16 +4,23 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
-
-  validates :name, presence: true
-  validates :name_kana, presence: true
-  validates :nickname, presence: true
-  validates :number, presence: true, uniqueness: true
-  validates :birthday, presence: true
-  validates :postCode, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :first_name_kana, presence: true
+  validates :last_name_kana, presence: true
+  validates :nickname, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, length: { minimum: 7, maximum: 15}
+  validates :password_confirmation, presence: true, length: { minimum: 7, maximum: 15}
+  validates :number, presence: true, uniqueness: true, length: { minimum: 10}
+  validates :birth_year, presence: true
+  validates :birth_month, presence: true
+  validates :birth_day, presence: true
+  validates :postcode, presence: true
   validates :prefectures, presence: true
   validates :city, presence: true
   validates :streetNumber, presence: true
+  validates :building, presence: true
   validates :cordNumber, presence: true, uniqueness: true
   
   
