@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_034354) do
+
+ActiveRecord::Schema.define(version: 2019_08_14_083747) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "card_number", null: false
-    t.integer "exp_month", null: false
-    t.integer "exp_year", null: false
+    t.string "card_number", null: false
+    t.string "exp_month", null: false
+    t.string "exp_year", null: false
     t.integer "cvc", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -106,14 +107,13 @@ ActiveRecord::Schema.define(version: 2019_08_14_034354) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "number", null: false
-    t.integer "birthday", null: false
-    t.integer "postcode", null: false
+    t.string "number", null: false
+    t.string "postcode", null: false
     t.string "prefectures", null: false
     t.string "city", null: false
     t.string "streetNumber", null: false
     t.string "building"
-    t.integer "cordNumber", null: false
+    t.string "cordNumber", null: false
     t.text "profile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -124,6 +124,9 @@ ActiveRecord::Schema.define(version: 2019_08_14_034354) do
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
     t.string "last_name", null: false
+    t.integer "birth_year", null: false
+    t.integer "birth_month", null: false
+    t.integer "birth_day", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
