@@ -75,8 +75,7 @@ end
 gem 'devise'
 
 gem 'haml-rails'
-gem 'font-awesome-rails' 
-gem 'font-awesome-sass'
+gem 'font-awesome-rails'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
