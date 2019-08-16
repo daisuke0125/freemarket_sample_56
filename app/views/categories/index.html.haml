@@ -14,10 +14,12 @@
         =parent.name
 
     .category-box.inner-box
+      %p=link_to "すべて","" ,class:"inner-box__category-all"
       - parent.children.each do |child|
         %p
           =link_to "" ,class:"inner-box__children" do
             =child.name
+
           .inner-box__grandchild-box
             - child.children.each do |grandchild|
               %span

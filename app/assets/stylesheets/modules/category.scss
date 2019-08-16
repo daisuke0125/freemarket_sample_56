@@ -42,6 +42,15 @@
     width: 90%;
     margin: 20px 0;
     margin-left: 30px;
+    &__category-all{
+      display: block;
+      font-size: 16px;
+      padding-bottom: 12px;
+      &:hover{
+        opacity: 0.6;
+        text-decoration: underline;
+      }
+    }
     &__children{
       color: black;
       font-weight: bold;

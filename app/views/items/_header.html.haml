@@ -9,7 +9,8 @@
         = fa_icon 'search'
     .header__inner__bottom.clearfix
       .header__inner__bottom--left
-        =link_to "https://www.mercari.com/jp/category/" ,class:"header__category" do
+        -# =link_to "https://www.mercari.com/jp/category/" ,class:"header__category" do
+        =link_to category_path ,class:"header__category" do
           = fa_icon 'list-ul', class: "left"
           %span カテゴリーから探す
         =link_to "https://www.mercari.com/jp/brand/" , class:"header__brand" do 
