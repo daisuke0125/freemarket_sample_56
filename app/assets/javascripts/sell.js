@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', function(){
   var item = $('.sell-form__upload--box--item');
   var box = $('.sell-form__upload--box')
+  var dropzone = $('.dropzone');
   var dropzone2 = $('.dropzone-area2');
   var dropzone_box = $('.dropzone-box');
   var images = [];
@@ -27,13 +28,10 @@ $(document).on('turbolinks:load', function(){
     reader.readAsDataURL(file);
     images.push(img);
 
-    if(images.length >= 5) {
+    if(images.length > 5) {
       dropzone2.css({
         'display': 'block'
       })
-      // box.css({
-      //   'display': 'none'
-      // })
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview2.append(image);
@@ -78,6 +76,26 @@ $(document).on('turbolinks:load', function(){
     var new_image = $(`<input multiple= "multiple" name="product_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image);
   });
+
+//   else if(images.length = 5) {
+//     // box.css({
+//     //   'display': 'none'
+//     // })
+//     dropzone2.css({
+//       'display': 'block'
+//     })
+//     $.each(images, function(index, image) {
+//       image.attr('data-image', index);
+//       preview2.append(image);
+//       dropzone2.css({
+//         'width': `calc(100% - (135px * ${images.length - 5}))`
+//       })
+//     })
+//     dropzone.css({
+//       'height': '550px'
+//     })
+// }
+
   // $(document).on('click', '.delete', function() {
   //   var target_image = $(this).parent().parent();
   //   $.each(inputs, function(index, input){
