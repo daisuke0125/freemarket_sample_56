@@ -10,6 +10,7 @@ $(document).on('turbolinks:load', function(){
   var preview2 = $('#preview2');
   var view = $('.img_view');
   var photo_left = $('.img_view').find('img');
+  var upload = $('.upload-image');
 
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
     var file = $(this).prop('files')[0];
@@ -56,6 +57,10 @@ $(document).on('turbolinks:load', function(){
         preview.css ({
           'left': `calc(-185px * ${images.length})`,
           'marginLeft': `calc(70px * ${images.length - 1})`
+        })
+        upload.css ({
+          'width': `calc(622px - (135px * ${images.length}))`,
+          'left': `calc(-62px + (13px * ${images.length}))`
         })
         // photo_left.css ({
         //   'left' : '-200px'
