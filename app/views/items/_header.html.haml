@@ -12,10 +12,10 @@
         -# =link_to "https://www.mercari.com/jp/category/" ,class:"header__category" do
         =link_to category_path ,class:"header__category" do
           = fa_icon 'list-ul', class: "left"
-          %span カテゴリーから探す
+          %span.top カテゴリーから探す
         =link_to "https://www.mercari.com/jp/brand/" , class:"header__brand" do 
           = fa_icon 'tag', class: "left"
-          %span ブランドから探す
+          %span.top ブランドから探す
       .header__inner__bottom--right
         =link_to "新規会員登録" , new_user_registration_path ,class:"header-btn signup"
         =link_to "ログイン", "https://www.mercari.com/jp/login/?login_callback=https%3A%2F%2Fwww.mercari.com%2Fjp%2F" ,class:"header-btn login"

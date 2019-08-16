@@ -9,11 +9,13 @@ class SignupController < ApplicationController
         session[:email] = user_params[:email]
         session[:password] = user_params[:password]
         session[:password_confirmation] = user_params[:password_confirmation]
-        session[:firstname] = user_params[:firstname]
+        session[:first_name] = user_params[:first_name]
         session[:last_name] = user_params[:last_name]
         session[:first_name_kana] = user_params[:first_name_kana]
         session[:last_name_kana] = user_params[:last_name_kana]
-        session[:birthday] = user_params[:birthday]
+        session[:birth_year] = user_params[:birth_year]
+        session[:birth_month] = user_params[:birth_month]
+        session[:birth_day] = user_params[:birth_day]
         @user = User.new
     end
 
@@ -35,40 +37,40 @@ class SignupController < ApplicationController
         session[:cordNumber] = user_params[:cordNumber]
         @card = Card.new
     end
-    #---サーバーサイド編集時に使用する---
-    # def create
-    #     @user = User.new(
-    #         nickname: session[:nickname],
-    #         email: session[:email],
-    #         password: session[:password],
-    #         password_confirmation: session[:password_confirmation],
-    #         last_name: session[:last_name],
-    #         first_name: session[:first_name],
-    #         last_name_kana: session[:last_name_kana],
-    #         first_name_kana: session[:first_name_kana],
-    #         birthday: session[:birthday],
-    #         postcode: session[:postcode],
-    #         prefectures: session[:prefectures],
-    #         city: session[:city],
-    #         streetNumber: session[:streetNumber],
-    #         building: session[:building],
-    #         cordNumber: session[:cordNumber]
-    #     )
-    #     if @user.save
-    #         session[:id] = @user.id
-    #         redirect_to done_signup_index_path
-    #     else
-    #         render '/signup/registration'
-    #     end
-    # end
 
-    # def done
-    #     sign_in User.find(session[:id]) unless user_signed_in?
-    # end
-    
-    def done
+    def create
+        @user = User.new(
+            nickname: session[:nickname],
+            email: session[:email],
+            password: session[:password],
+            password_confirmation: session[:password_confirmation],
+            last_name: session[:last_name],
+            first_name: session[:first_name],
+            last_name_kana: session[:last_name_kana],
+            first_name_kana: session[:first_name_kana],
+            birth_year: session[:birth_year],
+            birth_month: session[:birth_month],
+            birth_day: session[:birth_day],
+            number: session[:number],
+            postcode: session[:postcode],
+            prefectures: session[:prefectures],
+            city: session[:city],
+            streetNumber: session[:streetNumber],
+            building: session[:building],
+            cordNumber: session[:cordNumber]
+        )
+        if @user.save
+            session[:id] = @user.id
+            Card.create(card_number: card_params[:card_number], exp_month: card_params[:exp_month], exp_year: card_params[:exp_year], cvc: card_params[:cvc], user_id: session[:id])
+            redirect_to done_signup_index_path
+        else
+            redirect_to root_path
+        end
     end
 
+    def done
+    end
+    
     private
 
     def user_params
@@ -77,15 +79,19 @@ class SignupController < ApplicationController
             :email,
             :password,
             :password_confirmation,
-            :firstname,
+            :first_name,
             :last_name,
-            :birthday, 
+            :birth_day, 
+            :birth_month, 
+            :birth_year, 
             :number,
             :postcode,
             :prefectures,
             :city,
             :streetNumber,
             :building,
+            :last_name_kana,
+            :first_name_kana,
             :cordNumber
         )
     end
