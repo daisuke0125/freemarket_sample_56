@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function(){
   var preview = $('#preview');
   var preview2 = $('#preview2');
   var view = $('.img_view');
-  var photo_left = $('img_view').find('img');
+  var photo_left = $('.img_view').find('img');
 
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
     var file = $(this).prop('files')[0];
@@ -30,9 +30,9 @@ $(document).on('turbolinks:load', function(){
       dropzone2.css({
         'display': 'block'
       })
-      box.css({
-        'display': 'none'
-      })
+      // box.css({
+      //   'display': 'none'
+      // })
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview2.append(image);
@@ -41,7 +41,7 @@ $(document).on('turbolinks:load', function(){
         })
       })
       if(images.length == 9) {
-        dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
+        box.find('p').replaceWith('<i class="fa fa-camera"></i>')
       }
     } else {
         $('#preview').empty();
@@ -53,12 +53,16 @@ $(document).on('turbolinks:load', function(){
           'width': `calc(100% - (135px * ${images.length}))`,
           'left': `calc(130px * ${images.length})` 
         })
-        photo_left.css ({
-          'left' : '-150px'
+        preview.css ({
+          'left': `calc(-185px * ${images.length})`,
+          'marginLeft': `calc(70px * ${images.length - 1})`
         })
+        // photo_left.css ({
+        //   'left' : '-200px'
+        // })
       }
       if(images.length == 4) {
-        dropzone.find('p').replaceWith('<i class="fa fa-camera"></i>')
+        box.find('p').replaceWith('<i class="fa fa-camera"></i>')
       }
     if(images.length == 10) {
       dropzone2.css({

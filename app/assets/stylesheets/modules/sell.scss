@@ -79,6 +79,7 @@
           }
           #preview {
             display: flex;
+            position: relative;
           }
           #preview2 {
             display: flex;
@@ -89,7 +90,7 @@
             height: 164px;
             position: relative;
             top: -40px;
-            left: -200px;
+            // left: -200px;
           }
         }
       }
