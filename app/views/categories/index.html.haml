@@ -2,30 +2,29 @@
 
 .category-list
   %h1.category-list__title カテゴリー 一覧
-
-  -# - @parents.each do |parent|
-  -#   %p
-  -#     %a.category-list__name=parent.name
-
-  - @titles.each do |title|
+  - @parents.each do |parent|
     %p
-      %a.category-list__name=title.name
+      =link_to "" ,class:"category-list__name" do
+        =parent.name
+%br
+.category-box
+  - @parents.each do |parent|
+    %p
+      =link_to "" ,class:"category-box__category-name" do
+        =parent.name
 
-  =@parent.name
-  =@child.name
+    .category-box.inner-box
+      - parent.children.each do |child|
+        %p
+          =link_to "" ,class:"inner-box__children" do
+            =child.name
+          .inner-box__grandchild-box
+            - child.children.each do |grandchild|
+              %span
+                =link_to "" ,class:"inner-box__grandchild" do
+                  =grandchild.name
+%br
 
-
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-%br
+=render "items/footer"
 
 
