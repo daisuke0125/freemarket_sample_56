@@ -5,6 +5,7 @@
   height: 100px;
   width: 100%;
   z-index: 1;
+  background-color: white;
   &__inner {
       margin: 0 168px;
       padding-top: 8px;
@@ -42,10 +43,12 @@
               a.header__category {
                   padding-right: 11px;
                   color: black;
+                  &:hover{color: $BlueColor;}
               }
               a.header__brand {
                   padding-left: 11px;
                   color: black;
+                  &:hover{color: $BlueColor;}
               }
               i.left {
                   color: $RedColor;
@@ -335,7 +338,7 @@ a {
 
         }
         li{
-            margin-top:11px;
+            margin-top:15px;
             a{
               color: white;
               opacity: 0.7;
@@ -359,7 +362,7 @@ a {
       }
       &--copyright{
         font-size: 10px;
-        padding-left: 300px;
+        padding-left: 350px;
       }
     }
 }

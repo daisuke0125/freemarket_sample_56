@@ -6,9 +6,6 @@ Rails.application.routes.draw do
 
   root "items#index"
   
-
-
-
   get   "items/buy" => "items#buy"
   resources :signup do
     collection do
@@ -32,4 +29,7 @@ Rails.application.routes.draw do
       get 'card_edit'
     end  
   end
+
+  get   "category" => "categories#index"
+
 end
