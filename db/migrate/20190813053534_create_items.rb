@@ -15,7 +15,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :price, null: false
       t.references :good
       t.references :comment
-
       t.timestamps
     end
   end
