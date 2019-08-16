@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function(){
-  var dropzone = $('.sell-form__upload--box');
+  var item = $('.sell-form__upload--box--item');
+  var box = $('.sell-form__upload--box')
   var dropzone2 = $('.dropzone-area2');
   var dropzone_box = $('.dropzone-box');
   var images = [];
@@ -7,6 +8,8 @@ $(document).on('turbolinks:load', function(){
   var input_area = $('.input_area');
   var preview = $('#preview');
   var preview2 = $('#preview2');
+  var view = $('.img_view');
+  var photo_left = $('img_view').find('img');
 
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
     var file = $(this).prop('files')[0];
@@ -27,7 +30,7 @@ $(document).on('turbolinks:load', function(){
       dropzone2.css({
         'display': 'block'
       })
-      dropzone.css({
+      box.css({
         'display': 'none'
       })
       $.each(images, function(index, image) {
@@ -46,9 +49,12 @@ $(document).on('turbolinks:load', function(){
           image.attr('data-image', index);
           preview.append(image);
         })
-        dropzone.css({
+        box.css({
           'width': `calc(100% - (135px * ${images.length}))`,
-          'marginLeft': `130px * ${img.length}` 
+          'left': `calc(130px * ${images.length})` 
+        })
+        photo_left.css ({
+          'left' : '-150px'
         })
       }
       if(images.length == 4) {

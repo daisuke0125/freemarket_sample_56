@@ -45,6 +45,7 @@
         border: 1px dashed #ccc;
         font-size: 0;
         text-align: center;
+        position: relative;
         &--item{
           position: relative;
           width: 80%;
@@ -64,6 +65,31 @@
             text-align: center;
             font-size: 14px;
             line-height: 1.5;
+          }
+          .upload-image {
+            content: "";
+            position: absolute;
+            top: -40px;
+            right: 0;
+            bottom: 0;
+            left: -62px;
+            width: 622px;
+            height: 164px;
+            z-index: 1;
+          }
+          #preview {
+            display: flex;
+          }
+          #preview2 {
+            display: flex;
+            width:700px;
+          }
+          img {
+            width: 120px;
+            height: 164px;
+            position: relative;
+            top: -40px;
+            left: -200px;
           }
         }
       }

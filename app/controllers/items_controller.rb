@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
     end
     
     def sell
+        @item = Item.new
     end
     
     def detail
