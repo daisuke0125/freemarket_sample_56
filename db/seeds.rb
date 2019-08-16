@@ -6,26 +6,34 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-lady = Category.create(name:"レディース")
-mens = Category.create(name:"メンズ")
-baby = Category.create(name:"ベビー・キッズ")
-interior = Category.create(name:"インテリア・住まい・小物")
-book = Category.create(name:"本・音楽・ゲーム")
-toy = Category.create(name:"おもちゃ・ホビー・ゲーム")
-beauty = Category.create(name:"コスメ・香水・美容")
+# 親要素
+ladys, mens, baby, interior= Category.create([{name:"レディース"},{name:"メンズ"},{name:"ベビー・キッズ"},{name:"インテリア・住まい・小物"}])
 
-lady_tops = lady.children.create(name:"トップス")
-lady_jacket = lady.children.create(name:"ジャケット/アウター")
-lady_pantsu = lady.children.create(name:"パンツ")
+# レディース 子要素
+tops, jacket, pantsu = ladys.children.create([{name:"トップス"},{name:"ジャケットアウター"},{name:"パンツ"}])
+# レディース 孫要素
+tops.children.create([{name:"Tシャツ/カットソー(半袖/袖なし)"}, {name:"Tシャツ/カットソー(七分/長袖)"},{name:"その他"}])
+jacket.children.create([{name:"テーラードジャケット"}, {name:"ノーカラージャケット"}, {name:"Gジャン/デニムジャケット"},{name:"その他"}])
+pantsu.children.create([{name:"デニム/ジーンズ"}, {name:"ショートパンツ"},{name:"その他"}])
 
-lady_tops.children.create([{name:"Tシャツ/カットソー(半袖/袖なし)"}, {name:"Tシャツ/カットソー(七分/長袖)"},{name:"その他"}])
-lady_jacket.children.create([{name:"テーラードジャケット"}, {name:"ノーカラージャケット"}, {name:"Gジャン/デニムジャケット"},{name:"その他"}])
-lady_pantsu.children.create([{name:"デニム/ジーンズ"}, {name:"ショートパンツ"},{name:"その他"}])
+# メンズ 子要素
+tops, jacket, pantsu = mens.children.create([{name:"トップス"},{name:"ジャケットアウター"},{name:"パンツ"}])
+# メンズ 孫要素
+tops.children.create([{name:"Tシャツ/カットソー(半袖/袖なし)"}, {name:"Tシャツ/カットソー(七分/長袖)"},{name:"その他"}])
+jacket.children.create([{name:"テーラードジャケット"}, {name:"ノーカラージャケット"}, {name:"Gジャン/デニムジャケット"},{name:"その他"}])
+pantsu.children.create([{name:"デニム/ジーンズ"}, {name:"ショートパンツ"},{name:"その他"}])
 
-mens_tops = mens.children.create(name:"トップス")
-mens_jacket = mens.children.create(name:"ジャケット/アウター")
-mens_pantsu = mens.children.create(name:"パンツ")
+# ベビー・キッズ 子要素
+babygirl, babyboby, babyboth = baby.children.create([{name:"ベビー服(女の子用)~95cm"},{name:"ベビー服(男の子用)~95cm"},{name:"ベビー服(男女兼用)~95cm"}])
+# おもちゃ 孫要素
+babygirl.children.create([{name:"トップス"}, {name:"アウター"},{name:"パンツ"},{name:"スカート"}])
+babyboby.children.create([{name:"トップス"}, {name:"アウター"},{name:"パンツ"},{name:"おくるみ"}])
+babyboth.children.create([{name:"トップス"}, {name:"アウター"},{name:"パンツ"},{name:"おくるみ"}])
 
-mens_tops.children.create([{name:"Tシャツ/カットソー(半袖/袖なし)"}, {name:"Tシャツ/カットソー(七分/長袖)"},{name:"その他"}])
-mens_jacket.children.create([{name:"テーラードジャケット"}, {name:"ノーカラージャケット"}, {name:"Gジャン/デニムジャケット"},{name:"その他"}])
-mens_pantsu.children.create([{name:"デニム/ジーンズ"}, {name:"ワークパンツ/カーゴパンツ"},{name:"その他"}])
+# インテリア・住まい・小物 子要素
+kitchen, bed, sofa, chair = interior.children.create([{name:"キッチン"},{name:"ベッド/マットレス"},{name:"ソファ/ソファベッド"},{name:"椅子/チェア"}])
+# インテリア・住まい・小物 孫要素
+kitchen.children.create([{name:"食器"}, {name:"調理器具"},{name:"収納/キッチン雑貨"},{name:"弁当用品"}])
+bed.children.create([{name:"セミシングルベッド"}, {name:"シングルベッド"},{name:"セミダブルベッド"},{name:"ダブルベッド"}])
+sofa.children.create([{name:"ソファセット"}, {name:"シングルソファ"},{name:"ラブソファ"},{name:"トリプルソファ"}])
+chair.children.create([{name:"一般"}, {name:"スツール"},{name:"ダイニングチェア"},{name:"ハイバックチェア"}])

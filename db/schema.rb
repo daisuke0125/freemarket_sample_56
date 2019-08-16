@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_08_14_083747) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -25,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_083747) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
@@ -33,8 +32,8 @@ ActiveRecord::Schema.define(version: 2019_08_14_083747) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
+    t.bigint "item_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_comments_on_item_id"
@@ -42,40 +41,43 @@ ActiveRecord::Schema.define(version: 2019_08_14_083747) do
   end
 
   create_table "goods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
+    t.bigint "user_id"
+    t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_goods_on_item_id"
     t.index ["user_id"], name: "index_goods_on_user_id"
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "images"
-  end
-
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "detail", null: false
     t.string "image", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
+    t.bigint "category_id"
     t.text "brand"
     t.string "condition", null: false
     t.string "delivery", null: false
     t.string "area", null: false
     t.string "days", null: false
     t.integer "price", null: false
-    t.integer "fee"
-    t.integer "gain"
-    t.bigint "good_id", null: false
-    t.bigint "comment_id", null: false
+    t.bigint "good_id"
+    t.bigint "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["comment_id"], name: "index_items_on_comment_id"
     t.index ["good_id"], name: "index_items_on_good_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "rate_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "rate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rate_id"], name: "index_rate_users_on_rate_id"
+    t.index ["user_id"], name: "index_rate_users_on_user_id"
   end
 
   create_table "rates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -90,15 +92,6 @@ ActiveRecord::Schema.define(version: 2019_08_14_083747) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_rates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "rate_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rate_id"], name: "index_user_rates_on_rate_id"
-    t.index ["user_id"], name: "index_user_rates_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -136,9 +129,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_083747) do
   add_foreign_key "comments", "users"
   add_foreign_key "goods", "items"
   add_foreign_key "goods", "users"
-  add_foreign_key "items", "comments"
-  add_foreign_key "items", "goods"
   add_foreign_key "items", "users"
-  add_foreign_key "user_rates", "rates"
-  add_foreign_key "user_rates", "users"
+  add_foreign_key "rate_users", "rates"
+  add_foreign_key "rate_users", "users"
 end

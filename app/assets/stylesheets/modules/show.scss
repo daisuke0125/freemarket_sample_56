@@ -19,9 +19,9 @@
           border-radius: 50%;
         }
       }
-      .name{
+      .my-name{
         text-align: center;
-        margin-bottom: 5px;
+        margin: 10px 0;
         font-weight: bold;
       }
       .mypage-number{
@@ -79,6 +79,10 @@
       margin-left:85px;
       padding-top: 14px;
       font-size: 14px;
+      &--text{
+        color: black;
+        margin-bottom: 6px;
+      }
       &--time{
         color: gray;
       }
@@ -100,6 +104,9 @@
     line-height: 60px;
     font-size: 13px;
     &:hover{background-color: #fafafa;}
+    a{
+      color: black;
+    }
   }
 }
 

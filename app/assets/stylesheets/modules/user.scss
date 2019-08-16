@@ -79,14 +79,20 @@
       height: 220px;
       background-color: $BackgroundColor;
       text-align: center;
-      &--list{
-          display: inline;
-          justify-content: center;
-          color: black;
-          &:hover{
-              opacity: 0.6;
-              text-decoration: underline;
-            }
+      list-style: none;
+      nav {
+        justify-content: center;
+        display: flex;
+        .sign_up__footer--list{
+            list-style: none;
+            color: black;
+            padding-right: 20px;
+            &:hover{
+                opacity: 0.6;
+                text-decoration: underline;
+                }
+        }
+    }
       a.single-footer-logo img.single-footer-logo {
           padding-top: 40px;
       }
@@ -96,4 +102,3 @@
       }
     }
   }
-}
