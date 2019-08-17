@@ -64,11 +64,12 @@ class SignupController < ApplicationController
             Card.create(card_number: card_params[:card_number], exp_month: card_params[:exp_month], exp_year: card_params[:exp_year], cvc: card_params[:cvc], user_id: session[:id])
             redirect_to done_signup_index_path
         else
-            redirect_to root_path
+            redirect_to step1_signup_index_path
         end
     end
 
     def done
+        sign_in User.find(session[:id]) unless user_signed_in?
     end
     
     private

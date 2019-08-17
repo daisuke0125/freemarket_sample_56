@@ -26,7 +26,7 @@
       .sign_up2__main__form
         #form1
           = f.label :name, "携帯電話の番号"
-          = f.telephone_field :number, class: "big"
+          = f.telephone_field :number, class: "big", required: "true"
         %h4 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
         #form1
           = f.submit "SMSを送信する", class: "buttom1"
