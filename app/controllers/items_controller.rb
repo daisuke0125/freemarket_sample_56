@@ -15,8 +15,13 @@ class ItemsController < ApplicationController
     def card_registration
     end
     
+    def add_card_registration
+    end
+
     def identification
     end
+
+
 
     def buy
     end
