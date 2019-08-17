@@ -13,10 +13,12 @@ Devise.setup do |config|
   config.omniauth :google_oauth2,
                   Rails.application.secrets.google_client_id,
                   Rails.application.secrets.google_client_secret
+                  # callback_url: "#{ENV['HOST']}/users/auth/facebook/calback"
 
   config.omniauth :facebook,
                   Rails.application.secrets.facebook_client_id,
                   Rails.application.secrets.facebook_client_secret
+  # config.omniauth :facebook,ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET']
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
