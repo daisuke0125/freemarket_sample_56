@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get 'identification'
       get 'logout'
       get 'card_registration'
+      get 'add_card_registration'
       get 'sell'
       get 'edit'
       get 'detail'
