@@ -34,7 +34,7 @@
       }
       &__bottom {
           display: flex;
-          margin: 8px 0 0;
+          margin: 15px 0 0;
           justify-content: space-between;
           font-size: 14px;
           line-height: 30px;
@@ -55,6 +55,7 @@
               }
           }
           &--right {
+            margin-right: 80px;
               .header-btn{
                 text-align: center;
                 border-radius: 4px;
@@ -71,6 +72,28 @@
                   border: 1px solid $BlueColor;
                   background: #fff;
                   color: $BlueColor;
+              }
+              .login-lists{
+                display: flex;
+                .login-li{
+                  &:hover{color: $BlueColor;}
+                }
+                a{
+                  color: black;
+                  &:hover{color: $BlueColor;}
+                  font-weight: normal;
+                }
+                .login-list{
+                  float: right;
+                  font-weight: normal;
+                  margin-right: 15px;
+                }
+              }
+              .login-icon{
+                color: rgb(189, 185, 185);
+                font-size: 20px;
+                margin:0 7px;
+                &:hover{color: $BlueColor;}
               }
           }
       }
