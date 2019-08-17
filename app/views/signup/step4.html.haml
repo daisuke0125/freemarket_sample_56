@@ -37,19 +37,19 @@
         #form1
           = f.label :name, "郵便番号"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :postcode, class: "big"
+          = f.text_field :postcode, class: "big", required: "true"
         #form1
           = f.label :name, "都道府県"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :prefectures, class: "big"
+          = f.text_field :prefectures, class: "big", required: "true"
         #form1
           = f.label :name, "市区町村"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :city, class: "big"
+          = f.text_field :city, class: "big", required: "true"
         #form1
           = f.label :name, "番地"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :streetNumber, class: "big"
+          = f.text_field :streetNumber, class: "big", required: "true"
         #form1
           = f.label :name, "建物名"
           = f.label :name, "任意", class: "select"
