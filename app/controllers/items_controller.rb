@@ -38,5 +38,4 @@ class ItemsController < ApplicationController
     def card_edit
         @card = Card.new
     end
-
 end
