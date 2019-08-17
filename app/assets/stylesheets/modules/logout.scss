@@ -8,9 +8,11 @@
       padding: 64px;
       border-top: 1px solid #f5f5f5;
       .l-single-content {
-        max-width: 320px;
+        background-color: aqua;
+        width: 320px;
         margin: 0 auto;
-        .btn-default {
+        @include btn-red;
+        input .btn-default {
           display: block;
           width: 100%;
           line-height: 48px;
@@ -22,9 +24,16 @@
           text-align: center;
           background: $RedColor;
           border: 1px solid $RedColor;
-          color: #fff;
           }
         }
       }
     }
   }
+.btn-logout{
+  background:$RedColor;
+  color: white;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  
+}
