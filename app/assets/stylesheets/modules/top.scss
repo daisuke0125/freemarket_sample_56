@@ -75,8 +75,8 @@
               }
               .login-lists{
                 display: flex;
-                li{
-                &:hover{color: $BlueColor;}
+                .login-li{
+                  &:hover{color: $BlueColor;}
                 }
                 a{
                   color: black;

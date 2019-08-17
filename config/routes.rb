@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   root "items#index"
   
-  get   "items/buy" => "items#buy"
   resources :signup do
     collection do
       get 'step1'
@@ -28,8 +27,14 @@ Rails.application.routes.draw do
       get 'edit'
       get 'detail'
       get 'card_edit'
+    end
+    member do
+      get 'mypage'
     end  
   end
+
+  #idが必要な場合はmemberへ、必要ない場合はcollectionへ
+
 
   get   "category" => "categories#index"
 

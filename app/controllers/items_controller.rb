@@ -3,7 +3,10 @@ class ItemsController < ApplicationController
     def index
     end
 
-    def show
+    def mypage
+      user = User.where(user_id: current_user.id)
+      @nickname = user.name
+  
     end
 
     def edit
