@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'done' # 登録完了後のページ
     end
   end
+  
   resources :items do
     collection do
       get 'buy'

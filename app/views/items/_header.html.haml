@@ -18,7 +18,20 @@
           %span.top ブランドから探す
       .header__inner__bottom--right
         - if user_signed_in?
-          ログイン成功
+          %ul.login-lists
+            %li
+              = fa_icon 'bell', class: "login-icon"
+              .login-list お知らせ
+            %li
+              = fa_icon 'heart', class: "login-icon"
+              .login-list いいね！一覧
+            %li
+              = fa_icon 'check', class: "login-icon"
+              .login-list やることリスト
+            %li
+              = fa_icon 'user', class: "login-icon"
+              = link_to "マイページ" ,edit_items_path ,clas:"login-list__mypage"
+              -# .login-list マイページ
         - else
           =link_to "新規会員登録" , new_user_registration_path ,class:"header-btn signup"
           =link_to "ログイン", new_user_session_path ,class:"header-btn login"
