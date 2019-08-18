@@ -4,7 +4,6 @@ class CardController < ApplicationController
   end
 
   def create
-    # binding.pry
     Card.create(card_number: card_params[:card_number], exp_month: card_params[:exp_month], exp_year: card_params[:exp_year], cvc: card_params[:cvc], user_id: current_user.id)
     redirect_to card_registration_items_path
   end
