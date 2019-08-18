@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_075939) do
+ActiveRecord::Schema.define(version: 2019_08_18_021308) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_number", null: false
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2019_08_16_075939) do
     t.string "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_images_on_item_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -112,7 +114,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_075939) do
     t.string "city", null: false
     t.string "streetNumber", null: false
     t.string "building"
-    t.string "cordNumber", null: false
+    t.string "cordNumber"
     t.text "profile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -135,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_075939) do
   add_foreign_key "comments", "users"
   add_foreign_key "goods", "items"
   add_foreign_key "goods", "users"
+  add_foreign_key "images", "items"
   add_foreign_key "items", "users"
   add_foreign_key "rate_users", "rates"
   add_foreign_key "rate_users", "users"
