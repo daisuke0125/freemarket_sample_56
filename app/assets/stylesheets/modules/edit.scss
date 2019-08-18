@@ -1,0 +1,136 @@
+.l-single-inner.registration-form {
+    padding: 24px 16px 40px;
+    max-width: 343px;
+    }
+.form-group:first-child {
+    margin: 0;
+    }
+.payment_card_no{
+    font-weight: 600;
+    display: inline-block;
+    }
+.form-require {
+    background: #ea352d;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+    }
+
+.form-group{
+.input-default {
+    width: 90%;
+    margin: 8px 0 0;
+    }
+}
+    
+.input-default {
+    width: 309px;
+    height: 28px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+    }
+
+.has-error-text {
+    color: #ea352d;
+    line-height: 1.5;
+    font-size: 14px;
+    }    
+.signup-card-list {
+    margin: 8px 0 0;
+    font-size: 0;
+    }
+
+.signup-card-list li:first-child {
+    margin: 0;
+}
+
+.signup-card-list li {
+    display: inline-block;
+    margin: 0 0 0 8px;
+    vertical-align: middle;
+}
+.l-single-inner.registration-form .form-group:not(:first-of-type), .l-single-inner.registration-form .btn-red {
+    margin: 24px 0 0;
+}
+
+.form-group label {
+    font-weight: 600;
+    display: inline-block;
+}
+
+.signup-form-expire .select-wrap.half {
+    display: inline-block;
+    width: calc(50% - 2px);
+    margin: 8px 0 0;
+    position: relative;
+    background: #fff;
+}
+
+.signup-form-expire .select-wrap select {
+    width:90px;
+}
+
+.select-default {
+    position: relative;
+    z-index: 2;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.fas.fa-angle-down{
+    position: absolute;
+    right: 52px;
+    top: 25%;
+    z-index: 2;
+    color: #888;
+    font-size: 28px;
+    }
+
+    .signup-seqcode-text {
+        text-align: right;
+        color: #0099e8;
+    }
+
+    .form-question {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #0099e8;
+        color: #fff;
+        line-height: 14px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .l-single-inner.registration-form .form-group:not(:first-of-type), .l-single-inner.registration-form .btn-red {
+        margin: 24px 0 0;
+    }
+
+    .l-single-inner.registration-form {
+        padding: 40px 40px 64px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .new_card{
+        padding: 24px 16px 40px;
+    }
+
+    .signup-form-expire {
+         margin: 24px 0 0;
+    }
+    
+    
