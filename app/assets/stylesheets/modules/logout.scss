@@ -1,13 +1,13 @@
-.l-content {
+.l-contents {
   float: right;
   width: 700px;
-  .l-chapter-container {
+  .l-chapter-containers {
     margin: 0;
     background: #fff;
-    .l-single-inner {
+    .l-single-inners {
       padding: 64px;
       border-top: 1px solid #f5f5f5;
-      .l-single-content {
+      .l-single-contents {
         background-color: aqua;
         width: 320px;
         margin: 0 auto;
@@ -29,7 +29,7 @@
       }
     }
   }
-.btn-logout{
+.btn-logouts{
   background:$RedColor;
   color: white;
   font-weight: bold;
