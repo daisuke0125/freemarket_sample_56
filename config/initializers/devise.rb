@@ -21,7 +21,8 @@ Devise.setup do |config|
                   # Rails.application.secrets.facebook_client_secret
                   # Rails.application.secrets.facebook_app_id,
                   # Rails.application.secrets.facebook_app_secret
-  config.omniauth :facebook,ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET']
+  require "omniauth-facebook"
+  config.omniauth :facebook,ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET'], provider_ignores_state: true
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.

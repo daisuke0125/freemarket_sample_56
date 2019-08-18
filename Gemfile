@@ -77,7 +77,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'font-awesome-rails'
 gem "omniauth"
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~>4.0'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'carrierwave'
