@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:facebook]
+         :omniauthable, omniauth_providers: %i[facebook google_oauth2]
+        #  [:facebook]
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :first_name_kana, presence: true
@@ -31,43 +32,82 @@ class User < ApplicationRecord
 
   devise :omniauthable,omniauth_providers: [:facebook, :google_oauth2]
 
-  def self.find_oauth(auth)
-    uid = auth.uid
-    provider = auth.provider
-    snscredential = SnsCredential.where(uid: uid, provider: provider).first
+  # def self.find_oauth(auth)
+  #   uid = auth.uid
+  #   provider = auth.provider
+  #   snscredential = SnsCredential.where(uid: uid, provider: provider).first
 
-    if snscredential.present? 
-      user = User.where(id: snscredential.user_id).first
-      unless user.present? 
-        user = User.new(
-          nickname: auth.info.name,
-          email: auth.info.email
-        )
-      end
-      sns = snscredential
+  #   if snscredential.present? 
+  #     user = User.where(id: snscredential.user_id).first
+  #     unless user.present? 
+  #       user = User.new(
+  #         nickname: auth.info.name,
+  #         email: auth.info.email
+  #       )
+  #     end
+  #     sns = snscredential
 
-    else 
-      user = User.where(email: auth.info.email).first
-      if user.present? 
-        sns = SnsCredential.new(
-          uid: uid,
-          provider: provider,
-          user_id: user.id
-        )
-      else 
-        user = User.new(
-          nickname: auth.info.name,
-          email: auth.info.email
-        )
+  #   else 
+  #     user = User.where(email: auth.info.email).first
+  #     if user.present? 
+  #       sns = SnsCredential.new(
+  #         uid: uid,
+  #         provider: provider,
+  #         user_id: user.id
+  #       )
+  #     else 
+  #       user = User.new(
+  #         nickname: auth.info.name,
+  #         email: auth.info.email
+  #       )
   
-        sns = SnsCredential.create(
-          uid: uid,
-          provider: provider
-        )
+  #       sns = SnsCredential.create(
+  #         uid: uid,
+  #         provider: provider
+  #       )
    
-      end
+  #     end
+  #   end
+  #   return { user: user , sns_id: sns.id }
+  # end
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.create(
+        uid: auth.uid,
+        provider: auth.provider,
+        nickname: auth.info.name,
+        email: User.dummy_email(auth),
+        password: Devise.friendly_token[0, 20]
+      )
     end
-    return { user: user , sns_id: sns.id }
+
+    user
   end
+
+  private
+
+  # Create dummy email for OAuth
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
+
+  # def self.find_for_oauth(auth)
+  #   user = User.where(uid: auth.uid, provider: auth.provider).first
+
+  #   unless user
+  #     user = User.create(
+  #       uid:      auth.uid,
+  #       provider: auth.provider,
+  #       email:    auth.info.email,
+  #       name:  auth.info.name,
+  #       password: Devise.friendly_token[0, 20],
+  #       image:  auth.info.image
+  #     )
+  #   end
+
+  #   user
+  # end
 end
 
