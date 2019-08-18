@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get 'logout'
       get 'card_registration'
       get 'add_card_registration'
+      get 'card_information'
       get 'sell'
       get 'edit'
       get 'detail'
@@ -38,5 +39,7 @@ Rails.application.routes.draw do
 
 
   get   "category" => "categories#index"
+  get   "card/edit" => "card#edit"
+  post   "card" => "card#create"
 
 end
