@@ -1,11 +1,13 @@
 class Users::OmniauthCallbacksController < ApplicationController
   def facebook
     callback_from :facebook
+    # callback_from(:facebook)
     # callback_for :facebook
   end
 
   def google_oauth2
     callback_from :google
+    # callback_from(:google)
     # callback_for :google
   end
 

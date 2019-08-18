@@ -70,28 +70,65 @@ class User < ApplicationRecord
   #   end
   #   return { user: user , sns_id: sns.id }
   # end
+
+
+
+  # def self.find_for_oauth(auth)
+  #   user = User.where(uid: auth.uid, provider: auth.provider).first
+
+  #   unless user
+  #     user = User.create(
+  #       uid: auth.uid,
+  #       provider: auth.provider,
+  #       nickname: auth.info.name,
+  #       email: User.dummy_email(auth),
+  #       password: Devise.friendly_token[0, 20]
+  #     )
+  #   end
+
+  #   user
+  # end
+
+  # private
+
+  # # Create dummy email for OAuth
+  # def self.dummy_email(auth)
+  #   "#{auth.uid}-#{auth.provider}@example.com"
+  # end
+
+
+
+
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
-
     unless user
-      user = User.create(
-        uid: auth.uid,
-        provider: auth.provider,
-        nickname: auth.info.name,
-        email: User.dummy_email(auth),
-        password: Devise.friendly_token[0, 20]
-      )
+     user = User.new(
+       uid: auth.uid,
+       provider: auth.provider,
+       email: auth.info.email,
+       password: Devise.friendly_token[0, 20]
+     )
+    if user.save
+      p "success"
+    else
+      p "failed"      
+      p user.errors
     end
-
-    user
+   end
+   user
   end
 
-  private
+  # def self.from_omniauth(auth)
+  #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+  #     user.provider = auth.provider
+  #     user.uid = auth.uid
+  #     user.email = auth.info.email
+  #     user.password = Devise.friendly_token[0,20]
+  #   end
+  # end
 
-  # Create dummy email for OAuth
-  def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
-  end
+
+
 
   # def self.find_for_oauth(auth)
   #   user = User.where(uid: auth.uid, provider: auth.provider).first
