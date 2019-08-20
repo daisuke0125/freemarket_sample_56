@@ -227,3 +227,23 @@ select#item_days {
   background-color: white;
   border: solid 1px #ccc;
 }
+select#parent_category {
+  height: 50px;
+  width: 414px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+select#child_category {
+  margin-top: 3px;
+  height: 50px;
+  width: 414px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+select#grandchild_category {
+  margin-top: 3px;
+  height: 50px;
+  width: 414px;
+  background-color: white;
+  border: solid 1px #ccc;
+}

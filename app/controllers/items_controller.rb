@@ -23,11 +23,31 @@ class ItemsController < ApplicationController
     
     def sell
         @item = Item.new
-        @image = Image.new
+        @item.images.build
+        
+        # @category_parent_array = []
+        # #データベースから、親カテゴリーのみ抽出し、配列化
+        # Category.where(ancestry: nil).each_with_index do |parent, i|
+        #     @category_box << parent.name
+        #     @catagory_box << i
+        #     @category_parent_array.push(@category_box)
+        # end
+    end
+
+    def get_category_children
+        #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+        @category_children = Category.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
+     end
+  
+     # 子カテゴリーが選択された後に動くアクション
+    def get_category_grandchildren
+        #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+        @category_grandchildren = Category.find("#{params[:child_id]}").children
     end
 
     def create
-        @item = Item.new(name: item_params[:name], detail: item_params[:detail], category_id: item_params[:category_id], brand: item_params[:brand], condition: item_params[:condition], delivery: item_params[:delivery], area: item_params[:area], days: item_params[:days], price: item_params[:price], images_attributes:[:id, :image, :item_id])
+        @item = Item.new(name: item_params[:name], detail: item_params[:detail], brand: item_params[:brand], condition: item_params[:condition], delivery: item_params[:delivery], area: item_params[:area], days: item_params[:days], price: item_params[:price], user_id: current_user.id, category_id: item_params[:category_id])
+        
         if @item.save
             redirect_to root_path
         else
@@ -45,7 +65,7 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-        params.require(:item).permit(:name, :detail, :image, :category_id, :brand, :condition, :delivery, :days, :area, :price)
+        params.require(:item).permit(:name, :detail, :brand, :condition, :delivery, :days, :area, :price, images_attributes: [:id, :image], category_id: [].last)
     end
 
     def image_params
