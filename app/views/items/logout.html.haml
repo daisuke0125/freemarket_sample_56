@@ -3,9 +3,9 @@
 .mypage
   .mypage__content
     = render "items/sidebar"
-    .l-content
-      .l-chapter-container
-        .l-single-inner
-          .l-single-content
-            =button_to 'ログアウト', destroy_user_session_path, method: :delete,class:"btn-logout"
+    .l-contents
+      .l-chapter-containers
+        .l-single-inners
+          .l-single-contents
+            =button_to 'ログアウト', destroy_user_session_path, method: :delete,class:"btn-logouts"
 =render "items/footer"
