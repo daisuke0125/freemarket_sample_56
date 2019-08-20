@@ -1,5 +1,9 @@
 class SignupController < ApplicationController
 
+    def step0
+        @user = User.new
+    end
+
     def step1
         @user = User.new
     end
@@ -59,6 +63,7 @@ class SignupController < ApplicationController
             building: session[:building],
             cordNumber: session[:cordNumber]
         )
+
         if @user.save
             session[:id] = @user.id
             Card.create(card_number: card_params[:card_number], exp_month: card_params[:exp_month], exp_year: card_params[:exp_year], cvc: card_params[:cvc], user_id: session[:id])

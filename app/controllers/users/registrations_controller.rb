@@ -35,7 +35,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
 
-
   # def sns
   #   @user = User.new(
   #     nickname: session[:nickname],
