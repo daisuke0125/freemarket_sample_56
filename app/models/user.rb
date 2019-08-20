@@ -45,7 +45,9 @@ class User < ApplicationRecord
           nickname: auth.info.name,
           email: auth.info.email,
           uid:      auth.uid,
+          provider: auth.provider,
         )
+        SnsCredential.update(user_id: user.id)
       end
       sns = snscredential
 
@@ -61,11 +63,14 @@ class User < ApplicationRecord
         user = User.new(
           nickname: auth.info.name,
           email: auth.info.email,
+          uid: auth.uid,
+          provider: auth.provider,
         )
   
         sns = SnsCredential.create(
           uid: uid,
-          provider: provider
+          provider: provider,
+          user_id: user.id
         )
    
       end

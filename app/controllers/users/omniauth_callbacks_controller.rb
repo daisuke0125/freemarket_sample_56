@@ -89,7 +89,7 @@ class Users::OmniauthCallbacksController < ApplicationController
     else #userが存在しなかったら
       # session["devise.sns_id"] = sns_id #sns_credentialのid devise.他のアクションに持ち越せる(少し難)
       session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
-      render template: "signup/step0"#redirect_to だと更新してしまうのでrenderで
+      render template: "signup/step0_1"#redirect_to だと更新してしまうのでrenderで
       # render template: "signup/step1"#redirect_to だと更新してしまうのでrenderで
       # sign_in_and_redirect @user, event: :authentication
       # render template: "items/index"#redirect_to だと更新してしまうのでrenderで

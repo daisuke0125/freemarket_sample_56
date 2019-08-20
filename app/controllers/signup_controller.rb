@@ -1,6 +1,24 @@
 class SignupController < ApplicationController
 
-    def step0
+    def step0_1
+        @user = User.new
+    end
+
+    def step0_2
+        session[:nickname] = user_params[:nickname]
+        session[:email] = user_params[:email]
+        session[:password] = user_params[:password]
+        session[:password_confirmation] = user_params[:password_confirmation]
+        session[:first_name] = user_params[:first_name]
+        session[:last_name] = user_params[:last_name]
+        session[:first_name_kana] = user_params[:first_name_kana]
+        session[:last_name_kana] = user_params[:last_name_kana]
+        session[:birth_year] = user_params[:birth_year]
+        session[:birth_month] = user_params[:birth_month]
+        session[:birth_day] = user_params[:birth_day]
+        session[:uid] = user_params[:uid]
+        session[:provider] = user_params[:provider]
+
         @user = User.new
     end
 
@@ -20,6 +38,7 @@ class SignupController < ApplicationController
         session[:birth_year] = user_params[:birth_year]
         session[:birth_month] = user_params[:birth_month]
         session[:birth_day] = user_params[:birth_day]
+
         @user = User.new
     end
 
@@ -61,10 +80,18 @@ class SignupController < ApplicationController
             city: session[:city],
             streetNumber: session[:streetNumber],
             building: session[:building],
-            cordNumber: session[:cordNumber]
+            cordNumber: session[:cordNumber],
+            provider: session[:provider],
+            uid: session[:uid]
         )
 
+
+
         if @user.save
+            @sns = SnsCredential.where(uid: @user.uid)
+            if @sns
+                @sns.update(user_id: @user.id)
+            end
             session[:id] = @user.id
             Card.create(card_number: card_params[:card_number], exp_month: card_params[:exp_month], exp_year: card_params[:exp_year], cvc: card_params[:cvc], user_id: session[:id])
             redirect_to done_signup_index_path
@@ -98,7 +125,9 @@ class SignupController < ApplicationController
             :building,
             :last_name_kana,
             :first_name_kana,
-            :cordNumber
+            :cordNumber,
+            :provider,
+            :uid
         )
     end
 
