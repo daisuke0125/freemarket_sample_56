@@ -53,8 +53,8 @@ $(document).on('turbolinks:load', function(){
           'left': `calc(130px * ${images.length})` 
         })
         preview.css ({
-          'left': `calc(-185px * ${images.length})`,
-          'marginLeft': `calc(70px * ${images.length - 1})`
+          'left': `calc(-160px * ${images.length})`,
+          'marginLeft': `calc(35px * ${images.length - 1})`
         })
         upload.css ({
           'width': `calc(622px - (130px * ${images.length}))`,
