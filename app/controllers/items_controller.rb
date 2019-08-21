@@ -35,6 +35,8 @@ class ItemsController < ApplicationController
         @category_parent_array = ["---"]
         Category.where(ancestry: nil).each do |parent|
          @category_parent_array << parent.name
+        #  @category_parent_array.values_at << parent.id
+        #  @category_parent_value << i
         end
     end
 
@@ -46,7 +48,7 @@ class ItemsController < ApplicationController
      # 子カテゴリーが選択された後に動くアクション
     def get_category_grandchildren
         #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
-        @category_grandchildren = Category.find("#{params[:child_id]}").children
+        @category_grandchildren = Category.find( "#{params[:child_id]}").children
     end
 
     def create
@@ -69,7 +71,7 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-        params.require(:item).permit(:name, :detail, :brand, :condition, :delivery, :days, :area, :price, images_attributes: [:id, :image], category_id: [].last)
+        params.require(:item).permit(:name, :detail, :brand, :condition, :delivery, :days, :area, :price, images_attributes: [:id, :image], category_id: [])
     end
 
     def image_params
