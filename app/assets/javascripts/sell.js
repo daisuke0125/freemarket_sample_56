@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function(){
-  var item = $('.sell-form__upload--box--item');
+  var item = $('.sell-form__upload--box--items');
   var box = $('.sell-form__upload--box')
   var dropzone = $('.dropzone-area');
   var dropzone2 = $('.dropzone-area2');
@@ -32,6 +32,8 @@ $(document).on('turbolinks:load', function(){
       box.css({
         'display': 'block'
       })
+      // item.css({'display':'flex','flex-wrap':'wrap','width':'700px','justify-content':'space-between','height':'600px','top':'-375px',left: '-400px', 'position': 'relative'})
+      $('#preview2').css({'flex-wrap':'wrap','height': '600px','position': 'relative', 'top': '-300px','left': '-530px'});
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview2.append(image);
