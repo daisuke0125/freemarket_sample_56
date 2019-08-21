@@ -75,10 +75,9 @@ end
 gem 'devise'
 
 gem 'haml-rails'
-gem 'font-awesome-rails' 
-gem 'font-awesome-sass'
-gem "omniauth-rails_csrf_protection"
-gem 'omniauth-facebook'
+gem 'font-awesome-rails'
+gem "omniauth"
+gem 'omniauth-facebook', '~>4.0'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'carrierwave'
@@ -89,3 +88,4 @@ gem 'recaptcha', require: 'recaptcha/rails'
 gem 'jquery-rails'
 gem 'ancestry'
 gem 'pry-rails'
+gem 'payjp'
