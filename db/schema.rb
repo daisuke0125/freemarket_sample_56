@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_08_17_095815) do
     t.string "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_images_on_item_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -138,6 +140,7 @@ ActiveRecord::Schema.define(version: 2019_08_17_095815) do
   add_foreign_key "comments", "users"
   add_foreign_key "goods", "items"
   add_foreign_key "goods", "users"
+  add_foreign_key "images", "items"
   add_foreign_key "items", "users"
   add_foreign_key "rate_users", "rates"
   add_foreign_key "rate_users", "users"

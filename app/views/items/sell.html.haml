@@ -5,31 +5,50 @@
         = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983" ,alt: "mercari", height: "49", width: "185"
   %main.single-main
     .single-main__container
-      %h2.sell-container 商品の情報を入力
-      %form.sell-form
-        .sell-form__upload
-          %h3.sell-form__upload--head
-            %lavel 出品画像
-            %span.form-arbitrary 必須
-          %p 最大10枚までアップロードできます
-          .sell-form__upload--box
-            -# = file_field 
-            .sell-form__upload--box--items
-              .sell-form__upload--box--item
-                %input.sell-form__upload__drop-file
-                %pre
-                  :preserve
-                    ドラッグアンドドロップ
-                    またはクリックしてファイルをアップロード
+      = form_for @item, html: {class: "dropzone", id: "item-dropzone" } do |f|
+        %h2.sell-container 商品の情報を入力
+        %form.sell-form
+          .sell-form__upload
+            %h3.sell-form__upload--head
+              %lavel 出品画像
+              %span.form-arbitrary 必須
+            %p 最大10枚までアップロードできます
+            = f.fields_for :image do |image|
+              .sell-form__upload--box
+                .sell-form__upload--box--items
+                  #preview
+                  .dropzone-area
+                    = image.label :images, class: "dropzone-box", for: "upload-image" do
+                      %input.sell-form__upload__drop-file
+                        = image.file_field :images, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                      %pre
+                        %br
+                          ドラッグアンドドロップ
+                          またはクリックしてファイルをアップロード
+                          -# :preserve
+
+              -# #dropzone2.sell-form__upload--box
+              -#   .sell-form__upload--box--items
+              -#     .sell-form__upload--box--item
+              -#       #preview
+              -#       .dropzone-area
+              -#         = image.label :images, class: "dropzone-box", for: "upload-image" do
+              -#           %input.sell-form__upload__drop-file
+              -#             = image.file_field :images, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+              -#           %pre
+              -#             :preserve
+              -#               ドラッグアンドドロップ
+              -#               またはクリックしてファイルをアップロード
+
         .sell-content
           .form-group
             %lavel 商品名
             %span.form-arbitrary 必須
-            %input.input-default{placeholder:"商品名（必須40文字まで）",type:"text",value:""}
+            = f.text_field :name, placeholder: "商品名（必須40文字まで）", type: "text", class: "input-default"
           .form-group
             %lavel 商品の説明
             %span.form-arbitrary 必須
-            %textarea.input-default{placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", type:"text",value:"" , rows:5}
+            = f.text_area :detail, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", type: "text", class: "input-default", rows:5
         .sell-content.clearfix
           .sell-content__head 商品の詳細
           .form-group
@@ -43,10 +62,7 @@
             %lavel 商品の状態
             %span.form-arbitrary 必須
             .select-wrap
-              = fa_icon 'angle-down'
-              %select.select-default{name: "prefecture"}
-                %option{selected: "selected"} --
-                %option 北海道
+              = f.select :condition, ["新品、未使用","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], prompt: "---"
         .sell-content.clearfix
           .sell-content__head 配送について
           = link_to "?","/jp/help_center/article/68/", target: "_blank" ,class:"form-question"
@@ -54,24 +70,15 @@
             %lavel 配送料の負担
             %span.form-arbitrary 必須
             .select-wrap
-              = fa_icon 'angle-down'
-              %select.select-default{name: "prefecture"}
-                %option{selected: "selected"} --
-                %option 北海道
+              = f.select :delivery, ["送料込み(出品者負担)", "着払い(購入者負担)"], prompt: "---"
             %lavel 発送元の地域
             %span.form-arbitrary 必須
             .select-wrap
-              = fa_icon 'angle-down'
-              %select.select-default{name: "prefecture"}
-                %option{selected: "selected"} --
-                %option 北海道
+              = f.select :area, ["北海道","青森","秋田","岩手","山形","宮城","福島","栃木","茨城","群馬","埼玉","千葉","東京","神奈川","新潟","長野","山梨","静岡","愛知","岐阜","富山","石川","福井","愛知","滋賀","三重","奈良","和歌山","大阪","京都","兵庫","岡山","鳥取","広島","島根","山口","香川","徳島","高知","愛媛","福岡","大分","宮崎","熊本","佐賀","長崎","鹿児島","沖縄"], prompt: "---"
             %lavel 発送までの日数
             %span.form-arbitrary 必須
             .select-wrap
-              = fa_icon 'angle-down'
-              %select.select-default{name: "prefecture"}
-                %option{selected: "selected"} --
-                %option 北海道
+              = f.select :days, ["1~2日で発送","2~3日で発送","4~7日で発送"], prompt: "---"
         .sell-content.clearfix
           .sell-content__head 販売価格(300〜9,999,999)
           = link_to "?","/jp/help_center/article/68/", target: "_blank" ,class:"form-question"
@@ -79,8 +86,8 @@
             %lavel 価格
             %span.form-arbitrary 必須
             %lavel.left-yen ¥
-            %input{placeholder:"例）300",type:"text",value:"",class:"price"}
-          .form-group__line
+            = f.text_field :price, type: "text", placeholder: "例) 300", class: "price"
+          .form-group__line.none
             %span 販売手数料(10%)
             %span -
           .form-group__line.bold
