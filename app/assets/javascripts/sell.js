@@ -33,13 +33,16 @@ $(document).on('turbolinks:load', function(){
         'display': 'block'
       })
       // item.css({'display':'flex','flex-wrap':'wrap','width':'700px','justify-content':'space-between','height':'600px','top':'-375px',left: '-400px', 'position': 'relative'})
-      $('#preview2').css({'flex-wrap':'wrap','height': '600px','position': 'relative', 'top': '-300px','left': '-530px'});
+      $('#preview2').css({'flex-wrap':'wrap','height': '600px','position': 'relative', 'top': '-300px'});
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview2.append(image);
         $('#dropzone2').css({
           'width': `calc(100% - (135px * ${images.length - 5}))`
         })
+      $('#preview2').css({
+        'left': `calc(-150px - (130px * ${images.length - 6}))`
+      })
       box.css({
         'width': `calc(100% - (130px * ${images.length - 5}))`,
         'left': `calc(130px * ${images.length - 5})` 
@@ -55,6 +58,9 @@ $(document).on('turbolinks:load', function(){
       })
       if(images.length == 9) {
         box.find('p').replaceWith('<i class="fa fa-camera"></i>')
+      }
+      if(images.length == 10) {
+        box.css({'border': '0'})
       }
     } 
      else {
