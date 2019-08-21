@@ -38,6 +38,18 @@ $(document).on('turbolinks:load', function(){
         $('#dropzone2').css({
           'width': `calc(100% - (135px * ${images.length - 5}))`
         })
+      box.css({
+        'width': `calc(100% - (130px * ${images.length - 5}))`,
+        'left': `calc(130px * ${images.length - 5})` 
+      })
+      preview.css ({
+        'left': `calc(-160px * ${images.length - 5})`,
+        'marginLeft': `calc(35px * ${images.length - 6})`
+      })
+      upload.css ({
+        'width': `calc(622px - (135px * ${images.length - 5}))`,
+        'left': `calc(-62px + (13px * ${images.length - 5}))`
+      })
       })
       if(images.length == 9) {
         box.find('p').replaceWith('<i class="fa fa-camera"></i>')
