@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function(){
     inputs.push($(this));
     var img = $(`<div class= "img_view"><img></div>`);
     reader.onload = function(e) {
-      var btn_wrapper = $('<div class="btn_wrapper"><div class="btn edit">編集</div><div class="btn delete">削除</div></div>');
+      var btn_wrapper = $('<div class="btn_wrapper-image"><div class="btn-edit">編集</div><div class="btn-delete">削除</div></div>');
       img.append(btn_wrapper);
       img.find('img').attr({
         src: e.target.result
@@ -29,13 +29,13 @@ $(document).on('turbolinks:load', function(){
     images.push(img);
 
     if(images.length > 5) {
-      dropzone2.css({
+      $('#dropzone2').css({
         'display': 'block'
       })
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview2.append(image);
-        dropzone2.css({
+        $('#dropzone2').css({
           'width': `calc(100% - (135px * ${images.length - 5}))`
         })
       })
@@ -49,7 +49,7 @@ $(document).on('turbolinks:load', function(){
           preview.append(image);
         })
         box.css({
-          'width': `calc(100% - (135px * ${images.length}))`,
+          'width': `calc(100% - (130px * ${images.length}))`,
           'left': `calc(130px * ${images.length})` 
         })
         preview.css ({
@@ -57,7 +57,7 @@ $(document).on('turbolinks:load', function(){
           'marginLeft': `calc(70px * ${images.length - 1})`
         })
         upload.css ({
-          'width': `calc(622px - (135px * ${images.length}))`,
+          'width': `calc(622px - (130px * ${images.length}))`,
           'left': `calc(-62px + (13px * ${images.length}))`
         })
         // photo_left.css ({
@@ -77,28 +77,6 @@ $(document).on('turbolinks:load', function(){
     input_area.prepend(new_image);
   });
 
-  $('#item_price').on('keyup', function(e) {
-    e.preventDefault();
-    var price = $(this).val();
-    var first = `<span>-</span>`
-    if (price == 0){
-      $('.form-group__line.none span').last().hide()
-      $('.form-group__line.bold span').last().hide()
-      $('.form-group__line.none').append(first);
-      $('.form-group__line.bold').append(first);
-      }
-    else {
-      var fee = price * 0.1
-      var profit = price * 0.9
-      $('.form-group__line.none span').last().hide()
-      $('.form-group__line.bold span').last().hide()
-      var feeline = `<span>¥${fee}</span>`
-      var profitline = `<span>¥${profit}</span>`
-      $('.form-group__line.none').append(feeline);
-      $('.form-group__line.bold').append(profitline);
-      $('.form-group__line.bold span').last().css('font-size', '34px')
-    }
-  });
 
 //   else if(images.length = 5) {
 //     // box.css({

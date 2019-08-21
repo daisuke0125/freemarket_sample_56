@@ -27,6 +27,9 @@
     &__upload{
       width: 620px;
       padding: 40px;
+      &--head{
+        position: relative;
+      }
       lavel{
         font-size: 16px;
         font-weight: bold;
@@ -41,13 +44,14 @@
       &--box{
         width: 620px;
         height: 162px;
+        margin-bottom: 5px;
         background: #f5f5f5;
         border: 1px dashed #ccc;
         font-size: 0;
         text-align: center;
         position: relative;
         &--item{
-          position: relative;
+          // position: relative;
           width: 80%;
           height: 80px;
           margin: 40px auto;
@@ -61,16 +65,23 @@
             position: absolute;
             left: 16px;
             right: 16px;
+            top: 35%;
+            height: 100%;
             text-align: center;
             font-size: 14px;
-            line-height: 2;
-            height: 123px;
-            width: 100%;
+            line-height: 1.4;
+            overflow: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            transform: translate(0, -35%);
+            .click-drop{
+              height: 50%;
+            }
           }
           .upload-image {
             content: "";
             position: absolute;
-            top: -40px;
+            top: -30px;
             right: 0;
             bottom: 0;
             left: -62px;
@@ -87,12 +98,49 @@
             display: flex;
             width:700px;
           }
+          .img_view{
+            background-color:$BackgroundColor;
+            height: 124px;
+            position: relative;
+          }
           img {
-            width: 120px;
-            height: 164px;
+            width: 100px;
+            height: 140px;
             position: relative;
             top: -40px;
+            margin: 0 8px 8px 8px;
             // left: -200px;
+          }
+          .btn_wrapper-image{
+            background-color: #f5f5f5;
+            position: absolute;
+            height: 44px;
+            width: 110px;
+            left: 3px;
+            top: 80px;
+            .btn-edit{
+              width: 50%;
+              height: 44px;
+              color: $BlueColor;
+              font-size: 15px;
+              line-height: 44px;
+              float: left;
+              cursor: pointer;
+              &:hover{
+                opacity: 0.6;
+                text-decoration: underline;
+              }
+            }
+            .btn-delete{
+              font-size: 15px;
+              line-height: 44px;
+              color: $BlueColor;
+              cursor: pointer;
+              &:hover{
+                opacity: 0.6;
+                text-decoration: underline;
+              }
+            }
           }
         }
       }
@@ -103,6 +151,10 @@
       margin-top: 40px;
     }
   }
+}
+
+#dropzone2{
+  display: none;
 }
 .sell-content{
   border-top: 1px solid #eee;

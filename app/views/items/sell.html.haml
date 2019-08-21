@@ -22,17 +22,28 @@
                       = image.label :images, class: "dropzone-box", for: "upload-image" do
                         %input.sell-form__upload__drop-file
                           = image.file_field :images, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                          .btn-wrapper-image あああ
+                          -#   .btn-wrapper-image__edit 編集
+                          -#   .btn-wrapper-image__delete 削除
                         %pre
-                          :preserve
+                          %br
                             ドラッグアンドドロップ
                             またはクリックしてファイルをアップロード
-                    #preview2
-                    .dropzone-area2
-                      = image.label :images, class: "dropzone-box", for: "upload-image" do
-                        %pre
-                          :preserve
-                            ドラッグアンドドロップ
-                            またはクリックしてファイルをアップロード
+                            -# :preserve
+
+              -# #dropzone2.sell-form__upload--box
+              -#   .sell-form__upload--box--items
+              -#     .sell-form__upload--box--item
+              -#       #preview
+              -#       .dropzone-area
+              -#         = image.label :images, class: "dropzone-box", for: "upload-image" do
+              -#           %input.sell-form__upload__drop-file
+              -#             = image.file_field :images, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+              -#           %pre
+              -#             :preserve
+              -#               ドラッグアンドドロップ
+              -#               またはクリックしてファイルをアップロード
+
         .sell-content
           .form-group
             %lavel 商品名
