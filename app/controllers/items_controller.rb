@@ -32,11 +32,15 @@ class ItemsController < ApplicationController
         #     @catagory_box << i
         #     @category_parent_array.push(@category_box)
         # end
+        @category_parent_array = ["---"]
+        Category.where(ancestry: nil).each do |parent|
+         @category_parent_array << parent.name
+        end
     end
 
     def get_category_children
         #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-        @category_children = Category.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
+        @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
      end
   
      # 子カテゴリーが選択された後に動くアクション
