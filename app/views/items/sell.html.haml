@@ -16,20 +16,21 @@
             = f.fields_for :image do |image|
               .sell-form__upload--box
                 .sell-form__upload--box--items
-                  .sell-form__upload--box--item
-                    #preview
-                    .dropzone-area
-                      = image.label :images, class: "dropzone-box", for: "upload-image" do
-                        %input.sell-form__upload__drop-file
-                          = image.file_field :images, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                        %pre
+                  #preview
+                  .dropzone-area
+                    = image.label :images, class: "dropzone-box", for: "upload-image" do
+                      %input.sell-form__upload__drop-file
+                        = image.file_field :images, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                      %pre
+                        %br
                           :preserve
                             ドラッグアンドドロップ
                             またはクリックしてファイルをアップロード
-                    #preview2
-                    .dropzone-area2
-                      = image.label :images, class: "dropzone-box", for: "upload-image" do
-                        %pre
+                  #preview2
+                  .dropzone-area2
+                    = image.label :images, class: "dropzone-box", for: "upload-image" do
+                      %pre
+                        %br
                           :preserve
                             ドラッグアンドドロップ
                             またはクリックしてファイルをアップロード
