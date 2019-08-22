@@ -135,7 +135,7 @@ $(document).on('turbolinks:load', function(){
     }
   });
 
-  $(document).on('click', '.delete', function() {
+  $(document).on('click', '.btn-delete', function() {
     var target_image = $(this).parent().parent();
     $.each(inputs, function(index, input){
       if ($(this).data('image') == target_image.data('image')){
