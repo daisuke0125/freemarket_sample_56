@@ -19,6 +19,12 @@ $(document).on('turbolinks:load', function(){
     var reader = new FileReader();
     inputs.push($(this));
     var img = $(`<div class= "img_view"><img></div>`);
+    // var target_image = $(this).parent().parent();
+    // var data_image = target_image.data('image');
+    // var img_view = target_image.find('img').attr('id')
+    // if (img_view > target_image.data('image')){
+    //   target_image.find('img').attr('id', 1);
+    // }
     reader.onload = function(e) {
       var btn_wrapper = $('<div class="btn_wrapper-image"><div class="btn-edit">編集</div><div class="btn-delete">削除</div></div>');
       img.append(btn_wrapper);
@@ -146,26 +152,32 @@ $(document).on('turbolinks:load', function(){
 
   $(document).on('click', '.btn-delete', function() {
     var target_image = $(this).parent().parent();
+    var data_image = target_image.data('image');
     var img_view = target_image.find('img').attr('id')
     // var img_view = $(this).closest('#preview').find('.img_view');
     // var file = $(this).prop('files')[0];
     // var reader = new FileReader();
     // reader.readAsDataURL(file);
     // $('#upload-image').prop('disabled',true);
-    console.log(img_view);
+    console.log(data_image);
     $.each(inputs, function(index, input){
       if ( img_view == target_image.data('image')){
         // $(this).remove();
-        target_image.remove();
+        // target_image.remove();
+        target_image.attr('data-image', index).remove();
         var num = img_view;
         // var num = target_image;
+        console.log(img_view);
         images.splice(num, 1);
-        inputs.splice(num, 1);
+        input.splice(num, 1);
         // if(inputs.length == 0) {
         //   $('input[type= "file"].upload-image').attr({
         //     'data-image': 0
         //   })
         // }
+      }
+      if (img_view > target_image.data('image')){
+        target_image.find('img').attr('id', data_image);
       }
     })
     $('input[type= "file"].upload-image:first').attr({
