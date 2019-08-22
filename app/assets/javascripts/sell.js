@@ -81,6 +81,7 @@ $(document).on('turbolinks:load', function(){
         $.each(images, function(index, image) {
           image.attr('data-image', index);
           preview.append(image);
+          $('img').attr('id', index);
         })
         box.css({
           'width': `calc(100% - (130px * ${images.length}))`,
@@ -137,20 +138,24 @@ $(document).on('turbolinks:load', function(){
 
 
 
-
+// if ( $(this).data('image')←ここを変更する == target_image.data('image')){
 
 
   $(document).on('click', '.btn-delete', function() {
     var target_image = $(this).parent().parent();
+    var img_view = target_image.find('img').attr('id')
+    // var img_view = $(this).closest('#preview').find('.img_view');
     // var file = $(this).prop('files')[0];
     // var reader = new FileReader();
     // reader.readAsDataURL(file);
     // $('#upload-image').prop('disabled',true);
+    console.log($(this).parent().data('image'));
     $.each(inputs, function(index, input){
-      if ($(this).data('image') == target_image.data('image')){
+      if ( img_view == target_image.data('image')){
         // $(this).remove();
         target_image.remove();
-        var num = $(this).data('image');
+        var num = img_view;
+        // var num = target_image;
         images.splice(num, 1);
         inputs.splice(num, 1);
         // if(inputs.length == 0) {
@@ -160,16 +165,16 @@ $(document).on('turbolinks:load', function(){
         // }
       }
     })
-    // $('input[type= "file"].upload-image:first').attr({
-    //   'data-image': inputs.length
-    // })
-    // $.each(inputs, function(index, input) {
-    //   var input = $(this)
-    //   input.attr({
-    //     'data-image': index
-    //   })
-    //   $('input[type= "file"].upload-image:first').after(input)
-    // })
+    $('input[type= "file"].upload-image:first').attr({
+      'data-image': inputs.length
+    })
+    $.each(inputs, function(index, input) {
+      var input = $(this)
+      input.attr({
+        'data-image': index
+      })
+      $('input[type= "file"].upload-image:first').after(input)
+    })
     if (images.length >= 5) {
       dropzone2.css({
         'display': 'block'
