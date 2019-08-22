@@ -12,6 +12,7 @@ $(document).on('turbolinks:load', function(){
   var view = $('.img_view');
   var photo_left = $('.img_view').find('img');
   var upload = $('.upload-image');
+  var image_photo = $('img');
 
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
     var file = $(this).prop('files')[0];
@@ -37,6 +38,7 @@ $(document).on('turbolinks:load', function(){
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview2.append(image);
+        image.find('img').attr('id', index);
         $('#dropzone2').css({
           'width': `calc(100% - (135px * ${images.length - 5}))`
         })
@@ -74,6 +76,7 @@ $(document).on('turbolinks:load', function(){
         $.each(images, function(index, image) {
           image.attr('data-image', index);
           preview.append(image);
+          image.find('img').attr('id', index);
         })
       }
       if (images.length <= 4){
@@ -81,7 +84,7 @@ $(document).on('turbolinks:load', function(){
         $.each(images, function(index, image) {
           image.attr('data-image', index);
           preview.append(image);
-          $('img').attr('id', index);
+          image.find('img').attr('id', index);
         })
         box.css({
           'width': `calc(100% - (130px * ${images.length}))`,
@@ -149,7 +152,7 @@ $(document).on('turbolinks:load', function(){
     // var reader = new FileReader();
     // reader.readAsDataURL(file);
     // $('#upload-image').prop('disabled',true);
-    console.log($(this).parent().data('image'));
+    console.log(img_view);
     $.each(inputs, function(index, input){
       if ( img_view == target_image.data('image')){
         // $(this).remove();
