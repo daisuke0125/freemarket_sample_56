@@ -153,11 +153,11 @@ $(document).on('turbolinks:load', function(){
         var num = $(this).data('image');
         images.splice(num, 1);
         inputs.splice(num, 1);
-        if(inputs.length == 0) {
-          $('input[type= "file"].upload-image').attr({
-            'data-image': 0
-          })
-        }
+        // if(inputs.length == 0) {
+        //   $('input[type= "file"].upload-image').attr({
+        //     'data-image': 0
+        //   })
+        // }
       }
     })
     // $('input[type= "file"].upload-image:first').attr({
