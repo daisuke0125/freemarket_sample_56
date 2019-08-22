@@ -18,9 +18,9 @@
                 .sell-form__upload--box--items
                   #preview
                   .dropzone-area
-                    = image.label :images, class: "dropzone-box", for: "upload-image" do
+                    = image.label :photo, class: "dropzone-box", for: "upload-image" do
                       %input.sell-form__upload__drop-file
-                        = image.file_field :images, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                        = image.file_field :photo, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
                       %pre.pre1
                         %br
                           :preserve
@@ -28,7 +28,7 @@
                             またはクリックしてファイルをアップロード
                   #preview2
                   .dropzone-area2
-                    = image.label :images, class: "dropzone-box", for: "upload-image" do
+                    = image.label :photo, class: "dropzone-box", for: "upload-image" do
                       %pre
                         %br
                           :preserve

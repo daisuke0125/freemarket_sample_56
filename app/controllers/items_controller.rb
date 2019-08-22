@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     
     def sell
         @item = Item.new
-        2.times{@item.images.build}
+        # 10.times{@item.images.build}
         
         # @category_parent_array = []
         # #データベースから、親カテゴリーのみ抽出し、配列化
@@ -54,6 +54,8 @@ class ItemsController < ApplicationController
 
     def create
         @item = Item.new(name: item_params[:name], detail: item_params[:detail], brand: item_params[:brand], condition: item_params[:condition], delivery: item_params[:delivery], area: item_params[:area], days: item_params[:days], price: item_params[:price], user_id: current_user.id, category_id: item_params[:category_id])
+        # @item = Item.new(item_params)
+        # binding.pry
         if @item.save
             # binding.pry
             # params[:images]['images'].each do |a|
@@ -75,7 +77,7 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-        params.require(:item).permit(:name, :detail, :category_id, :brand, :condition, :delivery, :days, :area, :price, images_attributes: [:images])
+        params.require(:item).permit(:name, :detail, :category_id, :brand, :condition, :delivery, :days, :area, :price, images_attributes: [:photo])
     end
 
     def image_params
