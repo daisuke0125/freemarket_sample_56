@@ -3,7 +3,10 @@ class ItemsController < ApplicationController
     def index
     end
 
-    def show
+    def mypage
+      user = User.where(user_id: current_user.id)
+      @nickname = user.name
+  
     end
 
     def edit
@@ -15,8 +18,15 @@ class ItemsController < ApplicationController
     def card_registration
     end
     
+    def add_card_registration
+    end
+
+    def card_information
+    end
+
     def identification
     end
+
 
     def buy
     end

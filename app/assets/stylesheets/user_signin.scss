@@ -1,0 +1,75 @@
+
+.sign_in__panel {
+    padding: 0 500px;
+    .sign_in__main {
+        background-color: white;
+        text-align: center;
+        &__header {
+            padding: 40px 64px 20px;
+            border-bottom: solid 1px rgb(165, 164, 164);
+            a.signup_btn {
+                margin-top: 10px;
+                display: block;
+                line-height: 40px;
+                height: 40px;
+                width: 100%;
+                color: white;
+                background-color: #0099E8;
+            }
+        }
+        &__top {
+            padding: 32px 64px;
+            display: block;
+            li {
+                list-style: none;
+            }
+            a.facebook {
+                padding-right: 40px;
+                display: block;
+                margin-top: 16px;
+                height: 50px;
+                color: white;
+                line-height: 50px;
+                border: solid 1px $FacebookColor;
+                background-color: $FacebookColor;
+                i.facebook {
+                    font-size: 25px;
+                    padding-left: 5px;
+                    }
+            }
+            a.google {
+                padding-right: 40px;
+                display: block;
+                margin-top: 16px;
+                height: 50px;
+                line-height: 50px;
+                border: solid 1px $BackgroundColor;
+                color: black;
+                background-color:white;
+                border: solid 1px rgb(165, 164, 164);
+                i.google {
+                    font-size: 20px;
+                    }
+            }
+        }
+        .field {
+            padding: 24px 64px;
+        }
+        .field__recaptcha {
+            padding-left: 70px;
+        }
+        .actions {
+            padding: 24px 64px; 
+            .login_btn {
+                background-color: $RedColor;
+                height: 40px;
+                width: 100%;
+                color: white;
+            }
+        }
+        .field_link {
+            text-decoration: #0099E8;
+            padding: 0 200px 30px 0;
+        }
+    }
+}

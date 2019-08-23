@@ -1,0 +1,39 @@
+.settings-add-card {
+  padding: 24px 0;
+  border-bottom: 1px solid #eee;
+}
+.l-single-content {
+  max-width: 320px;
+  margin: 0 auto;
+}
+.l-single-inner .btn-red:first-child {
+  margin: 0;
+}
+
+.add-button:first-child {
+  margin: 0;
+}
+
+.add-button {
+  margin-bottom: 8px;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.far.fa-credit-card{
+  margin-right: 16px;
+}
+
+.fas.fa-chevron-right{
+  margin: 0 0 0 8px;
+}
