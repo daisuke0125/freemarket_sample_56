@@ -3,7 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:facebook]
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+        #  %i[facebook google_oauth2]
+        #  [:facebook]
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :first_name_kana, presence: true
@@ -27,8 +29,9 @@ class User < ApplicationRecord
   has_many :sns_credentials, dependent: :destroy
   has_many :cards
   mount_uploaders :image, ImageUploader
+  has_many :items
 
-  devise :omniauthable,omniauth_providers: [:facebook, :google_oauth2]
+  # devise :omniauthable,omniauth_providers: [:facebook, :google_oauth2]
 
   def self.find_oauth(auth)
     uid = auth.uid
@@ -40,8 +43,11 @@ class User < ApplicationRecord
       unless user.present? 
         user = User.new(
           nickname: auth.info.name,
-          email: auth.info.email
+          email: auth.info.email,
+          uid:      auth.uid,
+          provider: auth.provider,
         )
+        SnsCredential.update(user_id: user.id)
       end
       sns = snscredential
 
@@ -56,12 +62,15 @@ class User < ApplicationRecord
       else 
         user = User.new(
           nickname: auth.info.name,
-          email: auth.info.email
+          email: auth.info.email,
+          uid: auth.uid,
+          provider: auth.provider,
         )
   
         sns = SnsCredential.create(
           uid: uid,
-          provider: provider
+          provider: provider,
+          user_id: user.id
         )
    
       end
@@ -69,4 +78,3 @@ class User < ApplicationRecord
     return { user: user , sns_id: sns.id }
   end
 end
-
