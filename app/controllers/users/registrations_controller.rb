@@ -1,22 +1,19 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+
+
   def create
-     if params[:user][:password] == "" 
-       params[:user][:password] = "Devise.friendly_token.first(6)" 
+     if params[:user][:password] == "" #sns登録なら
+       params[:user][:password] = "Devise.friendly_token.first(6)" #deviseのパスワード自動生成機能を使用
        params[:user][:password_confirmation] = "Devise.friendly_token.first(6)"
        super
        sns = SnsCredential.update(user_id:  @user.id)
-       if verify_recaptcha
-        super
-        else
-        self.resource = resource_class.new
-        respond_with_navigational(resource) { render :new }
-      end
-     else 
+     else #email登録なら
        super
      end
    end
+
   
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
