@@ -25,24 +25,24 @@ Rails.application.routes.draw do
     collection do
       get 'buy'
       get 'identification'
-      get 'logout'
-      get 'card_registration'
-      get 'add_card_registration'
       get 'card_information'
       get 'sell'
       get 'edit'
       get 'detail'
-      get 'card_edit'
     end
     member do
       get 'mypage'
+      get 'card_registration'
+      get 'add_card_registration'
+      get 'card_edit'
+      get 'logout'
     end  
   end
 
-  #idが必要な場合はmemberへ、必要ない場合はcollectionへ
+  resources :categories, only:[:index]
 
+  # resources :cards, only:[:index]
 
-  get   "category" => "categories#index"
   get   "card/edit" => "card#edit"
   post   "card" => "card#create"
 

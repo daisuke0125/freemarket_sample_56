@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
     end
 
     def mypage
-      user = User.where(user_id: current_user.id)
-      @nickname = user.name
+      user = User.find(params[:id])
+      @nickname = user.nickname
   
     end
 
@@ -16,6 +16,8 @@ class ItemsController < ApplicationController
     end
     
     def card_registration
+      @cards = current_user.cards
+        
     end
     
     def add_card_registration
@@ -50,6 +52,7 @@ class ItemsController < ApplicationController
     
     def card_edit
         @card = Card.new
+        
     end
 
     private
