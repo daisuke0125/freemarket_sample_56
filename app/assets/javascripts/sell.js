@@ -112,7 +112,28 @@ $(document).on('turbolinks:load', function(){
     input_area.prepend(new_image);
   });
 
-
+  $('#item_price').on('keyup', function(e) {
+    e.preventDefault();
+    var price = $(this).val();
+    var first = `<span>-</span>`
+    if (price == 0){
+      $('.form-group__line.none span').last().hide()
+      $('.form-group__line.bold span').last().hide()
+      $('.form-group__line.none').append(first);
+      $('.form-group__line.bold').append(first);
+      }
+    else {
+      var fee = price * 0.1
+      var profit = price * 0.9
+      $('.form-group__line.none span').last().hide()
+      $('.form-group__line.bold span').last().hide()
+      var feeline = `<span>¥${fee}</span>`
+      var profitline = `<span>¥${profit}</span>`
+      $('.form-group__line.none').append(feeline);
+      $('.form-group__line.bold').append(profitline);
+      $('.form-group__line.bold span').last().css('font-size', '34px')
+    }
+  });
 
 
   $(document).on('click', '.btn-delete', function() {

@@ -26,26 +26,25 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'buy'
-      get 'identification'
-      get 'logout'
-      get 'card_registration'
-      get 'add_card_registration'
       get 'card_information'
       get 'sell'
       get 'edit'
       get 'detail'
-      get 'card_edit'
     end
     member do
       get 'mypage'
+      get 'identification'
+      get 'card_registration'
+      get 'add_card_registration'
+      get 'card_edit'
+      get 'logout'
     end  
   end
 
-  #idが必要な場合はmemberへ、必要ない場合はcollectionへ
+  # resources :cards, only:[:show,:create,:destroy]
+  resources :categories, only:[:index]
 
-
-  get   "category" => "categories#index"
-  get   "card/edit" => "card#edit"
-  post   "card" => "card#create"
+  # get   "card/edit" => "card#edit"
+  # post   "card" => "card#create"
 
 end
