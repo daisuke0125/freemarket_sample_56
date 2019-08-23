@@ -23,7 +23,7 @@
     .sign_up2__main__header
       %h2.main2 会員情報入力
     .sign_up2__main__form
-      = form_for @user, url: step2_signup_index_path, method: :get do |f|
+      = form_for @user, url: step0_2_signup_index_path, method: :get do |f|
         #form1
           = f.label :name, 'ニックネーム'
           = f.label :name, '必須', class: "attention"
@@ -34,15 +34,25 @@
           = f.label :name, '必須', class: "attention"
           %br/
           = f.email_field :email, class: "big", placeholder: "PC・携帯どちらでも可", required: "true"
-        #form1
+        #form1{style: "display:none"}
+          = f.label :name, 'uid'
+          = f.label :name, '必須', class: "attention"
+          %br/
+          = f.text_field :uid, class: "big", required: "true"
+        #form1{style: "display:none"}
+          = f.label :name, 'provider'
+          = f.label :name, '必須', class: "attention"
+          %br/
+          = f.text_field :provider, class: "big", required: "true"
+        #form1.password{ style: "display:none"}
           = f.label :name, 'パスワード'
           = f.label :name, '必須', class: "attention"
           %br/
-          = f.password_field :password, class: "big", placeholder: "7文字以上", required: "true"
-        #form1
+          = f.password_field :password, class: "big", placeholder: "7文字以上", value: "keymaeda2", required: "true"
+        #form1.password{ style: "display:none"}
           = f.label :name, "パスワード 確認"
           %br/
-          = f.password_field :password_confirmation, class: "big", placeholder: "7文字以上", required: "true"
+          = f.password_field :password_confirmation, class: "big", placeholder: "7文字以上", value: "keymaeda2", required: "true"
         #form1
           %h3 本人確認
           %h4 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。

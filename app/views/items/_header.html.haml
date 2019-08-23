@@ -9,7 +9,6 @@
         = fa_icon 'search'
     .header__inner__bottom.clearfix
       .header__inner__bottom--left
-        -# =link_to "https://www.mercari.com/jp/category/" ,class:"header__category" do
         =link_to category_path ,class:"header__category" do
           = fa_icon 'list-ul', class: "left"
           %span.top カテゴリーから探す
@@ -17,5 +16,20 @@
           = fa_icon 'tag', class: "left"
           %span.top ブランドから探す
       .header__inner__bottom--right
-        =link_to "新規会員登録" , new_user_registration_path ,class:"header-btn signup"
-        =link_to "ログイン", "https://www.mercari.com/jp/login/?login_callback=https%3A%2F%2Fwww.mercari.com%2Fjp%2F" ,class:"header-btn login"
+        - if user_signed_in?
+          %ul.login-lists
+            %li.login-li
+              = fa_icon 'bell', class: "login-icon"
+              .login-list お知らせ
+            %li.login-li
+              = fa_icon 'heart', class: "login-icon"
+              .login-list いいね！一覧
+            %li.login-li
+              = fa_icon 'check', class: "login-icon"
+              .login-list やることリスト
+            %li.login-li
+              = fa_icon 'user', class: "login-icon"
+              = link_to "マイページ" , mypage_item_path(current_user) ,method: :get ,class:"login-list__mypage"
+        - else
+          =link_to "新規会員登録" , new_user_registration_path ,class:"header-btn signup"
+          =link_to "ログイン", new_user_session_path ,class:"header-btn login"
