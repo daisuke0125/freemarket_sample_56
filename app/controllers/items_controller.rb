@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
         # binding.pry
         if @item.save
             params[:images][:photo].each do |photo|
-                @item.images.create(photo: photo, item_id: @item.id)
+                @item.images.create(photo: photo.original_filename, item_id: @item.id)
             end
             # binding.pry
             # params[:images]['images'].each do |a|
