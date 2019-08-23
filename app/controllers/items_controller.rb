@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     
     def sell
         @item = Item.new
-        # 10.times{@item.images.build}
+        1.times{@item.images.build}
         
         # @category_parent_array = []
         # #データベースから、親カテゴリーのみ抽出し、配列化
@@ -53,10 +53,14 @@ class ItemsController < ApplicationController
 
 
     def create
-        @item = Item.new(name: item_params[:name], detail: item_params[:detail], brand: item_params[:brand], condition: item_params[:condition], delivery: item_params[:delivery], area: item_params[:area], days: item_params[:days], price: item_params[:price], user_id: current_user.id, category_id: item_params[:category_id])
-        # @item = Item.new(item_params)
+        # @item = Item.new(name: item_params[:name], detail: item_params[:detail], brand: item_params[:brand], condition: item_params[:condition], delivery: item_params[:delivery], area: item_params[:area], days: item_params[:days], price: item_params[:price], user_id: current_user.id, category_id: item_params[:category_id])
+        @item = Item.new(item_params)
+        # @image = Image.new(image_params)
         # binding.pry
         if @item.save
+            params[:images][:photo].each do |photo|
+                @item.images.create(photo: photo, item_id: @item.id)
+            end
             # binding.pry
             # params[:images]['images'].each do |a|
             #     @image = @item.images.create!(images: a)
@@ -77,11 +81,11 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-        params.require(:item).permit(:name, :detail, :category_id, :brand, :condition, :delivery, :days, :area, :price, images_attributes: [:photo])
+        params.require(:item).permit(:name, :detail, :category_id, :brand, :condition, :delivery, :days, :area, :price, images_attributes: [:photo]).merge(user_id: current_user.id)
     end
 
     def image_params
-        params.require(:image).permit(:image)
+        params.require(:image).permit(:photo)
     end
 
 end
