@@ -24,19 +24,9 @@ class ItemsController < ApplicationController
     def sell
         @item = Item.new
         @item.images.build
-        
-        # @category_parent_array = []
-        # #データベースから、親カテゴリーのみ抽出し、配列化
-        # Category.where(ancestry: nil).each_with_index do |parent, i|
-        #     @category_box << parent.name
-        #     @catagory_box << i
-        #     @category_parent_array.push(@category_box)
-        # end
         @category_parent_array = ["---"]
         Category.where(ancestry: nil).each do |parent|
          @category_parent_array << parent.name
-        #  @category_parent_array.values_at << parent.id
-        #  @category_parent_value << i
         end
     end
 
@@ -53,7 +43,6 @@ class ItemsController < ApplicationController
 
 
     def create
-        # @item = Item.new(name: item_params[:name], detail: item_params[:detail], brand: item_params[:brand], condition: item_params[:condition], delivery: item_params[:delivery], area: item_params[:area], days: item_params[:days], price: item_params[:price], user_id: current_user.id, category_id: item_params[:category_id])
         @item = Item.new(item_params)
         if @item.save
             binding.pry
@@ -76,7 +65,7 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-        params.require(:item).permit(:name, :detail, :category_id, :brand, :condition, :delivery, :days, :area, :price, images_attributes: {photo: []}).merge(user_id: current_user.id)
+        params.require(:item).permit(:name, :detail, :category_id, :brand, :condition, :delivery, :days, :area, :price, images_attributes: [:photo]).merge(user_id: current_user.id)
     end
 
     def image_params

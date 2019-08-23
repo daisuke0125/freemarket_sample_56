@@ -19,12 +19,6 @@ $(document).on('turbolinks:load', function(){
     var reader = new FileReader();
     inputs.push($(this));
     var img = $(`<div class= "img_view"><img></div>`);
-    // var target_image = $(this).parent().parent();
-    // var data_image = target_image.data('image');
-    // var img_view = target_image.find('img').attr('id')
-    // if (img_view > target_image.data('image')){
-    //   target_image.find('img').attr('id', 1);
-    // }
     reader.onload = function(e) {
       var btn_wrapper = $('<div class="btn_wrapper-image"><div class="btn-edit">編集</div><div class="btn-delete">削除</div></div>');
       img.append(btn_wrapper);
@@ -39,7 +33,6 @@ $(document).on('turbolinks:load', function(){
       box.css({
         'display': 'block'
       })
-      // item.css({'display':'flex','flex-wrap':'wrap','width':'700px','justify-content':'space-between','height':'600px','top':'-375px',left: '-400px', 'position': 'relative'})
       $('#preview2').css({'flex-wrap':'wrap','height': '600px','position': 'relative', 'top': '-300px'});
       $.each(images, function(index, image) {
         image.attr('data-image', index);
@@ -104,9 +97,6 @@ $(document).on('turbolinks:load', function(){
           'width': `calc(622px - (135px * ${images.length}))`,
           'left': `calc(-62px + (13px * ${images.length}))`
         })
-        // photo_left.css ({
-        //   'left' : '-200px'
-        // })
       }
     }
       if(images.length == 4) {
@@ -147,41 +137,20 @@ $(document).on('turbolinks:load', function(){
 
 
 
-// if ( $(this).data('image')←ここを変更する == target_image.data('image')){
-
-
   $(document).on('click', '.btn-delete', function() {
     var target_image = $(this).parent().parent();
     var data_image = target_image.data('image');
     var img_view = target_image.find('img').attr('id')
-    // var img_view = $(this).closest('#preview').find('.img_view');
-    // var file = $(this).prop('files')[0];
-    // var reader = new FileReader();
-    // reader.readAsDataURL(file);
-    // $('#upload-image').prop('disabled',true);
-    console.log(data_image);
     $.each(inputs, function(index, input){
       if ( img_view == target_image.data('image')){
-        // $(this).remove();
-        // target_image.remove();
         target_image.attr('data-image', index).remove();
         var num = img_view;
-        // var num = target_image;
-        console.log(img_view);
         images.splice(num, 1);
         input.splice(num, 1);
-        // if(inputs.length == 0) {
-        //   $('input[type= "file"].upload-image').attr({
-        //     'data-image': 0
-        //   })
-        // }
       }
       if (img_view > target_image.data('image')|| img_view < target_image.data('image')){
         target_image.find('img').attr('id', data_image);
       }
-      // if (img_view < target_image.data('image')){
-      //   target_image.find('img').attr('id', data_image);
-      // }
     })
     $('input[type= "file"].upload-image:first').attr({
       'data-image': inputs.length
@@ -234,15 +203,6 @@ $(document).on('turbolinks:load', function(){
           'left': `calc(-62px + (13px * ${images.length}))`
         })
       }
-      // var target_image = $(this).parent().parent();
-      // if ($(this).data('image') == target_image.data('image')){
-      //   $(this).remove();
-      //   target_image.remove();
-      //   var num = $(this).data('image');
-      //   images.splice(num, 1);
-      //   inputs.splice(num, 1);
-      // }
-      // $('#preview').empty();
       box.css({
         'width': `calc(100% - (130px * ${images.length}))`,
         'left': `calc(130px * ${images.length})` 
@@ -260,13 +220,5 @@ $(document).on('turbolinks:load', function(){
         preview.append(image);
       })
     }
-    // if(images.length == 4) {
-    //   dropzone2.css({
-    //     'display': 'none'
-    //   })
-    // }
-    // if(images.length == 3) {
-    //   dropzone.find('i').replaceWith('<p>ココをクリックしてください</p>')
-    // }
   })
 });

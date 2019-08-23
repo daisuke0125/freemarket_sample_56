@@ -5,7 +5,7 @@
         = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983" ,alt: "mercari", height: "49", width: "185"
   %main.single-main
     .single-main__container
-      = form_for @item, multipart: true, html: {class: "dropzone", id: "item-dropzone" } do |f|
+      = form_for @item, html: {class: "dropzone", id: "item-dropzone", multipart: true } do |f|
         %h2.sell-container 商品の情報を入力
         %form.sell-form
           .sell-form__upload
@@ -49,7 +49,6 @@
               %lavel カテゴリー
               %span.form-arbitrary 必須
               .select-wrap.category
-                -# = f.select :category , @categort_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: 'item[category_id][]'
                 = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: ''
               %lavel 商品の状態
               %span.form-arbitrary 必須
