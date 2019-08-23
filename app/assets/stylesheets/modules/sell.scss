@@ -144,6 +144,14 @@
   }
  }
 
+ #parent_category, #child_category, #grandchild_category {
+   height: 50px;
+   width:414px;
+   background-color: white;
+   border: 1px solid #ccc;
+   margin-top: 5px;
+ }
+
 
  #dropzone2{
   display: none;

@@ -176,9 +176,12 @@ $(document).on('turbolinks:load', function(){
         //   })
         // }
       }
-      if (img_view > target_image.data('image')){
+      if (img_view > target_image.data('image')|| img_view < target_image.data('image')){
         target_image.find('img').attr('id', data_image);
       }
+      // if (img_view < target_image.data('image')){
+      //   target_image.find('img').attr('id', data_image);
+      // }
     })
     $('input[type= "file"].upload-image:first').attr({
       'data-image': inputs.length
