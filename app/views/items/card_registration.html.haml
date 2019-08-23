@@ -17,12 +17,10 @@
                     %img{alt: "american_express", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?917505326", width: "21"}/
                   %input{name: "__csrf_value", type: "hidden", value: "7212cd1eb93ca25c3899c6fe734992c91a7518fe313e2662ee3b4cf67164130d59d234b57c13f01044c7eec238b533d984a05da59cec9329f2c73cf827e2d1f90"}/
                   %input{name: "card_sequence_no", type: "hidden", value: "tpLkzho78HxARmvi1TJEixcc"}/
-                  - @cards.each do |card|
-                    .settings-payment-num=card.card_number
-                    .settings-payment-num{ style: "float:left" }=card.exp_month+"/"
-                    .settings-payment-num=card.exp_year
+                  .settings-payment-num=@card.card_number
+                  .settings-payment-num{ style: "float:left" }=@card.exp_month+"/"
+                  .settings-payment-num=@card.exp_year
                   %input{name: "method", type: "hidden", value: "card"}/
-                  -# = link_to "削除する", card_edit_items_path, class "settings-payment-remove",style"padding6px"
                   = link_to "削除する", add_card_registration_item_path ,class: "settings-payment-remove",style:"padding:6px"
                   
           .settings-not-regist

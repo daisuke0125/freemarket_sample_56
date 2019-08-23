@@ -10,23 +10,29 @@ class ItemsController < ApplicationController
     end
 
     def edit
+        
     end
     
     def logout
     end
     
     def card_registration
-      @cards = current_user.cards
-        
+      @card = Card.find(params[:id])
     end
-    
+
     def add_card_registration
+    #   @card.destroy
     end
 
     def card_information
     end
 
     def identification
+      @user = User.find(params[:id])
+      birth_year = @user.birth_year.to_s
+      birth_month = @user.birth_month.to_s
+      birth_day = @user.birth_day.to_s
+      @birth= birth_year + "/" + birth_month + "/" + birth_day
     end
 
 
@@ -52,7 +58,10 @@ class ItemsController < ApplicationController
     
     def card_edit
         @card = Card.new
-        
+    end
+
+    def card_upload
+        @card = Card.create(card_params)        
     end
 
     private
@@ -63,6 +72,10 @@ class ItemsController < ApplicationController
 
     def image_params
         params.require(:image).permit(:image)
+    end
+
+    def card_params
+        params.require(:card).permit(:card_number, :exp_month, :exp_year, :cvc).merge(user_id: current_user.id)
     end
 
 end

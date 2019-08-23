@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       get 'buy'
-      get 'identification'
       get 'card_information'
       get 'sell'
       get 'edit'
@@ -32,6 +31,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'mypage'
+      get 'identification'
       get 'card_registration'
       get 'add_card_registration'
       get 'card_edit'
@@ -39,11 +39,10 @@ Rails.application.routes.draw do
     end  
   end
 
+  # resources :cards, only:[:show,:create,:destroy]
   resources :categories, only:[:index]
 
-  # resources :cards, only:[:index]
-
-  get   "card/edit" => "card#edit"
-  post   "card" => "card#create"
+  # get   "card/edit" => "card#edit"
+  # post   "card" => "card#create"
 
 end
