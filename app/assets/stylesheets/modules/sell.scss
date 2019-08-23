@@ -1,15 +1,15 @@
 .single-container{
   background-color:$BackgroundColor;
   padding-bottom: 40px;
-}
-.single-header{
+ }
+ .single-header{
   height: 128px;
   text-align: center;
   h1{
     padding-top: 40px;
   }
-}
-.single-main{
+ }
+ .single-main{
   width: 100%;
   &__container{
     background-color: #fff;
@@ -25,8 +25,12 @@
   .sell-form{
     border-top: 1px solid #eee;
     &__upload{
+      border-top: 1px solid #eee;
       width: 620px;
       padding: 40px;
+      &--head{
+        position: relative;
+      }
       lavel{
         font-size: 16px;
         font-weight: bold;
@@ -40,16 +44,13 @@
       }
       &--box{
         width: 620px;
-        height: 162px;
+        height: 182px;
+        margin-bottom: 5px;
         background: #f5f5f5;
         border: 1px dashed #ccc;
         font-size: 0;
         text-align: center;
-        &--item{
-          position: relative;
-          width: 80%;
-          height: 80px;
-          margin: 40px auto;
+        position: relative;
           input{
             border: 0;
             outline: 0;
@@ -58,14 +59,80 @@
           }
           pre{
             position: absolute;
-            top: 25%;
             left: 16px;
             right: 16px;
+            top: 35%;
+            height: 100%;
             text-align: center;
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.4;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            transform: translate(0, -35%);
+            .click-drop{
+              height: 50%;
+            }
           }
-        }
+          .upload-image {
+            content: “”;
+            position: absolute;
+            top: -30px;
+            right: 0;
+            bottom: 0;
+            left: -62px;
+            width: 622px;
+            height: 164px;
+            z-index: 1;
+            display: none;
+          }
+          #preview {
+            display: flex;
+            position: relative;
+          }
+          #preview2 {
+            display: flex;
+            width:700px;
+          }
+          .img_view{
+            background-color:$BackgroundColor;
+            height: 152px;
+            position: relative;
+            margin-left: 7px;
+          }
+          img {
+            width: 100px;
+            height: 140px;
+            margin: 0 8px 0 8px;
+            // left: -200px;
+          }
+          .btn_wrapper-image{
+            background-color: #f5f5f5;
+            display: flex;
+            .btn-edit{
+              border-right: 1px solid rgb(218, 217, 217);
+              width: 50%;
+              height: 44px;
+              color: $BlueColor;
+              font-size: 15px;
+              line-height: 44px;
+              cursor: pointer;
+              &:hover{
+                opacity: 0.6;
+                text-decoration: underline;
+              }
+            }
+            .btn-delete{
+              font-size: 15px;
+              width: 50%;
+              line-height: 44px;
+              color: $BlueColor;
+              cursor: pointer;
+              &:hover{
+                opacity: 0.6;
+                text-decoration: underline;
+              }
+            }
+          }
       }
     }
     .btn-default.btn-red{
@@ -74,8 +141,21 @@
       margin-top: 40px;
     }
   }
-}
-.sell-content{
+ }
+
+ #parent_category, #child_category, #grandchild_category {
+   height: 50px;
+   width:414px;
+   background-color: white;
+   border: 1px solid #ccc;
+   margin-top: 5px;
+ }
+
+
+ #dropzone2{
+  display: none;
+ }
+ .sell-content{
   border-top: 1px solid #eee;
   padding: 40px;
   lavel{
@@ -126,15 +206,15 @@
     font-size: 12px;
     text-align: center;
   }
-}
-.sell-content.clearfix{
+ }
+ .sell-content.clearfix{
   .form-group{
     margin-left: 210px;
     &__line{
       margin-left: 210px;
       padding: 24px 0;
       border-top: 1px solid #ccc;
-      span:nth-child(2){
+      span:nth-last-child(1){
         float: right;
       }
       &.bold{
@@ -142,9 +222,10 @@
       }
     }
   }
-}
-.select-wrap{
+ }
+ .select-wrap{
   margin-top: 8px;
+  margin-bottom: 8px;
   position: relative;
   i{
     position: absolute;
@@ -159,8 +240,8 @@
     width: 400px;
     margin-bottom: 20px;
   }
-}
-.sell-content__sell-box{
+ }
+ .sell-content__sell-box{
   padding: 40px;
   border-top: 1px solid #eee;
   p{
@@ -169,7 +250,31 @@
       color:$BlueColor;
     }
   }
-}
-.btn-gray{
+ }
+ .btn-gray{
   @include btn-gray;
-}
+ }
+ select#item_condition {
+  height: 50px;
+  width: 414px;
+  background-color: white;
+  border: solid 1px #ccc;
+ }
+ select#item_delivery {
+  height: 50px;
+  width: 414px;
+  background-color: white;
+  border: solid 1px #ccc;
+ }
+ select#item_area {
+  height: 50px;
+  width: 414px;
+  background-color: white;
+  border: solid 1px #ccc;
+ }
+ select#item_days {
+  height: 50px;
+  width: 414px;
+  background-color: white;
+  border: solid 1px #ccc;
+ }

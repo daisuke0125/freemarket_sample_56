@@ -28,8 +28,8 @@ class User < ApplicationRecord
   
   has_many :sns_credentials, dependent: :destroy
   has_many :cards
+  mount_uploaders :image, ImageUploader
   has_many :items
-  mount_uploader :image, ImageUploader
 
   # devise :omniauthable,omniauth_providers: [:facebook, :google_oauth2]
 
@@ -78,4 +78,6 @@ class User < ApplicationRecord
     return { user: user , sns_id: sns.id }
   end
 end
+
+
 
