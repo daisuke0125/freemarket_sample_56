@@ -7,6 +7,7 @@ $(document).on('turbolinks:load',function(){
     dots: true,
     centerpadding: 20,
   });
+  
   // $('.prev-arrow').on('click', function() {
   //   $('.main-visual__inner').hide("slide", { direction: "left" }, 1000);
   // });

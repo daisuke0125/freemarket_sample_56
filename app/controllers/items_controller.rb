@@ -33,12 +33,32 @@ class ItemsController < ApplicationController
     
     def sell
         @item = Item.new
-        @image = Image.new
+        @item.images.build
+        @category_parent_array = ["---"]
+        Category.where(ancestry: nil).each do |parent|
+         @category_parent_array << parent.name
+        end
     end
 
+    def get_category_children
+        #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+        @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+     end
+  
+     # 子カテゴリーが選択された後に動くアクション
+    def get_category_grandchildren
+        #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+        @category_grandchildren = Category.find( "#{params[:child_id]}").children
+    end
+
+
     def create
-        @item = Item.new(name: item_params[:name], detail: item_params[:detail], category_id: item_params[:category_id], brand: item_params[:brand], condition: item_params[:condition], delivery: item_params[:delivery], area: item_params[:area], days: item_params[:days], price: item_params[:price], images_attributes:[:id, :image, :item_id])
+        @item = Item.new(item_params)
         if @item.save
+            binding.pry
+            params[:images][:photo].each do |photo|
+                @item.images.create(photo: photo.original_filename, item_id: @item.id)
+            end
             redirect_to root_path
         else
             redirect_to sell_items_path
@@ -55,11 +75,11 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-        params.require(:item).permit(:name, :detail, :image, :category_id, :brand, :condition, :delivery, :days, :area, :price)
+        params.require(:item).permit(:name, :detail, :category_id, :brand, :condition, :delivery, :days, :area, :price, images_attributes: [:photo]).merge(user_id: current_user.id)
     end
 
     def image_params
-        params.require(:image).permit(:image)
+        params.require(:image).permit(:photo)
     end
 
 end

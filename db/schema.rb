@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_17_095815) do
+ActiveRecord::Schema.define(version: 2019_08_22_114315) do
 
   
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -51,17 +51,16 @@ ActiveRecord::Schema.define(version: 2019_08_17_095815) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "item_id"
+    t.string "photo"
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "detail", null: false
-    t.string "image", null: false
     t.bigint "user_id"
     t.bigint "category_id"
     t.text "brand"
@@ -99,6 +98,13 @@ ActiveRecord::Schema.define(version: 2019_08_17_095815) do
     t.string "uid", null: false
     t.string "provider", null: false
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "thumbnails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image"
+    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
