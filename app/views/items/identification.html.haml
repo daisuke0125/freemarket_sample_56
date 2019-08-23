@@ -16,17 +16,20 @@
           = fa_icon 'angle-right'
         .form-group
           %lavel お名前
-          %p 大庭 貫治
+          %p=@user.first_name
         .form-group
           %lavel お名前カナ
-          %p オオニワ カンジ
+          %p=@user.last_name_kana
         .form-group
           %lavel 生年月日
-          %p 1991/02/26
+          %p=@birth
+          -# %p=@user.birth_year
+          -# %p=@user.birth_month
+          -# %p=@user.birth_day
         .form-group
           %lavel 郵便番号
           %span.form-arbitrary 任意
-          %input.input-default{:name => "zip_code", :placeholder => "例）1234567", :type => "text", :value => ""}
+          %input.input-default{name: "zip_code", placeholder: "例）1234567", :type => "text", :value => ""}
         .form-group
           %lavel 都道府県
           %span.form-arbitrary 任意
