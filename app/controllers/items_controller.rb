@@ -6,16 +6,11 @@ class ItemsController < ApplicationController
     def mypage
       user = User.find(params[:id])
       @nickname = user.nickname
-  
     end
 
-    def edit
+    def edit 
+    end
         
-    end
-    
-    def logout
-    end
-    
     def card_registration
       @card = Card.find(params[:id])
     end
@@ -34,7 +29,6 @@ class ItemsController < ApplicationController
       birth_day = @user.birth_day.to_s
       @birth= birth_year + "/" + birth_month + "/" + birth_day
     end
-
 
     def buy
     end
@@ -59,12 +53,11 @@ class ItemsController < ApplicationController
         @category_grandchildren = Category.find( "#{params[:child_id]}").children
     end
 
-
     def create
         @item = Item.new(item_params)
         if @item.save
             params[:images][:photo].each do |photo|
-                @item.images.create(photo: photo.original_filename, item_id: @item.id)
+                @item.images.create(photo: photo, item_id: @item.id)
             end
             redirect_to root_path
         else
@@ -73,6 +66,9 @@ class ItemsController < ApplicationController
     end
     
     def detail
+        @item = Item.find(21)
+        @images = Image.find(15)
+        @image = @images.photo
     end
     
     def card_edit
@@ -80,7 +76,7 @@ class ItemsController < ApplicationController
     end
 
     def card_upload
-        @card = Card.create(card_params)        
+        @card = Card.create(card_params)
     end
 
     private
