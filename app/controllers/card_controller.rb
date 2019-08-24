@@ -1,6 +1,12 @@
 class CardController < ApplicationController
 
-  def new
+  def show
+    @card = Card.new
+  end
+  
+  def destroy
+    # @cards = Card.new
+    @cards = current_user.cards
   end
   
   def create
