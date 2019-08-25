@@ -6,7 +6,8 @@
     .item-content
       .item-content__photo
         .thumbnail
-          %img{src: @image,class: "thumbnail-image"}
+          -@image.each do |p|
+            %img{src: p.photo,class: "thumbnail-image"}
           -# -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
           -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
           -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
@@ -109,13 +110,13 @@
 
   %ul.nav-item
     %li.link--prev
-      =link_to ""  ,class:"link--text" do
+      =link_to detail_item_path(@land_item)  ,class:"link--text" do
         = fa_icon 'angle-left'
-        グリーンメン
+        =@land_item.name
     %li.link--next
-      =link_to ""  ,class:"link--text" do
-        透かしリーフ
+      =link_to detail_item_path(@land_item2),class:"link--text" do
         = fa_icon 'angle-right'
+        =@land_item2.name
 
   .message-content
     %ul.message-content__social
@@ -130,75 +131,39 @@
           =fa_icon "pinterest", class: "pinterest"
 
   .other-item
-    =link_to "#{@item.user.nickname}さんのその他の商品",root_path ,class:"other-item__title"
+    =link_to "#{@item.user.nickname}さんのその他の商品" ,class:"other-item__title"
     .other-item__content
+
+    -@item.user.items.last(3).each do |user_item|
       .item-box
-        =link_to "" do
+        =link_to detail_item_path(user_item) do
           %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+          -user_item.images.each do |image|
+            = image_tag "#{image.photo}", class: 'item-box__image--height'
         .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
+          %h3.item-box__body--name=user_item.name
           .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
+            .item-box__body--num--price="¥"+user_item.price.to_s(:delimited)
             .num-font
               = fa_icon 'heart' ,class:"num-font__count"
               .num-font--like 2
-      .item-box
-        =link_to "" do
-          %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
-          .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
-      .item-box
-        =link_to "" do
-          %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
-          .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
+
+
   .other-item
     =link_to "#{@item.category.name}その他の商品","",class:"other-item__title"
 
     .other-item__content
+
+    -@item.category.items.last(3).each do |category_item|
       .item-box
-        =link_to "" do
+        =link_to detail_item_path(category_item) do
           %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
+          -category_item.images.each do |image|
+            = image_tag "#{image.photo}", alt: '', class: 'item-box__image--height'
         .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
+          %h3.item-box__body--name=category_item.name
           .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
-      .item-box
-        =link_to "" do
-          %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
-          .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
-      .item-box
-        =link_to "" do
-          %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
-          .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
+            .item-box__body--num--price="¥"+category_item.price.to_s(:delimited)
             .num-font
               = fa_icon 'heart' ,class:"num-font__count"
               .num-font--like 2

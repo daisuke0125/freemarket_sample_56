@@ -73,9 +73,12 @@ class ItemsController < ApplicationController
   end
 
   def detail
-    @item = Item.find(30)
-    @images = Image.find(24)
-    @image = @images.photo
+    @item = Item.find(params[:id])
+
+    @land_item = Item.where( 'id >= ?', rand(Item.count) + 1 ).sample
+    @land_item2 = Item.where( 'id >= ?', rand(Item.count) + 1 ).sample
+
+    @image= @item.images
   end
   
   def card_edit
