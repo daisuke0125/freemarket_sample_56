@@ -5,30 +5,30 @@
     %h2=@item.name
     .item-content
       .item-content__photo
-        .item-sold-out-badge
-          .thumbnail
-            -@image.each do |p|
-              =image_tag "#{p.photo}",class: "thumbnail-image"
-            -# -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
-            -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
-            -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
-            -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-image"
-            -# = image_tag "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg", class: "thumbnail-image"
-            -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
-            -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
-            -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
-            -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-image"
-          .thumbnail-thumb
-            -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-thumb__photo"
-            -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
-            -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
-            -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
-            -# = image_tag "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg", class: "thumbnail-thumb__photo"
-            -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-thumb__photo"
-            -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
-            -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
-            -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
-
+        .thumbnail
+          -@image.each do |p|
+            =image_tag "#{p.photo}",class: "thumbnail-image"
+          .item-sold-out-badge
+          -# -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
+          -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
+          -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
+          -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-image"
+          -# = image_tag "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg", class: "thumbnail-image"
+          -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
+          -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
+          -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
+          -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-image"
+        .thumbnail-thumb
+          -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
+        
       -# .item-content__table 写真を挿入
       %table.item-content__table
         %tbody
