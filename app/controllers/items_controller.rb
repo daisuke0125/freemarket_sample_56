@@ -38,6 +38,9 @@ class ItemsController < ApplicationController
   end
 
   def buy
+    @item = Item.find(params[:id])
+    @image = @item.images
+    @user = current_user
   end
   
   def sell

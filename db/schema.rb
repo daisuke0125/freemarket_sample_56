@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_08_22_114315) do
+ActiveRecord::Schema.define(version: 2019_08_24_070306) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_number", null: false
@@ -54,9 +53,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_114315) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "item_id"
-
     t.string "photo"
-
+    t.string "url"
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 

@@ -25,12 +25,12 @@ Rails.application.routes.draw do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
-      get 'buy'
       get 'card_information'
       get 'sell'
       get 'edit'
     end
     member do
+      get 'buy'
       get 'detail'
       get 'mypage'
       get 'identification'
