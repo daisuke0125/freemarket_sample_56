@@ -1,0 +1,27 @@
+= render "items/header"
+.mypage
+  .mypage__content
+    = render "items/sidebar"
+    .mypage-sub_select
+      .mypage-sub__head 出品した商品
+      .mypage-main__content
+        %ul.tabs
+          %li.tab.have 出品中
+          %li.tab.now 取引中
+          %li.tab.none 売却済
+      .mypage-sub__content
+        %ul.tab-content__list.have
+          - @items.each do |item|
+            %li
+              .figure
+                = link_to "https://www.mercari.com/jp/mypage/news/" do
+                  .tab-content__list__image
+                    - item.images.each do |image|
+                      %img{src="#{image.photo}"}
+                  .tab-content__list__body
+                    .tab-content__list__body--text= item.name
+                    .tab-content__list__body--time
+                      %i.fa.fa-search
+                      %span= item.created_at
+                  %i.fa.fa-angle-right.tab-icon
+= render "items/footer"
