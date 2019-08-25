@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function(){
 
   var click_color = {
     'background-color' : 'rgb(250, 250, 250',

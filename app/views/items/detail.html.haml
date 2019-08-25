@@ -2,29 +2,30 @@
 
 .detail-container
   .detail-container__box
-    %h2 商品の情報を入力
+    %h2=@item.name
     .item-content
       .item-content__photo
         .thumbnail
-          = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
-          = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
-          = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
-          = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-image"
-          = image_tag "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg", class: "thumbnail-image"
-          = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
-          = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
-          = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
-          = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-image"
+          %img{src: @image,class: "thumbnail-image"}
+          -# -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
+          -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
+          -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
+          -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-image"
+          -# = image_tag "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg", class: "thumbnail-image"
+          -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
+          -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
+          -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
+          -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-image"
         .thumbnail-thumb
-          = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-thumb__photo"
-          = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
-          = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
-          = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
-          = image_tag "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg", class: "thumbnail-thumb__photo"
-          = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-thumb__photo"
-          = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
-          = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
-          = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "http://img06.shop-pro.jp/PA01137/802/product/84946209.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
+          -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
 
       -# .item-content__table 写真を挿入
       %table.item-content__table
@@ -32,7 +33,7 @@
           %tr
             %th 出品者
             %td
-              =link_to "出品者の名前" , ""
+              =link_to "#{@item.user.nickname}",root_path
               .item-content__table__rate
                 .rate-list
                   %i.fas.fa-laugh
@@ -46,19 +47,19 @@
           %tr
             %th カテゴリー
             %td
-              =link_to "コスメ・香水・美容" , ""
-              %br
-              = fa_icon 'angle-right' 
-              =link_to "スキンケア/基礎化粧品" , ""
-              %br
-              = fa_icon 'angle-right'
-              =link_to "クレンジング/メイク落とし" , ""
-              .item-detail-table-sub-sub-category
+              =link_to "#{@item.category.name}",""
+              -# -# %br
+              -# -# = fa_icon 'angle-right' 
+              -# -# =link_to "スキンケア/基礎化粧品" , ""
+              -# -# %br
+              -# -# = fa_icon 'angle-right'
+              -# -# =link_to "クレンジング/メイク落とし" , ""
+              -# .item-detail-table-sub-sub-category
                 %i.icon-arrow-right
           %tr
             %th ブランド
             %td
-              =link_to "シャネル" , ""
+              =link_to "#{@item.brand}",root_path
           %tr
             %th 商品の状態
             %td 未使用に近い
@@ -71,28 +72,17 @@
           %tr
             %th 配送元地域
             %td
-              =link_to "神奈川県" , ""
+              =link_to "#{@item.area}",root_path
           %tr
             %th 発送日の目安
             %td 1~2日で発送
     .item-price-box
-      %span.item-price-box__yen ¥ 8,600
+      %span.item-price-box__yen="¥"+@item.price.to_s(:delimited)
       %span.item-price-box__tax (税込)
       %span.item-price-box__fee 送料込み
     %button.btn-default.btn-red{type: "submit"}
       %h2 購入画面に進む
-    .item-content-text
-      ※プロフィールをご覧下さい。
-      %br
-      %br
-      ※お値下げは考えておりませんのでご了承下さい。
-      %br
-      ・シャネル サブリマージュ デマキヤン コンフォート
-      %br
-      LE Lローション 10ml
-      %br
-      ル リフトセラム 5ml
-      %br
+    .item-content-text=@item.detail
     .item-button-content
       .item-button-content__left
         %button.item-button-like{name:"like!", type: "button"}
