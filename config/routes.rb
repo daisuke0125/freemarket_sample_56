@@ -29,7 +29,6 @@ Rails.application.routes.draw do
       get 'card_information'
       get 'sell'
       get 'edit'
-      get 'detail'
     end
     member do
       get 'mypage'
@@ -38,6 +37,7 @@ Rails.application.routes.draw do
       get 'add_card_registration'
       get 'card_edit'
       get 'logout'
+      get 'detail'
     end  
   end
 

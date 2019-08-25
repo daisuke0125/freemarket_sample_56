@@ -73,9 +73,8 @@ class ItemsController < ApplicationController
   end
 
   def detail
-    @item = Item.find(30)
-    @images = Image.find(24)
-    @image = @images.photo
+    @item = Item.find(params[:id])
+    @image= @item.images
   end
   
   def card_edit
