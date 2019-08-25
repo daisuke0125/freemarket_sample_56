@@ -290,9 +290,11 @@
     color: #333;
     }
     &__image{
-      width: 220px;
-      height: 220px;
       overflow: hidden;
+      &--height{
+        height: 220px;
+        width: 220px;
+      }
     }
     &__body{
       background-color:white;
