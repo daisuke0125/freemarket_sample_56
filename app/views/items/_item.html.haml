@@ -2,160 +2,167 @@
   .pickup-title ピックアップカテゴリー
   .content  
     =link_to "レディース新着アイテム" , "" , class:"content__title"
-    .content__box 
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name ジーンズメンズ用お買い得
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
+    .content__box
+      -items.where(category_id: 1..17).where.not(category_id: 2..4).last(4).each do |i| 
+        .item 
+          =link_to root_path do
+            .item__image
+            -i.images.each do |p|
+              %img{src: p.photo,class: "thumbnail-image"}
+            .item__text
+              .item__text__name 
+                = i.name
+              .item__text__num  
+                .item__text__num--price  
+                  = "¥#{i.price.to_s(:delimited)}"
+                .item__text__num--font
+                  .item__text__num--font.count
+                    = fa_icon 'heart'
+                  .item__text__num--font.like 2
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
   .content  
     =link_to "メンズ新着アイテム" , "" , class:"content__title"
     .content__box 
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
+      -items.where(category_id: [2, 18..30]).last(4).each do |i| 
+        .item 
+          =link_to root_path do
+            .item__image
+            -i.images.each do |p,index|
+              %img{src: p.photo,class: "thumbnail-image"}
+            .item__text
+              .item__text__name 
+                = i.name
+              .item__text__num  
+                .item__text__num--price  
+                  = "¥#{i.price.to_s(:delimited)}"
+                .item__text__num--font
+                  .item__text__num--font.count
+                    = fa_icon 'heart'
+                  .item__text__num--font.like 2
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
   .content  
     =link_to "ベビー・キッズ新着アイテム" , "" , class:"content__title"
     .content__box 
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
-      .item 
-        =link_to root_path do
-          .item__image
-          = image_tag "https://static.mercdn.net/thumb/photos/m51746328902_1.jpg?1564885956", alt: "", height: "220", width: "213"
-          .item__text
-            .item__text__name 長財布
-            .item__text__num  
-              .item__text__num--price ¥7,000
-              .item__text__num--font
-                .item__text__num--font.count
-                  = fa_icon 'heart'
-                .item__text__num--font.like 2
+      -items.where(category_id: [3, 31..45]).last(4).each do |i| 
+        .item 
+          =link_to root_path do
+            .item__image
+            -i.images.each do |p,index|
+              %img{src: p.photo,class: "thumbnail-image"}
+            .item__text
+              .item__text__name 
+                = i.name
+              .item__text__num  
+                .item__text__num--price  
+                  = "¥#{i.price.to_s(:delimited)}"
+                .item__text__num--font
+                  .item__text__num--font.count
+                    = fa_icon 'heart'
+                  .item__text__num--font.like 2
+    %li.view-all
+      =link_to "すべての商品を見る" , "" , class:"view-all"
+  .content  
+    =link_to "インテリア・住まい・小物新着アイテム" , "" , class:"content__title"
+    .content__box 
+      -items.where(category_id: [4, 46..65]).last(4).each do |i| 
+        .item 
+          =link_to root_path do
+            .item__image
+            -i.images.each do |p,index|
+              %img{src: p.photo,class: "thumbnail-image"}
+            .item__text
+              .item__text__name 
+                = i.name
+              .item__text__num  
+                .item__text__num--price  
+                  = "¥#{i.price.to_s(:delimited)}"
+                .item__text__num--font
+                  .item__text__num--font.count
+                    = fa_icon 'heart'
+                  .item__text__num--font.like 2
+    %li.view-all
+      =link_to "すべての商品を見る" , "" , class:"view-all"
+.main-content
+  .pickup-title ピックアップブランド
+  .content  
+    =link_to "シャネル新着アイテム" , "" , class:"content__title"
+    .content__box 
+      -items.where('brand like ?',"%AAA%").last(4).each do |i| 
+        .item 
+          =link_to root_path do
+            -i.images.each do |p,index|
+              %img{src: p.photo,class: "thumbnail-image"}
+            .item__text
+              .item__text__name 
+                = i.name
+              .item__text__num  
+                .item__text__num--price  
+                  = "¥#{i.price.to_s(:delimited)}"
+                .item__text__num--font
+                  .item__text__num--font.count
+                    = fa_icon 'heart'
+                  .item__text__num--font.like 2
+    %li.view-all
+      =link_to "すべての商品を見る" , "" , class:"view-all"
+  .content  
+    =link_to "ルイヴィトン新着アイテム" , "" , class:"content__title"
+    .content__box 
+      -items.where('brand like ?',"%ベビー・キッズ%").last(4).each do |i|  
+        .item 
+          =link_to root_path do
+            -i.images.each do |p,index|
+              %img{src: p.photo,class: "thumbnail-image"}
+            .item__text
+              .item__text__name 
+                = i.name
+              .item__text__num  
+                .item__text__num--price  
+                  = "¥#{i.price.to_s(:delimited)}"
+                .item__text__num--font
+                  .item__text__num--font.count
+                    = fa_icon 'heart'
+                  .item__text__num--font.like 2
+    %li.view-all
+      =link_to "すべての商品を見る" , "" , class:"view-all"
+  .content  
+    =link_to "シュプリーム新着アイテム" , "" , class:"content__title"
+    .content__box 
+      -items.where('brand like ?',"%シュプリーム%").last(4).each do |i| 
+        .item 
+          =link_to root_path do
+            -i.images.each do |p,index|
+              %img{src: p.photo,class: "thumbnail-image"}
+            .item__text
+              .item__text__name 
+                = i.name
+              .item__text__num  
+                .item__text__num--price  
+                  = "¥#{i.price.to_s(:delimited)}"
+                .item__text__num--font
+                  .item__text__num--font.count
+                    = fa_icon 'heart'
+                  .item__text__num--font.like 2
+    %li.view-all
+      =link_to "すべての商品を見る" , "" , class:"view-all"
+  .content  
+    =link_to "ナイキ新着アイテム" , "" , class:"content__title"
+    .content__box 
+      -items.where('brand like ?',"%ナイキ%").last(4).each do |i| 
+        .item
+          =link_to root_path do
+            -i.images.each do |p,index|
+              %img{src: p.photo,class: "thumbnail-image"}
+            .item__text
+              .item__text__name 
+                = i.name
+              .item__text__num  
+                .item__text__num--price  
+                  = "¥#{i.price.to_s(:delimited)}"
+                .item__text__num--font
+                  .item__text__num--font.count
+                    = fa_icon 'heart'
+                  .item__text__num--font.like 2
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"

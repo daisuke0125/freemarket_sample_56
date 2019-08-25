@@ -1,6 +1,15 @@
 class ItemsController < ApplicationController
 
     def index
+        @items = Item.all
+        @image = []
+        @items.each do |i|
+            i.images.each_with_index do |p,index|
+                @image << p
+            end
+        end
+        @images = @image
+
     end
 
     def mypage
@@ -16,7 +25,6 @@ class ItemsController < ApplicationController
     end
 
     def add_card_registration
-    #   @card.destroy
     end
 
     def card_information
@@ -64,10 +72,10 @@ class ItemsController < ApplicationController
             redirect_to sell_items_path
         end
     end
-    
+
     def detail
-        @item = Item.find(22)
-        @images = Image.find(16)
+        @item = Item.find(30)
+        @images = Image.find(24)
         @image = @images.photo
     end
     
