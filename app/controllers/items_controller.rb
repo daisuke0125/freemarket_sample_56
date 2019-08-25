@@ -66,8 +66,8 @@ class ItemsController < ApplicationController
     end
     
     def detail
-        @item = Item.find(21)
-        @images = Image.find(15)
+        @item = Item.find(22)
+        @images = Image.find(16)
         @image = @images.photo
     end
     
