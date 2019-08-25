@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
     def index
         @items = Item.all
         @image = []
-        @items.each do |i|
-            i.images.each_with_index do |p,index|
+        @items.each do |item|
+            item.images.each_with_index do |p,index|
                 @image << p
             end
         end

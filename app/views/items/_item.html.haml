@@ -3,18 +3,18 @@
   .content  
     =link_to "レディース新着アイテム" , "" , class:"content__title"
     .content__box
-      -items.where(category_id: 1..17).where.not(category_id: 2..4).last(4).each do |i| 
+      -items.where(category_id: 1..17).where.not(category_id: 2..4).last(4).each do |item| 
         .item 
           =link_to root_path do
             .item__image
-            -i.images.each do |p|
+            -item.images.each do |p|
               %img{src: p.photo,class: "thumbnail-image"}
             .item__text
               .item__text__name 
-                = i.name
+                = item.name
               .item__text__num  
                 .item__text__num--price  
-                  = "¥#{i.price.to_s(:delimited)}"
+                  = "¥#{item.price.to_s(:delimited)}"
                 .item__text__num--font
                   .item__text__num--font.count
                     = fa_icon 'heart'
@@ -24,18 +24,18 @@
   .content  
     =link_to "メンズ新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where(category_id: [2, 18..30]).last(4).each do |i| 
+      -items.where(category_id: [2, 18..30]).last(4).each do |item| 
         .item 
           =link_to root_path do
             .item__image
-            -i.images.each do |p,index|
+            -item.images.each do |p,index|
               %img{src: p.photo,class: "thumbnail-image"}
             .item__text
               .item__text__name 
-                = i.name
+                = item.name
               .item__text__num  
                 .item__text__num--price  
-                  = "¥#{i.price.to_s(:delimited)}"
+                  = "¥#{item.price.to_s(:delimited)}"
                 .item__text__num--font
                   .item__text__num--font.count
                     = fa_icon 'heart'
@@ -45,18 +45,18 @@
   .content  
     =link_to "ベビー・キッズ新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where(category_id: [3, 31..45]).last(4).each do |i| 
+      -items.where(category_id: [3, 31..45]).last(4).each do |item| 
         .item 
           =link_to root_path do
             .item__image
-            -i.images.each do |p,index|
+            -item.images.each do |p,index|
               %img{src: p.photo,class: "thumbnail-image"}
             .item__text
               .item__text__name 
-                = i.name
+                = item.name
               .item__text__num  
                 .item__text__num--price  
-                  = "¥#{i.price.to_s(:delimited)}"
+                  = "¥#{item.price.to_s(:delimited)}"
                 .item__text__num--font
                   .item__text__num--font.count
                     = fa_icon 'heart'
@@ -66,18 +66,18 @@
   .content  
     =link_to "インテリア・住まい・小物新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where(category_id: [4, 46..65]).last(4).each do |i| 
+      -items.where(category_id: [4, 46..65]).last(4).each do |item| 
         .item 
           =link_to root_path do
             .item__image
-            -i.images.each do |p,index|
+            -item.images.each do |p,index|
               %img{src: p.photo,class: "thumbnail-image"}
             .item__text
               .item__text__name 
-                = i.name
+                = item.name
               .item__text__num  
                 .item__text__num--price  
-                  = "¥#{i.price.to_s(:delimited)}"
+                  = "¥#{item.price.to_s(:delimited)}"
                 .item__text__num--font
                   .item__text__num--font.count
                     = fa_icon 'heart'
@@ -89,17 +89,17 @@
   .content  
     =link_to "シャネル新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where('brand like ?',"%AAA%").last(4).each do |i| 
+      -items.where('brand like ?',"%AAA%").last(4).each do |item| 
         .item 
           =link_to root_path do
-            -i.images.each do |p,index|
+            -item.images.each do |p,index|
               %img{src: p.photo,class: "thumbnail-image"}
             .item__text
               .item__text__name 
-                = i.name
+                = item.name
               .item__text__num  
                 .item__text__num--price  
-                  = "¥#{i.price.to_s(:delimited)}"
+                  = "¥#{item.price.to_s(:delimited)}"
                 .item__text__num--font
                   .item__text__num--font.count
                     = fa_icon 'heart'
@@ -109,17 +109,17 @@
   .content  
     =link_to "ルイヴィトン新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where('brand like ?',"%ベビー・キッズ%").last(4).each do |i|  
+      -items.where('brand like ?',"%ベビー・キッズ%").last(4).each do |item|  
         .item 
           =link_to root_path do
-            -i.images.each do |p,index|
+            -item.images.each do |p,index|
               %img{src: p.photo,class: "thumbnail-image"}
             .item__text
               .item__text__name 
-                = i.name
+                = item.name
               .item__text__num  
                 .item__text__num--price  
-                  = "¥#{i.price.to_s(:delimited)}"
+                  = "¥#{item.price.to_s(:delimited)}"
                 .item__text__num--font
                   .item__text__num--font.count
                     = fa_icon 'heart'
@@ -129,17 +129,17 @@
   .content  
     =link_to "シュプリーム新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where('brand like ?',"%シュプリーム%").last(4).each do |i| 
+      -items.where('brand like ?',"%シュプリーム%").last(4).each do |item| 
         .item 
           =link_to root_path do
-            -i.images.each do |p,index|
+            -item.images.each do |p,index|
               %img{src: p.photo,class: "thumbnail-image"}
             .item__text
               .item__text__name 
-                = i.name
+                = item.name
               .item__text__num  
                 .item__text__num--price  
-                  = "¥#{i.price.to_s(:delimited)}"
+                  = "¥#{item.price.to_s(:delimited)}"
                 .item__text__num--font
                   .item__text__num--font.count
                     = fa_icon 'heart'
@@ -149,17 +149,17 @@
   .content  
     =link_to "ナイキ新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where('brand like ?',"%ナイキ%").last(4).each do |i| 
+      -items.where('brand like ?',"%ナイキ%").last(4).each do |item| 
         .item
           =link_to root_path do
-            -i.images.each do |p,index|
+            -item.images.each do |p,index|
               %img{src: p.photo,class: "thumbnail-image"}
             .item__text
               .item__text__name 
-                = i.name
+                = item.name
               .item__text__num  
                 .item__text__num--price  
-                  = "¥#{i.price.to_s(:delimited)}"
+                  = "¥#{item.price.to_s(:delimited)}"
                 .item__text__num--font
                   .item__text__num--font.count
                     = fa_icon 'heart'
