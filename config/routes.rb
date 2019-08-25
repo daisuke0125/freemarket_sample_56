@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get 'add_card_registration'
       get 'card_edit'
       get 'logout'
+      get 'edit_select'
     end  
   end
 

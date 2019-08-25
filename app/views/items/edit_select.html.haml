@@ -16,8 +16,9 @@
               .figure
                 = link_to "https://www.mercari.com/jp/mypage/news/" do
                   .tab-content__list__image
-                    - item.images.each do |image|
-                      %img{src="#{image.photo}"}
+                    - item.images.each do |p|
+                      -# %img(src="#{image.photo}")
+                      %img{src: p.photo}
                   .tab-content__list__body
                     .tab-content__list__body--text= item.name
                     .tab-content__list__body--time

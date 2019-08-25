@@ -8,6 +8,11 @@ class ItemsController < ApplicationController
       @nickname = user.nickname
     end
 
+    def edit_select
+        user = User.find(params[:id])
+        @items = user.items
+    end
+
     def edit 
     end
         
