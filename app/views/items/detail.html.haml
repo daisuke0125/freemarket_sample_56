@@ -130,7 +130,7 @@
           =fa_icon "pinterest", class: "pinterest"
 
   .other-item
-    = link_to "〇〇さんのその他の商品" , "" ,class:"other-item__title"
+    =link_to "#{@item.user.nickname}さんのその他の商品",root_path ,class:"other-item__title"
     .other-item__content
       .item-box
         =link_to "" do
@@ -165,42 +165,9 @@
             .num-font
               = fa_icon 'heart' ,class:"num-font__count"
               .num-font--like 2
-      .item-box
-        =link_to "" do
-          %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
-          .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
-      .item-box
-        =link_to "" do
-          %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
-          .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
-      .item-box
-        =link_to "" do
-          %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
-          .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
-
   .other-item
-    = link_to "その他の商品" , "" ,class:"other-item__title"
+    =link_to "#{@item.category.name}その他の商品","",class:"other-item__title"
+
     .other-item__content
       .item-box
         =link_to "" do
@@ -235,39 +202,5 @@
             .num-font
               = fa_icon 'heart' ,class:"num-font__count"
               .num-font--like 2
-      .item-box
-        =link_to "" do
-          %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
-          .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
-      .item-box
-        =link_to "" do
-          %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
-          .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
-      .item-box
-        =link_to "" do
-          %figure.item-box__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m89042753080_1.jpg?1565488067", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name 新着アイテム シャネル
-          .item-box__body--num
-            .item-box__body--num--price ¥ 8,900
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
-
 
 =render "footer"
