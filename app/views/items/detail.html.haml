@@ -7,8 +7,9 @@
       .item-content__photo
         .thumbnail
           -@image.each do |p|
-            =image_tag "#{p.photo}",class: "thumbnail-image"
+            =image_tag "#{p.photo}",class: "thumbnail-image" 
           .item-sold-out-badge
+            .div SOLD
           -# -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
           -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
           -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"

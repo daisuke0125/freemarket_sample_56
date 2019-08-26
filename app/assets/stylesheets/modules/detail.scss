@@ -344,7 +344,7 @@
 .item-sold-out-badge {
   top: 24px;
   font-size: 28px;
-  position: absolute;
+  // position: absolute;
   left: 0;
   z-index: 2;
   color: #fff;
@@ -364,4 +364,37 @@
   width: 0;
   height: 0;
   border-style: solid;
+} 
+
+.item-sold-out-badge>div {
+  top: 24px;
+  font-size: 28px;
+  position: absolute;
+  left: 0;
+  z-index: 2;
+  color: #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.slick-slide>div {
+  position: absolute;
+  left: 300px;
+  font-size: 28px;
+}
+
+.slick-cloned {
+  z-index: 2;
+  position: relative;
+}
+
+.slick-cloned>div {
+  display:none;
+}
+
+.thumbnail-image {
+  position: relative;
+  left: -120px;
 }
