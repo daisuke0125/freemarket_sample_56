@@ -10,7 +10,7 @@
         #form1
           = f.label :name, "カード番号"
           = f.label :name, "必須", class: "attention"
-          = f.text_field :card_number, type: "text", class: "big", placeholder: "半角数字のみ", maxlength: "16"
+          = f.text_field  type: "text", class: "big", placeholder: "半角数字のみ", maxlength: "16"   -# :card_number,
           .card__logo
             %li
               = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?917505326", class: "card"

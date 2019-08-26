@@ -58,7 +58,6 @@ class SignupController < ApplicationController
         session[:streetNumber] = user_params[:streetNumber]
         session[:building] = user_params[:building]
         session[:cordNumber] = user_params[:cordNumber]
-        @card = Card.new
     end
 
     def create
@@ -88,12 +87,28 @@ class SignupController < ApplicationController
 
 
         if @user.save
+            Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+            if params['payjp-token'].blank?
+            # redirect_to action: "new"
+            else
+            customer = Payjp::Customer.create(
+            description: '登録テスト', #なくてもOK
+            email: current_user.email, #なくてもOK
+            card: params['payjp-token'],
+            metadata: {user_id: current_user.id}
+            ) #念の為metadataにuser_idを入れましたがなくてもOK
+            @card = Card.create(
+                user_id: current_user.id, 
+                customer_id: customer.id, 
+                card_id: customer.default_card,
+            )
+            end
             @sns = SnsCredential.where(uid: @user.uid)
             if @sns
                 @sns.update(user_id: @user.id)
             end
             session[:id] = @user.id
-            Card.create(card_number: card_params[:card_number], exp_month: card_params[:exp_month], exp_year: card_params[:exp_year], cvc: card_params[:cvc], user_id: session[:id])
+            # Card.create(card_number: card_params[:card_number], exp_month: card_params[:exp_month], exp_year: card_params[:exp_year], cvc: card_params[:cvc], user_id: session[:id])
             redirect_to done_signup_index_path
         else
             redirect_to step1_signup_index_path
@@ -131,13 +146,13 @@ class SignupController < ApplicationController
         )
     end
 
-    def card_params
-        params.require(:card).permit(
-            :card_number,
-            :exp_month,
-            :exp_year,
-            :cvc
-        )
-    end
+    # def card_params
+    #     params.require(:card).permit(
+    #         :card_number,
+    #         :exp_month,
+    #         :exp_year,
+    #         :cvc
+    #     )
+    # end
 
 end

@@ -88,9 +88,9 @@ class ItemsController < ApplicationController
     @card = Card.new
   end
 
-  def card_upload
-    @card = Card.create(card_params)
-  end
+  # def card_upload
+  #   @card = Card.create(card_params)
+  # end
 
   private
 
@@ -102,8 +102,8 @@ class ItemsController < ApplicationController
     params.require(:image).permit(:photo)
   end
 
-  def card_params
-    params.require(:card).permit(:card_number, :exp_month, :exp_year, :cvc).merge(user_id: current_user.id)
-  end
+  # def card_params
+  #   params.require(:card).permit(:card_number, :exp_month, :exp_year, :cvc).merge(user_id: current_user.id)
+  # end
 
 end

@@ -20,14 +20,14 @@
           完了
           %span.bubble>
   .sign_up2__main
-    = form_for @card, url: signup_index_path, method: :post do |f|
+    = form_tag({ controller: 'signup', action: 'create' },{ method: :post}) do
       .sign_up2__main__header
         %h2 支払い方法
       .sign_up2__main__form
         #form1
-          = f.label :name, "カード番号"
-          = f.label :name, "必須", class: "attention"
-          = f.text_field :card_number, type: "text", class: "big", placeholder: "半角数字のみ", maxlength: "16", required: "true"
+          %label カード番号
+          %label.attention 必須
+          = text_field_tag "card_number", "", type: "text", id: "card_number", class: "big", placeholder: "半角数字のみ", maxlength: "16", required: "true"
           .card__logo
             %li
               = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?917505326", class: "card"
@@ -44,20 +44,45 @@
             %li
               = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?917505326", class: "card"
         #form1
-          = f.label :name, "有効期限"
-          = f.label :name, "必須", class: "attention"
+          %label 有効期限
+          %label.attention 必須
           %br/
-          = f.select :exp_month, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10],[11,11],[12,12]],{} , class: "form", required: "true"
+          %select#exp_month{name: "exp_month", type: "text", class: "form", required: "true"}
+            %option{value: ""} --
+            %option{value: "1"}01
+            %option{value: "2"}02
+            %option{value: "3"}03
+            %option{value: "4"}04
+            %option{value: "5"}05
+            %option{value: "6"}06
+            %option{value: "7"}07
+            %option{value: "8"}08
+            %option{value: "9"}09
+            %option{value: "10"}10
+            %option{value: "11"}11
+            %option{value: "12"}12
           %span.expire-text 月
-          = f.select :exp_year, [[19,2019],[20,2020],[21,2021],[22,2022],[23,2023],[24,2024],[25,2025],[26,2026],[27,2027],[28,2028],[29,2029]],{} , class: "form", required: "true"
+          %select#exp_year{name: "exp_year", type: "text", class: "form", required: "true"}
+            %option{value: ""} --
+            %option{value: "2019"}19
+            %option{value: "2020"}20
+            %option{value: "2021"}21
+            %option{value: "2022"}22
+            %option{value: "2023"}23
+            %option{value: "2024"}24
+            %option{value: "2025"}25
+            %option{value: "2026"}26
+            %option{value: "2027"}27
+            %option{value: "2028"}28
+            %option{value: "2029"}29
           %span.expire-text 年
         #form1
-          = f.label :name, "セキュリティコード"
-          = f.label :name, "必須", class: "attention"
+          %label セキュリティコード
+          %label.attention 必須 
           %br/
-          = f.text_field :cvc, type: "text", class: "big", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4", required: "true"
+          = text_field_tag "cvc", "", id: "cvc", type: "text", class: "big", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4", required: "true"
         #form1
-          =f.submit "次へ進む", class: "buttom1"
+          = submit_tag "次へ進む", id: "tokun_submit", class: "buttom1"
   .sign_up__footer
     %nav
       %li
@@ -102,9 +127,9 @@
 -#         %h2 支払い方法
 -#       .sign_up2__main__form
 -#         #form1
--#           = f.label :name, "カード番号"
--#           = f.label :name, "必須", class: "attention"
--#           = f.text_field :card_number, type: "text", class: "big", placeholder: "半角数字のみ", maxlength: "16", required: "true"
+-#           %label :name, "カード番号"
+-#           %label :name, "必須", class: "attention"
+-#           = text_field_tag :card_number, type: "text", class: "big", placeholder: "半角数字のみ", maxlength: "16", required: "true"
 -#           .card__logo
 -#             %li
 -#               = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?917505326", class: "card"
@@ -121,18 +146,18 @@
 -#             %li
 -#               = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?917505326", class: "card"
 -#         #form1
--#           = f.label :name, "有効期限"
--#           = f.label :name, "必須", class: "attention"
+-#           %label :name, "有効期限"
+-#           %label :name, "必須", class: "attention"
 -#           %br/
--#           = f.select :exp_month, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10],[11,11],[12,12]],{} , class: "form", required: "true"
+-#           %select :exp_month, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10],[11,11],[12,12]],{} , class: "form", required: "true"
 -#           %span.expire-text 月
--#           = f.select :exp_year, [[19,2019],[20,2020],[21,2021],[22,2022],[23,2023],[24,2024],[25,2025],[26,2026],[27,2027],[28,2028],[29,2029]],{} , class: "form", required: "true"
+-#           %select :exp_year, [[19,2019],[20,2020],[21,2021],[22,2022],[23,2023],[24,2024],[25,2025],[26,2026],[27,2027],[28,2028],[29,2029]],{} , class: "form", required: "true"
 -#           %span.expire-text 年
 -#         #form1
--#           = f.label :name, "セキュリティコード"
--#           = f.label :name, "必須", class: "attention"
+-#           %label :name, "セキュリティコード"
+-#           %label :name, "必須", class: "attention"
 -#           %br/
--#           = f.text_field :cvc, type: "text", class: "big", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4", required: "true"
+-#           = text_field_tag :cvc, type: "text", class: "big", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4", required: "true"
 -#         #form1
 -#           =f.submit "次へ進む", class: "buttom1"
 -#   .sign_up__footer
