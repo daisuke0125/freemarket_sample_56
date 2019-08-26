@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_061700) do
+ActiveRecord::Schema.define(version: 2019_08_26_101532) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -18,10 +18,6 @@ ActiveRecord::Schema.define(version: 2019_08_26_061700) do
     t.datetime "updated_at", null: false
     t.string "customer_id"
     t.string "card_id"
-    t.string "card_number", null: false
-    t.string "exp_month", null: false
-    t.string "exp_year", null: false
-    t.integer "cvc", null: false
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
