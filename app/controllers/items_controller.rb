@@ -20,6 +20,11 @@ class ItemsController < ApplicationController
   def edit 
   end
 
+  def edit_select
+    user = User.find(params[:id])
+    @items = user.items
+  end
+
   def card_registration
     @card = Card.find(params[:id])
   end

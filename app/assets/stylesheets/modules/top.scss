@@ -246,6 +246,10 @@ a {
       .thumbnail-image{
         width: 213px;
         height: 220px;
+        &--edit{
+          width: 60px;
+          height: 60px;  
+        }
       }
       &__text{
         padding: 16px;

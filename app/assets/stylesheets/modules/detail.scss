@@ -340,3 +340,12 @@
     }
   }
 }
+a.edit-btn{
+  @include btn-red;
+}
+a.edit-btn--gray{
+  @include btn-red;
+  border: solid 1px #aaa;
+  background-color: #aaa;
+  
+}
