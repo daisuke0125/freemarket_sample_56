@@ -32,7 +32,6 @@ Rails.application.routes.draw do
       get 'edit'
     end
     member do
-      get 'listing'
       get 'detail'
       get 'mypage'
       get 'identification'
