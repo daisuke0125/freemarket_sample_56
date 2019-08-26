@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
 
   resources :items do
+    resources :goods, only: [:create, :destroy]
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }

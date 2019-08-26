@@ -221,7 +221,7 @@ a {
       text-align: center;
       color: $BlueColor;
       font-weight: bold;
-      padding: 15px 0;
+      padding: 25px 0;
       display: block;
         cursor: pointer;
         &:hover{
@@ -245,9 +245,11 @@ a {
       }
       .thumbnail-image{
         width: 213px;
+        height: 220px;
       }
       &__text{
         padding: 16px;
+        font-size: 16px;
         background-color: white;
         &__name{
           margin-bottom: 10px;
@@ -262,18 +264,14 @@ a {
         &__num{
           display: flex;
           &--price{
-            margin-right: 60px;
-            font-size: 13px;
             font-weight: bold;
+            list-style: none;
+            width: 82%;
           }
           &--font{
-            display: inline;
-            .count{
-              margin-left: 30px;
-              i{
-                color: white;
-                -webkit-text-stroke: 2px rgb(158, 157, 157);
-              }
+            display: flex;
+            i{
+              color: gray;
             }
           }
         }
@@ -285,7 +283,7 @@ a {
   text-align: right;
   list-style: none;
   color: $BlueColor;
-  padding:10px 0 10px 0;
+  padding:15px 0 10px 0;
   a{
     &:hover{
       opacity: 0.7;
