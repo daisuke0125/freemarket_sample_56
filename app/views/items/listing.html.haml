@@ -1,0 +1,50 @@
+= render "items/header"
+
+////// マイページ ////////
+.mypage
+  .mypage__content
+    = render "items/sidebar"
+    .mypage-main
+      .mypage-sub__head{style:"padding-left:15px"}出品した商品
+      .mypage-main__content
+        %ul.tabs
+          %li.tab.knowledge 出品中
+          %li.tab.to_do 取引中
+        .tab-content
+          %ul.tab-content__list.knowledge
+            %li
+              .figure
+                =@user.items.name
+                = link_to "" do
+                  .tab-content__list__image
+                    = image_tag "https://static.mercdn.net/images/mercari_profile.png", alt: "", height: "48", width: "48"
+                  .tab-content__list__body
+                    .tab-content__list__body--text aa
+                    .tab-content__list__body--time
+                      = fa_icon 'search'
+                      %span 1日前 
+                  = fa_icon 'angle-right',class:"tab-icon"
+            -# %li
+            -#   .figure
+            -#     = link_to "https://www.mercari.com/jp/mypage/news/" do
+            -#       .tab-content__list__image
+            -#         = image_tag "https://static.mercdn.net/images/mercari_profile.png", alt: "", height: "48", width: "48"
+            -#       .tab-content__list__body
+            -#         .tab-content__list__body--text 事務局から個人メッセージ「ログイン通知」
+            -#         .tab-content__list__body--time
+            -#           = fa_icon 'search'
+            -#           %span 1日前 
+            -#       = fa_icon 'angle-right',class:"tab-icon"
+    -# .mypage-sub
+    -#   .mypage-sub__head 購入した商品
+    -#   .mypage-main__content
+    -#     %ul.tabs
+    -#       %li.tab.doing 取引中
+    -#       %li.tab.done 過去の取引
+    -#   .mypage-sub__content
+    -#     %ul.tab-content__list.doing
+    -#       .mypage-sub__content--icon
+    -#         = image_tag "//www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?1355409", alt: "", height: "90", width: "90",class:"single-footer-logo"
+    -#         .mypage-sub__content--notfound 取引中の商品がありません
+
+= render "items/footer"
