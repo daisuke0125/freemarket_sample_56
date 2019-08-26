@@ -18,6 +18,23 @@ class ItemsController < ApplicationController
 
 
   def edit 
+    @item = Item.find(params[:id])
+    # @category = Category.find(params[:id])
+ 
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+  # def update
+  #   item = Item.find(params[:id])
+  #   if item.user_id == current_user.id
+  #     item.update(item_params)
+  #   end
+
+  # end
+ 
+
   end
 
   def edit_select

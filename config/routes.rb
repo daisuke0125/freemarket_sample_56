@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       get 'card_information'
       get 'sell'
       get 'edit'
+      get 'update'
     end
     member do
       get 'detail'
