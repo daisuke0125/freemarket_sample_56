@@ -103,7 +103,8 @@
 
   .message-content
     .message-content-text
-      - if user_signed_in? && current_user.id = @item.user_id
+
+      - if user_signed_in? && current_user.id == @item.user_id
         =link_to "商品の編集" ,"",class:"edit-btn"
         %br
         %h5{style:"text-align:center"} or
