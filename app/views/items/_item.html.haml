@@ -13,12 +13,13 @@
               .item__text__name 
                 = item.name
               .item__text__num  
-                .item__text__num--price  
+                %li.item__text__num--price  
                   = "¥#{item.price.to_s(:delimited)}"
-                .item__text__num--font
-                  .item__text__num--font.count
-                    = fa_icon 'heart'
-                  .item__text__num--font.like 2
+                %li.item__text__num--font
+                  =render partial:'goods/good', locals:{item:item}
+                  .good-count{style:"padding-left:6px"}= item.goods.count
+
+
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
   .content  
@@ -34,12 +35,11 @@
               .item__text__name 
                 = item.name
               .item__text__num  
-                .item__text__num--price  
+                %li.item__text__num--price  
                   = "¥#{item.price.to_s(:delimited)}"
-                .item__text__num--font
-                  .item__text__num--font.count
-                    = fa_icon 'heart'
-                  .item__text__num--font.like 2
+                %li.item__text__num--font
+                  .good-count{style:"padding-left:6px"}= item.goods.count
+
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
   .content  
@@ -55,12 +55,12 @@
               .item__text__name 
                 = item.name
               .item__text__num  
-                .item__text__num--price  
+                %li.item__text__num--price  
                   = "¥#{item.price.to_s(:delimited)}"
-                .item__text__num--font
-                  .item__text__num--font.count
-                    = fa_icon 'heart'
-                  .item__text__num--font.like 2
+                %li.item__text__num--font
+                  =render partial:'goods/good', locals:{item:item}
+                  .good-count{style:"padding-left:6px"}= item.goods.count
+
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
   .content  
@@ -76,12 +76,12 @@
               .item__text__name 
                 = item.name
               .item__text__num  
-                .item__text__num--price  
+                %li.item__text__num--price  
                   = "¥#{item.price.to_s(:delimited)}"
-                .item__text__num--font
-                  .item__text__num--font.count
-                    = fa_icon 'heart'
-                  .item__text__num--font.like 2
+                %li.item__text__num--font
+                  =render partial:'goods/good', locals:{item:item}
+                  .good-count{style:"padding-left:6px"}= item.goods.count
+
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
 .main-content
@@ -98,12 +98,12 @@
               .item__text__name 
                 = item.name
               .item__text__num  
-                .item__text__num--price  
+                %li.item__text__num--price  
                   = "¥#{item.price.to_s(:delimited)}"
-                .item__text__num--font
-                  .item__text__num--font.count
-                    = fa_icon 'heart'
-                  .item__text__num--font.like 2
+                %li.item__text__num--font
+                  =render partial:'goods/good', locals:{item:item}
+                  .good-count{style:"padding-left:6px"}= item.goods.count
+
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
   .content  
@@ -118,12 +118,12 @@
               .item__text__name 
                 = item.name
               .item__text__num  
-                .item__text__num--price  
+                %li.item__text__num--price  
                   = "¥#{item.price.to_s(:delimited)}"
-                .item__text__num--font
-                  .item__text__num--font.count
-                    = fa_icon 'heart'
-                  .item__text__num--font.like 2
+                %li.item__text__num--font
+                  =render partial:'goods/good', locals:{item:item}
+                  .good-count{style:"padding-left:6px"}= item.goods.count
+
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
   .content  
@@ -138,12 +138,12 @@
               .item__text__name 
                 = item.name
               .item__text__num  
-                .item__text__num--price  
+                %li.item__text__num--price  
                   = "¥#{item.price.to_s(:delimited)}"
-                .item__text__num--font
-                  .item__text__num--font.count
-                    = fa_icon 'heart'
-                  .item__text__num--font.like 2
+                %li.item__text__num--font
+                  =render partial:'goods/good', locals:{item:item}
+                  .good-count{style:"padding-left:6px"}= item.goods.count
+
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
   .content  
@@ -158,11 +158,11 @@
               .item__text__name 
                 = item.name
               .item__text__num  
-                .item__text__num--price  
+                %li.item__text__num--price  
                   = "¥#{item.price.to_s(:delimited)}"
-                .item__text__num--font
-                  .item__text__num--font.count
-                    = fa_icon 'heart'
-                  .item__text__num--font.like 2
+                %li.item__text__num--font
+                  =render partial:'goods/good', locals:{item:item}
+                  .good-count{style:"padding-left:6px"}= item.goods.count
+
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
