@@ -145,12 +145,8 @@
           .item-box__body--num
             .item-box__body--num--price="¥"+user_item.price.to_s(:delimited)
             .num-font
-              =render partial:'goods/good', locals:{item:@item}
+              = fa_icon 'heart'
               %span.good-count{style:"padding-left:6px"}= @item.goods.count
-
-              -# = fa_icon 'heart' ,class:"num-font__count"
-              -# .num-font--like 2
-
 
   .other-item
     =link_to "#{@item.category.name}その他の商品","",class:"other-item__title"
@@ -166,7 +162,7 @@
           .item-box__body--num
             .item-box__body--num--price="¥"+category_item.price.to_s(:delimited)
             .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
+              = fa_icon 'heart'
+              %span.good-count{style:"padding-left:6px"}= @goods
 
 =render "footer"

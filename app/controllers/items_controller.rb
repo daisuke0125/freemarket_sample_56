@@ -12,8 +12,8 @@ class ItemsController < ApplicationController
   end
 
   def mypage
-    user = User.find(params[:id])
-    @nickname = user.nickname
+    @user = User.find(params[:id])
+    @nickname = @user.nickname
   end
 
   def edit 
@@ -74,11 +74,12 @@ class ItemsController < ApplicationController
 
   def detail
     @item = Item.find(params[:id])
-
     @land_item = Item.where( 'id >= ?', rand(Item.count) + 1 ).sample
     @land_item2 = Item.where( 'id >= ?', rand(Item.count) + 1 ).sample
 
-    @image= @item.images
+    @image = @item.images
+    @goods =@item.goods.count 
+
   end
   
   def card_edit
