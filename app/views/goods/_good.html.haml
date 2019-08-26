@@ -1,7 +1,7 @@
-- if current_user.already_gooded?(item)
-  = button_to "/items/#{item.id}/goods/id", method: :delete ,remote:true do
-    = fa_icon 'heart'
-
-- else
-  = button_to "/items/#{item.id}/goods",remote:true do
-    = fa_icon 'heart'
+- if user_signed_in? 
+  - if current_user.already_gooded?(item)
+    = button_to "/items/#{item.id}/goods/id", method: :delete ,remote:true do
+      = fa_icon 'heart'
+  - else
+    = button_to "/items/#{item.id}/goods",remote:true do
+      = fa_icon 'heart'

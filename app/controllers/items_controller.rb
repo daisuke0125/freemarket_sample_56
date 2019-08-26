@@ -16,9 +16,10 @@ class ItemsController < ApplicationController
     @nickname = @user.nickname
   end
 
+
   def edit 
   end
-      
+
   def card_registration
     @card = Card.find(params[:id])
   end
