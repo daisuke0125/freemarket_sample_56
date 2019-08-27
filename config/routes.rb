@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   end
 
 
-  resources :items, only: [:edit,:update,:destroy] do
-    resources :goods, only: [:create]
+  resources :items do
+    resources :goods, only: [:create, :destroy]
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       get 'sell'
       # get 'edit'
       # get 'update'
-      # delete 'destroy'
+      # get 'destroy'
     end
     member do
       get 'detail'
@@ -47,8 +47,5 @@ Rails.application.routes.draw do
 
   # resources :cards, only:[:show,:create,:destroy]
   resources :categories, only:[:index]
-
-  # get   "card/edit" => "card#edit"
-  # post   "card" => "card#create"
 
 end

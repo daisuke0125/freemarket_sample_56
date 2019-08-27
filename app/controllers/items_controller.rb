@@ -29,18 +29,14 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
-    if item.user_id == current_user.id
-      item.update(item_params)
-    end
+    item.update(item_params) if item.user_id == current_user.id
   end
 
   def destroy
     item = Item.find(params[:id])
     item.destroy  if item.user_id == current_user.id      
       redirect_to "/items/#{item.user.id}/mypage"
-    # redirect_to edit_select_item_path
   end
-
 
   def edit_select
     user = User.find(params[:id])
