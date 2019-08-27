@@ -27,12 +27,12 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params) if item.user_id == current_user.id
+    @item.update(item_params) if @item.user_id == current_user.id
   end
 
   def destroy
-    @item.destroy  if item.user_id == current_user.id      
-      redirect_to "/items/#{item.user.id}/mypage"
+    @item.destroy  if @item.user_id == current_user.id      
+      redirect_to "/items/#{@item.user.id}/mypage"
   end
 
   def edit_select
