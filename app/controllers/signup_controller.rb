@@ -1,5 +1,7 @@
 class SignupController < ApplicationController
 
+    require "payjp"
+
     def step0_1
         @user = User.new
     end
@@ -149,10 +151,9 @@ class SignupController < ApplicationController
 
     # def card_params
     #     params.require(:card).permit(
-    #         :card_number,
-    #         :exp_month,
-    #         :exp_year,
-    #         :cvc
+    #         :user_id, 
+    #         :customer_id, 
+    #         :card_id,
     #     )
     # end
 
