@@ -103,15 +103,15 @@
 
   .message-content
     .message-content-text
-      - if user_signed_in? && current_user.id = @item.user_id
+      - if user_signed_in? && current_user.id == @item.user_id
         =link_to "商品の編集" ,edit_item_path(@item),class:"edit-btn"
         %br
         %h5{style:"text-align:center"} or
         =link_to "出品を一旦停止する" ,"",class:"edit-btn--gray"
         =link_to "この商品を削除する", "/items/#{@item.id}", method: :delete, class:"edit-btn--gray",data: { confirm: '本当に削除してよろしいですか？' }
+  
   .message-content
     .message-content-text
-
       %form.message-form{action: "", method: "POST"}
         %input{name: "__csrf_value", type: "hidden", value: ""}/
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
@@ -121,60 +121,61 @@
         %button.btn-gray{type: "submit"}
           %span コメントする
 
-    - if user_signed_in? && current_user.id != @item.user_id
-      %ul.nav-item
-        %li.link--prev
-          =link_to detail_item_path(@land_item)  ,class:"link--text" do
-            = fa_icon 'angle-left'
-            =@land_item.name
-        %li.link--next
-          =link_to detail_item_path(@land_item2),class:"link--text" do
-            = fa_icon 'angle-right'
-            =@land_item2.name
+  - if user_signed_in? && current_user.id != @item.user_id
+    %ul.nav-item
+      %li.link--prev
+        =link_to detail_item_path(@land_item)  ,class:"link--text" do
+          = fa_icon 'angle-left'
+          =@land_item.name
+      %li.link--next
+        =link_to detail_item_path(@land_item2),class:"link--text" do
+          =@land_item2.name
+          = fa_icon 'angle-right'
 
-      .message-content
-        %ul.message-content__social
-          %li
-            =link_to "", class: "facebook-icon" do
-              =fa_icon "facebook-square", class: "facebook"
-          %li
-            =link_to "", class: "twitter-icon" do
-              =fa_icon "twitter-square", class: "twitter"
-          %li
-            =link_to "", class: "pinterest-icon" do
-              =fa_icon "pinterest", class: "pinterest"
-      .other-item
-        =link_to "#{@item.user.nickname}さんのその他の商品" ,"",class:"other-item__title"
-        .other-item__content
-        -@item.user.items.last(3).each do |user_item|
-          .item-box
-            =link_to detail_item_path(user_item) do
-              %figure.item-box__image
-              -user_item.images.each do |image|
-                = image_tag "#{image.photo}", class: 'item-box__image--height'
-            .item-box__body
-              %h3.item-box__body--name=user_item.name
-              .item-box__body--num
-                .item-box__body--num--price="¥"+user_item.price.to_s(:delimited)
-                .num-font
-                  = fa_icon 'heart'
-                  %span.good-count{style:"padding-left:6px"}= @item.goods.count
+    .message-content
+      %ul.message-content__social
+        %li
+          =link_to "", class: "facebook-icon" do
+            =fa_icon "facebook-square", class: "facebook"
+        %li
+          =link_to "", class: "twitter-icon" do
+            =fa_icon "twitter-square", class: "twitter"
+        %li
+          =link_to "", class: "pinterest-icon" do
+            =fa_icon "pinterest", class: "pinterest"
 
-      .other-item
-        =link_to "#{@item.category.name}その他の商品","",class:"other-item__title"
-        .other-item__content
-        -@item.category.items.last(3).each do |category_item|
-          .item-box
-            =link_to detail_item_path(category_item) do
-              %figure.item-box__image
-              -category_item.images.each do |image|
-                = image_tag "#{image.photo}", alt: '', class: 'item-box__image--height'
-            .item-box__body
-              %h3.item-box__body--name=category_item.name
-              .item-box__body--num
-                .item-box__body--num--price="¥"+category_item.price.to_s(:delimited)
-                .num-font
-                  = fa_icon 'heart'
-                  %span.good-count{style:"padding-left:6px"}= @goods
+    .other-item
+      =link_to "#{@item.user.nickname}さんのその他の商品" ,"",class:"other-item__title"
+      .other-item__content
+      -@item.user.items.last(3).each do |user_item|
+        .item-box
+          =link_to detail_item_path(user_item) do
+            %figure.item-box__image
+            -user_item.images.each do |image|
+              = image_tag "#{image.photo}", class: 'item-box__image--height'
+          .item-box__body
+            %h3.item-box__body--name=user_item.name
+            .item-box__body--num
+              .item-box__body--num--price="¥"+user_item.price.to_s(:delimited)
+              .num-font
+                = fa_icon 'heart'
+                %span.good-count{style:"padding-left:6px"}= @item.goods.count
+
+    .other-item
+      =link_to "#{@item.category.name}その他の商品","",class:"other-item__title"
+      .other-item__content
+      -@item.category.items.last(3).each do |category_item|
+        .item-box
+          =link_to detail_item_path(category_item) do
+            %figure.item-box__image
+            -category_item.images.each do |image|
+              = image_tag "#{image.photo}", alt: '', class: 'item-box__image--height'
+          .item-box__body
+            %h3.item-box__body--name=category_item.name
+            .item-box__body--num
+              .item-box__body--num--price="¥"+category_item.price.to_s(:delimited)
+              .num-font
+                = fa_icon 'heart'
+                %span.good-count{style:"padding-left:6px"}= @goods
 
 =render "footer"
