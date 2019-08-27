@@ -1,0 +1,32 @@
+= render "items/header"
+- breadcrumb :edit_select
+= render "layouts/breadcrumbs"
+.mypage
+  .mypage__content
+    = render "items/sidebar"
+    .mypage-sub_select
+      .mypage-sub__head 出品した商品
+      .mypage-main__content
+        %ul.tabs
+          %li.tab.have 出品中
+          %li.tab.now 取引中
+          %li.tab.none 売却済
+      .mypage-sub__content
+        %ul.tab-content__list.have
+          - @items.each do |item|
+            %li
+              .figure
+                =link_to detail_item_path(item) do
+                  .tab-content__list__image
+                    - item.images.each do |p|
+                      =image_tag "#{p.photo}",class: "thumbnail-image--edit",alt: "", height: "60", width: "60"
+                  .tab-content__list__body
+                    .tab-content__list__body--text= item.name
+                    .tab-content__list__body--time
+                      = fa_icon 'heart-o'
+                      %span{style:"padding-right: 8px"}= item.goods.count
+                      = fa_icon 'comment-o'
+                      %span 0
+                      -# %span= item.comments.count
+                  %i.fa.fa-angle-right.tab-icon
+= render "items/footer"

@@ -1,5 +1,6 @@
 = render "items/header"
-
+- breadcrumb :mypage
+= render "layouts/breadcrumbs"
 ////// マイページ ////////
 .mypage
   .mypage__content
@@ -16,7 +17,7 @@
             評価
             %span.count 0
             出品数
-            %span.count 0
+            %span.count=@user.items.count
       .mypage-main__content
         %ul.tabs
           %li.tab.knowledge お知らせ

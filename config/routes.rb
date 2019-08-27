@@ -22,13 +22,13 @@ Rails.application.routes.draw do
 
 
   resources :items do
+    resources :goods, only: [:create, :destroy]
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'buy'
       get 'card_information'
       get 'sell'
-      get 'edit'
     end
     member do
       get 'detail'
@@ -38,13 +38,10 @@ Rails.application.routes.draw do
       get 'add_card_registration'
       get 'card_edit'
       get 'logout'
+      get 'edit_select'
     end  
   end
 
-  # resources :cards, only:[:show,:create,:destroy]
   resources :categories, only:[:index]
-
-  # get   "card/edit" => "card#edit"
-  # post   "card" => "card#create"
 
 end
