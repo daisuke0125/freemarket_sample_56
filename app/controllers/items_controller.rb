@@ -22,13 +22,13 @@ class ItemsController < ApplicationController
   def card_registration
     @user = User.find(params[:id])
     # @card = @user.cards.ids
-    @user.cards.ids.each do |card|
-      @card = card
-    end
+      @card = @user.card
+      # binding.pry
+  
     if @card.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(@card.customer_id.to_i)
-      @card_information = customer.cards.retrieve(@card.card_id.to_i)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
 
       # 《＋α》 登録しているカード会社のブランドアイコンを表示するためのコードです。---------
       @card_brand = @card_information.brand      
@@ -46,12 +46,14 @@ class ItemsController < ApplicationController
       when "Discover"
         @card_src = "discover.svg"
       end
+    else
+      redirect_to card_edit_item_path
       # ---------------------------------------------------------------
     end
   end
 
   def destroy #PayjpとCardのデータベースを削除
-    @card = Card.find(11)
+    @card = Card.find(params[:id])
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
