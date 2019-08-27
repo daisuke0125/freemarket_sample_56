@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   end
       
   def card_registration
-    @card = Card.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def add_card_registration
