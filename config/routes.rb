@@ -21,16 +21,17 @@ Rails.application.routes.draw do
   end
 
 
-  resources :items do
-    resources :goods, only: [:create, :destroy]
+  resources :items, only: [:edit,:update,:destroy] do
+    resources :goods, only: [:create]
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'buy'
       get 'card_information'
       get 'sell'
-      get 'edit'
-      get 'update'
+      # get 'edit'
+      # get 'update'
+      # delete 'destroy'
     end
     member do
       get 'detail'

@@ -25,17 +25,22 @@ class ItemsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
-
-  # def update
-  #   item = Item.find(params[:id])
-  #   if item.user_id == current_user.id
-  #     item.update(item_params)
-  #   end
-
-  # end
- 
-
   end
+
+  def update
+    item = Item.find(params[:id])
+    if item.user_id == current_user.id
+      item.update(item_params)
+    end
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy  if item.user_id == current_user.id      
+      redirect_to "/items/#{item.user.id}/mypage"
+    # redirect_to edit_select_item_path
+  end
+
 
   def edit_select
     user = User.find(params[:id])
@@ -75,7 +80,7 @@ class ItemsController < ApplicationController
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-    end
+  end
 
     # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
@@ -102,7 +107,6 @@ class ItemsController < ApplicationController
 
     @image = @item.images
     @goods =@item.goods.count 
-
   end
   
   def card_edit
