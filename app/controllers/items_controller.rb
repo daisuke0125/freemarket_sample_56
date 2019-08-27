@@ -20,11 +20,15 @@ class ItemsController < ApplicationController
   end
       
   def card_registration
-    @card = Card.find(11)
+    @user = User.find(params[:id])
+    # @card = @user.cards.ids
+    @user.cards.ids.each do |card|
+      @card = card
+    end
     if @card.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(@card.customer_id)
-      @card_information = customer.cards.retrieve(@card.card_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id.to_i)
+      @card_information = customer.cards.retrieve(@card.card_id.to_i)
 
       # 《＋α》 登録しているカード会社のブランドアイコンを表示するためのコードです。---------
       @card_brand = @card_information.brand      
@@ -43,6 +47,18 @@ class ItemsController < ApplicationController
         @card_src = "discover.svg"
       end
       # ---------------------------------------------------------------
+    end
+  end
+
+  def destroy #PayjpとCardのデータベースを削除
+    @card = Card.find(11)
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    customer.delete
+    if @card.destroy #削除に成功した時にポップアップを表示します。
+      redirect_to action: "index", notice: "削除しました"
+    else #削除に失敗した時にアラートを表示します。
+      redirect_to action: "index", alert: "削除できませんでした"
     end
   end
 
