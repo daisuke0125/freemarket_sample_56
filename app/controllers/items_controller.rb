@@ -84,6 +84,7 @@ class ItemsController < ApplicationController
     if @item.save
       params[:images][:photo].each do |photo|
         @item.images.create(photo: photo, item_id: @item.id)
+        # binding.pry @item.imagesでphoto取得
       end
       redirect_to root_path
     else

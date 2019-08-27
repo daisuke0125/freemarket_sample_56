@@ -28,7 +28,7 @@ class User < ApplicationRecord
   
   has_many :sns_credentials, dependent: :destroy
   has_many :cards
-  mount_uploaders :image, ImageUploader
+  mount_uploader :image, ImageUploader
   has_many :items
 
   #いいね機能のアソシエーション
