@@ -29,7 +29,6 @@ Rails.application.routes.draw do
       get 'buy'
       get 'card_information'
       get 'sell'
-      get 'edit'
     end
     member do
       get 'detail'
@@ -43,10 +42,6 @@ Rails.application.routes.draw do
     end  
   end
 
-  # resources :cards, only:[:show,:create,:destroy]
   resources :categories, only:[:index]
-
-  # get   "card/edit" => "card#edit"
-  # post   "card" => "card#create"
 
 end

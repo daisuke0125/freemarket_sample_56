@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
 
+  before_action :set_item, only: [:edit, :update, :destroy, :detail]
+  before_action :set_user, only: [:mypage, :edit_select, :identification]
+
   def index
     @items = Item.all
     @image = []
@@ -12,17 +15,28 @@ class ItemsController < ApplicationController
   end
 
   def mypage
-    @user = User.find(params[:id])
     @nickname = @user.nickname
   end
 
 
   def edit 
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+  end
+
+  def update
+    @item.update(item_params) if item.user_id == current_user.id
+  end
+
+  def destroy
+    @item.destroy  if item.user_id == current_user.id      
+      redirect_to "/items/#{item.user.id}/mypage"
   end
 
   def edit_select
-    user = User.find(params[:id])
-    @items = user.items
+    @items = @user.items
   end
 
   def card_registration
@@ -36,7 +50,6 @@ class ItemsController < ApplicationController
   end
 
   def identification
-    @user = User.find(params[:id])
     birth_year = @user.birth_year.to_s
     birth_month = @user.birth_month.to_s
     birth_day = @user.birth_day.to_s
@@ -58,7 +71,7 @@ class ItemsController < ApplicationController
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-    end
+  end
 
     # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
@@ -79,13 +92,11 @@ class ItemsController < ApplicationController
   end
 
   def detail
-    @item = Item.find(params[:id])
     @land_item = Item.where( 'id >= ?', rand(Item.count) + 1 ).sample
     @land_item2 = Item.where( 'id >= ?', rand(Item.count) + 1 ).sample
 
     @image = @item.images
     @goods =@item.goods.count 
-
   end
   
   def card_edit
@@ -108,6 +119,14 @@ class ItemsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:card_number, :exp_month, :exp_year, :cvc).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

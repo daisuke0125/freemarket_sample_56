@@ -3,7 +3,7 @@
   .content  
     =link_to "レディース新着アイテム" , "" , class:"content__title"
     .content__box
-      -items.where(category_id: 1..17).where.not(category_id: 2..4).order("created_at DESC").last(4).each do |item| 
+      -items.where(category_id: 1..17).where.not(category_id: 2..4).last(4).each do |item| 
         .item 
           =link_to detail_item_path(item) do
             .item__image

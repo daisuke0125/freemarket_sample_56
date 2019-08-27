@@ -342,10 +342,17 @@
 }
 a.edit-btn{
   @include btn-red;
+  margin-top: 20px;
+  &:hover{
+    opacity: 0.6;
+  }
 }
 a.edit-btn--gray{
   @include btn-red;
   border: solid 1px #aaa;
   background-color: #aaa;
-  
+  margin-top: 20px;
+  &:hover{
+    opacity: 0.6;
+  }  
 }

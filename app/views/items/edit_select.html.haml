@@ -21,7 +21,10 @@
                   .tab-content__list__body
                     .tab-content__list__body--text= item.name
                     .tab-content__list__body--time
-                      %i.fa.fa-search
-                      %span= item.created_at
+                      = fa_icon 'heart-o'
+                      %span{style:"padding-right: 8px"}= item.goods.count
+                      = fa_icon 'comment-o'
+                      %span 0
+                      -# %span= item.comments.count
                   %i.fa.fa-angle-right.tab-icon
 = render "items/footer"
