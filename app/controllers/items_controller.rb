@@ -126,8 +126,12 @@ class ItemsController < ApplicationController
   end
   
   def card_edit
-    @card = Card.new
+    card = Card.where(user_id: current_user.id)
+    redirect_to action: "show" if card.exists?
+    # @card = Card.new
   end
+
+  
 
   # def card_upload
   #   @card = Card.create(card_params)

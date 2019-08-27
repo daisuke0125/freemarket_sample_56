@@ -7,7 +7,8 @@ class CardController < ApplicationController
     redirect_to action: "show" if card.exists?
   end
 
-  def pay #payjpとCardのデータベース作成を実施します。
+  def pay 
+    binding.pry
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
       redirect_to action: "new"
@@ -43,10 +44,25 @@ class CardController < ApplicationController
       redirect_to action: "new"
   end
 
-  def show #Cardのデータpayjpに送り情報を取り出します
-    binding.pry
-    redirect_to mypage_item_path(current_user) 
+  def show 
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    if params['payjp-token'].blank?
+      redirect_to action: "new"
+    else
+      customer = Payjp::Customer.create(
+      description: '登録テスト', #なくてもOK
+      email: current_user.email, #なくてもOK
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
+      ) #念の為metadataにuser_idを入れましたがなくてもOK
+      @card = Card.create(
+        user_id: current_user.id, 
+        customer_id: customer.id, 
+        card_id: customer.default_card,
+      )
+    redirect_to mypage_item_path
   end
+end
 
   private
   def card_params
