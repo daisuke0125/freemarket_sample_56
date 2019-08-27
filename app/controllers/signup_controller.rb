@@ -89,7 +89,7 @@ class SignupController < ApplicationController
 
 
         if @user.save
-            # binding.pry
+            binding.pry
             Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
             if params['payjp-token'].blank?
             # redirect_to action: "new"
@@ -149,12 +149,12 @@ class SignupController < ApplicationController
         )
     end
 
-    # def card_params
-    #     params.require(:card).permit(
-    #         :user_id, 
-    #         :customer_id, 
-    #         :card_id,
-    #     )
-    # end
+    def card_params
+        params.require(:card).permit(
+            :user_id, 
+            :customer_id, 
+            :card_id,
+        )
+    end
 
 end

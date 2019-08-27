@@ -27,7 +27,7 @@
         #form1
           %label カード番号
           %label.attention 必須
-          = text_field_tag "card_number", "", class: "big", type: "text", id: "card_number", placeholder: "半角数字のみ", maxlength: "16", required: "true"
+          = text_field_tag "card_number", "", class: "big", type: "text", id: "card_number", placeholder: "半角数字のみ", maxlength: "16"
           .card__logo
             %li
               = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?917505326", class: "card"
@@ -47,7 +47,7 @@
           %label 有効期限
           %label.attention 必須
           %br/
-          %select#exp_month{name: "exp_month", type: "text", class: "form", required: "true"}
+          %select#exp_month{name: "exp_month", type: "text", class: "form"}
             %option{value: ""} --
             %option{value: "1"}01
             %option{value: "2"}02
@@ -62,7 +62,7 @@
             %option{value: "11"}11
             %option{value: "12"}12
           %span.expire-text 月
-          %select#exp_year{name: "exp_year", type: "text", class: "form", required: "true"}
+          %select#exp_year{name: "exp_year", type: "text", class: "form"}
             %option{value: ""} --
             %option{value: "2019"}19
             %option{value: "2020"}20
@@ -80,7 +80,7 @@
           %label セキュリティコード
           %label.attention 必須 
           %br/
-          = text_field_tag "cvc", "", id: "big", type: "text", class: "cvc", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4", required: "true"
+          = text_field_tag "cvc", "", id: "cvc", type: "text", class: "big", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4"
         #form1
           = submit_tag "次へ進む", id: "token_submit", class: "buttom1"
   .sign_up__footer
