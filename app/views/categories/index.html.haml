@@ -1,5 +1,6 @@
 =render "items/header"
-
+- breadcrumb :categories
+= render "layouts/breadcrumbs"
 .category-list
   %h1.category-list__title カテゴリー 一覧
   - @parents.each do |parent|
