@@ -20,7 +20,30 @@ class ItemsController < ApplicationController
   end
       
   def card_registration
-    @user = User.find(params[:id])
+    @card = Card.find(11)
+    if @card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
+
+      # 《＋α》 登録しているカード会社のブランドアイコンを表示するためのコードです。---------
+      @card_brand = @card_information.brand      
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
+      # ---------------------------------------------------------------
+    end
   end
 
   def add_card_registration
