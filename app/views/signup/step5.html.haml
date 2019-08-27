@@ -20,7 +20,7 @@
           完了
           %span.bubble>
   .sign_up2__main
-    = form_tag({ controller: 'signup', action: 'create' },{ method: :post}) do
+    = form_tag(signup_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
       .sign_up2__main__header
         %h2 支払い方法
       .sign_up2__main__form
