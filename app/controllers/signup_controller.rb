@@ -87,16 +87,17 @@ class SignupController < ApplicationController
 
 
         if @user.save
+            # binding.pry
             Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
             if params['payjp-token'].blank?
             # redirect_to action: "new"
             else
             customer = Payjp::Customer.create(
-            description: '登録テスト', #なくてもOK
-            email: current_user.email, #なくてもOK
+            description: '登録テスト', 
+            email: current_user.email,
             card: params['payjp-token'],
             metadata: {user_id: current_user.id}
-            ) #念の為metadataにuser_idを入れましたがなくてもOK
+            ) 
             @card = Card.create(
                 user_id: current_user.id, 
                 customer_id: customer.id, 

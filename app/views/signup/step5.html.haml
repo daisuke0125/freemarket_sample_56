@@ -18,7 +18,7 @@
           %span.bubble
         %li
           完了
-          %span.bubble>
+          %span.bubble
   .sign_up2__main
     = form_tag(signup_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
       .sign_up2__main__header
@@ -82,7 +82,7 @@
           %br/
           = text_field_tag "cvc", "", id: "cvc", type: "text", class: "big", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4", required: "true"
         #form1
-          = submit_tag "次へ進む", id: "tokun_submit", class: "buttom1"
+          = submit_tag "次へ進む", id: "token_submit", class: "buttom1"
   .sign_up__footer
     %nav
       %li
