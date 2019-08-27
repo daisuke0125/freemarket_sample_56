@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
         @card_src = "discover.svg"
       end
     else
-      redirect_to card_edit_item_path
+      redirect_to add_card_registration_item_path
       # ---------------------------------------------------------------
     end
   end
@@ -65,6 +65,15 @@ class ItemsController < ApplicationController
   end
 
   def add_card_registration
+    @user = User.find(params[:id])
+    @card = @user.card
+    if @card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      customer.delete
+      @card.destroy #削除に成功した時にポップアップを表示します。
+    else
+    end
   end
 
   def card_information
@@ -125,12 +134,6 @@ class ItemsController < ApplicationController
     @image= @item.images
   end
   
-  def card_edit
-    card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
-    # @card = Card.new
-  end
-
   
 
   # def card_upload

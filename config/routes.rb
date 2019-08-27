@@ -37,7 +37,7 @@ Rails.application.routes.draw do
       get 'identification'
       get 'card_registration'
       get 'add_card_registration'
-      get 'card_edit'
+      delete 'add_card_registration'
       get 'logout'
     end  
   end

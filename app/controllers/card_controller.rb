@@ -3,19 +3,23 @@ class CardController < ApplicationController
   require "payjp"
 
   def new
-    card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+    card = Card.new
+
   end
 
+  # def edit
+  #   card = Card.where(user_id: current_user.id)
+  #   redirect_to action: "show" if card.exists?
+  # end
+
   def pay 
-    binding.pry
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
       description: '登録テスト', #なくてもOK
-      email: current_user.email, #なくてもOK
+      # email: current_user.email, #なくてもOK
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
       ) #念の為metadataにuser_idを入れましたがなくてもOK
@@ -50,8 +54,7 @@ class CardController < ApplicationController
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
-      description: '登録テスト', #なくてもOK
-      email: current_user.email, #なくてもOK
+      description: '登録テスト', 
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
       ) #念の為metadataにuser_idを入れましたがなくてもOK
@@ -60,9 +63,10 @@ class CardController < ApplicationController
         customer_id: customer.id, 
         card_id: customer.default_card,
       )
-    redirect_to mypage_item_path
+      redirect_to mypage_item_path(current_user)
   end
 end
+
 
   private
   def card_params

@@ -74,9 +74,14 @@
         発想元・お届け先住所変更
         = fa_icon 'angle-right'
     %li
-      = link_to add_card_registration_item_path,class:"sidebar__list--item" do
-        支払い方法
-        = fa_icon 'angle-right'
+      - if current_user.card.present? 
+        = link_to card_registration_item_path, class:"sidebar__list--item" do
+          支払い方法
+          = fa_icon 'angle-right'
+      - else
+        = link_to add_card_registration_item_path, class:"sidebar__list--item" do
+          支払い方法
+          = fa_icon 'angle-right'
     %li
       = link_to "",class:"sidebar__list--item" do
         メール/パスワード
