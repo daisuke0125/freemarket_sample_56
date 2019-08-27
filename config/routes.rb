@@ -29,9 +29,6 @@ Rails.application.routes.draw do
       get 'buy'
       get 'card_information'
       get 'sell'
-      # get 'edit'
-      # get 'update'
-      # get 'destroy'
     end
     member do
       get 'detail'
@@ -45,7 +42,6 @@ Rails.application.routes.draw do
     end  
   end
 
-  # resources :cards, only:[:show,:create,:destroy]
   resources :categories, only:[:index]
 
 end

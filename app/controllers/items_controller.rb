@@ -18,9 +18,7 @@ class ItemsController < ApplicationController
 
 
   def edit 
-    @item = Item.find(params[:id])
-    # @category = Category.find(params[:id])
- 
+    @item = Item.find(params[:id]) 
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
