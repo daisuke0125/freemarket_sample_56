@@ -12,10 +12,6 @@
           %h2.shipping 発送をお待ちください  
           %h2.notification 出品者からの発送通知をお待ちください
       %section.buy-content.buy-item.transmission
-        -# .buy-content-inner
-        -#   %h3.buy-item-image
-        -#   -@image.first(1).each do |image|
-        -#     = image_tag "#{image.photo}"
       %section.notice-price
         %p.purchase-completed 購入が完了しました
       %section.notice-image
@@ -59,6 +55,11 @@
             %figure
               = image_tag @card_src,  height: "40", width: "40"
             %i.icon-arrow-right
+      %section.notice-flow 
+        .purchase-flow 発送通知後の流れ
+        %i.fas.fa-laugh
+        %i.fas.fa-meh
+        %i.fas.fa-frown
   %footer.single-footer
     %nav
       %ul.clearfix
