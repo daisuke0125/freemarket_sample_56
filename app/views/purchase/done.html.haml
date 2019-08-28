@@ -6,14 +6,17 @@
         = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2508029365", alt: "mercari"
   %main.single-main
     %section.l-single-container.buy-item-container
-      %h2.l-single-head.complete 購入内容の確認
-      %section.buy-content.buy-item
+      %section.l-single-container.buy-item-container.sending-goods
+        %section.sending-goods
+          %i.far.fa-clock
+          %h2.shipping 発送をお待ちください  
+          %h2.notification 出品者からの発送通知をお待ちください
+      %section.buy-content.buy-item.transmission
         .buy-content-inner
           %h3.buy-item-image
           -@image.first(1).each do |image|
             = image_tag "#{image.photo}"
-          %p.buy-item-name.bold
-            =@item.name
+          %section.purchase-completed 購入が完了しました
           %form.buy-form{action: "https://www.mercari.com/jp/transaction/buy/done/m95477518228/", :method => "POST", :novalidate => "novalidate"}
             %p.buy-price-ja.bold
               ="¥#{@item.price.to_s(:delimited)}"

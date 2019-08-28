@@ -101,13 +101,18 @@ span {
     width: 700px;
     margin: 0 auto;
     background: #fff;
-    .l-single-head {
+    .shipping{
+      position: relative;
+      bottom: 25px;
+      color: red;
+      font-size: 18px;
       padding: 16px;
-      font-size: 22px;
       line-height: 1.5;
       text-align: center;
+      font-weight: bold;
+      left: 30px;
+      }
     }
-  }
    
   .buy-content:first-of-type {
     margin: 0;
@@ -138,12 +143,16 @@ span {
           opacity: 1;
           transition: opacity .3s;
           }
-      .buy-item-name {
+        .purchase-completed {
         width: calc(100% - 80px);
         margin: 0 0 0 16px;
         text-align: left;
-        font-size: 16px;
+        font-size: 21px;
         line-height: 1.5;
+        font-weight: bold;
+        left: 56px;
+        position: relative;
+        
         }
       .buy-form {
         width: 100%;
@@ -343,6 +352,25 @@ button {
     }
 
 
-.complete{
+.sending-goods{
   background-color: #FFFACD;
+  height: 100px;
+}
+
+.fa-clock{
+  color: red;
+  position: relative;
+  font-size: 35px ;
+  top: 20px;
+  left: 245px;
+}
+
+.transmission{
+  margin-top: 0;
+}
+
+.notification{
+  position: relative;
+  bottom: 30px;
+  left: 233px;
 }
