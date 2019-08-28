@@ -19,16 +19,16 @@
         - if user_signed_in?
           %ul.login-lists
             %li.login-li
-              = fa_icon 'bell', class: "login-icon"
+              = fa_icon 'bell-o', class: "login-icon"
               .login-list お知らせ
             %li.login-li
-              = fa_icon 'heart', class: "login-icon"
+              = fa_icon 'heart-o', class: "login-icon"
               .login-list いいね！一覧
             %li.login-li
               = fa_icon 'check', class: "login-icon"
               .login-list やることリスト
             %li.login-li
-              = fa_icon 'user', class: "login-icon"
+              = fa_icon 'user-o', class: "login-icon"
               = link_to "マイページ" , mypage_item_path(current_user) ,method: :get ,class:"login-list__mypage"
         - else
           =link_to "新規会員登録" , new_user_registration_path ,class:"header-btn signup"

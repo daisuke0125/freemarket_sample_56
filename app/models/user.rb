@@ -31,6 +31,15 @@ class User < ApplicationRecord
   mount_uploaders :image, ImageUploader
   has_many :items
 
+  #いいね機能のアソシエーション
+  has_many :goods, dependent: :destroy
+  has_many :goods_items, through: :goods, source: :item
+
+  def already_gooded?(item)
+    self.goods.exists?(item_id: item.id)
+    #すでにいいねをしているのかどうかを判定already_liked?
+  end
+
   # devise :omniauthable,omniauth_providers: [:facebook, :google_oauth2]
 
   def self.find_oauth(auth)

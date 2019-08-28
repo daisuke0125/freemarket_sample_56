@@ -51,15 +51,12 @@
           %tr
             %th カテゴリー
             %td
+              =link_to "#{@item.category.parent.parent.name}",""
+              >
+              =link_to "#{@item.category.parent.name}",""
+              >
               =link_to "#{@item.category.name}",""
-              -# -# %br
-              -# -# = fa_icon 'angle-right' 
-              -# -# =link_to "スキンケア/基礎化粧品" , ""
-              -# -# %br
-              -# -# = fa_icon 'angle-right'
-              -# -# =link_to "クレンジング/メイク落とし" , ""
-              -# .item-detail-table-sub-sub-category
-                %i.icon-arrow-right
+              %i.icon-arrow-right
           %tr
             %th ブランド
             %td
@@ -84,21 +81,23 @@
       %span.item-price-box__yen="¥"+@item.price.to_s(:delimited)
       %span.item-price-box__tax (税込)
       %span.item-price-box__fee 送料込み
+
     - if (@item.soldout != "sold")
-      %button.btn-default.btn-red{type: "submit"}
-        =link_to "購入画面に進む", purchase_path(@item),  class: "item-price-box__buy"
+      - if user_signed_in? && current_user.id != @item.user_id
+        %button.btn-default.btn-red{type: "submit"}
+          =link_to "購入画面に進む", purchase_path(@item),  class: "item-price-box__buy"
     - else 
       .btn-gray{style:"width:100%; pointer-events: none; margin-top: 20px;"}
         %span 売り切れました
 
-      
     .item-content-text=@item.detail
     .item-button-content
       .item-button-content__left
-        %button.item-button-like{name:"like!", type: "button"}
-          = fa_icon 'heart' 
-          %span いいね!
-          %span.fade-in-down{"data-num": "like"} 1
+        %span.item-button-like
+          %span{style:"padding-right:6px"} いいね!
+          =render partial:'goods/good', locals:{item:@item}
+          %span.good-count{style:"padding-left:6px"}= @item.goods.count
+        .item-button-flag
         %a.item-button-like{href: ""}
           = fa_icon 'flag' 
           %span 不適切な商品の報告
@@ -106,6 +105,15 @@
         = fa_icon 'key' 
         =link_to "あんしん・あんぜんへの取り組み" , root_path ,class:"header-btn signup"
 
+  .message-content
+    .message-content-text
+      - if user_signed_in? && current_user.id == @item.user_id
+        =link_to "商品の編集" ,edit_item_path(@item),class:"edit-btn"
+        %br
+        %h5{style:"text-align:center"} or
+        =link_to "出品を一旦停止する" ,"",class:"edit-btn--gray"
+        =link_to "この商品を削除する", "/items/#{@item.id}", method: :delete, class:"edit-btn--gray",data: { confirm: '本当に削除してよろしいですか？' }
+  
   .message-content
     .message-content-text
       %form.message-form{action: "", method: "POST"}
@@ -117,6 +125,16 @@
         - if (@item.soldout != "sold")
           %button.btn-gray{type: "submit"}
             %span コメントする
+          - if user_signed_in? && current_user.id != @item.user_id
+            %ul.nav-item
+              %li.link--prev
+                =link_to detail_item_path(@land_item)  ,class:"link--text" do
+                  = fa_icon 'angle-left'
+                  =@land_item.name
+              %li.link--next
+                =link_to detail_item_path(@land_item2),class:"link--text" do
+                  =@land_item2.name
+                  = fa_icon 'angle-right'        
         - else 
           .btn-gray{style:"width:100%; pointer-events: none;"}
             %span 売り切れのためコメントできません 
@@ -160,24 +178,50 @@
               = fa_icon 'heart' ,class:"num-font__count"
               .num-font--like 2
 
+    .message-content
+      %ul.message-content__social
+        %li
+          =link_to "", class: "facebook-icon" do
+            =fa_icon "facebook-square", class: "facebook"
+        %li
+          =link_to "", class: "twitter-icon" do
+            =fa_icon "twitter-square", class: "twitter"
+        %li
+          =link_to "", class: "pinterest-icon" do
+            =fa_icon "pinterest", class: "pinterest"
 
-  .other-item
-    =link_to "#{@item.category.name}その他の商品","",class:"other-item__title"
+    .other-item
+      =link_to "#{@item.user.nickname}さんのその他の商品" ,"",class:"other-item__title"
+      .other-item__content
+      -@item.user.items.last(3).each do |user_item|
+        .item-box
+          =link_to detail_item_path(user_item) do
+            %figure.item-box__image
+            -user_item.images.each do |image|
+              = image_tag "#{image.photo}", class: 'item-box__image--height'
+          .item-box__body
+            %h3.item-box__body--name=user_item.name
+            .item-box__body--num
+              .item-box__body--num--price="¥"+user_item.price.to_s(:delimited)
+              .num-font
+                = fa_icon 'heart'
+                %span.good-count{style:"padding-left:6px"}= @item.goods.count
 
-    .other-item__content
-
-    -@item.category.items.last(3).each do |category_item|
-      .item-box
-        =link_to detail_item_path(category_item) do
-          %figure.item-box__image
-          -category_item.images.each do |image|
-            = image_tag "#{image.photo}", alt: '', class: 'item-box__image--height'
-        .item-box__body
-          %h3.item-box__body--name=category_item.name
-          .item-box__body--num
-            .item-box__body--num--price="¥"+category_item.price.to_s(:delimited)
-            .num-font
-              = fa_icon 'heart' ,class:"num-font__count"
-              .num-font--like 2
+    .other-item
+      =link_to "#{@item.category.name}その他の商品","",class:"other-item__title"
+      .other-item__content
+      -@item.category.items.last(3).each do |category_item|
+        .item-box
+          =link_to detail_item_path(category_item) do
+            %figure.item-box__image
+            -category_item.images.each do |image|
+              = image_tag "#{image.photo}", alt: '', class: 'item-box__image--height'
+          .item-box__body
+            %h3.item-box__body--name=category_item.name
+            .item-box__body--num
+              .item-box__body--num--price="¥"+category_item.price.to_s(:delimited)
+              .num-font
+                = fa_icon 'heart'
+                %span.good-count{style:"padding-left:6px"}= @goods
 
 =render "footer"

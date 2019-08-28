@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
 
   resources :items do
+    resources :goods, only: [:create, :destroy]
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
       get 'add_card_registration'
       delete 'add_card_registration'
       get 'logout'
+      get 'edit_select'
     end  
   end
 
@@ -65,5 +67,7 @@ Rails.application.routes.draw do
       get 'done', to: 'purchase#done'
     end
   end
+
+  resources :categories, only:[:index]
 
 end

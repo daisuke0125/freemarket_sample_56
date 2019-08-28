@@ -1,0 +1,12 @@
+.breadcrumbs-list {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    margin: 0 210px;
+    a {
+        color: black;
+    }
+    span.current {
+        font-weight: bold;
+    }
+}
