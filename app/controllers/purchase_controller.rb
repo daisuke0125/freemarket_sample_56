@@ -33,6 +33,6 @@ class PurchaseController < ApplicationController
   def done
     @item = Item.find(params[:id])
     @image = @item.images
-    # @user = current_user
+    @user = current_user
   end
 end
