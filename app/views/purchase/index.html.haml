@@ -14,7 +14,7 @@
             = image_tag "#{image.photo}"
           %p.buy-item-name.bold
             =@item.name
-          %form.buy-form{action: "https://www.mercari.com/jp/transaction/buy/done/m95477518228/", :method => "POST", :novalidate => "novalidate"}
+          = form_tag(action: :pay, :method => "POST",:novalidate => "novalidate", class: "buy-form") do
             %p.buy-price-ja.bold
               ="¥#{@item.price.to_s(:delimited)}"
               %span.item-shipping-fee.f14.bold 
