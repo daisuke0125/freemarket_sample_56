@@ -40,10 +40,55 @@ class ItemsController < ApplicationController
   end
 
   def card_registration
+    @user = User.find(params[:id])
+    @card = @user.card
+  
+    if @card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
+      @card_brand = @card_information.brand      
+      case @card_brand
+      when "Visa"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?917505326"
+      when "JCB"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?917505326"
+      when "MasterCard"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?917505326"
+      when "American Express"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?917505326"
+      when "Diners Club"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?917505326"
+      when "Discover"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?917505326"
+      end
+    else
+      redirect_to add_card_registration_item_path
+    end
+  end
+
+  def destroy 
     @card = Card.find(params[:id])
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    customer.delete
+    if @card.destroy 
+      redirect_to action: "index", notice: "削除しました"
+    else
+      redirect_to action: "index", alert: "削除できませんでした"
+    end
   end
 
   def add_card_registration
+    @user = User.find(params[:id])
+    @card = @user.card
+    if @card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      customer.delete
+      @card.destroy 
+    else
+    end
   end
 
   def card_information
@@ -57,6 +102,9 @@ class ItemsController < ApplicationController
   end
 
   def buy
+    @item = Item.find(params[:id])
+    @image = @item.images
+    @user = current_user
   end
   
   def sell
@@ -84,7 +132,6 @@ class ItemsController < ApplicationController
     if @item.save
       params[:images][:photo].each do |photo|
         @item.images.create(photo: photo, item_id: @item.id)
-        # binding.pry @item.imagesでphoto取得
       end
       redirect_to root_path
     else
@@ -100,13 +147,11 @@ class ItemsController < ApplicationController
     @goods =@item.goods.count 
   end
   
-  def card_edit
-    @card = Card.new
-  end
+  
 
-  def card_upload
-    @card = Card.create(card_params)
-  end
+  # def card_upload
+  #   @card = Card.create(card_params)
+  # end
 
   private
 
@@ -118,9 +163,9 @@ class ItemsController < ApplicationController
     params.require(:image).permit(:photo)
   end
 
-  def card_params
-    params.require(:card).permit(:card_number, :exp_month, :exp_year, :cvc).merge(user_id: current_user.id)
-  end
+  # def card_params
+  #   params.require(:card).permit(:card_number, :exp_month, :exp_year, :cvc).merge(user_id: current_user.id)
+  # end
 
   def set_item
     @item = Item.find(params[:id])

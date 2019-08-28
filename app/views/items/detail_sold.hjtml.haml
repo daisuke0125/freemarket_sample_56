@@ -8,9 +8,8 @@
         .thumbnail
           -@image.each do |p|
             =image_tag "#{p.photo}",class: "thumbnail-image" 
-          -if (@item.soldout == "sold")
-            .item-sold-out-badge
-              .div SOLD
+          .item-sold-out-badge
+            .div SOLD
           -# -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
           -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
           -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
@@ -51,12 +50,15 @@
           %tr
             %th カテゴリー
             %td
-              =link_to "#{@item.category.parent.parent.name}",""
-              >
-              =link_to "#{@item.category.parent.name}",""
-              >
               =link_to "#{@item.category.name}",""
-              %i.icon-arrow-right
+              -# -# %br
+              -# -# = fa_icon 'angle-right' 
+              -# -# =link_to "スキンケア/基礎化粧品" , ""
+              -# -# %br
+              -# -# = fa_icon 'angle-right'
+              -# -# =link_to "クレンジング/メイク落とし" , ""
+              -# .item-detail-table-sub-sub-category
+                %i.icon-arrow-right
           %tr
             %th ブランド
             %td
@@ -81,23 +83,15 @@
       %span.item-price-box__yen="¥"+@item.price.to_s(:delimited)
       %span.item-price-box__tax (税込)
       %span.item-price-box__fee 送料込み
-
-    - if (@item.soldout != "sold")
-      - if user_signed_in? && current_user.id != @item.user_id
-        %button.btn-default.btn-red{type: "submit"}
-          =link_to "購入画面に進む", purchase_path(@item),  class: "item-price-box__buy"
-    - else 
-      .btn-gray{style:"width:100%; pointer-events: none; margin-top: 20px;"}
-        %span 売り切れました
-
+    %button.btn-default.btn-red{type: "submit"}
+      =link_to "購入画面に進む", purchase_path(@item),  class: "item-price-box__buy"
     .item-content-text=@item.detail
     .item-button-content
       .item-button-content__left
-        %span.item-button-like
-          %span{style:"padding-right:6px"} いいね!
-          =render partial:'goods/good', locals:{item:@item}
-          %span.good-count{style:"padding-left:6px"}= @item.goods.count
-        .item-button-flag
+        %button.item-button-like{name:"like!", type: "button"}
+          = fa_icon 'heart' 
+          %span いいね!
+          %span.fade-in-down{"data-num": "like"} 1
         %a.item-button-like{href: ""}
           = fa_icon 'flag' 
           %span 不適切な商品の報告
@@ -107,37 +101,15 @@
 
   .message-content
     .message-content-text
-      - if user_signed_in? && current_user.id == @item.user_id
-        =link_to "商品の編集" ,edit_item_path(@item),class:"edit-btn"
-        %br
-        %h5{style:"text-align:center"} or
-        =link_to "出品を一旦停止する" ,"",class:"edit-btn--gray"
-        =link_to "この商品を削除する", "/items/#{@item.id}", method: :delete, class:"edit-btn--gray",data: { confirm: '本当に削除してよろしいですか？' }
-  
-  .message-content
-    .message-content-text
       %form.message-form{action: "", method: "POST"}
         %input{name: "__csrf_value", type: "hidden", value: ""}/
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         %input{name: "item_id", type: "hidden", value: "m62740205964"}/
         %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
         %textarea.textarea-default{name: "body", type: "text", value: ""}
-        - if (@item.soldout != "sold")
-          %button.btn-gray{type: "submit"}
-            %span コメントする
-          - if user_signed_in? && current_user.id != @item.user_id
-            %ul.nav-item
-              %li.link--prev
-                =link_to detail_item_path(@land_item)  ,class:"link--text" do
-                  = fa_icon 'angle-left'
-                  =@land_item.name
-              %li.link--next
-                =link_to detail_item_path(@land_item2),class:"link--text" do
-                  =@land_item2.name
-                  = fa_icon 'angle-right'        
-        - else 
-          .btn-gray{style:"width:100%; pointer-events: none;"}
-            %span 売り切れのためコメントできません 
+        %button.btn-gray{type: "submit"}
+          %span コメントする
+
   %ul.nav-item
     %li.link--prev
       =link_to detail_item_path(@land_item)  ,class:"link--text" do
@@ -178,50 +150,24 @@
               = fa_icon 'heart' ,class:"num-font__count"
               .num-font--like 2
 
-    .message-content
-      %ul.message-content__social
-        %li
-          =link_to "", class: "facebook-icon" do
-            =fa_icon "facebook-square", class: "facebook"
-        %li
-          =link_to "", class: "twitter-icon" do
-            =fa_icon "twitter-square", class: "twitter"
-        %li
-          =link_to "", class: "pinterest-icon" do
-            =fa_icon "pinterest", class: "pinterest"
 
-    .other-item
-      =link_to "#{@item.user.nickname}さんのその他の商品" ,"",class:"other-item__title"
-      .other-item__content
-      -@item.user.items.last(3).each do |user_item|
-        .item-box
-          =link_to detail_item_path(user_item) do
-            %figure.item-box__image
-            -user_item.images.each do |image|
-              = image_tag "#{image.photo}", class: 'item-box__image--height'
-          .item-box__body
-            %h3.item-box__body--name=user_item.name
-            .item-box__body--num
-              .item-box__body--num--price="¥"+user_item.price.to_s(:delimited)
-              .num-font
-                = fa_icon 'heart'
-                %span.good-count{style:"padding-left:6px"}= @item.goods.count
+  .other-item
+    =link_to "#{@item.category.name}その他の商品","",class:"other-item__title"
 
-    .other-item
-      =link_to "#{@item.category.name}その他の商品","",class:"other-item__title"
-      .other-item__content
-      -@item.category.items.last(3).each do |category_item|
-        .item-box
-          =link_to detail_item_path(category_item) do
-            %figure.item-box__image
-            -category_item.images.each do |image|
-              = image_tag "#{image.photo}", alt: '', class: 'item-box__image--height'
-          .item-box__body
-            %h3.item-box__body--name=category_item.name
-            .item-box__body--num
-              .item-box__body--num--price="¥"+category_item.price.to_s(:delimited)
-              .num-font
-                = fa_icon 'heart'
-                %span.good-count{style:"padding-left:6px"}= @goods
+    .other-item__content
+
+    -@item.category.items.last(3).each do |category_item|
+      .item-box
+        =link_to detail_item_path(category_item) do
+          %figure.item-box__image
+          -category_item.images.each do |image|
+            = image_tag "#{image.photo}", alt: '', class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name=category_item.name
+          .item-box__body--num
+            .item-box__body--num--price="¥"+category_item.price.to_s(:delimited)
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
 
 =render "footer"

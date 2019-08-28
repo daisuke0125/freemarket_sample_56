@@ -1,35 +1,87 @@
 class CardController < ApplicationController
 
-  def show
-    @card = Card.new
-  end
-  
-  def destroy
-    # @cards = Card.new
-    @cards = current_user.cards
-  end
-  
-  def create
-    @card = Card.new(card_number: card_params[:card_number], exp_month: card_params[:exp_month], exp_year: card_params[:exp_year], cvc: card_params[:cvc], user_id: current_user.id)
-    if @card.save
-      redirect_to card_registration_items_path 
-    else
-      redirect_to card_edit_path
-    end
+  require "payjp"
+
+  def new
+    card = Card.new
+    @user = current_user
+
   end
 
-  def edit
-    @card = Card.new
+  # def edit
+  #   card = Card.where(user_id: current_user.id)
+  #   redirect_to action: "show" if card.exists?
+  # end
+
+
+
+  def delete 
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
+      redirect_to action: "new"
   end
-  
+
+  # def show 
+  #   Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+  #   # if params['payjp-token'].blank?
+  #   #   redirect_to action: "new"
+  #   # else
+  #     customer = Payjp::Customer.create(
+  #     description: '登録テスト', #なくてもOK
+  #     # email: current_user.email, #なくてもOK
+  #     card: params['payjp-token'],
+  #     metadata: {user_id: current_user.id}
+  #     ) #念の為metadataにuser_idを入れましたがなくてもOK
+  #     @card = Card.new(
+  #       user_id: current_user.id, 
+  #       customer_id: customer.id, 
+  #       card_id: customer.default_card,
+  #     )
+  #     if @card.save
+  #       redirect_to card_registration_item_path
+  #       # action: "show"
+  #     else
+  #       redirect_to action: "pay"
+  #     end
+  #   # end
+  # end
+
+  def show 
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    if params['payjp-token'].blank?
+       redirect_to action: "new"
+    else
+      customer = Payjp::Customer.create(
+      description: '登録テスト', 
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
+      ) 
+      @card = Card.new(
+        user_id: current_user.id, 
+        customer_id: customer.id, 
+        card_id: customer.default_card,
+      )
+      if @card.save
+        redirect_to card_registration_item_path(current_user)
+        else
+          redirect_to action: "show"
+        end
+      end
+    end
+
+
   private
   def card_params
     params.require(:card).permit(
-        :card_number,
-        :exp_month,
-        :exp_year,
-        :cvc,
-    )
+        :user_id,
+        :customer_id,
+        :card_id,
+   　　 )
   end
 end
-
