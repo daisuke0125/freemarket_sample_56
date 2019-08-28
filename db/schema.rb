@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_101728) do
     t.datetime "updated_at", null: false
     t.bigint "item_id"
     t.string "photo"
-    t.string "url"
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 
