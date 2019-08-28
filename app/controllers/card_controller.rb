@@ -50,15 +50,16 @@ class CardController < ApplicationController
   end
 
   def show 
+    # binding.pry
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    if params['payjp-token'].blank?
-       redirect_to action: "new"
-    else
+    # if params['payjp-token'].blank?
+    #    redirect_to action: "new"
+    # else
       customer = Payjp::Customer.create(
       description: '登録テスト', 
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
-      ) #念の為metadataにuser_idを入れましたがなくてもOK
+      ) 
       @card = Card.create(
         user_id: current_user.id, 
         customer_id: customer.id, 
@@ -66,7 +67,7 @@ class CardController < ApplicationController
       )
       redirect_to mypage_item_path(current_user)
   end
-end
+# end
 
 
   private
