@@ -8,8 +8,9 @@
         .thumbnail
           -@image.each do |p|
             =image_tag "#{p.photo}",class: "thumbnail-image" 
-          .item-sold-out-badge
-            .div SOLD
+          -if (@item.soldout == "sold")
+            .item-sold-out-badge
+              .div SOLD
           -# -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
           -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
           -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
@@ -83,8 +84,14 @@
       %span.item-price-box__yen="¥"+@item.price.to_s(:delimited)
       %span.item-price-box__tax (税込)
       %span.item-price-box__fee 送料込み
-    %button.btn-default.btn-red{type: "submit"}
-      =link_to "購入画面に進む", purchase_path(@item),  class: "item-price-box__buy"
+    - if (@item.soldout != "sold")
+      %button.btn-default.btn-red{type: "submit"}
+        =link_to "購入画面に進む", purchase_path(@item),  class: "item-price-box__buy"
+    - else 
+      .btn-gray{style:"width:100%; pointer-events: none; margin-top: 20px;"}
+        %span 売り切れました
+
+      
     .item-content-text=@item.detail
     .item-button-content
       .item-button-content__left
@@ -107,9 +114,12 @@
         %input{name: "item_id", type: "hidden", value: "m62740205964"}/
         %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
         %textarea.textarea-default{name: "body", type: "text", value: ""}
-        %button.btn-gray{type: "submit"}
-          %span コメントする
-
+        - if (@item.soldout != "sold")
+          %button.btn-gray{type: "submit"}
+            %span コメントする
+        - else 
+          .btn-gray{style:"width:100%; pointer-events: none;"}
+            %span 売り切れのためコメントできません 
   %ul.nav-item
     %li.link--prev
       =link_to detail_item_path(@land_item)  ,class:"link--text" do

@@ -10,7 +10,7 @@ class PurchaseController < ApplicationController
 
     card = Card.where(user_id: current_user.id).first
     if card.blank?
-      redirect_to controller: "card", action: "new"
+      redirect_to new_card_path
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
