@@ -1,3 +1,5 @@
+-# マイページ＞支払い方法＞カードの登録がない時のページ
+
 =render "items/header"
 
 .mypage
@@ -13,7 +15,7 @@
             %ul.settings-payment-list
               %section.settings-add-card
                 .l-single-content
-                  = link_to card_edit_item_path ,class:"add-button" do
+                  = link_to new_card_path(current_user) ,class:"add-button" do
                     クレジットカードを追加する
                     = fa_icon 'credit-card'
           .settings-not-regist

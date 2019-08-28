@@ -10,17 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_08_22_114315) do
+ActiveRecord::Schema.define(version: 2019_08_28_101728) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "card_number", null: false
-    t.string "exp_month", null: false
-    t.string "exp_year", null: false
-    t.integer "cvc", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "customer_id"
+    t.string "card_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
@@ -54,9 +51,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_114315) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "item_id"
-
     t.string "photo"
-
+    t.string "url"
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 
@@ -75,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_114315) do
     t.bigint "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "soldout"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["comment_id"], name: "index_items_on_comment_id"
     t.index ["good_id"], name: "index_items_on_good_id"
