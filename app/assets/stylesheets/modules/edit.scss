@@ -137,5 +137,19 @@
     }
         
 
-    
-    
+    .listing-select-wrapper__box--select{
+        margin-bottom: 10px;
+    }
+
+.already-image{
+  position: relative;
+}
+.already-btn{
+  height: 50px;
+  background-color: aqua;
+  position: absolute;
+  top: 133px;
+  left: 8px;
+  width: 100px;
+  z-index: 1;
+}
