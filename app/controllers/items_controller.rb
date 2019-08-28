@@ -32,17 +32,17 @@ class ItemsController < ApplicationController
       @card_brand = @card_information.brand      
       case @card_brand
       when "Visa"
-        @card_src = "visa.svg"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?917505326"
       when "JCB"
-        @card_src = "jcb.svg"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?917505326"
       when "MasterCard"
-        @card_src = "master-card.svg"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?917505326"
       when "American Express"
-        @card_src = "american_express.svg"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?917505326"
       when "Diners Club"
-        @card_src = "dinersclub.svg"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?917505326"
       when "Discover"
-        @card_src = "discover.svg"
+        @card_src = "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?917505326"
       end
     else
       redirect_to add_card_registration_item_path
