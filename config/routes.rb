@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   # post   "card" => "card#create"
 
   resources :purchase, only: [:index] do
-    collection do
+    member do
       get 'index', to: 'purchase#index'
       post 'pay', to: 'purchase#pay'
       get 'done', to: 'purchase#done'
