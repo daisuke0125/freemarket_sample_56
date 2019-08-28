@@ -57,9 +57,16 @@
             %i.icon-arrow-right
       %section.notice-flow 
         .purchase-flow 発送通知後の流れ
+        %i.fas.fa-star
         %i.fas.fa-laugh
         %i.fas.fa-meh
         %i.fas.fa-frown
+        %i.fas.fa-star
+      %p.note 商品を受け取ったら
+      %p.note 出品者の評価をしましょう。
+      %p.note 購入代金が出品者に振り込まれます。
+      %p.note 評価後に取引は完了です。
+      = link_to "マイページに戻る", mypage_item_path(current_user), class: :return
   %footer.single-footer
     %nav
       %ul.clearfix
