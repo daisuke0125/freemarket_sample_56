@@ -48,6 +48,10 @@
           %tr
             %th カテゴリー
             %td
+              =link_to "#{@item.category.parent.parent.name}",""
+              >
+              =link_to "#{@item.category.parent.name}",""
+              >
               =link_to "#{@item.category.name}",""
               %i.icon-arrow-right
           %tr
