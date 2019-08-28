@@ -24,6 +24,8 @@ class ItemsController < ApplicationController
     @category = @item.category
     @images = @item.images
     @image = @images.first.photo.url
+    # binding.pry
+
 
     @parent_category = @category.parent.parent.name #レディース
     @category_parent_array = []
@@ -39,7 +41,6 @@ class ItemsController < ApplicationController
       @category_child_array << child.name
     end
     @category_child_array2 = @category_child_array.unshift(@child_category,"---").uniq
-    # unid被りなし
 
     @grandchild_category = @category.name #Tシャツ
     @category_grandchild_array = []
@@ -48,12 +49,13 @@ class ItemsController < ApplicationController
       @category_grandchild_array << grandchild.name
     end
     @category_grandchild_array2 = @category_grandchild_array.unshift(@grandchild_category,"---").uniq
-      # binding.pry
 
+    
   end
-
+  
   def update
     @item.update(item_params) if @item.user_id == current_user.id
+    redirect_to root_path
   end
 
   def destroy
