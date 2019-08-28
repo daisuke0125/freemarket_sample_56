@@ -63,15 +63,15 @@ class ItemsController < ApplicationController
   end
 
   def add_card_registration
-    # @user = User.find(params[:id])
-    # @card = @user.card
-    # if @card.present?
-    #   Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    #   customer = Payjp::Customer.retrieve(@card.customer_id)
-    #   customer.delete
-    #   @card.destroy #削除に成功した時にポップアップを表示します。
-    # else
-    # end
+    @user = User.find(params[:id])
+    @card = @user.card
+    if @card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      customer.delete
+      @card.destroy #削除に成功した時にポップアップを表示します。
+    else
+    end
   end
 
   def card_information

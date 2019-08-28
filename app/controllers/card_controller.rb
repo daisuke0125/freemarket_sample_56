@@ -12,6 +12,20 @@ class CardController < ApplicationController
   #   redirect_to action: "show" if card.exists?
   # end
 
+
+
+  def delete #PayjpとCardデータベースを削除します
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
+      redirect_to action: "new"
+  end
+
   # def show 
   #   Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
   #   # if params['payjp-token'].blank?
@@ -37,37 +51,30 @@ class CardController < ApplicationController
   #   # end
   # end
 
-  def delete #PayjpとCardデータベースを削除します
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
-    else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      customer.delete
-      card.delete
-    end
-      redirect_to action: "new"
-  end
-
   def show 
     # binding.pry
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    # if params['payjp-token'].blank?
-    #    redirect_to action: "new"
-    # else
+    if params['payjp-token'].blank?
+       redirect_to action: "new"
+    else
       customer = Payjp::Customer.create(
       description: '登録テスト', 
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
       ) 
-      @card = Card.create(
+      @card = Card.new(
         user_id: current_user.id, 
         customer_id: customer.id, 
         card_id: customer.default_card,
       )
-      redirect_to mypage_item_path(current_user)
+      if @card.save
+        redirect_to card_registration_item_path(current_user)
+        else
+          redirect_to action: "show"
+        end
+      # redirect_to mypage_item_path(current_user)
   end
-# end
+end
 
 
   private
