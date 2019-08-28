@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_122739) do
+ActiveRecord::Schema.define(version: 2019_08_28_101728) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_122739) do
     t.bigint "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "soldout"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["comment_id"], name: "index_items_on_comment_id"
     t.index ["good_id"], name: "index_items_on_good_id"

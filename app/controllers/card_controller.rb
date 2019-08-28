@@ -14,7 +14,7 @@ class CardController < ApplicationController
 
 
 
-  def delete #PayjpとCardデータベースを削除します
+  def delete 
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
@@ -52,7 +52,6 @@ class CardController < ApplicationController
   # end
 
   def show 
-    # binding.pry
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
        redirect_to action: "new"
@@ -72,9 +71,8 @@ class CardController < ApplicationController
         else
           redirect_to action: "show"
         end
-      # redirect_to mypage_item_path(current_user)
-  end
-end
+      end
+    end
 
 
   private
@@ -83,6 +81,6 @@ end
         :user_id,
         :customer_id,
         :card_id,
-    )
+   　　 )
   end
 end

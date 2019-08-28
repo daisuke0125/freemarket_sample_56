@@ -46,7 +46,8 @@ class PurchaseController < ApplicationController
     :customer => card.customer_id, 
     :currency => 'jpy',
   )
-  redirect_to action: 'done' #完了画面に移動
+  @item.update(soldout: "sold")
+  redirect_to action: 'done'
   end
 
 

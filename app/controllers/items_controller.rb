@@ -27,8 +27,6 @@ class ItemsController < ApplicationController
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
-
-      # 《＋α》 登録しているカード会社のブランドアイコンを表示するためのコードです。---------
       @card_brand = @card_information.brand      
       case @card_brand
       when "Visa"
@@ -46,18 +44,17 @@ class ItemsController < ApplicationController
       end
     else
       redirect_to add_card_registration_item_path
-      # ---------------------------------------------------------------
     end
   end
 
-  def destroy #PayjpとCardのデータベースを削除
+  def destroy 
     @card = Card.find(params[:id])
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
-    if @card.destroy #削除に成功した時にポップアップを表示します。
+    if @card.destroy 
       redirect_to action: "index", notice: "削除しました"
-    else #削除に失敗した時にアラートを表示します。
+    else
       redirect_to action: "index", alert: "削除できませんでした"
     end
   end
@@ -69,7 +66,7 @@ class ItemsController < ApplicationController
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
-      @card.destroy #削除に成功した時にポップアップを表示します。
+      @card.destroy 
     else
     end
   end
@@ -115,7 +112,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       params[:images][:photo].each do |photo|
-        @item.images.create(photo: photo, item_id: @item.id)
+        @item.images.create(photo: photo.original_filename, item_id: @item.id)
       end
       redirect_to root_path
     else
