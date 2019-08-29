@@ -7,6 +7,30 @@ $(document).on('turbolinks:load',function(){
     dots: true,
     centerpadding: 20,
   });
+
+  var cancelFlag = 0;
+  $('#slick-slide-control00').click(function(){
+    var cssProperties = { marginLeft: '-100%' }
+    if (cancelFlag == 0){
+    cancelFlag =1;
+    $('.main-visual__inner').animate({"margin-lef":"toggle"});
+    // $('.main-visual__inner').toggle('slide', {direction: 'right'});
+    setTimeout(function(){
+      cancelFlag = 0;
+    },500);
+    }
+  });
+  $('#slick-slide-control01').click(function(){
+    var cssProperties = { marginLeft: '-100%' }
+    if (cancelFlag == 0){
+    cancelFlag =1;
+    $('.main-visual__inner').animate({"margin-lef":"toggle"});
+    // $('.main-visual__inner').toggle('slide', {direction: 'right'});
+    setTimeout(function(){
+      cancelFlag = 0;
+    },500);
+    }
+  });
   
   // $('.prev-arrow').on('click', function() {
   //   $('.main-visual__inner').hide("slide", { direction: "left" }, 1000);
@@ -14,7 +38,6 @@ $(document).on('turbolinks:load',function(){
   // $('.next-arrow').on('click', function() {
   //   $('.main-visual__inner').fadeIn("slide", { direction: "left" }, 1000);
   // });
-  var cancelFlag = 0;
   $('.prev-arrow').click(function(){
     var cssProperties = { marginLeft: '-100%' }
     if (cancelFlag == 0){
