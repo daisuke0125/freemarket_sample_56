@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+  require 'payjp'
+
   before_action :set_item, only: [:edit, :update, :detail ,:item_destroy]
   before_action :set_user, only: [:mypage, :edit_select, :identification, :card_destroy]
 
@@ -23,9 +25,6 @@ class ItemsController < ApplicationController
     @category = @item.category
     @images = @item.images
     @image = @images.first.photo.url
-    # binding.pry
-
-
     @parent_category = @category.parent.parent.name #レディース
     @category_parent_array = []
     Category.where(ancestry: nil).where.not(name:@parent_category).select("name").each do |parent|
@@ -173,12 +172,6 @@ class ItemsController < ApplicationController
     @image = @item.images
     @goods =@item.goods.count 
   end
-  
-  
-
-  # def card_upload
-  #   @card = Card.create(card_params)
-  # end
 
   private
 
@@ -189,10 +182,6 @@ class ItemsController < ApplicationController
   def image_params
     params.require(:image).permit(:photo)
   end
-
-  # def card_params
-  #   params.require(:card).permit(:card_number, :exp_month, :exp_year, :cvc).merge(user_id: current_user.id)
-  # end
 
   def set_item
     @item = Item.find(params[:id])
