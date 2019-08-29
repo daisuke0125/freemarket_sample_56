@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_101728) do
     t.datetime "updated_at", null: false
     t.bigint "item_id"
     t.string "photo"
+    t.string "url"
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 
@@ -96,6 +97,13 @@ ActiveRecord::Schema.define(version: 2019_08_28_101728) do
     t.string "uid", null: false
     t.string "provider", null: false
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "thumbnails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image"
+    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

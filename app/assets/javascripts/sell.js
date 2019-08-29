@@ -13,6 +13,39 @@ $(document).on('turbolinks:load', function(){
   var photo_left = $('.img_view').find('img');
   var upload = $('.upload-image');
   var image_photo = $('img');
+  var box_first = $("box:nth-child(1)");
+
+  var already = $('.already-image');
+  var already_src = $('.already-image').attr('src');
+  var img = $(`<div class= "img_view"><img></div>`);
+  images.push(img);
+  var btn_wrapper = $('<div class="btn_wrapper-image"><div class="btn-edit">編集</div><div class="btn-delete">削除</div></div>');
+    img.append(btn_wrapper);
+    img.find('img').attr({
+      src: already_src
+    })
+  // $('#preview').push(img);
+  if (already.length <= 4){
+    $('#preview').empty();
+    $.each(images, function(index, image) {
+      image.attr('data-image', index);
+      preview.append(image);
+      image.find('img').attr('id', index);
+    })
+    box.css({
+      'width': `calc(100% - (130px * ${images.length}))`,
+      'left': `calc(130px * ${images.length})` 
+    })
+    preview.css ({
+      'left': `calc(-160px * ${images.length})`,
+      'marginLeft': `calc(35px * ${images.length - 1})`
+    })
+    upload.css ({
+      'width': `calc(622px - (130px * ${images.length}))`,
+      'left': `calc(-62px + (13px * ${images.length}))`
+    })
+  }
+  $(box).eq(1).css("display:none;");
 
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
     var file = $(this).prop('files')[0];
