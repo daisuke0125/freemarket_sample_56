@@ -20,18 +20,46 @@ class ItemsController < ApplicationController
 
 
   def edit 
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
+    @item = Item.find(params[:id])
+    @category = @item.category
+    @images = @item.images
+    @image = @images.first.photo.url
+    # binding.pry
+
+
+    @parent_category = @category.parent.parent.name #レディース
+    @category_parent_array = []
+    Category.where(ancestry: nil).where.not(name:@parent_category).select("name").each do |parent|
       @category_parent_array << parent.name
     end
-  end
+    @category_parent_array.unshift(@parent_category,"---")
+    # 配列に選択したカテゴリを先頭に追加
+    
+    @child_category = @category.parent.name #トップス
+    @category_child_array = []
+    Category.where(ancestry: @category.parent.parent.id).each do |child|
+      @category_child_array << child.name
+    end
+    @category_child_array2 = @category_child_array.unshift(@child_category,"---").uniq
 
+    @grandchild_category = @category.name #Tシャツ
+    @category_grandchild_array = []
+
+    Category.where('ancestry LIKE ?', "%/#{@category.parent.id}%").each do |grandchild|
+      @category_grandchild_array << grandchild.name
+    end
+    @category_grandchild_array2 = @category_grandchild_array.unshift(@grandchild_category,"---").uniq
+
+    
+  end
+  
   def update
     @item.update(item_params) if @item.user_id == current_user.id
+    redirect_to root_path
   end
 
   def destroy
-    @item.destroy  if @item.user_id == current_user.id      
+    @item.destroy  if @item.user_id == current_user.id
       redirect_to "/items/#{@item.user.id}/mypage"
   end
 
@@ -110,7 +138,10 @@ class ItemsController < ApplicationController
   def sell
     @item = Item.new
     @item.images.build
+
+    #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
+    #データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end

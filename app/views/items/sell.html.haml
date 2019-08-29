@@ -20,7 +20,7 @@
                   .dropzone-area
                     = image.label :photo, class: "dropzone-box", for: "uplphoto" do
                       %input.sell-form__upload__drop-file
-                        = image.file_field :photo, multiple: true, name: 'images[photo][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                        = image.file_field :photo, multiple: true, name: 'images[photo][]', id: "upload-image", class: "upload-image", 'data-image': 0, required: "true"
                       %pre.pre1
                         %br
                           :preserve
@@ -38,22 +38,22 @@
             .form-group
               %lavel 商品名
               %span.form-arbitrary 必須
-              = f.text_field :name, placeholder: "商品名（必須40文字まで）", type: "text", class: "input-default"
+              = f.text_field :name, placeholder: "商品名（必須40文字まで）", type: "text", class: "input-default", required: "true"
             .form-group
               %lavel 商品の説明
               %span.form-arbitrary 必須
-              = f.text_area :detail, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", type: "text", class: "input-default", rows:5
+              = f.text_area :detail, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", type: "text", class: "input-default", rows:5, required: "true"
           .sell-content.clearfix
             .sell-content__head 商品の詳細
             .form-group
               %lavel カテゴリー
               %span.form-arbitrary 必須
               .select-wrap.category
-                = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: ''
+                = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: '', required: "true"
               %lavel 商品の状態
               %span.form-arbitrary 必須
               .select-wrap
-                = f.select :condition, ["新品、未使用","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], prompt: "---"
+                = f.select :condition, ["新品、未使用","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], prompt: "---", required: "true"
           .sell-content.clearfix
             .sell-content__head 配送について
             = link_to "?","/jp/help_center/article/68/", target: "_blank" ,class:"form-question"
@@ -61,7 +61,7 @@
               %lavel 配送料の負担
               %span.form-arbitrary 必須
               .select-wrap
-                = f.select :delivery, ["送料込み(出品者負担)", "着払い(購入者負担)"], prompt: "---"
+                = f.select :delivery, ["送料込み(出品者負担)", "着払い(購入者負担)"], prompt: "---", required: "true"
               %lavel 発送元の地域
               %span.form-arbitrary 必須
               .select-wrap
@@ -69,7 +69,7 @@
               %lavel 発送までの日数
               %span.form-arbitrary 必須
               .select-wrap
-                = f.select :days, ["1~2日で発送","2~3日で発送","4~7日で発送"], prompt: "---"
+                = f.select :days, ["1~2日で発送","2~3日で発送","4~7日で発送"], prompt: "---", value:"選択して下さい"
           .sell-content.clearfix
             .sell-content__head 販売価格(300〜9,999,999)
             = link_to "?","/jp/help_center/article/68/", target: "_blank" ,class:"form-question"
@@ -77,7 +77,7 @@
               %lavel 価格
               %span.form-arbitrary 必須
               %lavel.left-yen ¥
-              = f.text_field :price, type: "text", placeholder: "例) 300", class: "price"
+              = f.text_field :price, type: "text", placeholder: "例) 300", class: "price", required: "true"
             .form-group__line.none
               %span 販売手数料(10%)
               %span -
@@ -108,11 +108,11 @@
     .sign_up__footer
       %nav
         %li
-          = link_to "プライバシーポリシー" , "https://www.mercari.com/jp/privacy/" ,class:"sign_up__footer--list"
+          = link_to "プライバシーポリシー" , "" ,class:"sign_up__footer--list"
         %li
-          = link_to "メルカリ利用規約" , "https://www.mercari.com/jp/tos/",class:"sign_up__footer--list"
+          = link_to "メルカリ利用規約" , "",class:"sign_up__footer--list"
         %li
-          = link_to "特定商取引に関する表記" , "https://www.mercari.com/jp/tokutei/",class:"sign_up__footer--list"
+          = link_to "特定商取引に関する表記" , "",class:"sign_up__footer--list"
 
       =link_to "https://www.mercari.com/jp/", class: "single-footer-logo" do
         =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", height: "65", width: "80", class: "single-footer-logo"

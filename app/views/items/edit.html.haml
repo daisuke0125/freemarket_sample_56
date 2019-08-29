@@ -17,6 +17,10 @@
               .sell-form__upload--box
                 .sell-form__upload--box--items
                   #preview
+                    = image_tag @image, class:"already-image"
+                    .btn_wrapper-image.already-btn
+                      .btn-edit.already-btn-edit 編集
+                      .btn-delete.already-btn-delete 削除
                   .dropzone-area
                     = image.label :photo, class: "dropzone-box", for: "uplphoto" do
                       %input.sell-form__upload__drop-file
@@ -49,7 +53,15 @@
               %lavel カテゴリー
               %span.form-arbitrary 必須
               .select-wrap.category
-                = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: ''
+                -# = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: ''
+
+                = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: '', prompt: "---"
+                = f.select :category_id, @category_child_array2, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: '', prompt: "---"
+                = f.select :category_id, @category_grandchild_array2, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: '', prompt: "---"
+
+              %lavel ブランド
+              %span.form-arbitrary{style:"background-color:#ccc"} 任意
+              = f.text_field :brand, placeholder: "商品名（必須40文字まで）", type: "text", class: "input-default",style: "width:94%; margin-bottom:20px;"
               %lavel 商品の状態
               %span.form-arbitrary 必須
               .select-wrap
@@ -107,13 +119,13 @@
     .sign_up__footer
       %nav
         %li
-          = link_to "プライバシーポリシー" , "https://www.mercari.com/jp/privacy/" ,class:"sign_up__footer--list"
+          = link_to "プライバシーポリシー" , "" ,class:"sign_up__footer--list"
         %li
-          = link_to "メルカリ利用規約" , "https://www.mercari.com/jp/tos/",class:"sign_up__footer--list"
+          = link_to "メルカリ利用規約" , "",class:"sign_up__footer--list"
         %li
-          = link_to "特定商取引に関する表記" , "https://www.mercari.com/jp/tokutei/",class:"sign_up__footer--list"
+          = link_to "特定商取引に関する表記" , "",class:"sign_up__footer--list"
 
-      =link_to "https://www.mercari.com/jp/", class: "single-footer-logo" do
+      =link_to root_path, class: "single-footer-logo" do
         =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari", height: "65", width: "80", class: "single-footer-logo"
       %p
         %small © 2019 Mercari
