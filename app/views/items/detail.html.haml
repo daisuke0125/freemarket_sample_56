@@ -6,8 +6,15 @@
     .item-content
       .item-content__photo
         .thumbnail
-          -@image.each do |p|
-            =image_tag "#{p.photo}",class: "thumbnail-image"
+          -if (@item.soldout == "sold")
+            -@image.each do |p|
+              =image_tag "#{p.photo}",class: "thumbnail-image", style: "left: -120px;"
+          - else 
+            -@image.each do |p|
+              =image_tag "#{p.photo}",class: "thumbnail-image"
+          -if (@item.soldout == "sold")
+            .item-sold-out-badge
+              .div{style: "display: block; top: -90px;"} SOLD
           -# -# = image_tag "https://www.asahicom.jp/articles/images/AS20190719000785_commL.jpg", class: "thumbnail-image"
           -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-image"
           -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-image"
@@ -27,7 +34,7 @@
           -# = image_tag "https://www.1242.com/lf/asset/uploads/2018/01/dog-3045116_1280a.jpg", class: "thumbnail-thumb__photo"
           -# = image_tag "https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg", class: "thumbnail-thumb__photo"
           -# = image_tag "https://cdn-ak.f.st-hatena.com/images/fotolife/h/haruharu5/20180813/20180813115403.jpg", class: "thumbnail-thumb__photo"
-
+        
       -# .item-content__table 写真を挿入
       %table.item-content__table
         %tbody
@@ -48,6 +55,10 @@
           %tr
             %th カテゴリー
             %td
+              =link_to "#{@item.category.parent.parent.name}",""
+              >
+              =link_to "#{@item.category.parent.name}",""
+              >
               =link_to "#{@item.category.name}",""
               %i.icon-arrow-right
           %tr
@@ -74,10 +85,14 @@
       %span.item-price-box__yen="¥"+@item.price.to_s(:delimited)
       %span.item-price-box__tax (税込)
       %span.item-price-box__fee 送料込み
-    - if user_signed_in? && current_user.id != @item.user_id
-      %button.btn-default.btn-red{type: "submit"}
-        %h2 購入画面に進む
 
+    - if (@item.soldout != "sold")
+      - if user_signed_in? && current_user.id != @item.user_id
+        %button.btn-default.btn-red{type: "submit"}
+          =link_to "購入画面に進む", purchase_path(@item),  class: "item-price-box__buy"
+    - else 
+      .btn-gray{style:"width:100%; pointer-events: none; margin-top: 20px;"}
+        %span 売り切れました
 
     .item-content-text=@item.detail
     .item-button-content
@@ -111,19 +126,61 @@
         %input{name: "item_id", type: "hidden", value: "m62740205964"}/
         %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
         %textarea.textarea-default{name: "body", type: "text", value: ""}
-        %button.btn-gray{type: "submit"}
-          %span コメントする
+        - if (@item.soldout != "sold")
+          %button.btn-gray{type: "submit"}
+            %span コメントする
+          - if user_signed_in? && current_user.id != @item.user_id
+            %ul.nav-item
+              %li.link--prev
+                =link_to detail_item_path(@land_item)  ,class:"link--text" do
+                  = fa_icon 'angle-left'
+                  =@land_item.name
+              %li.link--next
+                =link_to detail_item_path(@land_item2),class:"link--text" do
+                  =@land_item2.name
+                  = fa_icon 'angle-right'        
+        - else 
+          .btn-gray{style:"width:100%; pointer-events: none;"}
+            %span 売り切れのためコメントできません 
+  %ul.nav-item
+    %li.link--prev
+      =link_to detail_item_path(@land_item)  ,class:"link--text" do
+        = fa_icon 'angle-left'
+        =@land_item.name
+    %li.link--next
+      =link_to detail_item_path(@land_item2),class:"link--text" do
+        = fa_icon 'angle-right'
+        =@land_item2.name
 
-  - if user_signed_in? && current_user.id != @item.user_id
-    %ul.nav-item
-      %li.link--prev
-        =link_to detail_item_path(@land_item)  ,class:"link--text" do
-          = fa_icon 'angle-left'
-          =@land_item.name
-      %li.link--next
-        =link_to detail_item_path(@land_item2),class:"link--text" do
-          =@land_item2.name
-          = fa_icon 'angle-right'
+  .message-content
+    %ul.message-content__social
+      %li
+        =link_to "/users/auth/facebook", class: "facebook-icon" do
+          =fa_icon "facebook-square", class: "facebook"
+      %li
+        =link_to "/users/auth/twitter", class: "twitter-icon" do
+          =fa_icon "twitter-square", class: "twitter"
+      %li
+        =link_to "", class: "pinterest-icon" do
+          =fa_icon "pinterest", class: "pinterest"
+
+  .other-item
+    =link_to "#{@item.user.nickname}さんのその他の商品" ,class:"other-item__title"
+    .other-item__content
+
+    -@item.user.items.last(3).each do |user_item|
+      .item-box
+        =link_to detail_item_path(user_item) do
+          %figure.item-box__image
+          -user_item.images.each do |image|
+            = image_tag "#{image.photo}", class: 'item-box__image--height'
+        .item-box__body
+          %h3.item-box__body--name=user_item.name
+          .item-box__body--num
+            .item-box__body--num--price="¥"+user_item.price.to_s(:delimited)
+            .num-font
+              = fa_icon 'heart' ,class:"num-font__count"
+              .num-font--like 2
 
     .message-content
       %ul.message-content__social

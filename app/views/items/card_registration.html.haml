@@ -1,3 +1,5 @@
+-# マイページ＞支払い方法＞登録カードがある時のページ
+
 =render "items/header"
 - breadcrumb :card_registration
 = render "layouts/breadcrumbs"
@@ -13,16 +15,20 @@
               %h3.l-chapter-sub-head クレジットカード一覧
             %ul.settings-payment-list
               %li
-                %form.l-single-content
+                = form_with url: add_card_registration_item_path, method: :delete, local: true, class: 'l-single-content' do |f|
                   %figure
-                    %img{alt: "american_express", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?917505326", width: "21"}/
-                  %input{name: "__csrf_value", type: "hidden", value: "7212cd1eb93ca25c3899c6fe734992c91a7518fe313e2662ee3b4cf67164130d59d234b57c13f01044c7eec238b533d984a05da59cec9329f2c73cf827e2d1f90"}/
-                  %input{name: "card_sequence_no", type: "hidden", value: "tpLkzho78HxARmvi1TJEixcc"}/
-                  .settings-payment-num=@card.card_number
-                  .settings-payment-num{ style: "float:left" }=@card.exp_month+"/"
-                  .settings-payment-num=@card.exp_year
-                  %input{name: "method", type: "hidden", value: "card"}/
-                  = link_to "削除する", add_card_registration_item_path ,class: "settings-payment-remove",style:"padding:6px"
+                    -# = image_tag "credit-cards/#{@card_src}", width: '26', height: '20', alt: @card_brand, id: "card_image"
+                  .settings-payment-num
+                    = "**** **** **** " + @card_information.last4
+                  .settings-payment-num{ style: "float:left" }
+                    - exp_month = @card_information.exp_month.to_s
+                    - exp_year = @card_information.exp_year.to_s.slice(2,3)
+                    = exp_month + " / " + exp_year
+                  %input{name: "method", type: "hidden", value: ""}/
+                  = f.submit "削除する", class: "settings-payment-remove", style:"padding:6px"
+
+
+                  -# = link_to "削除する", add_card_registration_item_path ,class: "settings-payment-remove",style:"padding:6px"
                   
           .settings-not-regist
             =link_to "" do
@@ -31,3 +37,41 @@
               %i.icon-arrow-right
 
 =render "items/footer"
+
+
+
+
+
+
+-# =render "items/header"
+
+-# .mypage
+-#   .mypage__content
+-#     = render "items/sidebar"
+-#     .l-content
+-#       %section.l-chapter-container
+-#         %h2.l-chapter-head 支払い方法
+-#         .l-single-inner
+-#           %section
+-#             .l-single-content
+-#               %h3.l-chapter-sub-head クレジットカード一覧
+-#             %ul.settings-payment-list
+-#               %li
+-#                 %form.l-single-content
+-#                   %figure
+-#                     %img{alt: "american_express", height: "20", src: "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?917505326", width: "21"}/
+-#                   %input{name: "__csrf_value", type: "hidden", value: "7212cd1eb93ca25c3899c6fe734992c91a7518fe313e2662ee3b4cf67164130d59d234b57c13f01044c7eec238b533d984a05da59cec9329f2c73cf827e2d1f90"}/
+-#                   %input{name: "card_sequence_no", type: "hidden", value: "tpLkzho78HxARmvi1TJEixcc"}/
+-#                   .settings-payment-num=@card.card_number
+-#                   .settings-payment-num{ style: "float:left" }=@card.exp_month+"/"
+-#                   .settings-payment-num=@card.exp_year
+-#                   %input{name: "method", type: "hidden", value: "card"}/
+-#                   = link_to "削除する", add_card_registration_item_path ,class: "settings-payment-remove",style:"padding:6px"
+                  
+-#           .settings-not-regist
+-#             =link_to "" do
+-#               %span 支払い方法について
+-#               = fa_icon 'angle-right',style:"font-size20px"
+-#               %i.icon-arrow-right
+
+-# =render "items/footer"
