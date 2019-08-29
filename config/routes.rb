@@ -30,10 +30,11 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'card_information'
       get 'sell'
-      get 'edit'
-      get 'destroy'
+      # get 'edit'
     end
     member do
+      delete 'item_destroy'
+      delete 'card_destroy'
       get 'buy'
       get 'detail'
       get 'mypage'
