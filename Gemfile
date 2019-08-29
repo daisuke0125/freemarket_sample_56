@@ -90,3 +90,4 @@ gem 'ancestry'
 gem 'pry-rails'
 gem 'payjp'
 gem "gretel"
+gem 'gon'

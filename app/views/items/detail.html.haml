@@ -10,8 +10,10 @@
             -@image.each do |p|
               =image_tag "#{p.photo}",class: "thumbnail-image", style: "left: -120px;"
           - else 
-            -@image.each do |p|
-              =image_tag "#{p.photo}",class: "thumbnail-image"
+            -@image.each_with_index do |p, i|
+              -if i == 0
+                =image_tag "#{p.photo}",class: "thumbnail-image"
+              -else
           -if (@item.soldout == "sold")
             .item-sold-out-badge
               .div{style: "display: block; top: -90px;"} SOLD
