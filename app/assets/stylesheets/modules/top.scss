@@ -236,6 +236,11 @@ a {
       background-color: white;
       margin: 0 0 0 20px;
       width: 213px;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+      &:hover{
+        outline: 1px solid rgb(0, 153, 255);
+        outline-offset: 0px;
+        }
       a{
         color: #333;
       }

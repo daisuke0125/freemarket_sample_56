@@ -7,8 +7,10 @@
         .item 
           =link_to detail_item_path(item) do
             .item__image
-            -item.images.each do |p|
-              %img{src: p.photo,class: "thumbnail-image"}
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                %img{src: p.photo,class: "thumbnail-image"}
+              - else
             .item__text
               .item__text__name 
                 = item.name
@@ -29,8 +31,10 @@
         .item 
           =link_to detail_item_path(item) do
             .item__image
-            -item.images.each do |p,index|
-              %img{src: p.photo,class: "thumbnail-image"}
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                %img{src: p.photo,class: "thumbnail-image"}
+              - else
             .item__text
               .item__text__name 
                 = item.name
@@ -50,8 +54,10 @@
         .item 
           =link_to detail_item_path(item) do
             .item__image
-            -item.images.each do |p,index|
-              %img{src: p.photo,class: "thumbnail-image"}
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                %img{src: p.photo,class: "thumbnail-image"}
+              - else
             .item__text
               .item__text__name 
                 = item.name
@@ -71,8 +77,10 @@
         .item 
           =link_to detail_item_path(item) do
             .item__image
-            -item.images.each do |p,index|
-              %img{src: p.photo,class: "thumbnail-image"}
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                %img{src: p.photo,class: "thumbnail-image"}
+              - else
             .item__text
               .item__text__name 
                 = item.name

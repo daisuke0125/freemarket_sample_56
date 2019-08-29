@@ -39,7 +39,7 @@
               %lavel 商品名
               %span.form-arbitrary 必須
               = f.text_field :name, placeholder: "商品名（必須40文字まで）", type: "text", class: "input-default", required: "true"
-            .form-group
+            .form-group{style:"margin-top: 15px;"}
               %lavel 商品の説明
               %span.form-arbitrary 必須
               = f.text_area :detail, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", type: "text", class: "input-default", rows:5, required: "true"

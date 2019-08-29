@@ -123,7 +123,7 @@ $(document).on('turbolinks:load', function(){
       $('.form-group__line.bold').append(first);
       }
     else {
-      var fee = price * 0.1
+      var fee = (price * 0.1)
       var profit = (price * 0.9)
       $('.form-group__line.none span').last().hide()
       $('.form-group__line.bold span').last().hide()
