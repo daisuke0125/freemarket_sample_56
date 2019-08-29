@@ -401,8 +401,6 @@
   display:none;
 }
 
-.thumbnail-image {
-  position: relative;
 a.edit-btn{
   @include btn-red;
   margin-top: 20px;
@@ -419,7 +417,6 @@ a.edit-btn--gray{
     opacity: 0.6;
   }  
  }
-}
 
 .slick-slide{
   position: relative;
