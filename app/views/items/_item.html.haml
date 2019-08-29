@@ -60,8 +60,8 @@
   .content  
     =link_to "ベビー・キッズ新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where(category_id: [3, 31..45]).order("created_at DESC").last(4).each do |item| 
-        .item 
+      -items.where(category_id: [3, 31..45]).last(4).each do |item| 
+        .item{style: "height:326px;"}
           =link_to detail_item_path(item) do
             .item__image
             -item.images.each_with_index do |p, i|
@@ -73,15 +73,26 @@
                 - else 
                   %img{src: p.photo,class: "thumbnail-image"}
               - else
-            .item__text
-              .item__text__name 
-                = item.name
-              .item__text__num  
-                %li.item__text__num--price  
-                  = "¥#{item.price.to_s(:delimited)}"
-                %li.item__text__num--font
-                  =render partial:'goods/good', locals:{item:item}
-                  .good-count{style:"padding-left:6px"}= item.goods.count
+            - if (item.soldout == "sold")
+              .item__text{style: "position: relative; top: -120px;"}
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
+            - else 
+              .item__text
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
 
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
