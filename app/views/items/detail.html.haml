@@ -116,7 +116,7 @@
         %br
         %h5{style:"text-align:center"} or
         =link_to "出品を一旦停止する" ,"",class:"edit-btn--gray"
-        =link_to "この商品を削除する", "/items/#{@item.id}", method: :delete, class:"edit-btn--gray",data: { confirm: '本当に削除してよろしいですか？' }
+        =link_to "この商品を削除する", item_destroy_item_path, method: :delete, class:"edit-btn--gray",data: { confirm: '本当に削除してよろしいですか？' }
   
   .message-content
     .message-content-text

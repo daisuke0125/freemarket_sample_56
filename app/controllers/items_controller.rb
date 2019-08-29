@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:edit, :update, :destroy, :detail]
-  before_action :set_user, only: [:mypage, :edit_select, :identification]
+  before_action :set_item, only: [:edit, :update, :detail ,:item_destroy]
+  before_action :set_user, only: [:mypage, :edit_select, :identification, :card_destroy]
 
   def index
     @items = Item.all
@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
 
 
   def edit 
-    @item = Item.find(params[:id])
     @category = @item.category
     @images = @item.images
     @image = @images.first.photo.url
@@ -49,8 +48,6 @@ class ItemsController < ApplicationController
       @category_grandchild_array << grandchild.name
     end
     @category_grandchild_array2 = @category_grandchild_array.unshift(@grandchild_category,"---").uniq
-
-    
   end
   
   def update
@@ -58,7 +55,7 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-  def destroy
+  def item_destroy
     @item.destroy  if @item.user_id == current_user.id
       redirect_to "/items/#{@item.user.id}/mypage"
   end
@@ -95,7 +92,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy 
+  def card_destroy
     @card = Card.find(params[:id])
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.retrieve(@card.customer_id)
