@@ -135,7 +135,6 @@ class ItemsController < ApplicationController
   def sell
     @item = Item.new
     @item.images.build
-
     #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
     #データベースから、親カテゴリーのみ抽出し、配列化
