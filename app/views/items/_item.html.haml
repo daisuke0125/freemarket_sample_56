@@ -9,7 +9,12 @@
             .item__image
             -item.images.each_with_index do |p, i|
               - if i==0
-                %img{src: p.photo,class: "thumbnail-image"}
+                - if (item.soldout == "sold")
+                  .item-sold-out-badge
+                    .div{style: "display: block; top: -90px;"} SOLD
+                  %img{src: p.photo,class: "thumbnail-image"}
+                - else 
+                  %img{src: p.photo,class: "thumbnail-image"}
               - else
             .item__text
               .item__text__name 
@@ -31,8 +36,15 @@
         .item 
           =link_to detail_item_path(item) do
             .item__image
-            -item.images.each do |p,index|
-              %img{src: p.photo,class: "thumbnail-image"}
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                - if (item.soldout == "sold")
+                  .item-sold-out-badge
+                    .div{style: "display: block; top: -90px;"} SOLD
+                  %img{src: p.photo,class: "thumbnail-image"}
+                - else 
+                  %img{src: p.photo,class: "thumbnail-image"}
+              - else
             .item__text
               .item__text__name 
                 = item.name
@@ -52,8 +64,15 @@
         .item 
           =link_to detail_item_path(item) do
             .item__image
-            -item.images.each do |p,index|
-              %img{src: p.photo,class: "thumbnail-image"}
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                - if (item.soldout == "sold")
+                  .item-sold-out-badge{style: "position:relative;"}
+                    .div{style: "display: block; position: absolute; top: -90px;"} SOLD
+                  %img{src: p.photo,class: "thumbnail-image",style: "position:relative; top: -120px;"}
+                - else 
+                  %img{src: p.photo,class: "thumbnail-image"}
+              - else
             .item__text
               .item__text__name 
                 = item.name
