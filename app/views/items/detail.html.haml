@@ -109,9 +109,9 @@
         = fa_icon 'key' 
         =link_to "あんしん・あんぜんへの取り組み" , root_path ,class:"header-btn signup"
 
-  .message-content
-    .message-content-text
-      - if user_signed_in? && current_user.id == @item.user_id
+  - if user_signed_in? && current_user.id == @item.user_id
+    .message-content
+      .message-content-text
         =link_to "商品の編集" ,edit_item_path(@item),class:"edit-btn"
         %br
         %h5{style:"text-align:center"} or
@@ -126,22 +126,25 @@
         %input{name: "item_id", type: "hidden", value: "m62740205964"}/
         %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
         %textarea.textarea-default{name: "body", type: "text", value: "",style:"pointer-events: none;"}
-        - if (@item.soldout != "sold")
+        - if (@item.soldout != "sold") #商品が売れていなかった場合
           %button.btn-gray{type: "submit"}
             %span コメントする
-          - if user_signed_in? && current_user.id != @item.user_id
-            %ul.nav-item
-              %li.link--prev
-                =link_to detail_item_path(@land_item)  ,class:"link--text" do
-                  = fa_icon 'angle-left'
-                  =@land_item.name
-              %li.link--next
-                =link_to detail_item_path(@land_item2),class:"link--text" do
-                  =@land_item2.name
-                  = fa_icon 'angle-right'
-        - else 
-          .btn-gray{style:"width:100%; pointer-events: none;"}
+
+        - else #商品が売れた場合
+          .btn-gray{style:"width:100%; ,pointer-events: none;"}
             %span 売り切れのためコメントできません 
+
+  - if user_signed_in? && current_user.id != @item.user_id #人の商品
+    %ul.nav-item
+      %li.link--prev
+        =link_to detail_item_path(@land_item)  ,class:"link--text" do
+          = fa_icon 'angle-left'
+          =@land_item.name
+      %li.link--next
+        =link_to detail_item_path(@land_item2),class:"link--text" do
+          =@land_item2.name
+          = fa_icon 'angle-right'
+
 
   - if user_signed_in? && current_user.id != @item.user_id
     .other-item
