@@ -23,6 +23,38 @@ class ItemsController < ApplicationController
     @category = @item.category
     @images = @item.images
     @image = @images.first.photo.url
+
+    @item = Item.find(params[:id])
+    gon.item = @item
+    gon.images = []
+    @item.images.each do |image|
+      gon.images << image.photo
+    end
+
+    # @item.item_imagse.image_urlをバイナリーデータにしてビューで表示できるようにする
+    require 'base64'
+    require 'aws-sdk'
+
+    gon.images_binary_datas = []
+    if Rails.env.production?
+      client = Aws::S3::Client.new(
+                             region: 'ap-northeast-1',
+                             access_key_id: Rails.application.credentials.aws[:access_key_id],
+                             secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+                             )
+      @item.images.each do |image|
+        binary_data = client.get_object(bucket: 'freemarket-sample56', key: image.photo.file.path).body.read
+        gon.images_binary_datas << Base64.strict_encode64(binary_data)
+      end
+    else
+      @item.images.each do |image|
+        if image.present?
+          binary_data = File.read(image.photo.file.file)
+          gon.images_binary_datas << Base64.strict_encode64(binary_data)
+        else
+        end
+      end
+    end
     # binding.pry
 
 

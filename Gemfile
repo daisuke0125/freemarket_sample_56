@@ -91,3 +91,4 @@ gem 'pry-rails'
 gem 'payjp'
 gem "gretel"
 gem 'gon'
+gem 'aws-sdk'

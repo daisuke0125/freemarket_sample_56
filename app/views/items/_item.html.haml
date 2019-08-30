@@ -32,28 +32,39 @@
   .content  
     =link_to "メンズ新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where(category_id: [2, 18..30]).order("created_at DESC").last(4).each do |item| 
-        .item 
+      -items.where(category_id: [2, 18..30]).order('created_at DESC').last(4).each do |item| 
+        .item{style: "height:326px;"}
           =link_to detail_item_path(item) do
             .item__image
             -item.images.each_with_index do |p, i|
               - if i==0
                 - if (item.soldout == "sold")
-                  .item-sold-out-badge
-                    .div{style: "display: block; top: -90px;"} SOLD
-                  %img{src: p.photo,class: "thumbnail-image"}
+                  .item-sold-out-badge{style: "position:relative;"}
+                    .div{style: "display: block; position: absolute; top: -90px;"} SOLD
+                  %img{src: p.photo,class: "thumbnail-image",style: "position:relative; top: -120px;"}
                 - else 
                   %img{src: p.photo,class: "thumbnail-image"}
               - else
-            .item__text
-              .item__text__name 
-                = item.name
-              .item__text__num  
-                %li.item__text__num--price  
-                  = "¥#{item.price.to_s(:delimited)}"
-                %li.item__text__num--font
-                  =render partial:'goods/good', locals:{item:item}
-                  .good-count{style:"padding-left:6px"}= item.goods.count
+            - if (item.soldout == "sold")
+              .item__text{style: "position: relative; top: -120px;"}
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
+            - else 
+              .item__text
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
 
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
@@ -99,21 +110,39 @@
   .content  
     =link_to "インテリア・住まい・小物新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where(category_id: [4, 46..65]).order("created_at DESC").last(4).each do |item| 
-        .item 
+      -items.where(category_id: [4, 46..65]).last(4).each do |item| 
+        .item{style: "height:326px;"}
           =link_to detail_item_path(item) do
             .item__image
-            -item.images.each do |p,index|
-              %img{src: p.photo,class: "thumbnail-image"}
-            .item__text
-              .item__text__name 
-                = item.name
-              .item__text__num  
-                %li.item__text__num--price  
-                  = "¥#{item.price.to_s(:delimited)}"
-                %li.item__text__num--font
-                  =render partial:'goods/good', locals:{item:item}
-                  .good-count{style:"padding-left:6px"}= item.goods.count
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                - if (item.soldout == "sold")
+                  .item-sold-out-badge{style: "position:relative;"}
+                    .div{style: "display: block; position: absolute; top: -90px;"} SOLD
+                  %img{src: p.photo,class: "thumbnail-image",style: "position:relative; top: -120px;"}
+                - else 
+                  %img{src: p.photo,class: "thumbnail-image"}
+              - else
+            - if (item.soldout == "sold")
+              .item__text{style: "position: relative; top: -120px;"}
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
+            - else 
+              .item__text
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
 
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
@@ -123,19 +152,38 @@
     =link_to "シャネル新着アイテム" , "" , class:"content__title"
     .content__box 
       -items.where('brand like ?',"%AAA%").order("created_at DESC").last(4).each do |item| 
-        .item 
+        .item{style: "height:326px;"}
           =link_to detail_item_path(item) do
-            -item.images.each do |p,index|
-              %img{src: p.photo,class: "thumbnail-image"}
-            .item__text
-              .item__text__name 
-                = item.name
-              .item__text__num  
-                %li.item__text__num--price  
-                  = "¥#{item.price.to_s(:delimited)}"
-                %li.item__text__num--font
-                  =render partial:'goods/good', locals:{item:item}
-                  .good-count{style:"padding-left:6px"}= item.goods.count
+            .item__image
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                - if (item.soldout == "sold")
+                  .item-sold-out-badge{style: "position:relative;"}
+                    .div{style: "display: block; position: absolute; top: -90px;"} SOLD
+                  %img{src: p.photo,class: "thumbnail-image",style: "position:relative; top: -120px;"}
+                - else 
+                  %img{src: p.photo,class: "thumbnail-image"}
+              - else
+            - if (item.soldout == "sold")
+              .item__text{style: "position: relative; top: -120px;"}
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
+            - else 
+              .item__text
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
 
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
@@ -143,19 +191,38 @@
     =link_to "ルイヴィトン新着アイテム" , "" , class:"content__title"
     .content__box 
       -items.where('brand like ?',"%ルイヴィトン%").order("created_at DESC").last(4).each do |item|  
-        .item 
+        .item{style: "height:326px;"}
           =link_to detail_item_path(item) do
-            -item.images.each do |p,index|
-              %img{src: p.photo,class: "thumbnail-image"}
-            .item__text
-              .item__text__name 
-                = item.name
-              .item__text__num  
-                %li.item__text__num--price  
-                  = "¥#{item.price.to_s(:delimited)}"
-                %li.item__text__num--font
-                  =render partial:'goods/good', locals:{item:item}
-                  .good-count{style:"padding-left:6px"}= item.goods.count
+            .item__image
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                - if (item.soldout == "sold")
+                  .item-sold-out-badge{style: "position:relative;"}
+                    .div{style: "display: block; position: absolute; top: -90px;"} SOLD
+                  %img{src: p.photo,class: "thumbnail-image",style: "position:relative; top: -120px;"}
+                - else 
+                  %img{src: p.photo,class: "thumbnail-image"}
+              - else
+            - if (item.soldout == "sold")
+              .item__text{style: "position: relative; top: -120px;"}
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
+            - else 
+              .item__text
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
 
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
@@ -163,19 +230,38 @@
     =link_to "シュプリーム新着アイテム" , "" , class:"content__title"
     .content__box 
       -items.where('brand like ?',"%シュプリーム%").order("created_at DESC").last(4).each do |item| 
-        .item 
+        .item{style: "height:326px;"}
           =link_to detail_item_path(item) do
-            -item.images.each do |p,index|
-              %img{src: p.photo,class: "thumbnail-image"}
-            .item__text
-              .item__text__name 
-                = item.name
-              .item__text__num  
-                %li.item__text__num--price  
-                  = "¥#{item.price.to_s(:delimited)}"
-                %li.item__text__num--font
-                  =render partial:'goods/good', locals:{item:item}
-                  .good-count{style:"padding-left:6px"}= item.goods.count
+            .item__image
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                - if (item.soldout == "sold")
+                  .item-sold-out-badge{style: "position:relative;"}
+                    .div{style: "display: block; position: absolute; top: -90px;"} SOLD
+                  %img{src: p.photo,class: "thumbnail-image",style: "position:relative; top: -120px;"}
+                - else 
+                  %img{src: p.photo,class: "thumbnail-image"}
+              - else
+            - if (item.soldout == "sold")
+              .item__text{style: "position: relative; top: -120px;"}
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
+            - else 
+              .item__text
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
 
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
@@ -183,19 +269,38 @@
     =link_to "ナイキ新着アイテム" , "" , class:"content__title"
     .content__box 
       -items.where('brand like ?',"%ナイキ%").order("created_at DESC").last(4).each do |item| 
-        .item
+        .item{style: "height:326px;"}
           =link_to detail_item_path(item) do
-            -item.images.each do |p,index|
-              %img{src: p.photo,class: "thumbnail-image"}
-            .item__text
-              .item__text__name 
-                = item.name
-              .item__text__num  
-                %li.item__text__num--price  
-                  = "¥#{item.price.to_s(:delimited)}"
-                %li.item__text__num--font
-                  =render partial:'goods/good', locals:{item:item}
-                  .good-count{style:"padding-left:6px"}= item.goods.count
+            .item__image
+            -item.images.each_with_index do |p, i|
+              - if i==0
+                - if (item.soldout == "sold")
+                  .item-sold-out-badge{style: "position:relative;"}
+                    .div{style: "display: block; position: absolute; top: -90px;"} SOLD
+                  %img{src: p.photo,class: "thumbnail-image",style: "position:relative; top: -120px;"}
+                - else 
+                  %img{src: p.photo,class: "thumbnail-image"}
+              - else
+            - if (item.soldout == "sold")
+              .item__text{style: "position: relative; top: -120px;"}
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
+            - else 
+              .item__text
+                .item__text__name 
+                  = item.name
+                .item__text__num  
+                  %li.item__text__num--price  
+                    = "¥#{item.price.to_s(:delimited)}"
+                  %li.item__text__num--font
+                    =render partial:'goods/good', locals:{item:item}
+                    .good-count{style:"padding-left:6px"}= item.goods.count
 
     %li.view-all
       =link_to "すべての商品を見る" , "" , class:"view-all"
