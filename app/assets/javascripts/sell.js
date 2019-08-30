@@ -30,12 +30,12 @@ $(document).on('turbolinks:load', function(){
 
   // 登録済画像のプレビュー表示
   gon.images.forEach(function(image, index){
-    var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
+    var img = $(`<div class= "img_view"><img class="image"></div>`);
 
     // カスタムデータ属性を付与
     img.data("image", index)
 
-    var btn_wrapper = $('<div class="btn_wrapper"><a class="btn_edit">編集</a><a class="btn_delete">削除</a></div>');
+    var btn_wrapper = $('<div class="btn_wrapper-image"><a class="btn-edit">編集</a><a class="btn-delete">削除</a></div>');
 
     // 画像に編集・削除ボタンをつける
     img.append(btn_wrapper);
