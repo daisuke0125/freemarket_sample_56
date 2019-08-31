@@ -11,7 +11,8 @@
         = image_tag "https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?1355409", alt: "", height: "200", width: "700"
         %a
           %figure
-            = image_tag "//static.mercdn.net/thumb/members/255443527.jpg?1499692952" , alt: "", height: "60", width: "60"
+            = image_tag rand_image.sample , alt: "", height: "60", width: "60"
+            -# = image_tag "//static.mercdn.net/thumb/members/255443527.jpg?1499692952" , alt: "", height: "60", width: "60"
           %h2.my-name=@nickname
           .mypage-number
             評価

@@ -109,7 +109,6 @@ a {
 ////// メイン////////
 
 .main-visual{
-  // background: url('main.jpg') ;
   background-position: center;
   background-size: cover;
   color: #333;
@@ -144,9 +143,6 @@ a {
     color: #333;
     height: 400px;
     position: relative;
-    // padding: 0 200px;
-    // width: 100vw;
-    // margin-left: -200px;
     display: flex;
     margin: 0 auto;
     background-color: beige;
@@ -157,9 +153,6 @@ a {
     color: #333;
     height: 400px;
     position: relative;
-    // padding: 0 200px;
-    // width: 100vw;
-    // margin-left: -200px;
     display: flex;
     width: 100vw;
   }
@@ -214,7 +207,7 @@ a {
   }
   .content{
     margin: 0 auto;
-    width:1030px;
+    width:1000px;
     &__title{
       font-size:22px;
       text-align: center;
@@ -230,6 +223,7 @@ a {
     }
     &__box{
       display: flex;
+      flex-wrap: wrap;
     }
     .item{
       display: inline-block;
@@ -256,7 +250,7 @@ a {
         }
       }
       &__text{
-        padding: 16px;
+        padding: 10px;
         font-size: 16px;
         background-color: white;
         &__name{
@@ -307,7 +301,6 @@ a {
   color: white;
   height: 270px;
   position: relative;
-  // padding: 0 250px;
   &__inner{
       position: absolute;
       top:0;

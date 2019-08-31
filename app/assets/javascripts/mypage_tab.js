@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function(){
       $('.tab-content__list.to_do').remove();
       $('.tab-content__list.knowledge').remove();
       var html = `<ul class="tab-content__list to_do">
-                    <div class="mypage-sub__content">
+                    <div class="mypage-sub__content" style="height:250px">
                       <div class="mypage-sub__content--icon">
                         <img alt="" height="90" width="90" class="single-footer-logo" src="//www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?1355409">
                         <div class="mypage-sub__content--notfound">取引中の商品がありません</div>
