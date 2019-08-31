@@ -89,16 +89,11 @@ class SignupController < ApplicationController
 
 
         if @user.save
-            # binding.pry
             Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
             if params['payjp-token'].blank?
-            # redirect_to action: "new"
             else
             customer = Payjp::Customer.create(
-            # description: '登録テスト', 
-            # email: current_user.email,
             card: params['payjp-token'],
-            # metadata: {user_id: current_user.id}
             ) 
             end
             @sns = SnsCredential.where(uid: @user.uid)
@@ -111,7 +106,6 @@ class SignupController < ApplicationController
                 customer_id: customer.id, 
                 card_id: customer.default_card,
             )
-            # Card.create(card_number: card_params[:card_number], exp_month: card_params[:exp_month], exp_year: card_params[:exp_year], cvc: card_params[:cvc], user_id: session[:id])
             redirect_to done_signup_index_path
         else
             redirect_to step1_signup_index_path

@@ -45,9 +45,9 @@ class PurchaseController < ApplicationController
     :amount => @item.price,
     :customer => card.customer_id, 
     :currency => 'jpy',
-  )
-  @item.update(soldout: "sold")
-  redirect_to action: 'done'
+    )
+    @item.update(soldout: "sold")
+    redirect_to action: 'done'
   end
 
 

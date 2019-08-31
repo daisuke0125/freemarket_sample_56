@@ -10,14 +10,11 @@ class CardController < ApplicationController
 
   def delete 
     card = Card.where(user_id: current_user.id).first
-    if card.blank?
-    else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      customer.delete
-      card.delete
-    end
-      redirect_to action: "new"
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    customer.delete
+    card.delete
+    redirect_to action: "new"
   end
 
   def show 
@@ -35,13 +32,13 @@ class CardController < ApplicationController
         customer_id: customer.id, 
         card_id: customer.default_card,
       )
-      if @card.save
-        redirect_to card_registration_item_path(current_user)
-        else
-          redirect_to action: "show"
-        end
+    if @card.save
+      redirect_to card_registration_item_path(current_user)
+      else
+        redirect_to action: "show"
       end
     end
+  end
 
 
   private
