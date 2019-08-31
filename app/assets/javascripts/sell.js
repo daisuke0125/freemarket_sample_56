@@ -146,6 +146,10 @@ $(document).on('turbolinks:load', function(){
     $('.img_view').css('height','0px');
     //一番目以降のボックスを非表示
   }
+  var otheritem = $('.item-box__image--height')
+    otheritem.nextAll().remove();
+    // otheritem.css('height','0px');
+    //一番目以降のボックスを非表示
 
   $(document).on('click', '.btn-delete', function() {
     var target_image = $(this).parent().parent();
