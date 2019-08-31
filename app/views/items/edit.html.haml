@@ -17,14 +17,16 @@
               .sell-form__upload--box
                 .sell-form__upload--box--items
                   #preview
-                    = image_tag @image, class:"already-image"
-                    .btn_wrapper-image.already-btn
-                      .btn-edit.already-btn-edit 編集
-                      .btn-delete.already-btn-delete 削除
+                  .img_view
                   .dropzone-area
                     = image.label :photo, class: "dropzone-box", for: "uplphoto" do
+                      -# %img{src:@item.images.first.photo.url}
+                      -# .btn_wrapper-image
+                      -#   .btn-edit 編集
+                      -#   .btn-delete.edit{style:"z-index:1"} 削除
+
                       %input.sell-form__upload__drop-file
-                        = image.file_field :photo, multiple: true, name: 'images[photo][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                        = image.file_field :photo_cache, multiple: true, name: 'images[photo][]', id: "upload-image", class: "upload-image", 'data-image': 0
                       %pre.pre1
                         %br
                           :preserve
@@ -42,7 +44,7 @@
             .form-group
               %lavel 商品名
               %span.form-arbitrary 必須
-              = f.text_field :name, placeholder: "商品名（必須40文字まで）", type: "text", class: "input-default",style: "width:97%;"
+              = f.text_field :name, placeholder: "商品名（必須40文字まで）", type: "text" ,class: "input-default",style: "width:97%;"
             .form-group{style: "margin-top:20px;"}
               %lavel 商品の説明
               %span.form-arbitrary 必須
@@ -53,8 +55,6 @@
               %lavel カテゴリー
               %span.form-arbitrary 必須
               .select-wrap.category
-                -# = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: ''
-
                 = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: '', prompt: "---"
                 = f.select :category_id, @category_child_array2, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: '', prompt: "---"
                 = f.select :category_id, @category_grandchild_array2, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: '', prompt: "---"

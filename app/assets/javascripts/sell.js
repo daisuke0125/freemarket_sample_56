@@ -15,10 +15,10 @@ $(document).on('turbolinks:load', function(){
   var image_photo = $('img');
 
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
-    var file = $(this).prop('files')[0];
+    var file = $(this).prop('files')[0];//指定した属性の値を取得
     var reader = new FileReader();
     inputs.push($(this));
-    var img = $(`<div class= "img_view"><img></div>`);
+    var img = $(`<div class= "img_view"><img></div>`); //img_viewの作成
     reader.onload = function(e) {
       var btn_wrapper = $('<div class="btn_wrapper-image"><div class="btn-edit">編集</div><div class="btn-delete">削除</div></div>');
       img.append(btn_wrapper);
@@ -27,7 +27,7 @@ $(document).on('turbolinks:load', function(){
       })
     }
     reader.readAsDataURL(file);
-    images.push(img);
+    images.push(img);//配列に要素を追加
     if(images.length > 5) {
       $('.sell-form__upload').css({'height': '540px'})
       box.css({
@@ -135,6 +135,17 @@ $(document).on('turbolinks:load', function(){
     }
   });
 
+  $('.btn-delete.edit').click(function(){
+    // $(this).css('color','red'); //ok
+    var already_image = $(this).parent().parent();
+    already_image.remove(); //ok
+  });
+
+  if (box.length >= 1) {
+    box.nextAll().css('display','none');
+    $('.img_view').css('height','0px');
+    //一番目以降のボックスを非表示
+  }
 
   $(document).on('click', '.btn-delete', function() {
     var target_image = $(this).parent().parent();

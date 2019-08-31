@@ -21,10 +21,8 @@ class ItemsController < ApplicationController
 
   def edit 
     @category = @item.category
-    @images = @item.images
-    @image = @images.first.photo.url
-    # binding.pry
 
+    @item.images.first.photo.cache! unless @item.images.first.photo.blank?
 
     @parent_category = @category.parent.parent.name #レディース
     @category_parent_array = []
@@ -52,6 +50,7 @@ class ItemsController < ApplicationController
   
   def update
     @item.update(item_params) if @item.user_id == current_user.id
+    # binding.pry
     redirect_to root_path
   end
 
@@ -159,6 +158,7 @@ class ItemsController < ApplicationController
     if @item.save
       params[:images][:photo].each do |photo|
         @item.images.create(photo: photo, item_id: @item.id)
+        binding.pry
       end
       redirect_to root_path
     else
