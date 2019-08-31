@@ -10,10 +10,10 @@
         %ul.tabs
           %li.tab.have 出品中
           %li.tab.now 取引中
-          %li.tab.none 売却済
+          %li.tab.none 売却済み
       .mypage-sub__content
         %ul.tab-content__list.have
-          - @items.each do |item|
+          - @exhibit_items.each do |item|
             %li
               .figure
                 =link_to detail_item_path(item) do
@@ -27,6 +27,27 @@
                       %span{style:"padding-right: 8px"}= item.goods.count
                       = fa_icon 'comment-o'
                       %span 0
-                      -# %span= item.comments.count
+
+                      %span{style:"background-color: #0099e8; color:white; padding:3px 3px; border-radius:2px;"} 出品中
                   %i.fa.fa-angle-right.tab-icon
+
+        %ul.tab-content__list.none
+          - @sold_items.each do |item|
+            %li
+              .figure
+                =link_to detail_item_path(item) do
+                  .tab-content__list__image
+                    - item.images.each do |p|
+                      =image_tag "#{p.photo}",class: "thumbnail-image--edit",alt: "", height: "60", width: "60"
+                  .tab-content__list__body
+                    .tab-content__list__body--text= item.name
+                    .tab-content__list__body--time
+                      = fa_icon 'heart-o'
+                      %span{style:"padding-right: 8px"}= item.goods.count
+                      = fa_icon 'comment-o'
+                      %span 0
+
+                      %span{style:"background-color: #888; color:white; padding:3px 3px; border-radius:2px;"} 売却済み
+                  %i.fa.fa-angle-right.tab-icon
+
 = render "items/footer"
