@@ -40,6 +40,8 @@ class SignupController < ApplicationController
         session[:birth_year] = user_params[:birth_year]
         session[:birth_month] = user_params[:birth_month]
         session[:birth_day] = user_params[:birth_day]
+        session[:uid] = user_params[:uid]
+        session[:provider] = user_params[:provider]
 
         @user = User.new
     end

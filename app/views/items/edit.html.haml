@@ -55,9 +55,9 @@
               .select-wrap.category
                 -# = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: ''
 
-                = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: '', prompt: "---"
-                = f.select :category_id, @category_child_array2, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: '', prompt: "---"
-                = f.select :category_id, @category_grandchild_array2, {}, class: 'listing-select-wrapper__box--select', id: 'parent_category', name: '', prompt: "---"
+                = f.select :category_id, @category_parent_array, {}, class: 'listing-select-wrapper__box--select parent', id: 'parent_category', name: '', prompt: "---"
+                = f.select :category_id, @category_child_array2, {}, class: 'listing-select-wrapper__box--select children', id: 'child_category', name: '', prompt: "---"
+                = f.select :category_id, @category_grandchild_array2, {}, class: 'listing-select-wrapper__box--select grandchildren', id: 'grandchild_category', name: '', prompt: "---"
 
               %lavel ブランド
               %span.form-arbitrary{style:"background-color:#ccc"} 任意

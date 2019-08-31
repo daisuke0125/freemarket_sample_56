@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
     gon.item = @item
     gon.images = []
     @item.images.each do |image|
-      gon.images << image.photo
+      gon.images << image.photo.url
     end
 
     # @item.item_imagse.image_urlをバイナリーデータにしてビューで表示できるようにする
@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
                              secret_access_key: Rails.application.credentials.aws[:secret_access_key],
                              )
       @item.images.each do |image|
-        binary_data = client.get_object(bucket: 'freemarket-sample56', key: image.photo.file.path).body.read
+        binary_data = client.get_object(bucket: 'freemarket-sample56', key: image.photo.url.file.path).body.read
         gon.images_binary_datas << Base64.strict_encode64(binary_data)
       end
     else
@@ -83,6 +83,7 @@ class ItemsController < ApplicationController
   end
   
   def update
+    # binding.pry
     @item.update(item_params) if @item.user_id == current_user.id
     redirect_to root_path
   end
@@ -188,6 +189,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = Item.new(item_params)
     if @item.save
       params[:images][:photo].each do |photo|

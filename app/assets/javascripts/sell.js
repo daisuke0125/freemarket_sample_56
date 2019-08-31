@@ -13,10 +13,6 @@ $(document).on('turbolinks:load', function(){
   var photo_left = $('.img_view').find('img');
   var upload = $('.upload-image');
   var image_photo = $('img');
-  // var dropzone = $(".item__img__dropzone__input");
-  // var dropzone2 = $(".item__img__dropzone2__input2");
-  // var appendzone = $(".item__img__dropzone2")
-  // var input_area = $(".input-area");
   var preview = $("#preview");
   var preview2 = $("#preview2");
 
@@ -29,6 +25,7 @@ $(document).on('turbolinks:load', function(){
 
 
   // 登録済画像のプレビュー表示
+  console.log(gon.images);
   gon.images.forEach(function(image, index){
     var img = $(`<div class= "img_view"><img class="image"></div>`);
 
@@ -44,14 +41,25 @@ $(document).on('turbolinks:load', function(){
 
     // 表示するビューにバイナリーデータを付与
     img.find("img").attr({
-      src: "data:image/jpeg;base64," + binary_data
+      src: "data:image/jpeg;base64," + binary_data,
+      id: index,
     });
-
+    // img.find('img').attr('id', index);
     // 登録済画像のビューをimagesに格納
     images.push(img)
     registered_images_ids.push(image.id)
-  })
+    img.attr('data-image', index);
+  });
 
+
+  $.each(images, function(index, image) {
+    image.attr('data-image', index);
+    preview2.append(image);
+    image.find('img').attr('id', index);
+    $('#dropzone2').css({
+      'width': `calc(100% - (135px * ${images.length - 5}))`
+    })
+  });
   // 画像が４枚以下のとき
   if (images.length <= 4) {
     $('#preview').empty();
@@ -60,17 +68,17 @@ $(document).on('turbolinks:load', function(){
       preview.append(image);
     })
     box.css({
-          'width': `calc(100% - (130px * ${images.length}))`,
-          'left': `calc(130px * ${images.length})` 
-        })
-        preview.css ({
-          'left': `calc(-160px * ${images.length})`,
-          'marginLeft': `calc(35px * ${images.length - 1})`
-        })
-        upload.css ({
-          'width': `calc(622px - (130px * ${images.length}))`,
-          'left': `calc(-62px + (13px * ${images.length}))`
-        })
+      'width': `calc(100% - (130px * ${images.length}))`,
+      'left': `calc(130px * ${images.length})` 
+    })
+    preview.css ({
+      'left': `calc(-160px * ${images.length})`,
+      'marginLeft': `calc(35px * ${images.length - 1})`
+    })
+    upload.css ({
+      'width': `calc(622px - (130px * ${images.length}))`,
+      'left': `calc(-62px + (13px * ${images.length}))`
+    })
 
     // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
   } else if (images.length == 5) {
@@ -133,42 +141,7 @@ $(document).on('turbolinks:load', function(){
   input_area.append(new_image);
 
 
-  // var box_first = $("box:nth-child(1)");
-
-  // var already = $('.already-image');
-  // var already_src = $('.already-image').attr('src');
-  // var img = $(`<div class= "img_view"><img></div>`);
-  // images.push(img);
-  // var btn_wrapper = $('<div class="btn_wrapper-image"><div class="btn-edit">編集</div><div class="btn-delete">削除</div></div>');
-  //   img.append(btn_wrapper);
-  //   img.find('img').attr({
-  //     src: already_src
-  //   })
-  // // $('#preview').push(img);
-  // if (already.length <= 4){
-  //   $('#preview').empty();
-  //   $.each(images, function(index, image) {
-  //     image.attr('data-image', index);
-  //     preview.append(image);
-  //     image.find('img').attr('id', index);
-  //   })
-  //   box.css({
-  //     'width': `calc(100% - (130px * ${images.length}))`,
-  //     'left': `calc(130px * ${images.length})` 
-  //   })
-  //   preview.css ({
-  //     'left': `calc(-160px * ${images.length})`,
-  //     'marginLeft': `calc(35px * ${images.length - 1})`
-  //   })
-  //   upload.css ({
-  //     'width': `calc(622px - (130px * ${images.length}))`,
-  //     'left': `calc(-62px + (13px * ${images.length}))`
-  //   })
-  // }
-  // $(box).eq(1).css("display:none;");
-  
-
-
+ 
   $(document).on('change', 'input[type= "file"].upload-image',function(event) {
     var file = $(this).prop('files')[0];
     var reader = new FileReader();

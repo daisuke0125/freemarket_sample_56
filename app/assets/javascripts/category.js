@@ -42,6 +42,11 @@ $(document).on('turbolinks:load', function(){
     $('.form-arbitrary-bland').css('padding', '2px 4px');
     }
     // 親カテゴリー選択後のイベント
+    $('.parent').on('change', function() {
+      $('.children').remove();
+      $('.grandchildren').remove();
+    })
+
     $('#parent_category').on('change', function(){
       var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
       if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
