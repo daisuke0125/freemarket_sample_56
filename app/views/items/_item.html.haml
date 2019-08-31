@@ -45,8 +45,8 @@
   .content  
     =link_to "メンズ新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where(category_id: [2, 18..30]).last(5).each do |item|
-        .item{style: "height:280px; width:180px;"}
+      -items.where(category_id: [2, 18..30]).last(10).each do |item|
+        .item{style: "height:280px; width:180px; margin-bottom:15px"}
           =link_to detail_item_path(item) do
             .item__image
             -item.images.each_with_index do |p, i|
@@ -85,8 +85,8 @@
   .content  
     =link_to "ベビー・キッズ新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where(category_id: [3, 31..45]).last(5).each do |item| 
-        .item{style: "height:280px; width:180px;"}
+      -items.where(category_id: [3, 31..45]).last(10).each do |item| 
+        .item{style: "height:280px; width:180px; margin-bottom:15px"}
           =link_to detail_item_path(item) do
             .item__image
             -item.images.each_with_index do |p, i|
@@ -125,8 +125,8 @@
   .content  
     =link_to "インテリア・住まい・小物新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where(category_id: [4, 46..65]).last(5).each do |item| 
-        .item{style: "height:280px; width:180px;"}
+      -items.where(category_id: [4, 46..65]).last(10).each do |item| 
+        .item{style: "height:280px; width:180px; margin-bottom:15px"}
           =link_to detail_item_path(item) do
             .item__image
             -item.images.each_with_index do |p, i|
@@ -168,8 +168,8 @@
   .content  
     =link_to "シャネル新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where('brand like ?',"%シャネル%").last(5).each do |item| 
-        .item{style: "height:280px; width:180px;"}
+      -items.where('brand like ?',"%シャネル%").last(10).each do |item| 
+        .item{style: "height:280px; width:180px; margin-bottom:15px"}
           =link_to detail_item_path(item) do
             .item__image
             -item.images.each_with_index do |p, i|
@@ -209,8 +209,8 @@
   .content  
     =link_to "ルイヴィトン新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where('brand like ?',"%ルイヴィトン%").last(5).each do |item|  
-        .item{style: "height:280px; width:180px;"}
+      -items.where('brand like ?',"%ルイヴィトン%").last(10).each do |item|  
+        .item{style: "height:280px; width:180px; margin-bottom:15px"}
           =link_to detail_item_path(item) do
             .item__image
             -item.images.each_with_index do |p, i|
@@ -250,8 +250,8 @@
   .content  
     =link_to "シュプリーム新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where('brand like ?',"%シュプリーム%").last(5).each do |item| 
-        .item{style: "height:280px; width:180px;"}
+      -items.where('brand like ?',"%シュプリーム%").last(10).each do |item| 
+        .item{style: "height:280px; width:180px; margin-bottom:15px"}
           =link_to detail_item_path(item) do
             .item__image
             -item.images.each_with_index do |p, i|
@@ -291,8 +291,8 @@
   .content  
     =link_to "ナイキ新着アイテム" , "" , class:"content__title"
     .content__box 
-      -items.where('brand like ?',"%ナイキ%").last(5).each do |item| 
-        .item{style: "height:280px; width:180px;"}
+      -items.where('brand like ?',"%ナイキ%").last(10).each do |item| 
+        .item{style: "height:280px; width:180px; margin-bottom:15px"}
           =link_to detail_item_path(item) do
             .item__image
             -item.images.each_with_index do |p, i|
