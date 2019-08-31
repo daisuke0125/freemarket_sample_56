@@ -214,7 +214,7 @@ a {
   }
   .content{
     margin: 0 auto;
-    width:940px;
+    width:1030px;
     &__title{
       font-size:22px;
       text-align: center;
@@ -248,8 +248,8 @@ a {
         width: 100%;
       }
       .thumbnail-image{
-        width: 213px;
-        height: 220px;
+        width: 180px;
+        height: 200px;
         &--edit{
           width: 60px;
           height: 60px;  
@@ -260,7 +260,6 @@ a {
         font-size: 16px;
         background-color: white;
         &__name{
-          margin-bottom: 10px;
           overflow: hidden;
           position: relative;
           font-weight: 400;

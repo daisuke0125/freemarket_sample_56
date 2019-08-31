@@ -104,3 +104,5 @@ $(document).on('turbolinks:load', function(){
       }
     });
   });
+
+// $('#category_parent_array').hide();

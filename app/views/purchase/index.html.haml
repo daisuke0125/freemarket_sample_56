@@ -14,12 +14,12 @@
             = image_tag "#{image.photo}"
           %p.buy-item-name.bold
             =@item.name
-          = form_tag(action: :pay, :method => "POST",:novalidate => "novalidate", class: "buy-form") do
+          = form_tag(action: :pay, method: "POST",novalidate: "novalidate", class: "buy-form") do
             %p.buy-price-ja.bold
               ="¥#{@item.price.to_s(:delimited)}"
               %span.item-shipping-fee.f14.bold 
-                = @item.delivery.sub(/\(.*?\)/,"")           
-            %ul.buy-accordion.not-have
+                = @item.delivery.sub(/\(.*?\)/,"")
+            %ul.buy-accordion.not-have{style: "width:330px"}
               %li.accordion-parent
                 .accordion-toggle
                   ポイントはありません
