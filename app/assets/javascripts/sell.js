@@ -123,8 +123,8 @@ $(document).on('turbolinks:load', function(){
       $('.form-group__line.bold').append(first);
       }
     else {
-      var fee = (price * 0.1)
-      var profit = (price * 0.9)
+      var fee = (price * 0.1).toFixed(0)
+      var profit = (price * 0.9).toFixed(0)
       $('.form-group__line.none span').last().hide()
       $('.form-group__line.bold span').last().hide()
       var feeline = `<span>¥${fee}</span>`

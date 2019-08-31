@@ -65,6 +65,8 @@ class ItemsController < ApplicationController
 
   def edit_select
     @items = @user.items
+    @exhibit_items = Item.where(user_id: @user.id).where(soldout: nil)
+    @sold_items = Item.where(user_id: @user.id).where(soldout: "sold")
   end
 
   def card_registration
@@ -162,7 +164,6 @@ class ItemsController < ApplicationController
     if @item.save
       params[:images][:photo].each do |photo|
         @item.images.create(photo: photo, item_id: @item.id)
-        binding.pry
       end
       redirect_to root_path
     else
