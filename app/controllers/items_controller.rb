@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
 
   def mypage
     @nickname = @user.nickname
+    @items = Item.where(buyer_id: current_user.id)
   end
 
 

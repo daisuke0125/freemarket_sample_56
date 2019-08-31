@@ -56,9 +56,27 @@
         %ul.tabs
           %li.tab.doing 取引中
           %li.tab.done 過去の取引
-      .mypage-sub__content
+      .mypage-sub__content{style:"height:550px;"}
         %ul.tab-content__list.doing
           .mypage-sub__content--icon
             = image_tag "//www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?1355409", alt: "", height: "90", width: "90",class:"single-footer-logo"
             .mypage-sub__content--notfound 取引中の商品がありません
+        %ul.tab-content__list.done
+          -@items.each do |item|
+            %li
+              .figure
+                =link_to detail_item_path(item) do
+                  .tab-content__list__image
+                    -item.images.each do |image|
+                      =image_tag "#{image.photo}",height: "60",width: "60"
+                  .tab-content__list__body
+                    .tab-content__list__body--text="「#{item.name}」を購入しました。取引が完了しました。"
+                    .tab-content__list__body--time
+                      %span{style:"background-color: #888; color:white; padding:5px 5px; border-radius:2px;"} 取引完了
+                  %i.fa.fa-angle-right.tab-icon
+          %li
+            .tab-content__look
+              = link_to "一覧を見る" ,"" 
+
+
 = render "items/footer"
